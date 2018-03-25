@@ -79,10 +79,10 @@ module.exports = function(TOKEN) {
           _this.channels.set(item.id, item);
         }
 
-        if (Object.keys(_this.guilds).length == _this.amOfGuilds) {
+        if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
           _("READY", "");
         }
-        if (Object.keys(_this.guilds).length > _this.amOfGuilds) {
+        if (Array.from(_this.guilds.keys()).length > _this.amOfGuilds) {
           _(t, guild);
         }
       }
