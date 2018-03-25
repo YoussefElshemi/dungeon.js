@@ -17,13 +17,14 @@ module.exports = function() {
           request.req("POST", `/guilds/${raw.id}/channels`, {
             name: name,
             type: ["text", "dm", "voice", "group_dm", "category"].indexOf(type) || 0,
-            bitrate: (type === "voice" && opt && opt.bitrate) || 64,
-            user_limit: (type === "voice" && opt && opt.userlimit) || 0,
+            bitrate: (type === "voice" && opt && opt.bitrate) || null,
+            user_limit: (type === "voice" && opt && opt.userlimit) || null,
             permissions: (opt && opt.permissions) || [],
             parent_id: (opt && opt.parent) || null,
             nsfw: (type === "text" && opt && opt.nsfw) || false
           }, _this.token).then(c => {
-            res(_this.channel_methods().fromRaw(c));
+            setTimeout(res, 100, res(_this.channel_methods().fromRaw(c)));
+            
           }).catch(rej);
         });
       };
