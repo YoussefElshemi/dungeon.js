@@ -1,4 +1,4 @@
-var request = require("../Connect");
+var request = require("../Connection");
 
 module.exports = function() {
   var _this = this;
@@ -13,6 +13,7 @@ module.exports = function() {
       raw.channels = newChannels;
 
       raw.createChannel = function(name, type, opt) {
+        if (!opt) opt = {};
         return new Promise((res, rej) => {
           request.req("POST", `/guilds/${raw.guild_id}/channels`, {
             name: name,
@@ -20,9 +21,9 @@ module.exports = function() {
             bitrate: opt.bitrate || "",
             user_limit: opt.userlimit || "",
             permissions: opt.permissions || "",
-            parent_id: opt.parentCat.id || "",
+            parent_id: opt.parent || "",
             nsfw: opt.nsfw || false
-          }).then(c => {
+          }, _this.token).then(c => {
             res(_this.channel_methods().fromRaw(c));
           }).catch(rej);
         });

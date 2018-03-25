@@ -85,7 +85,7 @@ module.exports = function() {
 
       raw.pin = function() {
         return new Promise((res) => {
-          request.req("POST", `/channels/${raw.channel_id}/pins/${raw.id}`, {} , _this.token).then(m => {
+          request.req("POST", `/channels/${raw.channel.id}/pins/${raw.id}`, {} , _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
             if (error.status === 403) throw new Error("Missing Permissions");

@@ -17,7 +17,7 @@ module.exports = function() {
 
       raw.send = function(content) {
         return new Promise((res) => {
-          request.req("POST", `/channels/${raw.channel_id}/messages`, {
+          request.req("POST", `/channels/${raw.id}/messages`, {
             content: content
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));

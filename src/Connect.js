@@ -58,6 +58,7 @@ module.exports = function(TOKEN) {
         _this.amOfGuilds = message.d.guilds.length;
         _this.guilds = new Map();
         _this.channels = new Map();
+        _this.messages = new Map();
         _this.message_methods = require("./Methods/Messages.js");
         _this.channel_methods = require("./Methods/Channels.js");
         _this.guild_methods = require("./Methods/Guilds.js");
@@ -101,6 +102,7 @@ module.exports = function(TOKEN) {
       }
       if (t == "MESSAGE_CREATE") {
         var mesData = _this.message_methods().fromRaw(message.d);
+        _this.messages.set(mesData.id, mesData);
         _(t, mesData);
       }
     }
