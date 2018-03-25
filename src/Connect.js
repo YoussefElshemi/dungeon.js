@@ -1,9 +1,8 @@
-//var web = require("./lib/connection.js");
-var WebSocket = require("ws");
-var event_list = require("./Events");
+const WebSocket = require("ws");
+const event_list = require("./Events");
 
 module.exports = function(TOKEN) {
-  var _this = this;
+  const _this = this;
 
   function _(t, s) {
     if (_this._events[event_list[t]] != undefined) {
@@ -13,10 +12,10 @@ module.exports = function(TOKEN) {
 
   _this.token || (_this.token = TOKEN);
 
-  var wss = new WebSocket("wss://gateway.discord.gg/?v=6&encoding=json");
+  const wss = new WebSocket("wss://gateway.discord.gg/?v=6&encoding=json");
 
   wss.on("message", m => {
-    var message = JSON.parse(m);
+    const message = JSON.parse(m);
 
     if (message.op == 10) {
       _this.heartbeat_int = message.d.heartbeat_interval;
@@ -52,7 +51,7 @@ module.exports = function(TOKEN) {
       }));
     }
     if (message.op == 0) {
-      var t = message.t;
+      const t = message.t;
 
       if (t == "READY") {
         _this.amOfGuilds = message.d.guilds.length;
@@ -72,11 +71,11 @@ module.exports = function(TOKEN) {
       if (t == "GUILD_CREATE") {
         _this.guilds.set(message.d.id, message.d);
 
-        var guild = _this.guild_methods().fromRaw(message.d);
+        const guild = _this.guild_methods().fromRaw(message.d);
 
         _this.guilds.set(guild.id, guild);
         for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
-          var item = guild.channels.get(Array.from(guild.channels.keys())[i]);
+          const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
           _this.channels.set(item.id, item);
         }
 
@@ -101,7 +100,7 @@ module.exports = function(TOKEN) {
         _(t, channel);
       }
       if (t == "MESSAGE_CREATE") {
-        var mesData = _this.message_methods().fromRaw(message.d);
+        const mesData = _this.message_methods().fromRaw(message.d);
         _this.messages.set(mesData.id, mesData);
         _(t, mesData);
       }

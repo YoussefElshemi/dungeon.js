@@ -1,6 +1,6 @@
-var nekocurl = require("nekocurl");
+const nekocurl = require("nekocurl");
 
-var base = "https://discordapp.com/api/v6";
+const base = "https://discordapp.com/api/v6";
 
 module.exports = {
   req: function(METHOD, ENDPOINT, DATA, TOKEN) {

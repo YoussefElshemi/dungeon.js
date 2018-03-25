@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "discord-jesse": "^2.2.2",
+    "docdash": "^0.4.0",
+    "minami": "^1.2.3",
     "snekfetch": "^3.6.4",
     "ws": "^5.1.0"
   },

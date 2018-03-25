@@ -1,7 +1,7 @@
-var request = require("../Connection");
+const request = require("../Connection");
 
 module.exports = function() {
-  var _this = this;
+  const _this = this;
   return {
     fromRaw: function(raw) {
       raw.channel = _this.channels.get(raw.channel_id);
