@@ -56,8 +56,8 @@ module.exports = function(TOKEN) {
 
       if (t == "READY") {
         _this.amOfGuilds = message.d.guilds.length;
-        _this.guilds = new Set();
-        _this.channels = new Set();
+        _this.guilds = new Map();
+        _this.channels = new Map();
         _this.message_methods = require("./Methods/Messages.js");
         _this.channel_methods = require("./Methods/Channels.js");
         _this.guild_methods = require("./Methods/Guilds.js");
@@ -74,11 +74,10 @@ module.exports = function(TOKEN) {
         var guild = _this.guild_methods().fromRaw(message.d);
 
         _this.guilds[guild.id] = guild;
-
+        console.log(Object.keys(guild.channels)); //returns an empty array
         for (let i = 0; i < Object.keys(guild.channels).length; i++) {
           var item = guild.channels[Object.keys(guild.channels)[i]];
-
-          _this.channels[item.id] = item;
+          _this.channels.set(item.id, item);
         }
 
         if (Object.keys(_this.guilds).length == _this.amOfGuilds) {
@@ -91,13 +90,13 @@ module.exports = function(TOKEN) {
       if (t == "CHANNEL_CREATE") {
         const channel = _this.channel_methods().fromRaw(message.d);
 
-        _this.channels[channel.id] = channel;
+        _this.channels.set(channel.id, channel);
 
         _(t, channel);
       }
       if (t == "CHANNEL_DELETE") {
         const channel = _this.channel_methods().fromRaw(message.d);
-        _this.channels[channel.id] = undefined;
+        _this.channels.set(channel.id, undefined);
 
         _(t, channel);
       }

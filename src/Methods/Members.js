@@ -31,7 +31,6 @@ module.exports = function() {
         });
       };
       raw.avatarURL = function(options) {
-        console.log(options);
         if (options) {
           if (options.size && options.format) return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format}?size=${options.size}`;
           if (options.format) return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format}`;
