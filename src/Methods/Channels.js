@@ -249,6 +249,20 @@ module.exports = function() {
         });
       };
 
+      /**
+       * @description Deletes the channel
+       * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted
+       */
+
+      raw.delete = function() {
+        return new Promise((res) => {
+          request.req("DELETE", `/channels/${raw.id}`, {}, _this.token)
+            .then(m => {
+              setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
+            });
+        });
+      };
+
       return raw;
     }
   };
