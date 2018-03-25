@@ -69,14 +69,13 @@ module.exports = function(TOKEN) {
       }
 
       if (t == "GUILD_CREATE") {
-        _this.guilds[message.d.id] = message.d;
+        _this.guilds.set(message.d.id, message.d);
 
         var guild = _this.guild_methods().fromRaw(message.d);
 
-        _this.guilds[guild.id] = guild;
-        console.log(Object.keys(guild.channels)); //returns an empty array
-        for (let i = 0; i < Object.keys(guild.channels).length; i++) {
-          var item = guild.channels[Object.keys(guild.channels)[i]];
+        _this.guilds.set(guild.id, guild);
+        for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
+          var item = guild.channels.get(Array.from(guild.channels.keys())[i]);
           _this.channels.set(item.id, item);
         }
 
