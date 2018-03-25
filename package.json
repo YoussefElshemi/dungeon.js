@@ -1,0 +1,24 @@
+{
+  "name": "fuckneko.js",
+  "version": "1.0.6",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Youssef (http://doylebot.com)",
+  "license": "ISC",
+  "dependencies": {
+    "discord-jesse": "^2.2.2",
+    "snekfetch": "^3.6.4",
+    "ws": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
