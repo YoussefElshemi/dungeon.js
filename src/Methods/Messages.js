@@ -108,6 +108,23 @@ module.exports = function() {
         });
       };
 
+      /**
+       * @description This method will make the client react to a message
+       * @param emoji The unicode emoji or the emoji id if it's custom
+       */
+
+      raw.react = function(emoji) {
+        let reaction;
+        if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
+        return new Promise((res) => {
+          request.req("PUT", `/channels/${raw.channel.id}/messages/${raw.id}/reactions/${reaction}/@me`, {}, _this.token).then(m => {
+            setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
+          }).catch(error => {
+            if (error.status === 403) throw new Error("Missing Permissions");
+          });
+        });
+      };
+
       return raw;
     }
   };

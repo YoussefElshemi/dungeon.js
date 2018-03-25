@@ -13,21 +13,21 @@ module.exports = function() {
       raw.channels = newChannels;
 
       raw.createChannel = function(name, type, opt) {
-        if (!opt) opt = {};
         return new Promise((res, rej) => {
-          request.req("POST", `/guilds/${raw.guild_id}/channels`, {
+          request.req("POST", `/guilds/${raw.id}/channels`, {
             name: name,
-            type: ["text", "dm", "voice", "group_dm", "category"].indexOf(type) || "",
-            bitrate: opt.bitrate || "",
-            user_limit: opt.userlimit || "",
-            permissions: opt.permissions || "",
-            parent_id: opt.parent || "",
-            nsfw: opt.nsfw || false
+            type: ["text", "dm", "voice", "group_dm", "category"].indexOf(type) || 0,
+            bitrate: (type === "voice" && opt && opt.bitrate) || 64,
+            user_limit: (type === "voice" && opt && opt.userlimit) || 0,
+            permissions: (opt && opt.permissions) || [],
+            parent_id: (opt && opt.parent) || null,
+            nsfw: (type === "text" && opt && opt.nsfw) || false
           }, _this.token).then(c => {
             res(_this.channel_methods().fromRaw(c));
           }).catch(rej);
         });
       };
+
       return raw;
     }
   };
