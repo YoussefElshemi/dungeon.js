@@ -17,19 +17,50 @@ module.exports = function() {
 
       /**
        * @description This method will send a mssage to the channel specified
-       * @param {String} [content] The string to send the message with
+       * @param {String|Object} [content] The string if it's a normal message or object if it's a richembed
+       * @param {Object} [opt = {}] The options, nonce and tts
        * @returns {Promise<Message>} Returns a promise and discord message
+       * @example
+       * msg.channel.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+       * msg.channel.send("Hi!", {tts: true});
        */
 
-      raw.send = function(content) {
+      raw.send = function(content, opt = {}) {
+        let embed;
+        if (typeof content === "object") {
+          embed = {
+            title: (content && content.title) || null,
+            description: (content && content.body) || null,
+            url: (content && content.url) || null,
+            timestamp: (content && content.timestamp) || null,
+            color: (content && content.color) || null,
+            //footer: { }
+          };
+        }
         return new Promise((res) => {
-          request.req("POST", `/channels/${raw.id}/messages`, {
-            content: content
-          }, _this.token).then(m => {
-            setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
-          }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
-          });       
+          if (embed) {
+            request.req("POST", `/channels/${raw.id}/messages`, {
+              nonce: (opt && opt.nonce) || false,
+              tts: (opt && opt.tts) || false,
+              embed: embed || null
+            }, _this.token)
+              .then(m => {
+                setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
+              }).catch(error => {
+                if (error.status === 403) throw new Error("Missing Permissions");
+              });  
+          } else {
+            request.req("POST", `/channels/${raw.id}/messages`, {
+              nonce: (opt && opt.nonce) || false,
+              tts: (opt && opt.tts) || false,
+              content: content || null
+            }, _this.token)
+              .then(m => {
+                setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
+              }).catch(error => {
+                if (error.status === 403) throw new Error("Missing Permissions");
+              }); 
+          }     
         });
       };
 
@@ -70,11 +101,13 @@ module.exports = function() {
        */
 
       raw.getMessages = function(id) {
+        const messages = [];
         return new Promise((res) => {
-          for (var i = 0; i < id.length; i++) {
+          for (let i = 0; i < id.length; i++) {
             request.req("GET", `/channels/${raw.id}/messages/${id[i]}`, {}, _this.token)
               .then(m => {
-                setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
+                messages.push(_this.message_methods().fromRaw(m));
+                if (i == id.length - 1) setTimeout(res, 100, res(messages));
               });
           }
         });

@@ -17,7 +17,6 @@ class Client {
 
     if (typeof this.token !== "string") throw new Error("Token must be a string!");
 
-    //this.Connect(token);
     this.Connect = Connect;
     this.Connect(this.token);
     
@@ -38,6 +37,10 @@ class Client {
 
   on(event, callback) {
     this._events[event] = callback;
+  }
+
+  destroy() {
+    process.exit();
   }
 }
 
