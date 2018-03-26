@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "Youssef (http://doylebot.com)",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "snekfetch": "^3.6.4",
     "ws": "^5.1.0",
