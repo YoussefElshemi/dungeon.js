@@ -1,5 +1,5 @@
 const Connect = require("./Connect");
-
+const request = require("./Connection");
 /**
  * This Class is the base client for this API
  */
@@ -39,8 +39,15 @@ class Client {
     this.WrongType = require("./Errors/WrongType");
 
     this.MissingParameter = require("./Errors/MissingParameter");
+  }
 
-
+  user() {
+    new Promise((res) => {
+      request.req("GET", "./users/@me", {}, this.token).then(m => {
+        console.log(m);
+        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+      });
+    });
   }
 
   on(event, callback) {
@@ -49,6 +56,16 @@ class Client {
 
   destroy() {
     process.exit();
+  }
+
+  getUser(id) {
+    return new Promise((res) => {
+      request.req("GET", `/users/${id}`, {}, this.token).then(m => {
+        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+      }).catch(error => {
+        if (error.status === 403) throw new Error("Missing Permissions");
+      });        
+    });
   }
 }
 

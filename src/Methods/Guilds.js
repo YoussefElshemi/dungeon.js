@@ -7,11 +7,26 @@ module.exports = function() {
   return {
     fromRaw: function(raw) {
       const newChannels = new Collection();
+      const allRoles = new Collection();
+      const allEmojis = new Collection();
 
       for (let i = 0; i < raw.channels.length; i++) {
         newChannels.set(raw.channels[i].id, _this.channel_methods().fromRaw(raw.channels[i], raw));
       }
+
       raw.channels = newChannels;
+
+      for (let i = 0; i < raw.roles.length; i++) {
+        allRoles.set(raw.roles[i].id, raw.roles[i]);
+      }
+
+      raw.roles = allRoles;
+
+      for (let i = 0; i < raw.emojis.length; i++) {
+        allEmojis.set(raw.emojis[i].id, raw.emojis[i]);
+      }
+
+      raw.emojis = allEmojis;
 
       /**
        * @description This method will create a channel in the guild

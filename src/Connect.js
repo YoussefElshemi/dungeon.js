@@ -2,7 +2,7 @@ const WebSocket = require("ws");
 const event_list = require("./Events");
 const Collection = require("./Collection");
 
-module.exports = function (TOKEN) {
+module.exports = function(TOKEN) {
   const _this = this;
 
   function _(t, s) {
@@ -35,8 +35,8 @@ module.exports = function (TOKEN) {
           token: _this.token,
           properties: {
             "$os": "windows",
-            "$browser": "FuckNeko.js",
-            "$device": "FuckNeko.js"
+            "$browser": "dungeon.js",
+            "$device": "dungeon.js"
           },
           compress: false,
           large_threshold: 250,
