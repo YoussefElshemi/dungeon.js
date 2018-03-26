@@ -1,11 +1,12 @@
 const request = require("../Connection");
+const Collection = require("../Collection");
 
 module.exports = function() {
   const _this = this;
 
   return {
     fromRaw: function(raw) {
-      const newChannels = new Map();
+      const newChannels = new Collection();
 
       for (let i = 0; i < raw.channels.length; i++) {
         newChannels.set(raw.channels[i].id, _this.channel_methods().fromRaw(raw.channels[i], raw));

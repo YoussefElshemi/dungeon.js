@@ -1,5 +1,6 @@
 const WebSocket = require("ws");
 const event_list = require("./Events");
+const Collection = require("./Collection");
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -55,9 +56,9 @@ module.exports = function(TOKEN) {
 
       if (t == "READY") {
         _this.amOfGuilds = message.d.guilds.length;
-        _this.guilds = new Map();
-        _this.channels = new Map();
-        _this.messages = new Map();
+        _this.guilds = new Collection();
+        _this.channels = new Collection();
+        _this.messages = new Collection();
         _this.message_methods = require("./Methods/Messages.js");
         _this.channel_methods = require("./Methods/Channels.js");
         _this.guild_methods = require("./Methods/Guilds.js");

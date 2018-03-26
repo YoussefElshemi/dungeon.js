@@ -1,4 +1,5 @@
 const request = require("../Connection");
+const Collection = require("../Collection");
 
 module.exports = function() {
   const _this = this;
@@ -10,6 +11,14 @@ module.exports = function() {
         raw.author = _this.gu_methods().fromRaw(raw.author, raw.guild);
         raw.clean = cleanMessage(raw.content);
         raw.client = _this;
+        raw.createdAt = new Date(raw.timestamp).toLocaleString();
+        raw.mentioned = raw.mentions;
+        raw.mentionedUsers = new Collection();
+        for (let i = 0; i < raw.mentions.length; i++) {
+          raw.mentionedUsers.set(raw.mentions[i].id, raw.mentions[i]);
+        }
+        raw.mentioned = null;
+        raw.mentions = null;
       }
 
       /**
