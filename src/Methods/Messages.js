@@ -8,6 +8,8 @@ module.exports = function() {
       if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
         raw.author = _this.gu_methods().fromRaw(raw.author, raw.guild);
+        raw.clean = cleanMessage(raw.content);
+        raw.client = _this;
       }
 
       /**
@@ -23,7 +25,7 @@ module.exports = function() {
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new _this.MissingPermissions("Missing");
           });       
         });
       };
@@ -128,4 +130,11 @@ module.exports = function() {
       return raw;
     }
   };
+};
+
+const cleanMessage = function(text)  {
+  if (typeof(text) === "string")
+    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  else
+    return text;
 };

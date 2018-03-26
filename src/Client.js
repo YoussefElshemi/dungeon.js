@@ -32,6 +32,14 @@ class Client {
 
     this.amOfGuilds = 0;
 
+    this.MissingPermissions = require("./Errors/MissingPermissions");
+
+    this.DiscordAPIError = require("./Errors/DiscordAPIError");
+
+    this.WrongType = require("./Errors/WrongType");
+
+    this.MissingParameter = require("./Errors/MissingParameter");
+
 
   }
 
