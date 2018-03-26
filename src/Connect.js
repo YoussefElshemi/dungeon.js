@@ -100,8 +100,6 @@ module.exports = function (TOKEN) {
         _(t, channel);
       }
       if (t == "MESSAGE_CREATE") {
-        console.log("ok");
-
         const mesData = _this.message_methods().fromRaw(message.d);
         _this.messages.set(mesData.id, mesData);
         _(t, mesData);
