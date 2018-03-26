@@ -49,6 +49,15 @@ class Client {
     process.exit();
   }
 
+  getUser(id) {
+    return new Promise((res) => {
+      request.req("GET", `/users/${id}`, {}, this.token).then(m => {
+        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+      }).catch(error => {
+        if (error.status === 403) throw new Error("Missing Permissions");
+      });        
+    });
+  }
 }
 
 module.exports = Client;
