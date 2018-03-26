@@ -67,6 +67,7 @@ module.exports = function(TOKEN) {
         _this.emoji_methods = require("./Methods/Emojis.js");
         _this.cat_methods = require("./Methods/Category.js");
         _this.gu_methods = require("./Methods/Members.js");
+        _this.user = _this.gu_methods().fromRaw(message.d.user);
       }
 
       if (t == "GUILD_CREATE") {
