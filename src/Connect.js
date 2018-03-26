@@ -2,7 +2,7 @@ const WebSocket = require("ws");
 const event_list = require("./Events");
 const Collection = require("./Collection");
 
-module.exports = function(TOKEN) {
+module.exports = function (TOKEN) {
   const _this = this;
 
   function _(t, s) {
