@@ -5,7 +5,7 @@ const request = require("./Connection");
  */
 
 class Client {
-  constructor(token, options) {
+  constructor(token) {
     
     /**
      * @type {String}
@@ -19,14 +19,6 @@ class Client {
 
     this.Connect = Connect;
     this.Connect(this.token);
-    
-    /**
-     * @type {Object}
-     */
-
-    this.options = options;
-
-    if (options && typeof this.options !== "object") throw new Error("Options must be an object!");
 
     this._events = {};
 
@@ -45,9 +37,18 @@ class Client {
     this._events[event] = callback;
   }
 
+  /**
+   * @description Destroys the client process
+   */
+
   destroy() {
     process.exit();
   }
+
+  /**
+   * @description If a user isn't cached, this will fetch the user object
+   * @param {String} id The ID of the user to fetch;
+   */
 
   getUser(id) {
     return new Promise((res) => {

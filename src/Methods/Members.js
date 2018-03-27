@@ -7,6 +7,12 @@ module.exports = function() {
     fromRaw: function(raw, guild) {
       raw.tag = `${raw.username}#${raw.discriminator}`;
 
+      /**
+       * @description This method adds a role to the member
+       * @param {RoleObject|RoleID} role The role to add to the member 
+       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       */
+
       raw.addRole = function(role) {
         let roleid;
         if (typeof role === "string") roleid = role;
@@ -14,10 +20,17 @@ module.exports = function() {
         return new Promise((res) => {
           request.req("PUT", `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.role_methods().fromRaw(m));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
             });
         });
       };
+
+
+      /**
+       * @description This method removes a role to the member
+       * @param {RoleObject|RoleID} role The role to remove from the member 
+       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       */
 
       raw.removeRole = function(role) {
         let roleid;
@@ -26,10 +39,17 @@ module.exports = function() {
         return new Promise((res) => {
           request.req("DELETE", `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.role_methods().fromRaw(m));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
             });
         });
       };
+
+
+      /**
+       * @description This method will ban a member
+       * @param {Object} [opt = {}] The options to pass: days, number from 0-7 and reason, string      
+       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       */
 
       raw.ban = function(opt) {
         return new Promise((res) => {
@@ -43,21 +63,22 @@ module.exports = function() {
         });
       };
 
-      raw.kick = function(opt) {
+      /**
+       * @description This method will kick a member from a guild
+       * @param {String} [reason = ""] The options to pass: reason, a string
+       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       */
+
+      raw.kick = function(reason) {
         return new Promise((res) => {
           request.req("DELETE", `/guilds/${guild.id}/members/${raw.id}`, {
-            reason: opt.reason || ""
+            reason: reason || ""
           }, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, m.guild.id)));
             });
         });
       };
-
-      /*raw.addRole = function(id) {
-        request.re
-
-      }*/
 
       /**
        * @description This method will send a mssage to the channel specified
@@ -109,6 +130,12 @@ module.exports = function() {
           }     
         });
       };
+
+      /**
+       * @description Returns the avatar's url of a user
+       * @param {Object} [options = {}] The options, format eg. "png" and size, eg. 256
+       * @returns {String} The user's avatar as a URL
+       */
 
       raw.avatarURL = function(options) {
         if (options) {
