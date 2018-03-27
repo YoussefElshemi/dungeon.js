@@ -1,11 +1,11 @@
 const request = require("../Connection");
 const Collection = require("../Collection");
 
-module.exports = function() {
+module.exports = function () {
   const _this = this;
 
   return {
-    fromRaw: function(raw) {
+    fromRaw: function (raw) {
       const newChannels = new Collection();
       const allRoles = new Collection();
       const allEmojis = new Collection();
@@ -36,7 +36,7 @@ module.exports = function() {
        * @returns {Promise<Channel>} Returns the newly created Discord Channel
        */
 
-      raw.createChannel = function(name, type, opt) {
+      raw.createChannel = function (name, type, opt) {
         return new Promise((res, rej) => {
           request.req("POST", `/guilds/${raw.id}/channels`, {
             name: name,
@@ -49,10 +49,19 @@ module.exports = function() {
             topic: (type === "text" && opt && opt.topic) || null
           }, _this.token).then(c => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(c)));
-            
+
           }).catch(rej);
         });
       };
+      raw.getInvites = function () {
+        return new Promise((res, rej) => {
+          request.req("POST", `/guilds/${raw.id}/invites`, _this.token).then(i => {
+            setTimeout(() => {
+              res(i.forEach(inv => _this.invite_methods().fromRaw(inv)));
+            }, 100, res(i.forEach(inv => _this.invite_methods().fromRaw(inv))));
+          }).catch(rej);
+        });
+      }
 
       return raw;
     }

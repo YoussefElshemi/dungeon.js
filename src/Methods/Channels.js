@@ -1,10 +1,10 @@
 const request = require("../Connection");
 
-module.exports = function() {
+module.exports = function () {
   const _this = this;
 
   return {
-    fromRaw: function(raw, op) {
+    fromRaw: function (raw, op) {
       raw.type = ["text", "dm", "voice", "group_dm", "category"][raw.type];
       if (raw.type == "category") {
         return _this.cat_methods().fromRaw(raw);
@@ -25,7 +25,7 @@ module.exports = function() {
        * msg.channel.send("Hi!", {tts: true});
        */
 
-      raw.send = function(content, opt = {}) {
+      raw.send = function (content, opt = {}) {
         if (!content) throw new _this.MissingParameter("You are missing the parameter 'content'!");
         let embed;
         if (typeof content === "object") {
@@ -41,27 +41,27 @@ module.exports = function() {
         return new Promise((res) => {
           if (embed) {
             request.req("POST", `/channels/${raw.id}/messages`, {
-              nonce: (opt && opt.nonce) || false,
-              tts: (opt && opt.tts) || false,
-              embed: embed || null
-            }, _this.token)
+                nonce: (opt && opt.nonce) || false,
+                tts: (opt && opt.tts) || false,
+                embed: embed || null
+              }, _this.token)
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
                 if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
-              });  
+              });
           } else {
             request.req("POST", `/channels/${raw.id}/messages`, {
-              nonce: (opt && opt.nonce) || false,
-              tts: (opt && opt.tts) || false,
-              content: content || null
-            }, _this.token)
+                nonce: (opt && opt.nonce) || false,
+                tts: (opt && opt.tts) || false,
+                content: content || null
+              }, _this.token)
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
                 if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
-              }); 
-          }     
+              });
+          }
         });
       };
 
@@ -70,10 +70,10 @@ module.exports = function() {
        * @returns {Promise<Message>} Returns a promise and a discord message
        */
 
-      raw.lastMessage = function() {
+      raw.lastMessage = function () {
         if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
         return new Promise((res) => {
-          request.req("GET",`/channels/${raw.id}/messages/${raw.last_message_id}`, {}, _this.token)
+          request.req("GET", `/channels/${raw.id}/messages/${raw.last_message_id}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
             })
@@ -87,7 +87,7 @@ module.exports = function() {
        * @returns {Promise<Message>} Returns a promise and a discord message
        */
 
-      raw.getMessage = function(id) {
+      raw.getMessage = function (id) {
         if (!id) throw new _this.MissingParameter("You are missing the parameter 'snowflake'!");
         if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
         return new Promise((res) => {
@@ -104,16 +104,16 @@ module.exports = function() {
        * @returns {Promise<Message>} Returns a promise and (a) discord message(s)
        */
 
-      raw.getMessages = function(opt = {}) {
+      raw.getMessages = function (opt = {}) {
         if (!opt) throw new _this.MissingParameter("You are missing the parameter 'options'!");
         if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
         return new Promise((res) => {
           request.req("GET", `/channels/${raw.id}/messages`, {
-            around: opt.around || null,
-            before: opt.before || null,
-            after: opt.after || null,
-            limit: opt.limit || null
-          }, _this.token)
+              around: opt.around || null,
+              before: opt.before || null,
+              after: opt.after || null,
+              limit: opt.limit || null
+            }, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
             });
@@ -126,7 +126,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setName = function(newname) {
+      raw.setName = function (newname) {
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
             name: newname
@@ -142,7 +142,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setPosition = function(position) {
+      raw.setPosition = function (position) {
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
             osition: Number(position)
@@ -158,7 +158,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setTopic = function(newtopic) {
+      raw.setTopic = function (newtopic) {
         if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
 
         return new Promise((res) => {
@@ -176,7 +176,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setNSFW = function(falseortrue) {
+      raw.setNSFW = function (falseortrue) {
         if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
@@ -193,7 +193,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setBitrate = function(bitrate) {
+      raw.setBitrate = function (bitrate) {
         if (raw.type !== "voice") throw new _this.WrongType("This method only available on voice based channels");
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
@@ -210,7 +210,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setUserLimit = function(limit) {
+      raw.setUserLimit = function (limit) {
         if (raw.type !== "voice") throw new _this.WrongType("This method only available on voice based channels");
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
@@ -227,7 +227,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.setParent = function(newparent) {
+      raw.setParent = function (newparent) {
         return new Promise((res) => {
           request.req("PATCH", `/channels/${raw.id}`, {
             parent_id: newparent
@@ -243,20 +243,19 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
        */
 
-      raw.edit = function(options) {
+      raw.edit = function (options) {
         return new Promise((res) => {
-          request.req("POST", `/guilds/${raw.id}/channels`, 
-            {
+          request.req("POST", `/guilds/${raw.id}/channels`, {
               name: (options && options.name) || null,
               position: (options && options.position) || null,
               topic: (raw.type === "text" && options && options.topic) || null,
               nsfw: (raw.type === "text" && options && options.nsfw) || null,
               bitrate: (raw.type === "voice" && options && options.bitrate) || null,
               user_limit: (raw.type === "voice" && options && options.userlimit) || null,
-              parent_id: ((raw.type === "text" || raw.type === "voice") && options && options.parent) || null  
+              parent_id: ((raw.type === "text" || raw.type === "voice") && options && options.parent) || null
             }, _this.token)
             .then(m => {
-              setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));  
+              setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
             });
         });
       };
@@ -266,7 +265,7 @@ module.exports = function() {
        * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted
        */
 
-      raw.delete = function() {
+      raw.delete = function () {
         return new Promise((res) => {
           request.req("DELETE", `/channels/${raw.id}`, {}, _this.token)
             .then(m => {
@@ -274,6 +273,15 @@ module.exports = function() {
             });
         });
       };
+
+      raw.invite = function () {
+        return new Promise((res) => {
+          request.req("POST", `/channels/${raw.id}/invites`, {}, _this.token)
+            .then(i => {
+              setTimeout(res, 100, res(_this.invite_methods().fromRaw(i)));
+            });
+        });
+      }
 
       return raw;
     }

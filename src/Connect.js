@@ -2,7 +2,7 @@ const WebSocket = require("ws");
 const event_list = require("./Events");
 const Collection = require("./Collection");
 
-module.exports = function(TOKEN) {
+module.exports = function (TOKEN) {
   const _this = this;
 
   function _(t, s) {
@@ -67,6 +67,7 @@ module.exports = function(TOKEN) {
         _this.emoji_methods = require("./Methods/Emojis.js");
         _this.cat_methods = require("./Methods/Category.js");
         _this.gu_methods = require("./Methods/Members.js");
+        _this.invite_methods = require("./Methods/Invites.js");
         _this.user = _this.gu_methods().fromRaw(message.d.user);
       }
 
