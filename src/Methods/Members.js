@@ -5,7 +5,8 @@ module.exports = function() {
 
   return {
     fromRaw: function(raw, guild) {
-      raw.tag = `${raw.username}#${raw.discriminator}`;
+      raw.discriminator = null;
+      raw.username = null;
 
       /**
        * @description This method adds a role to the member
@@ -129,20 +130,6 @@ module.exports = function() {
               }); 
           }     
         });
-      };
-
-      /**
-       * @description Returns the avatar's url of a user
-       * @param {Object} [options = {}] The options, format eg. "png" and size, eg. 256
-       * @returns {String} The user's avatar as a URL
-       */
-
-      raw.avatarURL = function(options) {
-        if (options) {
-          return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format || "png"}${options.size ? `?size=${options.size}` : ""}`;
-        } else {
-          return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.png`;
-        }
       };
 
       return raw;

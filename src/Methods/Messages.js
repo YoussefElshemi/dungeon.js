@@ -8,7 +8,7 @@ module.exports = function() {
       raw.channel = _this.channels.get(raw.channel_id);
       if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
-        raw.author = _this.gu_methods().fromRaw(raw.author);
+        raw.author = _this.user_methods().fromRaw(raw.author);
         raw.member = _this.gu_methods().fromRaw(raw.author, raw.guild);
         raw.clean = cleanMessage(raw.content);
         raw.client = _this;

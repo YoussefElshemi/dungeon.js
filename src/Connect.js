@@ -59,14 +59,16 @@ module.exports = function(TOKEN) {
         _this.guilds = new Collection();
         _this.channels = new Collection();
         _this.messages = new Collection();
-        _this.message_methods = require("./Methods/Messages.js");
-        _this.channel_methods = require("./Methods/Channels.js");
-        _this.guild_methods = require("./Methods/Guilds.js");
-        _this.permission_methods = require("./Methods/Permissions.js");
-        _this.role_methods = require("./Methods/Roles.js");
-        _this.emoji_methods = require("./Methods/Emojis.js");
-        _this.cat_methods = require("./Methods/Category.js");
-        _this.gu_methods = require("./Methods/Members.js");
+        _this.presences = new Collection();
+        _this.message_methods = require("./Methods/Messages");
+        _this.channel_methods = require("./Methods/Channels");
+        _this.guild_methods = require("./Methods/Guilds");
+        _this.permission_methods = require("./Methods/Permissions");
+        _this.role_methods = require("./Methods/Roles");
+        _this.emoji_methods = require("./Methods/Emojis");
+        _this.cat_methods = require("./Methods/Category");
+        _this.gu_methods = require("./Methods/Members");
+        _this.user_methods = require("./Methods/Users");
         _this.user = _this.gu_methods().fromRaw(message.d.user);
       }
 
