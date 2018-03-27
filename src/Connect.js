@@ -1,7 +1,8 @@
 const WebSocket = require("ws");
 const event_list = require("./Events");
+const Collection = require("./Collection");
 
-module.exports = function (TOKEN) {
+module.exports = function(TOKEN) {
   const _this = this;
 
   function _(t, s) {
@@ -34,8 +35,8 @@ module.exports = function (TOKEN) {
           token: _this.token,
           properties: {
             "$os": "windows",
-            "$browser": "FuckNeko.js",
-            "$device": "FuckNeko.js"
+            "$browser": "dungeon.js",
+            "$device": "dungeon.js"
           },
           compress: false,
           large_threshold: 250,
@@ -55,9 +56,9 @@ module.exports = function (TOKEN) {
 
       if (t == "READY") {
         _this.amOfGuilds = message.d.guilds.length;
-        _this.guilds = new Map();
-        _this.channels = new Map();
-        _this.messages = new Map();
+        _this.guilds = new Collection();
+        _this.channels = new Collection();
+        _this.messages = new Collection();
         _this.message_methods = require("./Methods/Messages.js");
         _this.channel_methods = require("./Methods/Channels.js");
         _this.guild_methods = require("./Methods/Guilds.js");
@@ -66,6 +67,7 @@ module.exports = function (TOKEN) {
         _this.emoji_methods = require("./Methods/Emojis.js");
         _this.cat_methods = require("./Methods/Category.js");
         _this.gu_methods = require("./Methods/Members.js");
+        _this.user = _this.gu_methods().fromRaw(message.d.user);
       }
 
       if (t == "GUILD_CREATE") {

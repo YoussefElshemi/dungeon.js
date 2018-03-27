@@ -1,4 +1,5 @@
 const request = require("../Connection");
+const Collection = require("../Collection");
 
 module.exports = function() {
   const _this = this;
@@ -7,28 +8,19 @@ module.exports = function() {
       raw.channel = _this.channels.get(raw.channel_id);
       if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
-        raw.author = _this.gu_methods().fromRaw(raw.author, raw.guild);
+        raw.author = _this.gu_methods().fromRaw(raw.author);
+        raw.member = _this.gu_methods().fromRaw(raw.author, raw.guild);
         raw.clean = cleanMessage(raw.content);
         raw.client = _this;
+        raw.createdAt = new Date(raw.timestamp).toLocaleString();
+        raw.mentioned = raw.mentions;
+        raw.mentionedUsers = new Collection();
+        for (let i = 0; i < raw.mentions.length; i++) {
+          raw.mentionedUsers.set(raw.mentions[i].id, raw.mentions[i]);
+        }
+        raw.mentioned = null;
+        raw.mentions = null;
       }
-
-      /**
-       * @description This method will send a mssage to the channel specified
-       * @param {String} [content] The string to send the message with
-       * @returns {Promise<Message>} Returns a promise and discord message
-       */
-
-      raw.send = function(content) {
-        return new Promise((res) => {
-          request.req("POST", `/channels/${raw.channel_id}/messages`, {
-            content: content
-          }, _this.token).then(m => {
-            setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
-          }).catch(error => {
-            if (error.status === 403) throw new _this.MissingPermissions("Missing");
-          });       
-        });
-      };
 
       /**
        * @description This method will reply by mentioning the user first
@@ -125,6 +117,17 @@ module.exports = function() {
             if (error.status === 403) throw new Error("Missing Permissions");
           });
         });
+      };
+
+      /**
+       * @description This method checks if a user is mentioned
+       * @param {String} id The id of the user to be checked
+       * @returns {Boolean} If the id given belonged to a mentioned user, it will return true, vice versa
+       */
+
+      raw.isMentioned = function(id) {
+        if (raw.mentionedUsers.exists("id", id)) return true;
+        else return false;
       };
 
       return raw;

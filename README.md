@@ -1,2 +1,2 @@
-# fuckneko.js
+# dungeon.js
 A Discord API wrapper
