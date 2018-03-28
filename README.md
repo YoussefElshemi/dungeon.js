@@ -8,7 +8,7 @@ If you don't already know, this library is an api wrapper for discord V6.
 
 ## Example
 ```js
-const discord = require('./index');
+const discord = require('dungeon.js');
 const client = new discord.Client('TOKEN');
 
 client.on('ready', () => {
