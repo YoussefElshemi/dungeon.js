@@ -1,45 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Collection.js - Documentation</title>
-
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-<body>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Client.html">Client</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#destroy">destroy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#getUser">getUser</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Collection.html">Collection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#array">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#clone">clone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#concat">concat</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#deleteAll">deleteAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#equals">equals</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#every">every</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#exists">exists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filter">filter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filterArray">filterArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#find">find</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#findAll">findAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#first">first</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#firstKey">firstKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#keyArray">keyArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#last">last</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#lastKey">lastKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#map">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#random">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#randomKey">randomKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#reduce">reduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#some">some</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#sort">sort</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Message.html">Message</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#isMentioned">isMentioned</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#pin">pin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#react">react</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#reply">reply</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#unpin">unpin</a></span></li>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">Collection.js</h1>
-    
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
+/**
  * A Map with additional utility methods. This is used throughout discord.js rather than Arrays for anything that has
  * an ID, for significantly improved performance and ease-of-use.
  * @extends {Map}
@@ -104,32 +63,32 @@ class Collection extends Map {
   /**
      * Obtains the first value(s) in this collection.
      * @param {number} [amount] Amount of values to obtain from the beginning
-     * @returns {*|Array&lt;*>} A single value if no amount is provided or an array of values, starting from the end if
+     * @returns {*|Array<*>} A single value if no amount is provided or an array of values, starting from the end if
      * amount is negative
      */
   first(amount) {
     if (typeof amount === 'undefined') return this.values().next().value;
-    if (amount &lt; 0) return this.last(amount * -1);
+    if (amount < 0) return this.last(amount * -1);
     amount = Math.min(this.size, amount);
     const arr = new Array(amount);
     const iter = this.values();
-    for (let i = 0; i &lt; amount; i++) arr[i] = iter.next().value;
+    for (let i = 0; i < amount; i++) arr[i] = iter.next().value;
     return arr;
   }
   
   /**
      * Obtains the first key(s) in this collection.
      * @param {number} [amount] Amount of keys to obtain from the beginning
-     * @returns {*|Array&lt;*>} A single key if no amount is provided or an array of keys, starting from the end if
+     * @returns {*|Array<*>} A single key if no amount is provided or an array of keys, starting from the end if
      * amount is negative
      */
   firstKey(amount) {
     if (typeof amount === 'undefined') return this.keys().next().value;
-    if (amount &lt; 0) return this.lastKey(amount * -1);
+    if (amount < 0) return this.lastKey(amount * -1);
     amount = Math.min(this.size, amount);
     const arr = new Array(amount);
     const iter = this.keys();
-    for (let i = 0; i &lt; amount; i++) arr[i] = iter.next().value;
+    for (let i = 0; i < amount; i++) arr[i] = iter.next().value;
     return arr;
   }
   
@@ -137,13 +96,13 @@ class Collection extends Map {
      * Obtains the last value(s) in this collection. This relies on {@link Collection#array}, and thus the caching
      * mechanism applies here as well.
      * @param {number} [amount] Amount of values to obtain from the end
-     * @returns {*|Array&lt;*>} A single value if no amount is provided or an array of values, starting from the end if
+     * @returns {*|Array<*>} A single value if no amount is provided or an array of values, starting from the end if
      * amount is negative
      */
   last(amount) {
     const arr = this.array();
     if (typeof amount === 'undefined') return arr[arr.length - 1];
-    if (amount &lt; 0) return this.first(amount * -1);
+    if (amount < 0) return this.first(amount * -1);
     if (!amount) return [];
     return arr.slice(-amount);
   }
@@ -152,13 +111,13 @@ class Collection extends Map {
      * Obtains the last key(s) in this collection. This relies on {@link Collection#keyArray}, and thus the caching
      * mechanism applies here as well.
      * @param {number} [amount] Amount of keys to obtain from the end
-     * @returns {*|Array&lt;*>} A single key if no amount is provided or an array of keys, starting from the end if
+     * @returns {*|Array<*>} A single key if no amount is provided or an array of keys, starting from the end if
      * amount is negative
      */
   lastKey(amount) {
     const arr = this.keyArray();
     if (typeof amount === 'undefined') return arr[arr.length - 1];
-    if (amount &lt; 0) return this.firstKey(amount * -1);
+    if (amount < 0) return this.firstKey(amount * -1);
     if (!amount) return [];
     return arr.slice(-amount);
   }
@@ -167,7 +126,7 @@ class Collection extends Map {
      * Obtains random value(s) from this collection. This relies on {@link Collection#array}, and thus the caching
      * mechanism applies here as well.
      * @param {number} [amount] Amount of values to obtain randomly
-     * @returns {*|Array&lt;*>} A single value if no amount is provided or an array of values
+     * @returns {*|Array<*>} A single value if no amount is provided or an array of values
      */
   random(amount) {
     let arr = this.array();
@@ -175,7 +134,7 @@ class Collection extends Map {
     if (arr.length === 0 || !amount) return [];
     const rand = new Array(amount);
     arr = arr.slice();
-    for (let i = 0; i &lt; amount; i++) rand[i] = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+    for (let i = 0; i < amount; i++) rand[i] = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
     return rand;
   }
   
@@ -183,7 +142,7 @@ class Collection extends Map {
      * Obtains random key(s) from this collection. This relies on {@link Collection#keyArray}, and thus the caching
      * mechanism applies here as well.
      * @param {number} [amount] Amount of keys to obtain randomly
-     * @returns {*|Array&lt;*>} A single key if no amount is provided or an array
+     * @returns {*|Array<*>} A single key if no amount is provided or an array
      */
   randomKey(amount) {
     let arr = this.keyArray();
@@ -191,7 +150,7 @@ class Collection extends Map {
     if (arr.length === 0 || !amount) return [];
     const rand = new Array(amount);
     arr = arr.slice();
-    for (let i = 0; i &lt; amount; i++) rand[i] = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+    for (let i = 0; i < amount; i++) rand[i] = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
     return rand;
   }
   
@@ -218,9 +177,9 @@ class Collection extends Map {
      * Searches for a single item where its specified property's value is identical to the given value
      * (`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to
      * [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
-     * &lt;warn>All collections used in Discord.js are mapped using their `id` property, and if you want to find by id you
+     * <warn>All collections used in Discord.js are mapped using their `id` property, and if you want to find by id you
      * should use the `get` method. See
-     * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get) for details.&lt;/warn>
+     * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get) for details.</warn>
      * @param {string|Function} propOrFn The property to test against, or the function to test with
      * @param {*} [value] The expected value - only applicable and required if using a property for the first argument
      * @returns {*}
@@ -280,8 +239,8 @@ class Collection extends Map {
   /**
      * Searches for the existence of a single item where its specified property's value is identical to the given value
      * (`item[prop] === value`), or the given function returns a truthy value.
-     * &lt;warn>Do not use this to check for an item by its ID. Instead, use `collection.has(id)`. See
-     * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has) for details.&lt;/warn>
+     * <warn>Do not use this to check for an item by its ID. Instead, use `collection.has(id)`. See
+     * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has) for details.</warn>
      * @param {string|Function} propOrFn The property to test against, or the function to test with
      * @param {*} [value] The expected value - only applicable and required if using a property for the first argument
      * @returns {boolean}
@@ -451,7 +410,7 @@ class Collection extends Map {
     if (this.size !== collection.size) return false;
     return !this.find((value, key) => {
       const testVal = collection.get(key);
-      return testVal !== value || (testVal === undefined &amp;&amp; !collection.has(key));
+      return testVal !== value || (testVal === undefined && !collection.has(key));
     });
   }
   
@@ -468,22 +427,4 @@ class Collection extends Map {
   }
 }
   
-module.exports = Collection;</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<br class="clear">
-
-<footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Mar 28 2018 22:11:21 GMT+0100 (GMT Summer Time) using the Minami theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-</body>
-</html>
+module.exports = Collection;

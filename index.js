@@ -1,5 +1,6 @@
 module.exports = {
-  Client: require('./src/Client'),
-  Embed: require('./src/Embed'),
-  Collection: require('./src/Collection')
+  Client: require('./src/Classes/Client'),
+  Embed: require('./src//Classes/Embed'),
+  Collection: require('./src/Classes/Collection'),
+  Message: require('./src/Classes/Message')
 };

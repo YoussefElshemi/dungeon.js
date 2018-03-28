@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 const event_list = require('./Events');
-const Collection = require('./Collection');
+const Message = require('./Classes/Message');
+const Collection = require('./Classes/Collection');
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -70,6 +71,7 @@ module.exports = function(TOKEN) {
         _this.gu_methods = require('./Methods/Members');
         _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
+        _this.token = _this.token;
       }
 
       if (t == 'GUILD_CREATE') {
@@ -105,8 +107,9 @@ module.exports = function(TOKEN) {
       }
       if (t == 'MESSAGE_CREATE') {
         const mesData = _this.message_methods().fromRaw(message.d);
-        _this.messages.set(mesData.id, mesData);
-        _(t, mesData);
+        const msg = new Message(mesData, _this.token);
+        _this.messages.set(msg.id, msg);
+        _(t, msg);
       }
     }
   });

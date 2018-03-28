@@ -10,9 +10,9 @@
   "author": "Youssef (http://doylebot.com)",
   "license": "GPL-3.0",
   "dependencies": {
+    "nekocurl": "^1.5.1",
     "snekfetch": "^3.6.4",
-    "ws": "^5.1.0",
-    "nekocurl": "^1.5.1"
+    "ws": "^5.1.0"
   },
   "devDependencies": {
     "eslint-config-standard": "^11.0.0",

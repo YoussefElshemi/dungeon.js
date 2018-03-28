@@ -1,5 +1,5 @@
 const request = require('../Connection');
-const Collection = require('../Collection');
+const Collection = require('../Classes/Collection');
 
 module.exports = function() {
   const _this = this;
