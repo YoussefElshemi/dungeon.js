@@ -77,5 +77,19 @@ module.exports = function() {
 
       return raw;
     }
+    
+    raw.createRole = function(name, opt) {
+      return new Promise(res, rej) => {
+        request.req("POST", `/guilds/${raw.id}/roles/`, {
+          color: opt ? (color || 0) : 0,
+          permissions: opt ? (opt.permissions || {}) : {},
+          name: name,
+          hoist: opt ? (opt.permissions ? (opt.permissions.hoist) : false) : false,
+          mentionable: opt ? (opt.permissions ? (opt.permissions.mentionable) : false) : false
+        }, _this.token).then(role => {
+            setTimeout(res, 100, res(_this.role_methods().fromRaw(role)));
+        }).catch(rej);
+      });
+    };
   };
 };
