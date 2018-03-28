@@ -73,9 +73,7 @@ module.exports = function() {
             
           }).catch(rej);
         });
-      };
-
-      return raw;
+      });
     }
     
     raw.createRole = function(name, opt) {
@@ -91,5 +89,7 @@ module.exports = function() {
         }).catch(rej);
       });
     };
+
+    return raw;
   };
 };
