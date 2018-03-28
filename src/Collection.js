@@ -13,7 +13,7 @@ class Collection extends Map {
        * @type {?Array}
        * @private
        */
-    Object.defineProperty(this, "_array", { value: null, writable: true, configurable: true });
+    Object.defineProperty(this, '_array', { value: null, writable: true, configurable: true });
   
     /**
        * Cached array for the `keyArray()` method - will be reset to `null` whenever `set()` or `delete()` are called
@@ -21,7 +21,7 @@ class Collection extends Map {
        * @type {?Array}
        * @private
        */
-    Object.defineProperty(this, "_keyArray", { value: null, writable: true, configurable: true });
+    Object.defineProperty(this, '_keyArray', { value: null, writable: true, configurable: true });
   }
   
   set(key, val) {
@@ -67,7 +67,7 @@ class Collection extends Map {
      * amount is negative
      */
   first(amount) {
-    if (typeof amount === "undefined") return this.values().next().value;
+    if (typeof amount === 'undefined') return this.values().next().value;
     if (amount < 0) return this.last(amount * -1);
     amount = Math.min(this.size, amount);
     const arr = new Array(amount);
@@ -83,7 +83,7 @@ class Collection extends Map {
      * amount is negative
      */
   firstKey(amount) {
-    if (typeof amount === "undefined") return this.keys().next().value;
+    if (typeof amount === 'undefined') return this.keys().next().value;
     if (amount < 0) return this.lastKey(amount * -1);
     amount = Math.min(this.size, amount);
     const arr = new Array(amount);
@@ -101,7 +101,7 @@ class Collection extends Map {
      */
   last(amount) {
     const arr = this.array();
-    if (typeof amount === "undefined") return arr[arr.length - 1];
+    if (typeof amount === 'undefined') return arr[arr.length - 1];
     if (amount < 0) return this.first(amount * -1);
     if (!amount) return [];
     return arr.slice(-amount);
@@ -116,7 +116,7 @@ class Collection extends Map {
      */
   lastKey(amount) {
     const arr = this.keyArray();
-    if (typeof amount === "undefined") return arr[arr.length - 1];
+    if (typeof amount === 'undefined') return arr[arr.length - 1];
     if (amount < 0) return this.firstKey(amount * -1);
     if (!amount) return [];
     return arr.slice(-amount);
@@ -130,7 +130,7 @@ class Collection extends Map {
      */
   random(amount) {
     let arr = this.array();
-    if (typeof amount === "undefined") return arr[Math.floor(Math.random() * arr.length)];
+    if (typeof amount === 'undefined') return arr[Math.floor(Math.random() * arr.length)];
     if (arr.length === 0 || !amount) return [];
     const rand = new Array(amount);
     arr = arr.slice();
@@ -146,7 +146,7 @@ class Collection extends Map {
      */
   randomKey(amount) {
     let arr = this.keyArray();
-    if (typeof amount === "undefined") return arr[Math.floor(Math.random() * arr.length)];
+    if (typeof amount === 'undefined') return arr[Math.floor(Math.random() * arr.length)];
     if (arr.length === 0 || !amount) return [];
     const rand = new Array(amount);
     arr = arr.slice();
@@ -164,8 +164,8 @@ class Collection extends Map {
      * collection.findAll('username', 'Bob');
      */
   findAll(prop, value) {
-    if (typeof prop !== "string") throw new TypeError("Key must be a string.");
-    if (typeof value === "undefined") throw new Error("Value must be specified.");
+    if (typeof prop !== 'string') throw new TypeError('Key must be a string.');
+    if (typeof value === 'undefined') throw new Error('Value must be specified.');
     const results = [];
     for (const item of this.values()) {
       if (item[prop] === value) results.push(item);
@@ -189,19 +189,19 @@ class Collection extends Map {
      * collection.find(val => val.username === 'Bob');
      */
   find(propOrFn, value) {
-    if (typeof propOrFn === "string") {
-      if (typeof value === "undefined") throw new Error("Value must be specified.");
+    if (typeof propOrFn === 'string') {
+      if (typeof value === 'undefined') throw new Error('Value must be specified.');
       for (const item of this.values()) {
         if (item[propOrFn] === value) return item;
       }
       return undefined;
-    } else if (typeof propOrFn === "function") {
+    } else if (typeof propOrFn === 'function') {
       for (const [key, val] of this) {
         if (propOrFn(val, key, this)) return val;
       }
       return undefined;
     } else {
-      throw new Error("First argument must be a property string or a function.");
+      throw new Error('First argument must be a property string or a function.');
     }
   }
   
@@ -220,19 +220,19 @@ class Collection extends Map {
      */
   /* eslint-enable max-len */
   findKey(propOrFn, value) {
-    if (typeof propOrFn === "string") {
-      if (typeof value === "undefined") throw new Error("Value must be specified.");
+    if (typeof propOrFn === 'string') {
+      if (typeof value === 'undefined') throw new Error('Value must be specified.');
       for (const [key, val] of this) {
         if (val[propOrFn] === value) return key;
       }
       return undefined;
-    } else if (typeof propOrFn === "function") {
+    } else if (typeof propOrFn === 'function') {
       for (const [key, val] of this) {
         if (propOrFn(val, key, this)) return key;
       }
       return undefined;
     } else {
-      throw new Error("First argument must be a property string or a function.");
+      throw new Error('First argument must be a property string or a function.');
     }
   }
   
@@ -345,7 +345,7 @@ class Collection extends Map {
      */
   reduce(fn, initialValue) {
     let accumulator;
-    if (typeof initialValue !== "undefined") {
+    if (typeof initialValue !== 'undefined') {
       accumulator = initialValue;
       for (const [key, val] of this) accumulator = fn(accumulator, val, key, this);
     } else {

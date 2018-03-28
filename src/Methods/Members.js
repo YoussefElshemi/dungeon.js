@@ -1,4 +1,4 @@
-const request = require("../Connection");
+const request = require('../Connection');
 
 module.exports = function() {
   const _this = this;
@@ -16,10 +16,10 @@ module.exports = function() {
 
       raw.addRole = function(role) {
         let roleid;
-        if (typeof role === "string") roleid = role;
-        if (typeof role === "object") roleid = role.id;
+        if (typeof role === 'string') roleid = role;
+        if (typeof role === 'object') roleid = role.id;
         return new Promise((res) => {
-          request.req("PUT", `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
+          request.req('PUT', `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
             });
@@ -35,10 +35,10 @@ module.exports = function() {
 
       raw.removeRole = function(role) {
         let roleid;
-        if (typeof role === "string") roleid = role;
-        if (typeof role === "object") roleid = role.id;
+        if (typeof role === 'string') roleid = role;
+        if (typeof role === 'object') roleid = role.id;
         return new Promise((res) => {
-          request.req("DELETE", `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
+          request.req('DELETE', `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
             });
@@ -54,9 +54,9 @@ module.exports = function() {
 
       raw.ban = function(opt) {
         return new Promise((res) => {
-          request.req("PUT", `/guilds/${guild.id}/bans/${raw.id}`, {
+          request.req('PUT', `/guilds/${guild.id}/bans/${raw.id}`, {
             days: opt.days || 0,
-            reason: opt.reason || ""
+            reason: opt.reason || ''
           }, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, m.guild.id)));
@@ -72,8 +72,8 @@ module.exports = function() {
 
       raw.kick = function(reason) {
         return new Promise((res) => {
-          request.req("DELETE", `/guilds/${guild.id}/members/${raw.id}`, {
-            reason: reason || ""
+          request.req('DELETE', `/guilds/${guild.id}/members/${raw.id}`, {
+            reason: reason || ''
           }, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, m.guild.id)));
@@ -92,9 +92,9 @@ module.exports = function() {
        */
 
       raw.send = function(content, opt = {}) {
-        if (!content) throw new _this.MissingParameter("You are missing the parameter 'content'!");
+        if (!content) throw new _this.MissingParameter('You are missing the parameter \'content\'!');
         let embed;
-        if (typeof content === "object") {
+        if (typeof content === 'object') {
           embed = {
             title: (content && content.title) || null,
             description: (content && content.body) || null,
@@ -107,7 +107,7 @@ module.exports = function() {
 
         return new Promise((res) => {
           if (embed) {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               embed: embed || null
@@ -115,10 +115,10 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               });  
           } else {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               content: content || null
@@ -126,7 +126,7 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               }); 
           }     
         });

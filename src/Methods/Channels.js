@@ -1,12 +1,12 @@
-const request = require("../Connection");
+const request = require('../Connection');
 
 module.exports = function() {
   const _this = this;
 
   return {
     fromRaw: function(raw, op) {
-      raw.type = ["text", "dm", "voice", "group_dm", "category"][raw.type];
-      if (raw.type == "category") {
+      raw.type = ['text', 'dm', 'voice', 'group_dm', 'category'][raw.type];
+      if (raw.type == 'category') {
         return _this.cat_methods().fromRaw(raw);
       }
 
@@ -26,9 +26,9 @@ module.exports = function() {
        */
 
       raw.send = function(content, opt = {}) {
-        if (!content) throw new _this.MissingParameter("You are missing the parameter 'content'!");
+        if (!content) throw new _this.MissingParameter('You are missing the parameter \'content\'!');
         let embed;
-        if (typeof content === "object") {
+        if (typeof content === 'object') {
           embed = {
             title: (content && content.title) || null,
             description: (content && content.body) || null,
@@ -40,7 +40,7 @@ module.exports = function() {
         }
         return new Promise((res) => {
           if (embed) {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               embed: embed || null
@@ -48,10 +48,10 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               });  
           } else {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               content: content || null
@@ -59,7 +59,7 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               }); 
           }     
         });
@@ -71,9 +71,9 @@ module.exports = function() {
        */
 
       raw.lastMessage = function() {
-        if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
+        if (raw.type === 'voice') throw new _this.WrongType('This method only available on text based channels');
         return new Promise((res) => {
-          request.req("GET",`/channels/${raw.id}/messages/${raw.last_message_id}`, {}, _this.token)
+          request.req('GET',`/channels/${raw.id}/messages/${raw.last_message_id}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
             })
@@ -88,10 +88,10 @@ module.exports = function() {
        */
 
       raw.getMessage = function(id) {
-        if (!id) throw new _this.MissingParameter("You are missing the parameter 'snowflake'!");
-        if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
+        if (!id) throw new _this.MissingParameter('You are missing the parameter \'snowflake\'!');
+        if (raw.type === 'voice') throw new _this.WrongType('This method only available on text based channels');
         return new Promise((res) => {
-          request.req("GET", `/channels/${raw.id}/messages/${id}`, {}, _this.token)
+          request.req('GET', `/channels/${raw.id}/messages/${id}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
             });
@@ -105,10 +105,10 @@ module.exports = function() {
        */
 
       raw.getMessages = function(opt = {}) {
-        if (!opt) throw new _this.MissingParameter("You are missing the parameter 'options'!");
-        if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
+        if (!opt) throw new _this.MissingParameter('You are missing the parameter \'options\'!');
+        if (raw.type === 'voice') throw new _this.WrongType('This method only available on text based channels');
         return new Promise((res) => {
-          request.req("GET", `/channels/${raw.id}/messages`, {
+          request.req('GET', `/channels/${raw.id}/messages`, {
             around: opt.around || null,
             before: opt.before || null,
             after: opt.after || null,
@@ -128,7 +128,7 @@ module.exports = function() {
 
       raw.setName = function(newname) {
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             name: newname
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -144,7 +144,7 @@ module.exports = function() {
 
       raw.setPosition = function(position) {
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             osition: Number(position)
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -159,10 +159,10 @@ module.exports = function() {
        */
 
       raw.setTopic = function(newtopic) {
-        if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
+        if (raw.type === 'voice') throw new _this.WrongType('This method only available on text based channels');
 
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             topic: newtopic
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -177,9 +177,9 @@ module.exports = function() {
        */
 
       raw.setNSFW = function(falseortrue) {
-        if (raw.type === "voice") throw new _this.WrongType("This method only available on text based channels");
+        if (raw.type === 'voice') throw new _this.WrongType('This method only available on text based channels');
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             nsfw: falseortrue
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -194,9 +194,9 @@ module.exports = function() {
        */
 
       raw.setBitrate = function(bitrate) {
-        if (raw.type !== "voice") throw new _this.WrongType("This method only available on voice based channels");
+        if (raw.type !== 'voice') throw new _this.WrongType('This method only available on voice based channels');
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             bitrate: bitrate
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -211,9 +211,9 @@ module.exports = function() {
        */
 
       raw.setUserLimit = function(limit) {
-        if (raw.type !== "voice") throw new _this.WrongType("This method only available on voice based channels");
+        if (raw.type !== 'voice') throw new _this.WrongType('This method only available on voice based channels');
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             user_limit: Number(limit)
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -229,7 +229,7 @@ module.exports = function() {
 
       raw.setParent = function(newparent) {
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.id}`, {
+          request.req('PATCH', `/channels/${raw.id}`, {
             parent_id: newparent
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
@@ -245,15 +245,15 @@ module.exports = function() {
 
       raw.edit = function(options) {
         return new Promise((res) => {
-          request.req("POST", `/guilds/${raw.id}/channels`, 
+          request.req('POST', `/guilds/${raw.id}/channels`, 
             {
               name: (options && options.name) || null,
               position: (options && options.position) || null,
-              topic: (raw.type === "text" && options && options.topic) || null,
-              nsfw: (raw.type === "text" && options && options.nsfw) || null,
-              bitrate: (raw.type === "voice" && options && options.bitrate) || null,
-              user_limit: (raw.type === "voice" && options && options.userlimit) || null,
-              parent_id: ((raw.type === "text" || raw.type === "voice") && options && options.parent) || null  
+              topic: (raw.type === 'text' && options && options.topic) || null,
+              nsfw: (raw.type === 'text' && options && options.nsfw) || null,
+              bitrate: (raw.type === 'voice' && options && options.bitrate) || null,
+              user_limit: (raw.type === 'voice' && options && options.userlimit) || null,
+              parent_id: ((raw.type === 'text' || raw.type === 'voice') && options && options.parent) || null  
             }, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));  
@@ -268,7 +268,7 @@ module.exports = function() {
 
       raw.delete = function() {
         return new Promise((res) => {
-          request.req("DELETE", `/channels/${raw.id}`, {}, _this.token)
+          request.req('DELETE', `/channels/${raw.id}`, {}, _this.token)
             .then(m => {
               setTimeout(res, 100, res(_this.channel_methods().fromRaw(m)));
             });

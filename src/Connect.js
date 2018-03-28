@@ -1,6 +1,6 @@
-const WebSocket = require("ws");
-const event_list = require("./Events");
-const Collection = require("./Collection");
+const WebSocket = require('ws');
+const event_list = require('./Events');
+const Collection = require('./Collection');
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -13,9 +13,9 @@ module.exports = function(TOKEN) {
 
   _this.token || (_this.token = TOKEN);
 
-  const wss = new WebSocket("wss://gateway.discord.gg/?v=6&encoding=json");
+  const wss = new WebSocket('wss://gateway.discord.gg/?v=6&encoding=json');
 
-  wss.on("message", m => {
+  wss.on('message', m => {
     const message = JSON.parse(m);
 
     if (message.op == 10) {
@@ -34,9 +34,9 @@ module.exports = function(TOKEN) {
         d: {
           token: _this.token,
           properties: {
-            "$os": "windows",
-            "$browser": "dungeon.js",
-            "$device": "dungeon.js"
+            '$os': 'windows',
+            '$browser': 'dungeon.js',
+            '$device': 'dungeon.js'
           },
           compress: false,
           large_threshold: 250,
@@ -54,25 +54,25 @@ module.exports = function(TOKEN) {
     if (message.op == 0) {
       const t = message.t;
 
-      if (t == "READY") {
+      if (t == 'READY') {
         _this.amOfGuilds = message.d.guilds.length;
         _this.guilds = new Collection();
         _this.channels = new Collection();
         _this.messages = new Collection();
         _this.presences = new Collection();
-        _this.message_methods = require("./Methods/Messages");
-        _this.channel_methods = require("./Methods/Channels");
-        _this.guild_methods = require("./Methods/Guilds");
-        _this.permission_methods = require("./Methods/Permissions");
-        _this.role_methods = require("./Methods/Roles");
-        _this.emoji_methods = require("./Methods/Emojis");
-        _this.cat_methods = require("./Methods/Category");
-        _this.gu_methods = require("./Methods/Members");
-        _this.user_methods = require("./Methods/Users");
+        _this.message_methods = require('./Methods/Messages');
+        _this.channel_methods = require('./Methods/Channels');
+        _this.guild_methods = require('./Methods/Guilds');
+        _this.permission_methods = require('./Methods/Permissions');
+        _this.role_methods = require('./Methods/Roles');
+        _this.emoji_methods = require('./Methods/Emojis');
+        _this.cat_methods = require('./Methods/Category');
+        _this.gu_methods = require('./Methods/Members');
+        _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
       }
 
-      if (t == "GUILD_CREATE") {
+      if (t == 'GUILD_CREATE') {
         _this.guilds.set(message.d.id, message.d);
 
         const guild = _this.guild_methods().fromRaw(message.d);
@@ -84,26 +84,26 @@ module.exports = function(TOKEN) {
         }
 
         if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
-          _("READY", "");
+          _('READY', '');
         }
         if (Array.from(_this.guilds.keys()).length > _this.amOfGuilds) {
           _(t, guild);
         }
       }
-      if (t == "CHANNEL_CREATE") {
+      if (t == 'CHANNEL_CREATE') {
         const channel = _this.channel_methods().fromRaw(message.d);
 
         _this.channels.set(channel.id, channel);
 
         _(t, channel);
       }
-      if (t == "CHANNEL_DELETE") {
+      if (t == 'CHANNEL_DELETE') {
         const channel = _this.channel_methods().fromRaw(message.d);
         _this.channels.set(channel.id, undefined);
 
         _(t, channel);
       }
-      if (t == "MESSAGE_CREATE") {
+      if (t == 'MESSAGE_CREATE') {
         const mesData = _this.message_methods().fromRaw(message.d);
         _this.messages.set(mesData.id, mesData);
         _(t, mesData);

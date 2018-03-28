@@ -1,7 +1,7 @@
 class DiscordAPIError extends Error {
   constructor(message) {
     super(message);
-    this.name = "DiscordAPIError";
+    this.name = 'DiscordAPIError';
   }
 }
 

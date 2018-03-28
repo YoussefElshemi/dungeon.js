@@ -1,5 +1,5 @@
-const request = require("../Connection");
-const Collection = require("../Collection");
+const request = require('../Connection');
+const Collection = require('../Collection');
 
 module.exports = function() {
   const _this = this;
@@ -30,12 +30,12 @@ module.exports = function() {
 
       raw.reply = function(content) {
         return new Promise((res) => {
-          request.req("POST", `/channels/${raw.channel_id}/messages`, {
+          request.req('POST', `/channels/${raw.channel_id}/messages`, {
             content: `<@${raw.author.id}>, ${content}`
           }, _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });        
         });
       };
@@ -46,12 +46,12 @@ module.exports = function() {
        * @returns {Promise<Message>} Returns a promise and the message deleted
        */
 
-      raw.delete = function(reason = "") {
+      raw.delete = function(reason = '') {
         return new Promise((res) => {
-          request.req("DELETE", `/channels/${raw.channel_id}/messages/${raw.id}`, {reason: reason} , _this.token).then(m => {
+          request.req('DELETE', `/channels/${raw.channel_id}/messages/${raw.id}`, {reason: reason} , _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });
         });
       };
@@ -64,10 +64,10 @@ module.exports = function() {
 
       raw.edit = function(newmessage) {
         return new Promise((res) => {
-          request.req("PATCH", `/channels/${raw.channel_id}/messages/${raw.id}`, {content: newmessage} , _this.token).then(m => {
+          request.req('PATCH', `/channels/${raw.channel_id}/messages/${raw.id}`, {content: newmessage} , _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });
         });
       };
@@ -79,10 +79,10 @@ module.exports = function() {
 
       raw.pin = function() {
         return new Promise((res) => {
-          request.req("POST", `/channels/${raw.channel.id}/pins/${raw.id}`, {} , _this.token).then(m => {
+          request.req('POST', `/channels/${raw.channel.id}/pins/${raw.id}`, {} , _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });
         });
       };
@@ -94,10 +94,10 @@ module.exports = function() {
 
       raw.unpin = function() {
         return new Promise((res) => {
-          request.req("DELETE", `/channels/${raw.channel_id}/pins/${raw.id}`, {} , _this.token).then(m => {
+          request.req('DELETE', `/channels/${raw.channel_id}/pins/${raw.id}`, {} , _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });
         });
       };
@@ -111,10 +111,10 @@ module.exports = function() {
         let reaction;
         if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
         return new Promise((res) => {
-          request.req("PUT", `/channels/${raw.channel.id}/messages/${raw.id}/reactions/${reaction}/@me`, {}, _this.token).then(m => {
+          request.req('PUT', `/channels/${raw.channel.id}/messages/${raw.id}/reactions/${reaction}/@me`, {}, _this.token).then(m => {
             setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
           }).catch(error => {
-            if (error.status === 403) throw new Error("Missing Permissions");
+            if (error.status === 403) throw new Error('Missing Permissions');
           });
         });
       };
@@ -126,7 +126,7 @@ module.exports = function() {
        */
 
       raw.isMentioned = function(id) {
-        if (raw.mentionedUsers.exists("id", id)) return true;
+        if (raw.mentionedUsers.exists('id', id)) return true;
         else return false;
       };
 
@@ -136,8 +136,8 @@ module.exports = function() {
 };
 
 const cleanMessage = function(text)  {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  if (typeof(text) === 'string')
+    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
   else
     return text;
 };

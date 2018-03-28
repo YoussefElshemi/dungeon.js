@@ -1,4 +1,4 @@
-const request = require("../Connection");
+const request = require('../Connection');
 
 module.exports = function() {
   const _this = this;
@@ -17,7 +17,7 @@ module.exports = function() {
 
       raw.avatarURL = function(options) {
         if (options) {
-          return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format || "png"}${options.size ? `?size=${options.size}` : ""}`;
+          return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format || 'png'}${options.size ? `?size=${options.size}` : ''}`;
         } else {
           return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.png`;
         }
@@ -34,9 +34,9 @@ module.exports = function() {
        */
 
       raw.send = function(content, opt = {}) {
-        if (!content) throw new _this.MissingParameter("You are missing the parameter 'content'!");
+        if (!content) throw new _this.MissingParameter('You are missing the parameter \'content\'!');
         let embed;
-        if (typeof content === "object") {
+        if (typeof content === 'object') {
           embed = {
             title: (content && content.title) || null,
             description: (content && content.body) || null,
@@ -49,7 +49,7 @@ module.exports = function() {
 
         return new Promise((res) => {
           if (embed) {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               embed: embed || null
@@ -57,10 +57,10 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               });  
           } else {
-            request.req("POST", `/channels/${raw.id}/messages`, {
+            request.req('POST', `/channels/${raw.id}/messages`, {
               nonce: (opt && opt.nonce) || false,
               tts: (opt && opt.tts) || false,
               content: content || null
@@ -68,7 +68,7 @@ module.exports = function() {
               .then(m => {
                 setTimeout(res, 100, res(_this.message_methods().fromRaw(m)));
               }).catch(error => {
-                if (error.status === 403) throw new _this.MissingPermissions("I don't have permissions to perform this action!");
+                if (error.status === 403) throw new _this.MissingPermissions('I don\'t have permissions to perform this action!');
               }); 
           }     
         });
