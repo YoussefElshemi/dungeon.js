@@ -6,7 +6,7 @@ module.exports = function() {
   return {
     fromRaw: function(raw) {
       raw.channel = _this.channels.get(raw.channel_id);
-      if (raw.channel && raw.channel) {
+      if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
         raw.member = _this.gu_methods().fromRaw(raw.author, raw.guild);
       }
