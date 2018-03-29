@@ -213,7 +213,18 @@ class Guild {
       }).catch(rej);
     });
   }
+  
+  /* DOCS PLS */
+	
+  fetchInvites() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
+        var invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
 
+        setTimeout(res, 100, res(invite_methods));
+      }).catch(rej);
+    });
+  }
 }
 
 module.exports = Guild;
