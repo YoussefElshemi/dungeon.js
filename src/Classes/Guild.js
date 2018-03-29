@@ -1,4 +1,5 @@
 const request = require('../Connection');
+const Snowflake = require('../util/Snowflake');
 
 /**
  * This class represents a guild object
@@ -131,7 +132,14 @@ class Guild {
      */
 
     this.memberSize = raw.member_count;
+  }
 
+  get createdTimestamp() {
+    return Snowflake.deconstruct(this.id).timestamp;
+  }
+
+  get createdAt() {
+    return new Date(this.createdTimestamp);
   }
 
   /**
