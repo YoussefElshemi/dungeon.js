@@ -68,6 +68,9 @@
     ],
     "no-useless-escape": [
       "off"
+    ],
+    "no-redeclare": [
+      "off"
     ]
   }
 }
