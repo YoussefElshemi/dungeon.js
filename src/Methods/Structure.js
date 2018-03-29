@@ -17,7 +17,8 @@ const structures = {
   Member: require('./Members'),
   Message: require('./Messages'),
   Permissions: require('./Permissions'),
-  User: require('./Users')
+  User: require('./Users'),
+  Invite: require('./Invites')
 };
 
 module.exports = Structures;

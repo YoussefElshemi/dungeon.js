@@ -132,25 +132,22 @@ class Guild {
      */
 
     this.memberSize = raw.member_count;
+
+    /**
+     * The timestamp the guild was created at
+     * @type {Date}
+     */
+
+    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
+
+    /**
+     * The date the guild was created at
+     * @type {Date}
+     */
+
+    this.createdAt = new Date(this.createdTimestamp);
   }
 
-  /**
-   * The timestamp the guild was created at
-   * @type {Date}
-   * @readonly
-   */
-  get createdTimestamp() {
-    return Snowflake.deconstruct(this.id).timestamp;
-  }
-
-  /**
-   * The time the guild was created at
-   * @type {Date}
-   * @readonly
-   */
-  get createdAt() {
-    return new Date(this.createdTimestamp);
-  }
 
   /**
     * @description This method will create a channel in the guild
