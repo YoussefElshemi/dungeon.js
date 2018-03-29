@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 const event_list = require('./Events');
 const Message = require('./Classes/Message');
+const Guild = require('./Classes/Guild');
 const Collection = require('./Classes/Collection');
 
 module.exports = function(TOKEN) {
@@ -75,14 +76,14 @@ module.exports = function(TOKEN) {
       }
 
       if (t == 'GUILD_CREATE') {
-        _this.guilds.set(message.d.id, message.d);
-
-        const guild = _this.guild_methods().fromRaw(message.d);
-
+        const guildData = _this.guild_methods().fromRaw(message.d);
+        const guild = new Guild(guildData, _this);
         _this.guilds.set(guild.id, guild);
+
         for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
           const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
-          _this.channels.set(item.id, item);
+          const channel = _this.channel_methods().fromRaw(item, message.d);
+          _this.channels.set(channel.id, channel);
         }
 
         if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
@@ -92,6 +93,7 @@ module.exports = function(TOKEN) {
           _(t, guild);
         }
       }
+
       if (t == 'CHANNEL_CREATE') {
         const channel = _this.channel_methods().fromRaw(message.d);
 
@@ -101,13 +103,13 @@ module.exports = function(TOKEN) {
       }
       if (t == 'CHANNEL_DELETE') {
         const channel = _this.channel_methods().fromRaw(message.d);
-        _this.channels.set(channel.id, undefined);
+        _this.channels.delete(channel.id);
 
         _(t, channel);
       }
       if (t == 'MESSAGE_CREATE') {
         const mesData = _this.message_methods().fromRaw(message.d);
-        const msg = new Message(mesData, _this.token);
+        const msg = new Message(mesData, _this);
         _this.messages.set(msg.id, msg);
         _(t, msg);
       }

@@ -10,6 +10,8 @@ module.exports = function() {
         return _this.cat_methods().fromRaw(raw);
       }
 
+      raw.guild = _this.guilds.get(raw.guild_id);
+
       if (op && op.id) {
         raw.guild_id = op.id;
         raw.guild = _this.guilds.get(op.id);

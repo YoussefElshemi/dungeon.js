@@ -21,8 +21,6 @@ class Embed {
 
     this.footer = data.footer;
 
-    return this;
-
   }
 
   title(title) {
