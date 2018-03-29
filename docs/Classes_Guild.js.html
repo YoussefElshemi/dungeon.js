@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Classes/Guild.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Client.html">Client</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#destroy">destroy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#getUser">getUser</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Collection.html">Collection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#array">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#clone">clone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#concat">concat</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#deleteAll">deleteAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#equals">equals</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#every">every</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#exists">exists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filter">filter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filterArray">filterArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#find">find</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#findAll">findAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#first">first</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#firstKey">firstKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#keyArray">keyArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#last">last</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#lastKey">lastKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#map">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#random">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#randomKey">randomKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#reduce">reduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#some">some</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#sort">sort</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Guild.html">Guild</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#createChannel">createChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#createRole">createRole</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#pruneMembers">pruneMembers</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="GuildChannel.html">GuildChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setPosition">setPosition</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Message.html">Message</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#isMentioned">isMentioned</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#pin">pin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#react">react</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#reply">reply</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#unpin">unpin</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TextChannel.html">TextChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#getMessage">getMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#getMessages">getMessages</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#lastMessage">lastMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setNSFW">setNSFW</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setPosition">setPosition</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setTopic">setTopic</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VoiceChannel.html">VoiceChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setBitrate">setBitrate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setPosition">setPosition</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setUserLimit">setUserLimit</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Classes/Guild.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const request = require('../Connection');
+
+/**
+ * This class represents a guild object
+ */
+
+class Guild {
+  constructor(raw, client) {
+
+    /**
+     * The client object which is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The ID of the guild
+     * @type {String}
+     */
+
+    this.id = raw.id;
+
+    /**
+     * A collection of all the channels in the guild
+     * @type {Collection&lt;ID, Channel>}
+     */
+
+    this.channels = raw.channels;
+
+    /**
+     * The guild's name
+     * @type {String}
+     */
+
+    this.name = raw.name;
+
+    /**
+     * A collection of all the roles in the guild
+     * @type {Collection&lt;ID, Role>}
+     */
+
+    this.roles = raw.roles;
+
+    /**
+     * A collection of all the emojis in the guild
+     * @type {Collection&lt;ID, Emoji>}
+     */
+
+    this.emojis = raw.emojis;
+
+    /**
+     * A collection of all the members in the guild
+     * @type {Collection&lt;ID, Emoji>}
+     */
+
+    this.members = raw.members;
+
+    /**
+     * A collection of all the user's presences in the guild
+     * @type {Collection&lt;ID, Presence>}
+     */
+
+    this.presences = raw.presences;
+
+    /**
+     * A URL to the guild's icon
+     * @type {String}
+     */
+
+    this.icon = `https://cdn.discordapp.com/icons/${this.id}/${raw.icon}.png`;
+
+    /**
+     * The guild owner's ID
+     * @type {String}
+     */
+
+    this.ownerID = raw.owner_id;
+
+    /**
+     * The AFK Channel the guild has set
+     * @type {TextChannel}
+     */
+
+    this.afkChannel = this.channels.get(raw.afk_channel_id) || null;
+
+    /**
+     * The AFK Time in seconds
+     */
+
+    this.afkTimeout = raw.afk_timeout || null;
+
+    /**
+     * The Verification Level of the guild from 0-4
+     * @type {String}
+     */
+
+    this.verificationLevel = raw.verification_level;
+
+    /**
+     * The guild's system channel
+     * @type {TextChannel}
+     */
+
+    this.systemChannel = this.channels.get(raw.system_channel_id);
+
+    /**
+     * The date the guild was created at
+     * @type {Date}
+     */
+
+    this.createdAt = new Date(this.joined_at).toLocaleString();
+
+    /**
+     * Whether the guild is considered large by the Discord API
+     * @type {Boolean}
+     */
+
+    this.large = raw.large;
+
+    /**
+     * Whether the guild is available or not
+     * @type {Boolean}
+     */
+
+    this.available = !raw.unavailable;
+
+    /**
+     * The amount of members in the guild
+     * @type {Number}
+     */
+
+    this.memberSize = raw.member_count;
+
+  }
+
+  /**
+    * @description This method will create a channel in the guild
+    * @param {String} name The name of the channel to create
+    * @param {String} type The type of the channel, available ones: text, dm, voice, group_dm, category
+    * @param {Object} [opt={}] The options for the channel: bitrate, userLimit, permissions, parent, nsfw
+    * @returns {Promise&lt;Channel>} Returns the newly created Discord Channel
+    */
+
+  createChannel(name, type, opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/channels`, {
+        name: name,
+        type: ['text', 'dm', 'voice', 'group_dm', 'category'].indexOf(type) || 0,
+        bitrate: (type === 'voice' &amp;&amp; opt &amp;&amp; opt.bitrate) || null,
+        user_limit: (type === 'voice' &amp;&amp; opt &amp;&amp; opt.userlimit) || null,
+        permissions: (opt &amp;&amp; opt.permissions) || [],
+        parent_id: (opt &amp;&amp; opt.parent) || null,
+        nsfw: (type === 'text' &amp;&amp; opt &amp;&amp; opt.nsfw) || null,
+        topic: (type === 'text' &amp;&amp; opt &amp;&amp; opt.topic) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(c)));
+      }).catch(rej);
+    });
+  }
+
+  /**
+   * @description This method will create a role in the guild
+   * @param {String} name The name of the role
+   * @param {Object} [opt={}] The options for the role: color, permissions, hoist, mentionable
+   * @returns {Promise&lt;Role>} Returns the newly created Discord Role
+   */
+
+  createRole(name, opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/roles`, {
+        color: opt.color || 0,
+        permissions: opt.permissions || 0,
+        name: name,
+        hoist: opt.hoist || false,
+        mentionable: opt.mentionable || false
+      }, this.client.token).then(role => {
+        setTimeout(res, 100, res(this.client.role_methods().fromRaw(role)));
+      }).catch(rej);
+    });
+  }
+
+  /**
+   * @description Removes members from the guild who have been offline for a certain amount of time
+   * @param {Number} days The amount of the days the users are required to be offline to be kicked
+   * @returns {Promise&lt;Guild>} The guild in which the prune method was performed on
+   */
+
+  pruneMembers(days) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/prune`, {
+        days: days
+      }, _this.token).then(prune => {
+        setTimeout(res, 100, res(this.client.guild_methods().fromRaw(prune)));
+      }).catch(rej);
+    });
+  }
+
+}
+
+module.exports = Guild;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 29 2018 20:00:00 GMT+0100 (GMT Summer Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

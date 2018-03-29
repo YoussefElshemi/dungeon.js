@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Classes/TextChannel.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Client.html">Client</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#destroy">destroy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Client.html#getUser">getUser</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Collection.html">Collection</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#array">array</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#clone">clone</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#concat">concat</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#deleteAll">deleteAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#equals">equals</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#every">every</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#exists">exists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filter">filter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#filterArray">filterArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#find">find</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#findAll">findAll</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#first">first</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#firstKey">firstKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#keyArray">keyArray</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#last">last</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#lastKey">lastKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#map">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#random">random</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#randomKey">randomKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#reduce">reduce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#some">some</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Collection.html#sort">sort</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Guild.html">Guild</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#createChannel">createChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#createRole">createRole</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Guild.html#pruneMembers">pruneMembers</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="GuildChannel.html">GuildChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GuildChannel.html#setPosition">setPosition</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Message.html">Message</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#isMentioned">isMentioned</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#pin">pin</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#react">react</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#reply">reply</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Message.html#unpin">unpin</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="TextChannel.html">TextChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#getMessage">getMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#getMessages">getMessages</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#lastMessage">lastMessage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#send">send</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setNSFW">setNSFW</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setPosition">setPosition</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="TextChannel.html#setTopic">setTopic</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="VoiceChannel.html">VoiceChannel</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#delete">delete</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#edit">edit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setBitrate">setBitrate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setName">setName</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setParent">setParent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setPosition">setPosition</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="VoiceChannel.html#setUserLimit">setUserLimit</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Classes/TextChannel.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const GuildChannel = require('./GuildChannel');
+const request = require('../Connection');
+
+/**
+ * This class represents a Text Channel
+ * @extends {GuildChannel} 
+ */
+
+class TextChannel extends GuildChannel {
+  constructor(raw, client) {
+    super(raw, client);
+
+    /**
+     * This is the ID of the last message in the channel
+     * @type {String}
+     */
+
+    this.lastMessageID = raw.last_message_id;
+
+    /**
+     * Whether the channel is nsfw or not
+     * @type {Boolean}
+     */
+
+    this.nsfw = raw.nsfw;
+
+    /**
+     * The topic of the channel
+     * @type {String}
+     */
+    
+    this.topic = raw.topic;
+
+  }
+
+  /**
+   * @description This method will send a mssage to the channel specified
+   * @param {String|Object} content The string if it's a normal message or object if it's a richembed
+   * @param {Object} [opt = {}] The options, nonce and tts
+   * @returns {Promise&lt;Message>} Returns a promise and discord message
+   * @example
+   * msg.channel.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+   * msg.channel.send("Hi!", {tts: true});
+   */
+
+  send(content, opt = {}) {
+    if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
+    let embed;
+    if (typeof content === 'object') {
+      embed = {
+        title: (content &amp;&amp; content.title) || null,
+        description: (content &amp;&amp; content.body) || null,
+        url: (content &amp;&amp; content.url) || null,
+        timestamp: (content &amp;&amp; content.timestamp) || null,
+        color: (content &amp;&amp; content.color) || null,
+        //footer: {} 
+      };
+    }
+    return new Promise((res) => {
+      if (embed) {
+        request.req('POST', `/channels/${this.id}/messages`, {
+          nonce: (opt &amp;&amp; opt.nonce) || false,
+          tts: (opt &amp;&amp; opt.tts) || false,
+          embed: embed || null
+        }, this.client.token)
+          .then(m => {
+            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });  
+      } else {
+        request.req('POST', `/channels/${this.id}/messages`, {
+          nonce: (opt &amp;&amp; opt.nonce) || false,
+          tts: (opt &amp;&amp; opt.tts) || false,
+          content: content || null
+        }, this.client.token)
+          .then(m => {
+            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          }); 
+      }     
+    });
+  }
+
+  /**
+   * @description This method will get the most recent message sent
+   * @returns {Promise&lt;Message>} Returns a promise and a discord message
+   */
+
+  lastMessage() {
+    return new Promise((res) => {
+      request.req('GET',`/channels/${this.id}/messages/${this.lastMessageID}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        })
+        .catch(console.log);
+    });
+  }
+
+  /**
+   * @description Will fetch a message if not cached
+   * @param {String} id The ID of the message
+   * @returns {Promise&lt;Message>} Returns a promise and a discord message
+   */
+
+  getMessage(id) {
+    if (!id) throw new this.client.MissingParameter('You are missing the parameter \'snowflake\'!');
+    return new Promise((res) => {
+      request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        });
+    });
+  }
+
+  /**
+   * @description Will fetch a group of messages if not cached
+   * @param {Array} id An array of message snowflakes
+   * @returns {Promise&lt;Message>} Returns a promise and (a) discord message(s)
+   */
+
+  getMessages(opt = {}) {
+    if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
+    return new Promise((res) => {
+      request.req('GET', `/channels/${this.id}/messages`, {
+        around: opt.around || null,
+        before: opt.before || null,
+        after: opt.after || null,
+        limit: opt.limit || null
+      }, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        });
+    });
+  }
+
+
+  /**
+   * @description Sets the nsfw of the channel
+   * @param {Boolean} falseortrue Whether the channel should be nsfw or not
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  setNSFW(falseortrue) {
+    return new Promise((res) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        nsfw: falseortrue
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
+    });
+  }
+
+
+  /**
+   * @description Sets the topic of the channel
+   * @param {String} newtopic The topic of the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  setTopic(newtopic) {
+    if (this.type === 'voice') throw new this.client.WrongType('This method only available on text based channels');
+
+    return new Promise((res) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        topic: newtopic
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
+    });
+  }
+
+}
+
+module.exports = TextChannel;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 29 2018 20:00:00 GMT+0100 (GMT Summer Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
-const Connect = require("./Connect");
-const request = require("./Connection");
+const Connect = require('./Connect');
+const request = require('./Connection');
 /**
  * This Class is the base client for this API
  */
@@ -13,9 +13,9 @@ class Client {
 
     this.token = token;
 
-    if (this.length === 0) throw new Error("The first Parameter must be a token!");
+    if (this.length === 0) throw new Error('The first Parameter must be a token!');
 
-    if (typeof this.token !== "string") throw new Error("Token must be a string!");
+    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
 
     this.Connect = Connect;
     this.Connect(this.token);
@@ -24,13 +24,13 @@ class Client {
 
     this.amOfGuilds = 0;
 
-    this.MissingPermissions = require("./Errors/MissingPermissions");
+    this.MissingPermissions = require('./Errors/MissingPermissions');
 
-    this.DiscordAPIError = require("./Errors/DiscordAPIError");
+    this.DiscordAPIError = require('./Errors/DiscordAPIError');
 
-    this.WrongType = require("./Errors/WrongType");
+    this.WrongType = require('./Errors/WrongType');
 
-    this.MissingParameter = require("./Errors/MissingParameter");
+    this.MissingParameter = require('./Errors/MissingParameter');
   }
 
   on(event, callback) {
@@ -52,10 +52,10 @@ class Client {
 
   getUser(id) {
     return new Promise((res) => {
-      request.req("GET", `/users/${id}`, {}, this.token).then(m => {
+      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
         setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
       }).catch(error => {
-        if (error.status === 403) throw new Error("Missing Permissions");
+        if (error.status === 403) throw new Error('Missing Permissions');
       });        
     });
   }

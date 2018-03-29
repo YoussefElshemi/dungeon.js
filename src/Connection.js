@@ -1,6 +1,6 @@
-const nekocurl = require("nekocurl");
+const nekocurl = require('nekocurl');
 
-const base = "https://discordapp.com/api/v6";
+const base = 'https://discordapp.com/api/v6';
 
 module.exports = {
   req: function(METHOD, ENDPOINT, DATA, TOKEN) {
@@ -9,7 +9,7 @@ module.exports = {
         base + ENDPOINT, {
           method: METHOD,
           headers: {
-            Authorization: "Bot " + TOKEN
+            Authorization: 'Bot ' + TOKEN
           },
           data: JSON.stringify(DATA),
           json: true
