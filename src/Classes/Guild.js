@@ -110,7 +110,7 @@ class Guild {
      * @type {Date}
      */
 
-    this.createdAt = new Date(this.joined_at).toLocaleString();
+    //this.createdAt = new Date(this.joined_at).toLocaleString();
 
     /**
      * Whether the guild is considered large by the Discord API
@@ -214,13 +214,15 @@ class Guild {
     });
   }
   
-  /* DOCS PLS */
+  /**
+   * @description Returns all of the invites from the guild
+   * @returns {Promise<Invite>} An array of all of the invites
+    */
 	
   fetchInvites() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
-        var invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
-
+        const invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
         setTimeout(res, 100, res(invite_methods));
       }).catch(rej);
     });

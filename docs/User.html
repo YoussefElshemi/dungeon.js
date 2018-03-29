@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/Client.js - Documentation</title>
+    <title>User - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,82 +29,133 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/Client.js</h1>
+    <h1 class="page-title">User</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
-const request = require('../Connection');
-/**
- * This Class is the base client for this API
- */
-
-class Client {
-  constructor(token) {
+        <h2>
+        User
+        </h2>
+        
+            <div class="class-description">This class represents a User Object</div>
+        
     
-    /**
-     * @type {String}
-     */
+</header>
 
-    this.token = token;
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
 
-    if (this.length === 0) throw new Error('The first Parameter must be a token!');
+    
+    <h2>Constructor</h2>
+    
 
-    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
+    <h4 class="name" id="User"><span class="type-signature"></span>new User<span class="signature">()</span><span class="type-signature"></span></h4>
 
-    this.Connect = Connect;
-    this.Connect(this.token);
+    
 
-    this._events = {};
 
-    this.amOfGuilds = 0;
 
-    this.MissingPermissions = require('../Errors/MissingPermissions');
 
-    this.DiscordAPIError = require('../Errors/DiscordAPIError');
 
-    this.WrongType = require('../Errors/WrongType');
 
-    this.MissingParameter = require('../Errors/MissingParameter');
-  }
 
-  on(event, callback) {
-    this._events[event] = callback;
-  }
+<dl class="details">
 
-  /**
-   * @description Destroys the client process
-   */
+    
 
-  destroy() {
-    process.exit();
-  }
+    
 
-  /**
-   * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
-   */
+    
 
-  getUser(id) {
-    return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
-      }).catch(error => {
-        if (error.status === 403) throw new Error('Missing Permissions');
-      });        
-    });
-  }
-}
+    
 
-module.exports = Client;</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Classes_User.js.html">Classes/User.js</a>, <a href="Classes_User.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
