@@ -3,6 +3,9 @@ const event_list = require('./Events');
 const Message = require('./Classes/Message');
 const Guild = require('./Classes/Guild');
 const Collection = require('./Classes/Collection');
+const GuildChannel = require('./Classes/GuildChannel');
+const TextChannel = require('./Classes/TextChannel');
+const VoiceChannel = require('./Classes/VoiceChannel');
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -76,6 +79,7 @@ module.exports = function(TOKEN) {
       }
 
       if (t == 'GUILD_CREATE') {
+        let chn;
         const guildData = _this.guild_methods().fromRaw(message.d);
         const guild = new Guild(guildData, _this);
         _this.guilds.set(guild.id, guild);
@@ -83,7 +87,10 @@ module.exports = function(TOKEN) {
         for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
           const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
           const channel = _this.channel_methods().fromRaw(item, message.d);
-          _this.channels.set(channel.id, channel);
+          if (channel.genre === 'text') chn = new TextChannel(channel, _this);
+          if (channel.genre === 'voice') chn = new VoiceChannel(item, _this);
+          if (chn) _this.channels.set(chn.id, chn);
+          //if (channel.genre !== 'voice' || channel.genre !== 'text') continue;
         }
 
         if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
@@ -95,9 +102,11 @@ module.exports = function(TOKEN) {
       }
 
       if (t == 'CHANNEL_CREATE') {
+        let chn;
         const channel = _this.channel_methods().fromRaw(message.d);
-
-        _this.channels.set(channel.id, channel);
+        if (channel.type === 'text') chn = new TextChannel(item, _this);
+        if (channel.type === 'voice') chn = new VoiceChannel(item, _this);
+        _this.channels.set(chn.id, chn);
 
         _(t, channel);
       }

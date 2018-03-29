@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/Client.js - Documentation</title>
+    <title>Classes/GuildChannel.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/Client.js</h1>
+    <h1 class="page-title">Classes/GuildChannel.js</h1>
     
 
     
@@ -39,70 +39,156 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
-const request = require('../Connection');
-/**
- * This Class is the base client for this API
+            <pre class="prettyprint source linenums"><code>/**
+ * This class represents any Guild Channel
  */
 
-class Client {
-  constructor(token) {
-    
+class GuildChannel {
+  constructor(raw, client) {
+
     /**
+     * The ID of the channel
+     * @type {String}
+     */
+    
+    this.id = raw.id;
+
+    /**
+     * The client object which is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The name of the channel
      * @type {String}
      */
 
-    this.token = token;
+    this.name = raw.name;
 
-    if (this.length === 0) throw new Error('The first Parameter must be a token!');
+    /**
+     * The type of channel
+     * @type {String}
+     */
 
-    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
+    this.type = raw.genre;
 
-    this.Connect = Connect;
-    this.Connect(this.token);
+    /**
+     * The position of the channel on the left-hand side
+     * @type {Number}
+     */
 
-    this._events = {};
+    this.position = raw.position;
 
-    this.amOfGuilds = 0;
+    /**
+     * The permission overwrites of the channel
+     * @type {Array}
+     */
 
-    this.MissingPermissions = require('../Errors/MissingPermissions');
+    this.permission_overwrites = raw.permission_overwrites;
 
-    this.DiscordAPIError = require('../Errors/DiscordAPIError');
+    /**
+     * The guild the channel is in
+     * @type {Guild}
+     */
 
-    this.WrongType = require('../Errors/WrongType');
+    this.guild = raw.guild;
 
-    this.MissingParameter = require('../Errors/MissingParameter');
-  }
-
-  on(event, callback) {
-    this._events[event] = callback;
   }
 
   /**
-   * @description Destroys the client process
+   * @description Sets the name of the channel
+   * @param {String} newname The name of the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
    */
 
-  destroy() {
-    process.exit();
-  }
-
-  /**
-   * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
-   */
-
-  getUser(id) {
+  setName(newname) {
     return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
-      }).catch(error => {
-        if (error.status === 403) throw new Error('Missing Permissions');
-      });        
+      request.req('PATCH', `/channels/${this.id}`, {
+        name: newname
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
     });
   }
+
+  /**
+   * @description Sets the position of the channel
+   * @param {Number} position The position of the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  setPosition(position) {
+    return new Promise((res) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        position: Number(position)
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
+    });
+  }
+
+  /**
+   * @description Sets the parent of the channel
+   * @param {Snowflake} setParent The parent channel or parent channel id
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  setParent(newparent) {
+    let parent;
+    if (typeof newparent === 'string') parent = newparent;
+    if (typeof newparent === 'object') parent = newparent.id;
+    return new Promise((res) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        parent_id: parent
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
+    });
+  }
+
+  /**
+   * @description Deletes the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and the Guild Channel deleted
+   */
+
+  delete() {
+    return new Promise((res) => {
+      request.req('DELETE', `/channels/${this.id}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        });
+    });
+  }
+
+  /**
+   * @description Edits the channel 
+   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  edit(options) {
+    return new Promise((res) => {
+      request.req('POST', `/guilds/${this.id}/channels`, 
+        {
+          name: (options &amp;&amp; options.name) || null,
+          position: (options &amp;&amp; options.position) || null,
+          topic: (this.type === 'text' &amp;&amp; options &amp;&amp; options.topic) || null,
+          nsfw: (this.type === 'text' &amp;&amp; options &amp;&amp; options.nsfw) || null,
+          bitrate: (this.type === 'voice' &amp;&amp; options &amp;&amp; options.bitrate) || null,
+          user_limit: (this.type === 'voice' &amp;&amp; options &amp;&amp; options.userlimit) || null,
+          parent_id: ((this.type === 'text' || this.type === 'voice') &amp;&amp; options &amp;&amp; options.parent) || null  
+        }, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));  
+        });
+    });
+  }
+  
 }
 
-module.exports = Client;</code></pre>
+module.exports = GuildChannel;</code></pre>
         </article>
     </section>
 

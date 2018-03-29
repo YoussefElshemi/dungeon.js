@@ -1,11 +1,15 @@
 const request = require('../Connection');
 
+/**
+ * This class represents a guild object
+ */
+
 class Guild {
   constructor(raw, client) {
 
     /**
      * The client object which is logged in
-     * @type {ClientObject}
+     * @type {Client}
      */
 
     this.client = client;
@@ -75,7 +79,7 @@ class Guild {
 
     /**
      * The AFK Channel the guild has set
-     * @type {DiscordChannel}
+     * @type {TextChannel}
      */
 
     this.afkChannel = this.channels.get(raw.afk_channel_id) || null;
@@ -95,7 +99,7 @@ class Guild {
 
     /**
      * The guild's system channel
-     * @type {DiscordChannel}
+     * @type {TextChannel}
      */
 
     this.systemChannel = this.channels.get(raw.system_channel_id);
@@ -182,7 +186,7 @@ class Guild {
    * @returns {Promise<Guild>} The guild in which the prune method was performed on
    */
 
-  prune(days) {
+  pruneMembers(days) {
     return new Promise((res, rej) => {
       request.req('POST', `/guilds/${this.id}/prune`, {
         days: days

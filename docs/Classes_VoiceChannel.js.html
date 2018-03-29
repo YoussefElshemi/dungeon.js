@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/Client.js - Documentation</title>
+    <title>Classes/VoiceChannel.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/Client.js</h1>
+    <h1 class="page-title">Classes/VoiceChannel.js</h1>
     
 
     
@@ -39,70 +39,72 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
+            <pre class="prettyprint source linenums"><code>const GuildChannel = require('./GuildChannel');
 const request = require('../Connection');
+const Collection = require('./Collection');
+
 /**
- * This Class is the base client for this API
+ * This class represents a Voice Channel
+ * @extends {GuildChannel} 
  */
 
-class Client {
-  constructor(token) {
-    
+class VoiceChannel extends GuildChannel {
+  constructor(raw, client) {
+    super(raw, client);
+
     /**
-     * @type {String}
+     * The bitrate of the call
+     * @type {Number}
      */
 
-    this.token = token;
+    this.bitrate = raw.bitrate;
 
-    if (this.length === 0) throw new Error('The first Parameter must be a token!');
+    /**
+     * The limit of the users in the call
+     * @type {Number}
+     */
 
-    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
+    this.userLimit = raw.userLimit;
 
-    this.Connect = Connect;
-    this.Connect(this.token);
-
-    this._events = {};
-
-    this.amOfGuilds = 0;
-
-    this.MissingPermissions = require('../Errors/MissingPermissions');
-
-    this.DiscordAPIError = require('../Errors/DiscordAPIError');
-
-    this.WrongType = require('../Errors/WrongType');
-
-    this.MissingParameter = require('../Errors/MissingParameter');
-  }
-
-  on(event, callback) {
-    this._events[event] = callback;
   }
 
   /**
-   * @description Destroys the client process
+   * @description Sets the bitrate of the channel
+   * @param {Number} bitrate The bitrate of the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
    */
 
-  destroy() {
-    process.exit();
-  }
-
-  /**
-   * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
-   */
-
-  getUser(id) {
+  setBitrate(bitrate) {
     return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
-      }).catch(error => {
-        if (error.status === 403) throw new Error('Missing Permissions');
-      });        
+      request.req('PATCH', `/channels/${this.id}`, {
+        bitrate: bitrate
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
     });
   }
+
+  /**
+   * @description Sets the user limit of the channel
+   * @param {Number} limit The user limit of the channel
+   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   */
+
+  setUserLimit(limit) {
+    return new Promise((res) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        user_limit: Number(limit)
+      }, this.client.token).then(m => {
+        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+      });
+    });
+  }
+
 }
 
-module.exports = Client;</code></pre>
+module.exports = VoiceChannel;
+
+// THIS CLASS IS WORK IN PROGRESS</code></pre>
         </article>
     </section>
 

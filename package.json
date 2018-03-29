@@ -4,7 +4,8 @@
   "description": "A discord API wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gendocs": "jsdoc ./src/Classes/ ./src/util README.md -t ./node_modules/minami"
   },
   "keywords": [],
   "author": "Youssef (http://doylebot.com)",
