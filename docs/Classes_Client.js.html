@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>Classes/Client.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,49 +29,82 @@
 
 <div id="main">
     
+    <h1 class="page-title">Classes/Client.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
+const request = require('../Connection');
+/**
+ * This Class is the base client for this API
+ */
 
-
-
-
-
-
-
-
-
+class Client {
+  constructor(token) {
     
+    /**
+     * @type {String}
+     */
 
+    this.token = token;
 
-    <section class="readme">
-        <article><h1>dungeon.js</h1><p>A Discord API wrapper</p>
-<h2>Information</h2><p>This library was started of by one of our developers, tolopolop. After a few months of giving up, I, Youssef, decided to carry on the project along with tolopolop, I invited two new developers, Caalyx and OGNovuh, who have become a tremendous help with creating the library and make it more efficient. </p>
-<p>If you don't already know, this library is an api wrapper for discord V6. </p>
-<h2>Example</h2><pre class="prettyprint source lang-js"><code>const discord = require('dungeon.js');
-const client = new discord.Client('TOKEN');
+    if (this.length === 0) throw new Error('The first Parameter must be a token!');
 
-client.on('ready', () => {
-  console.log('bot is on');
-});
+    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
 
-client.on('message', async message => {
-  if (message.author.bot) return;
-  if (message.content === 'ping') {
-      message.reply('Pong!');
+    this.Connect = Connect;
+    this.Connect(this.token);
+
+    this._events = {};
+
+    this.amOfGuilds = 0;
+
+    this.MissingPermissions = require('../Errors/MissingPermissions');
+
+    this.DiscordAPIError = require('../Errors/DiscordAPIError');
+
+    this.WrongType = require('../Errors/WrongType');
+
+    this.MissingParameter = require('../Errors/MissingParameter');
   }
-});</code></pre><h2>Contribution</h2><p>If you wish to contribute to this API, please visit the <a href="https://github.com/YoussefElshemi/dungeon.js">GitHub</a></p>
-<ol>
-<li>Fork the repository</li>
-<li>Edit it</li>
-<li>Make a PR and ensure you include as much detail possible to allow the developers to gain an understanding in which your pull request makes.</li>
-</ol></article>
+
+  on(event, callback) {
+    this._events[event] = callback;
+  }
+
+  /**
+   * @description Destroys the client process
+   */
+
+  destroy() {
+    process.exit();
+  }
+
+  /**
+   * @description If a user isn't cached, this will fetch the user object
+   * @param {String} id The ID of the user to fetch;
+   */
+
+  getUser(id) {
+    return new Promise((res) => {
+      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
+        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+      }).catch(error => {
+        if (error.status === 403) throw new Error('Missing Permissions');
+      });        
+    });
+  }
+}
+
+module.exports = Client;</code></pre>
+        </article>
     </section>
-
-
 
 
 
