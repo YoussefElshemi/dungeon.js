@@ -1,4 +1,6 @@
 
+const request = require('../Connection');
+
 /**
  * This class represents a User Object
  */
@@ -19,6 +21,7 @@ class User {
      */
 
     this.id = raw.id;
+
 
     /**
      * The username of the user
