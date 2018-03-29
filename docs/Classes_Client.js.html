@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Client - Documentation</title>
+    <title>Classes/Client.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,429 +29,82 @@
 
 <div id="main">
     
-    <h1 class="page-title">Client</h1>
+    <h1 class="page-title">Classes/Client.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        <h2>
-        Client
-        </h2>
-        
-            <div class="class-description">This Class is the base client for this API</div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-<div class="section-method">
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="Client"><span class="type-signature"></span>new Client<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="token"><span class="type-signature"></span>token<span class="type-signature"> :String</span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line14">line 14</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>String</code></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</div>
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Destroys the client process
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getUser"><span class="type-signature"></span>getUser<span class="signature">(id)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    If a user isn't cached, this will fetch the user object
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line53">line 53</a>
-    </li></ul></dd>
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
+const request = require('../Connection');
+/**
+ * This Class is the base client for this API
+ */
 
+class Client {
+  constructor(token) {
     
+    /**
+     * @type {String}
+     */
 
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
+    this.token = token;
 
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>String</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The ID of the user to fetch;
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
+    if (this.length === 0) throw new Error('The first Parameter must be a token!');
 
+    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
 
+    this.Connect = Connect;
+    this.Connect(this.token);
 
+    this._events = {};
 
+    this.amOfGuilds = 0;
 
+    this.MissingPermissions = require('../Errors/MissingPermissions');
 
+    this.DiscordAPIError = require('../Errors/DiscordAPIError');
 
+    this.WrongType = require('../Errors/WrongType');
 
+    this.MissingParameter = require('../Errors/MissingParameter');
+  }
 
+  on(event, callback) {
+    this._events[event] = callback;
+  }
 
+  /**
+   * @description Destroys the client process
+   */
 
+  destroy() {
+    process.exit();
+  }
 
+  /**
+   * @description If a user isn't cached, this will fetch the user object
+   * @param {String} id The ID of the user to fetch;
+   */
 
-</div>
-        
-    
-
-    
-
-    
-</article>
+  getUser(id) {
+    return new Promise((res) => {
+      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
+        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+      }).catch(error => {
+        if (error.status === 403) throw new Error('Missing Permissions');
+      });        
+    });
+  }
+}
 
-</section>
+module.exports = Client;</code></pre>
+        </article>
+    </section>
 
 
 

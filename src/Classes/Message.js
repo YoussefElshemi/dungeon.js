@@ -18,14 +18,14 @@ class Message {
 
     /**
      * The channel the message was sent in
-     * @type {DiscordChannel}
+     * @type {TextChannel}
      */
 
     this.channel = raw.channel;
 
     /**
      * The guild the message was sent it
-     * @type {DiscordGuild}
+     * @type {Guild}
      */
 
     this.guild = raw.guild;
@@ -53,7 +53,7 @@ class Message {
 
     /**
      * The client object which is logged in
-     * @type {ClientObject}
+     * @type {Client}
      */
 
     this.client = client;
