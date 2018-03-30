@@ -70,7 +70,7 @@ class User {
      * @type {Boolean}
      */
 
-    this.bot = raw.bot;
+    this.bot = raw.bot ||	false;
 
     /**
      * The timestamp the user was created at
@@ -85,6 +85,13 @@ class User {
      */
 
     this.createdAt = raw.createdAt;
+
+    /**
+     * The mention of the user, eg; <@id> to mention them
+     * @type {String}
+     */
+
+    this.mention = `<@${this.id}>`;
   }
 
   /**
@@ -132,7 +139,7 @@ class User {
           embed: embed || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -143,7 +150,7 @@ class User {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 
@@ -156,7 +163,7 @@ class User {
    * @returns {String} The mention as a string: <@id>
    */
 
-  mention() {
+  toString() {
     return `<@${this.id}>`;
   }
 

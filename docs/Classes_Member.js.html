@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/User.js - Documentation</title>
+    <title>Classes/Member.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/User.js</h1>
+    <h1 class="page-title">Classes/Member.js</h1>
     
 
     
@@ -39,124 +39,142 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
+            <pre class="prettyprint source linenums"><code>const User = require('../Classes/User');
+const Message = require('../Classes/Message');
 const request = require('../Connection');
 
 /**
- * This class represents a User Object
+ * This class represents a member object
  */
 
-class User {
-  constructor(raw, client) {
+class Member {
+  constructor(raw, guild, client) {
 
     /**
-     * The client object 
-     * @type {Client}
-     */
-
-    this.client = raw.client;
-
-    /**
-     * The ID of the user
-     * @type {String}
+     * The ID of the member
+     * @type {Number}
      */
 
     this.id = raw.id;
 
+    /**
+     * The user object of the member
+     * @type {User}
+     */
+
+    this.user = new User(raw, client);
 
     /**
-     * The username of the user
+     * The roles that the member has 
+     * @type {Collection&lt;ID, Role>}
+     */
+
+    this.roles = raw.roles;
+
+    /**
+     * The client object which is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The guild object of the member
+     * @type {Guild}
+     */
+
+    this.guild = raw.guild;
+
+    /**
+     * The nickname of the member if there is one
      * @type {String}
      */
 
-    this.username = raw.username;
+    this.nickname = raw.nickname;
 
-    /**
-     * The four lettered discriminator of the user
-     * @type {String}
-     */
-
-    this.discriminator = raw.discriminator;
-
-    /**
-     * The username+discriminator eg. Youssef#0001
-     * @type {String}
-     */
-
-    this.tag = raw.tag;
-
-    /**
-     * The avatar hash of the user
-     * @type {String}
-     */
-
-    this.avatar = raw.avatar;
-
-    /**
-     * The avatarURL of a a user, defaulted at png
-     * @type {String}
-     */
-
-    this.avatarURL = `https://cdn.discordapp.com/avatars/${this.id}/${this.avatar}.png`;
-
-    /**
-     * The presence of the user
-     * @type {Object}
-     */
-
-    this.presence = raw.presence;
-
-    /**
-     * Whether the use is a bot or not
-     * @type {Boolean}
-     */
-
-    this.bot = raw.bot ||	false;
-
-    /**
-     * The timestamp the user was created at
-     * @type {Date}
-     */
-      
-    this.createdTimestamp = raw.createdTimestamp;
-
-    /**
-     * The date the user was created at
-     * @type {Date}
-     */
-
-    this.createdAt = raw.createdAt;
-
-    /**
-     * The mention of the user, eg; &lt;@id> to mention them
-     * @type {String}
-     */
-
-    this.mention = `&lt;@${this.id}>`;
   }
 
   /**
-   * @description Returns the avatar's url of a user
-   * @param {Object} [options = {}] The options, format eg. "png" and size, eg. 256
-   * @returns {String} The user's avatar as a URL
+   * @description This method adds a role to the member
+   * @param {RoleObject|RoleID} role The role to add to the member 
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
    */
 
-  avatarURL(options) {
-    if (options) {
-      return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format || 'png'}${options.size ? `?size=${options.size}` : ''}`;
-    } else {
-      return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.png`;
-    }
+  addRole(role) {
+    let roleid;
+    if (typeof role === 'string') roleid = role;
+    if (typeof role === 'object') roleid = role.id;
+    return new Promise((res) => {
+      request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+        });
+    });
+  }
+
+
+  /**
+   * @description This method removes a role to the member
+   * @param {RoleObject|RoleID} role The role to remove from the member 
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  removeRole(role) {
+    let roleid;
+    if (typeof role === 'string') roleid = role;
+    if (typeof role === 'object') roleid = role.id;
+    return new Promise((res) => {
+      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+        });
+    });
+  }
+
+
+  /**
+   * @description This method will ban a member
+   * @param {Object} [opt = {}] The options to pass: days, number from 0-7 and reason, string      
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  ban(opt) {
+    return new Promise((res) => {
+      request.req('PUT', `/guilds/${this.guild.id}/bans/${this.id}`, {
+        days: opt.days || 0,
+        reason: opt.reason || ''
+      }, _this.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild)));
+        });
+    });
   }
 
   /**
-   * @description This method will send a mssage to the channel specified
-   * @param {String|Object} content The string if it's a normal message or object if it's a richembed
+   * @description This method will kick a member from a guild
+   * @param {String} [reason = ""] The options to pass: reason, a string
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  kick(reason) {
+    return new Promise((res) => {
+      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}`, {
+        reason: reason || ''
+      }, _this.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+        });
+    });
+  }
+
+  /**
+   * @description This method will send a message to the member
+   * @param {String|Object} [content] The string if it's a normal message or object if it's a richembed
    * @param {Object} [opt = {}] The options, nonce and tts
    * @returns {Promise&lt;Message>} Returns a promise and discord message
    * @example
-   * &lt;UserObject>.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
-   * &lt;UserObject>.send("Hi!", {tts: true});
+   * &lt;Member>.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+   * &lt;Member>.send("Hi!", {tts: true});
    */
 
   send(content, opt = {}) {
@@ -180,7 +198,7 @@ class User {
           embed: embed || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -191,26 +209,16 @@ class User {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 
       }     
     });
   }
-
-  /**
-   * @description This method will mention a user
-   * @returns {String} The mention as a string: &lt;@id>
-   */
-
-  toString() {
-    return `&lt;@${this.id}>`;
-  }
-
 }
 
-module.exports = User;</code></pre>
+module.exports = Member;</code></pre>
         </article>
     </section>
 

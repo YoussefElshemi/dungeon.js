@@ -2,6 +2,7 @@ const GuildChannel = require('./GuildChannel');
 const request = require('../Connection');
 const Collection = require('./Collection');
 
+
 /**
  * This class represents a Voice Channel
  * @extends {GuildChannel} 

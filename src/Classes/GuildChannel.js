@@ -1,3 +1,5 @@
+const request = require('../Connection');
+
 /**
  * This class represents any Guild Channel
  */
