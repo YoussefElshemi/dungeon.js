@@ -9,7 +9,7 @@ module.exports = function() {
       raw.client = _this;
       raw.tag = `${raw.username}#${raw.discriminator}`;
       raw.presence = _this.presences.get(raw.id);
-      raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
+      // raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
       raw.createdAt = new Date(raw.createdTimestamp);
 
       /**
@@ -23,9 +23,9 @@ module.exports = function() {
         if (typeof role === 'string') roleid = role;
         if (typeof role === 'object') roleid = role.id;
         return new Promise((res) => {
-          request.req('PUT', `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
+          request.req('PUT', `/guilds/${guild}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild.id));
             });
         });
       };
@@ -42,9 +42,9 @@ module.exports = function() {
         if (typeof role === 'string') roleid = role;
         if (typeof role === 'object') roleid = role.id;
         return new Promise((res) => {
-          request.req('DELETE', `/guilds/${guild.id}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
+          request.req('DELETE', `/guilds/${guild}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.gu_methods().fromRaw(m, m.guild.id));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild.id));
             });
         });
       };
@@ -58,12 +58,12 @@ module.exports = function() {
 
       raw.ban = function(opt) {
         return new Promise((res) => {
-          request.req('PUT', `/guilds/${guild.id}/bans/${raw.id}`, {
+          request.req('PUT', `/guilds/${guild}/bans/${raw.id}`, {
             days: opt.days || 0,
             reason: opt.reason || ''
           }, _this.token)
             .then(m => {
-              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, m.guild.id)));
+              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild.id)));
             });
         });
       };
@@ -76,11 +76,11 @@ module.exports = function() {
 
       raw.kick = function(reason) {
         return new Promise((res) => {
-          request.req('DELETE', `/guilds/${guild.id}/members/${raw.id}`, {
+          request.req('DELETE', `/guilds/${guild}/members/${raw.id}`, {
             reason: reason || ''
           }, _this.token)
             .then(m => {
-              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, m.guild.id)));
+              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild.id)));
             });
         });
       };
