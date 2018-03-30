@@ -76,6 +76,7 @@ module.exports = function(TOKEN) {
         _this.invite_methods = require('./Methods/Invites');
         _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
+        _this.ban_methods = require("./Methods/Bans");
         _this.token = _this.token;
       }
 

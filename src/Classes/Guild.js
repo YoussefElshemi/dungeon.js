@@ -210,12 +210,12 @@ class Guild {
       }).catch(rej);
     });
   }
-  
+
   /**
    * @description Returns all of the invites from the guild
    * @returns {Promise<Invite>} An array of all of the invites
     */
-	
+
   fetchInvites() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
@@ -223,6 +223,63 @@ class Guild {
         setTimeout(res, 100, res(invite_methods));
       }).catch(rej);
     });
+  }
+
+  /**
+   * @description Returns all members of the guild if not cached
+   * @returns {Promise<Member>} An array of all members
+   */
+
+  fetchMembers() {
+    return new Promise((res, rej) => {
+      request.req("GET", `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
+        const member_methods = members.map(i => this.client.gu_methods().fromRaw(i));
+        setTimeout(res, 100, res(member_methods));
+      }).catch(rej);
+    });
+  }
+
+  /**
+   * @description Returns all users who are banned in the guild
+   * @returns {Promise<Member>} An array of all ban items
+   */
+
+  fetchBans() {
+    return new Promise((res, rej) => {
+      request.req("GET", `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
+        const ban_methods = bans.map(i => this.client.ban_methods().fromRaw(i));
+        setTimeout(res, 100, res(ban_methods, this.id));
+      }).catch(rej);
+    })
+  }
+
+  /**
+   * @description Returns all users who are banned in the guild
+   * @returns {Promise<Member>} An array of all ban items
+   */
+
+  fetchRoles() {
+    return new Promise((res, rej) => {
+      request.req("GET", `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
+        const role_methods = roles.map(i => this.client.role_methods().fromRaw(i));
+        setTimeout(res, 100, res(role_methods));
+      }).catch(rej);
+    })
+  }
+
+  /**
+   * @description Returns the count of members who will be kicked upon prune
+   * @returns {Promise<Number>} A number of the amount of members who will be kicked
+   */
+
+  testPrune(days) {
+    return new Promise((res, rej) => {
+      request.req("GET", `/guilds/${this.id}/prune`, {
+        days: days
+      }, this.client.token).then(gu => {
+        setTimeout(res, 100, res(gu.pruned));
+      }).catch(rej);
+    })
   }
 }
 
