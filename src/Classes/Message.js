@@ -32,14 +32,14 @@ class Message {
 
     /** 
      * The user object of the person who sent the message
-     * @type {UserObject}
+     * @type {User}
      */
 
     this.author = raw.author;
 
     /**
      * The guild member object of the person who sent the message
-     * @type {MemberObject}
+     * @type {Member}
      */
 
     this.member = raw.member;

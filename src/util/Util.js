@@ -52,3 +52,5 @@ class Util {
     return dec;
   }
 }
+
+module.exports = Util;

@@ -1,17 +1,21 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
+const User = require('../Classes/User');
 
 module.exports = function() {
   const _this = this;
   return {
     fromRaw: function(raw) {
       raw.channel = _this.channels.get(raw.channel_id);
+
       if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
         raw.member = _this.gu_methods().fromRaw(raw.author, raw.guild);
       }
 
-      raw.author = _this.user_methods().fromRaw(raw.author);
+      raw.user = new User(_this.gu_methods().fromRaw(raw.author, raw.guild), _this);
+      raw.author = raw.user;
+      raw.user = null;
       raw.clean = cleanMessage(raw.content);
       raw.client = _this;
       raw.createdAt = new Date(raw.timestamp).toLocaleString();

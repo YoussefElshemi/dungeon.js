@@ -110,7 +110,7 @@ class Guild {
      * @type {Date}
      */
 
-    this.createdAt = new Date(this.joined_at).toLocaleString();
+    //this.createdAt = new Date(this.joined_at).toLocaleString();
 
     /**
      * Whether the guild is considered large by the Discord API
@@ -132,25 +132,22 @@ class Guild {
      */
 
     this.memberSize = raw.member_count;
+
+    /**
+     * The timestamp the guild was created at
+     * @type {Date}
+     */
+
+    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
+
+    /**
+     * The date the guild was created at
+     * @type {Date}
+     */
+
+    this.createdAt = new Date(this.createdTimestamp);
   }
 
-  /**
-   * The timestamp the guild was created at
-   * @type {Date}
-   * @readonly
-   */
-  get createdTimestamp() {
-    return Snowflake.deconstruct(this.id).timestamp;
-  }
-
-  /**
-   * The time the guild was created at
-   * @type {Date}
-   * @readonly
-   */
-  get createdAt() {
-    return new Date(this.createdTimestamp);
-  }
 
   /**
     * @description This method will create a channel in the guild
@@ -214,13 +211,15 @@ class Guild {
     });
   }
   
-  /* DOCS PLS */
+  /**
+   * @description Returns all of the invites from the guild
+   * @returns {Promise<Invite>} An array of all of the invites
+    */
 	
   fetchInvites() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
-        var invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
-
+        const invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
         setTimeout(res, 100, res(invite_methods));
       }).catch(rej);
     });

@@ -54,3 +54,5 @@ class SnowflakeUtil {
   }
 
 }
+
+module.exports = SnowflakeUtil;

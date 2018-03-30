@@ -138,14 +138,14 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Sets the nsfw of the channel
-   * @param {Boolean} falseortrue Whether the channel should be nsfw or not
+   * @param {Boolean} boolean Whether the channel should be nsfw or not
    * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
    */
 
-  setNSFW(falseortrue) {
+  setNSFW(boolean) {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
-        nsfw: falseortrue
+        nsfw: boolean
       }, this.client.token).then(m => {
         setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
       });
