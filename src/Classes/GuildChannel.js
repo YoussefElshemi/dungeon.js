@@ -1,3 +1,5 @@
+const request = require('../Connection');
+
 /**
  * This class represents any Guild Channel
  */
@@ -67,7 +69,18 @@ class GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         name: newname
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const TextChannel = require('./TextChannel');
+        const VoiceChannel = require('./VoiceChannel');
+
+        let ret;
+
+        if (this instanceof TextChannel) {
+          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        } else if (this instanceof VoiceChannel) {
+          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+        }
+
+        setTimeout(res, 100, res(ret));
       });
     });
   }
@@ -83,7 +96,18 @@ class GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         position: Number(position)
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const TextChannel = require('./TextChannel');
+        const VoiceChannel = require('./VoiceChannel');
+
+        let ret;
+
+        if (this instanceof TextChannel) {
+          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        } else if (this instanceof VoiceChannel) {
+          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+        }
+
+        setTimeout(res, 100, res(ret));
       });
     });
   }
@@ -102,7 +126,18 @@ class GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         parent_id: parent
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const TextChannel = require('./TextChannel');
+        const VoiceChannel = require('./VoiceChannel');
+
+        let ret;
+
+        if (this instanceof TextChannel) {
+          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        } else if (this instanceof VoiceChannel) {
+          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+        }
+
+        setTimeout(res, 100, res(ret));
       });
     });
   }
@@ -116,7 +151,18 @@ class GuildChannel {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.id}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+          const TextChannel = require('./TextChannel');
+          const VoiceChannel = require('./VoiceChannel');
+
+          let ret;
+
+          if (this instanceof TextChannel) {
+            ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+          } else if (this instanceof VoiceChannel) {
+            ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+          }
+
+          setTimeout(res, 100, res(ret));
         });
     });
   }
@@ -140,7 +186,18 @@ class GuildChannel {
           parent_id: ((this.type === 'text' || this.type === 'voice') && options && options.parent) || null  
         }, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));  
+          const TextChannel = require('./TextChannel');
+          const VoiceChannel = require('./VoiceChannel');
+
+          let ret;
+
+          if (this instanceof TextChannel) {
+            ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+          } else if (this instanceof VoiceChannel) {
+            ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+          }
+
+          setTimeout(res, 100, res(ret));
         });
     });
   }

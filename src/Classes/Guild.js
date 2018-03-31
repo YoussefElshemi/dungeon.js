@@ -159,6 +159,7 @@ class Guild {
     */
 
   createChannel(name, type, opt = {}) {
+    console.log(this);
     return new Promise((res, rej) => {
       request.req('POST', `/guilds/${this.id}/channels`, {
         name: name,
@@ -170,7 +171,18 @@ class Guild {
         nsfw: (type === 'text' && opt && opt.nsfw) || null,
         topic: (type === 'text' && opt && opt.topic) || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(c)));
+        const TextChannel = require('./TextChannel');
+        const VoiceChannel = require('./VoiceChannel');
+
+        let ret;
+
+        if (c instanceof TextChannel) {
+          ret = new TextChannel(this.client.channel_methods().fromRaw(c), this.client);
+        } else if (c instanceof VoiceChannel) {
+          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
+        }
+
+        setTimeout(res, 100, res(ret));
       }).catch(rej);
     });
   }
