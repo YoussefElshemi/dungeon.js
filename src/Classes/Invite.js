@@ -14,7 +14,7 @@ class Invite {
   delete() {
     return new Promise((res, rej) => {
       request.req('DELETE', `/invites/${this.code}`, {}, this.client.token).then(i => {
-        var invite = new Invite(i);
+        var invite = new Invite(i, this.client.token);
         setTimeout(res, 100, res(invite));
       }).catch(rej);
     });
