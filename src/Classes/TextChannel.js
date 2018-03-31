@@ -1,5 +1,6 @@
 const GuildChannel = require('./GuildChannel');
 const request = require('../Connection');
+const Message = require('./Message.js');
 
 /**
  * This class represents a Text Channel
@@ -64,7 +65,7 @@ class TextChannel extends GuildChannel {
           embed: embed || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -75,7 +76,7 @@ class TextChannel extends GuildChannel {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 

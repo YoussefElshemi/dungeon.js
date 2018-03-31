@@ -1,15 +1,17 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
 const User = require('../Classes/User');
+const Guild = require('../Classes/Guild');
 
 module.exports = function() {
   const _this = this;
+
   return {
     fromRaw: function(raw) {
       raw.channel = _this.channels.get(raw.channel_id);
 
       if (raw.channel && raw.channel.guild) {
-        raw.guild = raw.channel.guild;
+        raw.guild = new Guild(_this.guild_methods().fromRaw(raw.channel.guild), this.client);
         raw.member = _this.gu_methods().fromRaw(raw.author, raw.guild);
       }
 

@@ -93,7 +93,7 @@ class Message {
       request.req('POST', `/channels/${this.channel.id}/messages`, {
         content: `<@${this.author.id}>, ${content}`
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });        
@@ -109,7 +109,7 @@ class Message {
   delete(reason = '') {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}`, {reason: reason} , this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -125,7 +125,7 @@ class Message {
   edit(newmessage) {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.channel.id}/messages/${this.id}`, {content: newmessage} , this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -140,7 +140,7 @@ class Message {
   pin() {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.channel.id}/pins/${this.id}`, {} , this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -155,7 +155,7 @@ class Message {
   unpin() {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/pins/${this.id}`, {} , this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -172,7 +172,7 @@ class Message {
     if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });

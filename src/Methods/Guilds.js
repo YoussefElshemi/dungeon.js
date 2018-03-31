@@ -1,5 +1,6 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
+const Invites = require('../Classes/Invite');
 
 module.exports = function() {
   const _this = this;
