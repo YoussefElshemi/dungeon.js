@@ -1,6 +1,6 @@
 const request = require('../Connection');
 const Guild = require('../Classes/Guild');
-
+const Member = require('../Classes/Member');
 
 /**
  * This class represents a message object
@@ -38,13 +38,6 @@ class Message {
     this.author = raw.author;
 
     /**
-     * The guild member object of the person who sent the message
-     * @type {Member}
-     */
-
-    this.member = raw.member;
-
-    /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
      * @type {String}
      */
@@ -57,6 +50,13 @@ class Message {
      */
 
     this.client = client;
+
+    /**
+     * The guild member object of the person who sent the message
+     * @type {Member}
+     */
+
+    this.member = new Member(raw.member, this.guild, this.client);
 
     /**
      * A formated date in which the message was created at

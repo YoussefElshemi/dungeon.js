@@ -1,6 +1,11 @@
 const request = require('../Connection');
 const Invite = require('./Invite');
 const Snowflake = require('../util/Snowflake');
+const Member = require('../Classes/Member');
+const GuildChannel = require('../Classes/GuildChannel');
+const VoiceChannel = require('../Classes/VoiceChannel');
+const TextChannel = require('../Classes/TextChannel');
+
 
 /**
  * This class represents a guild object
@@ -173,7 +178,6 @@ class Guild {
       }, this.client.token).then(c => {
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-
         let ret;
 
         if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(c), this.client);
@@ -243,7 +247,7 @@ class Guild {
   fetchMembers() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
-        const member_methods = members.map(i => this.client.gu_methods().fromRaw(i));
+        const member_methods = members.map(i => new Member(this.client.gu_methods().fromRaw(i, i.guild)), this, this.client);
         setTimeout(res, 100, res(member_methods));
       }).catch(rej);
     });

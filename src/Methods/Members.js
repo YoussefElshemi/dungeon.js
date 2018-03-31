@@ -1,21 +1,36 @@
 const request = require('../Connection');
 const Snowflake = require('../util/Snowflake');
+const Collection = require('../Classes/Collection');
+const Guild = require('../Classes/Guild');
 
 module.exports = function() {
   const _this = this;
 
   return {
     fromRaw: function(raw, guild) {
+
+      if (guild) {
+        raw.guild = guild;
+        const allRoles = new Collection();
+        const m = guild.members.get(raw.id);
+        for (let i = 0; i < m.roles.length; i++) {
+          allRoles.set(m.roles[i], guild.roles.get(m.roles[i]));
+        }
+        raw.roles = allRoles;
+        raw.nickname = guild.members.get(raw.id).nick;
+      }
+
       raw.client = _this;
       raw.tag = `${raw.username}#${raw.discriminator}`;
       raw.presence = _this.presences.get(raw.id);
-      // raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
+      raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
       raw.createdAt = new Date(raw.createdTimestamp);
+
 
       /**
        * @description This method adds a role to the member
        * @param {RoleObject|RoleID} role The role to add to the member 
-       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       * @returns {Promise<Member>} Returns a promise and a GuildMember object
        */
 
       raw.addRole = function(role) {
@@ -25,7 +40,7 @@ module.exports = function() {
         return new Promise((res) => {
           request.req('PUT', `/guilds/${guild}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild.id));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild));
             });
         });
       };
@@ -34,7 +49,7 @@ module.exports = function() {
       /**
        * @description This method removes a role to the member
        * @param {RoleObject|RoleID} role The role to remove from the member 
-       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       * @returns {Promise<Member>} Returns a promise and a GuildMember object
        */
 
       raw.removeRole = function(role) {
@@ -44,7 +59,7 @@ module.exports = function() {
         return new Promise((res) => {
           request.req('DELETE', `/guilds/${guild}/members/${raw.id}/roles/${roleid}`, {}, _this.token)
             .then(m => {
-              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild.id));
+              setTimeout(res, 100, _this.gu_methods().fromRaw(m, raw.guild));
             });
         });
       };
@@ -53,7 +68,7 @@ module.exports = function() {
       /**
        * @description This method will ban a member
        * @param {Object} [opt = {}] The options to pass: days, number from 0-7 and reason, string      
-       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       * @returns {Promise<Member>} Returns a promise and a GuildMember object
        */
 
       raw.ban = function(opt) {
@@ -63,7 +78,7 @@ module.exports = function() {
             reason: opt.reason || ''
           }, _this.token)
             .then(m => {
-              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild.id)));
+              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild)));
             });
         });
       };
@@ -71,7 +86,7 @@ module.exports = function() {
       /**
        * @description This method will kick a member from a guild
        * @param {String} [reason = ""] The options to pass: reason, a string
-       * @returns {Promise<GuildMember>} Returns a promise and a GuildMember object
+       * @returns {Promise<Member>} Returns a promise and a GuildMember object
        */
 
       raw.kick = function(reason) {
@@ -80,7 +95,7 @@ module.exports = function() {
             reason: reason || ''
           }, _this.token)
             .then(m => {
-              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild.id)));
+              setTimeout(res, 100, res(_this.gu_methods().fromRaw(m, raw.guild)));
             });
         });
       };

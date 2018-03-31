@@ -1,25 +1,25 @@
 class Embed {
   constructor(data = {}) {
 
-    this.title = data.title;
+    this.title = data.title || null;
   
-    this.description = data.description;
+    this.description = data.description || null;
   
-    this.url = data.url;
+    this.url = data.url || null;
   
-    this.color = data.color;
+    this.color = data.color || null;
     
-    this.author = data.author;
+    this.author = data.author || null;
   
-    this.timestamp = data.timestamp;
+    this.timestamp = data.timestamp || null;
   
     this.fields = data.fields || [];
   
-    this.thumbnail = data.thumbnail;
+    this.thumbnail = data.thumbnail || null;
   
-    this.image = data.image;
+    this.image = data.image || null;
 
-    this.footer = data.footer;
+    this.footer = data.footer || null;
 
   }
 

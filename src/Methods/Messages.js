@@ -1,6 +1,7 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
 const User = require('../Classes/User');
+const Member = require('../Classes/Member');
 const Guild = require('../Classes/Guild');
 
 module.exports = function() {

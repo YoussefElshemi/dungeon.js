@@ -1,5 +1,9 @@
 const request = require('../Connection');
 
+/**
+ * This class represents an invite object
+ */
+
 class Invite {
   constructor(raw, client) {
     this.client = client;

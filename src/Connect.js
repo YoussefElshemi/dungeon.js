@@ -6,6 +6,8 @@ const Collection = require('./Classes/Collection');
 const GuildChannel = require('./Classes/GuildChannel');
 const TextChannel = require('./Classes/TextChannel');
 const VoiceChannel = require('./Classes/VoiceChannel');
+const User = require('./Classes/User');
+
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -75,7 +77,7 @@ module.exports = function(TOKEN) {
         _this.gu_methods = require('./Methods/Members');
         _this.invite_methods = require('./Methods/Invites');
         _this.user_methods = require('./Methods/Users');
-        _this.user = _this.gu_methods().fromRaw(message.d.user);
+        _this.user = new User(_this.gu_methods().fromRaw(message.d.user), _this);
         _this.ban_methods = require('./Methods/Bans');
         _this.token = _this.token;
       }
