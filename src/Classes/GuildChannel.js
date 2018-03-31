@@ -74,11 +74,8 @@ class GuildChannel {
 
         let ret;
 
-        if (this instanceof TextChannel) {
-          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
-        } else if (this instanceof VoiceChannel) {
-          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
-        }
+        if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        if (this instanceof VoiceChannel) ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
 
         setTimeout(res, 100, res(ret));
       });
@@ -101,11 +98,8 @@ class GuildChannel {
 
         let ret;
 
-        if (this instanceof TextChannel) {
-          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
-        } else if (this instanceof VoiceChannel) {
-          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
-        }
+        if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        if (this instanceof VoiceChannel) ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
 
         setTimeout(res, 100, res(ret));
       });
@@ -131,11 +125,8 @@ class GuildChannel {
 
         let ret;
 
-        if (this instanceof TextChannel) {
-          ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
-        } else if (this instanceof VoiceChannel) {
-          ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
-        }
+        if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+        if (this instanceof VoiceChannel) ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
 
         setTimeout(res, 100, res(ret));
       });
@@ -156,11 +147,8 @@ class GuildChannel {
 
           let ret;
 
-          if (this instanceof TextChannel) {
-            ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
-          } else if (this instanceof VoiceChannel) {
-            ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
-          }
+          if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+          if (this instanceof VoiceChannel) ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
 
           setTimeout(res, 100, res(ret));
         });
@@ -191,11 +179,8 @@ class GuildChannel {
 
           let ret;
 
-          if (this instanceof TextChannel) {
-            ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
-          } else if (this instanceof VoiceChannel) {
-            ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
-          }
+          if (this instanceof TextChannel) ret = new TextChannel(this.client.channel_methods().fromRaw(m), this.client);
+          if (this instanceof VoiceChannel) ret = new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client);
 
           setTimeout(res, 100, res(ret));
         });
