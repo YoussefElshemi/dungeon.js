@@ -1,5 +1,7 @@
 const request = require('../Connection');
 const Snowflake = require('../util/Snowflake');
+const TextChannel = require('./TextChannel');
+const VoiceChannel = require('./VoiceChannel');
 
 /**
  * This class represents a guild object
@@ -169,7 +171,8 @@ class Guild {
         nsfw: (type === 'text' && opt && opt.nsfw) || null,
         topic: (type === 'text' && opt && opt.topic) || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(c)));
+        if (type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(c), this.client)));
+        if (type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(c), this.client)));
       }).catch(rej);
     });
   }
@@ -232,7 +235,7 @@ class Guild {
 
   fetchMembers() {
     return new Promise((res, rej) => {
-      request.req("GET", `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
+      request.req('GET', `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
         const member_methods = members.map(i => this.client.gu_methods().fromRaw(i));
         setTimeout(res, 100, res(member_methods));
       }).catch(rej);
@@ -246,11 +249,11 @@ class Guild {
 
   fetchBans() {
     return new Promise((res, rej) => {
-      request.req("GET", `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
+      request.req('GET', `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
         const ban_methods = bans.map(i => this.client.ban_methods().fromRaw(i));
         setTimeout(res, 100, res(ban_methods, this.id));
       }).catch(rej);
-    })
+    });
   }
 
   /**
@@ -260,11 +263,11 @@ class Guild {
 
   fetchRoles() {
     return new Promise((res, rej) => {
-      request.req("GET", `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
+      request.req('GET', `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
         const role_methods = roles.map(i => this.client.role_methods().fromRaw(i));
         setTimeout(res, 100, res(role_methods));
       }).catch(rej);
-    })
+    });
   }
 
   /**
@@ -274,12 +277,12 @@ class Guild {
 
   testPrune(days) {
     return new Promise((res, rej) => {
-      request.req("GET", `/guilds/${this.id}/prune`, {
+      request.req('GET', `/guilds/${this.id}/prune`, {
         days: days
       }, this.client.token).then(gu => {
         setTimeout(res, 100, res(gu.pruned));
       }).catch(rej);
-    })
+    });
   }
 }
 

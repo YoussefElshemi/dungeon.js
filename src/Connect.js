@@ -76,7 +76,7 @@ module.exports = function(TOKEN) {
         _this.invite_methods = require('./Methods/Invites');
         _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
-        _this.ban_methods = require("./Methods/Bans");
+        _this.ban_methods = require('./Methods/Bans');
         _this.token = _this.token;
       }
 
@@ -106,8 +106,8 @@ module.exports = function(TOKEN) {
       if (t == 'CHANNEL_CREATE') {
         let chn;
         const channel = _this.channel_methods().fromRaw(message.d);
-        if (channel.type === 'text') chn = new TextChannel(item, _this);
-        if (channel.type === 'voice') chn = new VoiceChannel(item, _this);
+        if (channel.genre === 'text') chn = new TextChannel(channel, _this);
+        if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
         _this.channels.set(chn.id, chn);
 
         _(t, channel);

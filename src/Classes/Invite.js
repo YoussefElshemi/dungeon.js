@@ -1,13 +1,13 @@
 const request = require('../Connection');
 
 class Invite {
-    constructor(raw, client) {
-        this.client = client;
+  constructor(raw, client) {
+    this.client = client;
 
-        this.code = raw.code;
+    this.code = raw.code;
 
-        this.guild = raw.guild;
+    this.guild = raw.guild;
 
-        this.channel = raw.channel;
-    }
+    this.channel = raw.channel;
+  }
 }

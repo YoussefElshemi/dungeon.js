@@ -1,4 +1,5 @@
 const GuildChannel = require('./GuildChannel');
+const Message = require('./Message');
 const request = require('../Connection');
 
 /**
@@ -64,7 +65,7 @@ class TextChannel extends GuildChannel {
           embed: embed || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -75,7 +76,7 @@ class TextChannel extends GuildChannel {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 
@@ -92,7 +93,7 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('GET',`/channels/${this.id}/messages/${this.lastMessageID}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
         })
         .catch(console.log);
     });
@@ -109,7 +110,7 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
         });
     });
   }
@@ -130,7 +131,7 @@ class TextChannel extends GuildChannel {
         limit: opt.limit || null
       }, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
         });
     });
   }
@@ -147,7 +148,8 @@ class TextChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         nsfw: boolean
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const TextChannel = require('./TextChannel');
+        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
       });
     });
   }
@@ -166,7 +168,7 @@ class TextChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         topic: newtopic
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
       });
     });
   }
