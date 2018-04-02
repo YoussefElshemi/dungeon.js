@@ -1,6 +1,6 @@
 const request = require('../Connection');
 const Guild = require('../Classes/Guild');
-
+const TextChannel = require('./TextChannel');
 
 /**
  * This class represents a message object
@@ -21,7 +21,7 @@ class Message {
      * @type {TextChannel}
      */
 
-    this.channel = raw.channel;
+    this.channel = new TextChannel(raw.channel, client);
 
     /**
      * The guild the message was sent it

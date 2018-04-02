@@ -90,7 +90,7 @@ module.exports = function(TOKEN) {
           const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
           const channel = _this.channel_methods().fromRaw(item, message.d);
           if (channel.genre === 'text') chn = new TextChannel(channel, _this);
-          if (channel.genre === 'voice') chn = new VoiceChannel(item, _this);
+          if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
           if (chn) _this.channels.set(chn.id, chn);
           //if (channel.genre !== 'voice' || channel.genre !== 'text') continue;
         }
@@ -119,8 +119,7 @@ module.exports = function(TOKEN) {
         _(t, channel);
       }
       if (t == 'MESSAGE_CREATE') {
-        const mesData = _this.message_methods().fromRaw(message.d);
-        const msg = new Message(mesData, _this);
+        const msg = new Message(_this.message_methods().fromRaw(message.d), _this);
         _this.messages.set(msg.id, msg);
         _(t, msg);
       }

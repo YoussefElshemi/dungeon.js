@@ -15,7 +15,6 @@ class TextChannel extends GuildChannel {
      * This is the ID of the last message in the channel
      * @type {String}
      */
-
     this.lastMessageID = raw.last_message_id;
 
     /**
@@ -60,11 +59,10 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       if (embed) {
         request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt && opt.nonce) || false,
-          tts: (opt && opt.tts) || false,
-          embed: embed || null
+          embed: embed
         }, this.client.token)
           .then(m => {
+            const Message = require('./Message');
             setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
@@ -76,7 +74,8 @@ class TextChannel extends GuildChannel {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 

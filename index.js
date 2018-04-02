@@ -3,5 +3,6 @@ module.exports = {
   Embed: require('./src//Classes/Embed'),
   Collection: require('./src/Classes/Collection'),
   Message: require('./src/Classes/Message'),
-  Guild: require('./src/Classes/Guild')
+  Guild: require('./src/Classes/Guild'),
+  GuildChannel: require('./src/Classes/GuildChannel')
 };

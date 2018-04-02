@@ -26,7 +26,7 @@ class Guild {
 
     /**
      * A collection of all the channels in the guild
-     * @type {Collection<ID, Channel>}
+     * @type {Collection<ID, GuildChannel>}
      */
 
     this.channels = raw.channels;

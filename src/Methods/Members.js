@@ -9,7 +9,7 @@ module.exports = function() {
       raw.client = _this;
       raw.tag = `${raw.username}#${raw.discriminator}`;
       raw.presence = _this.presences.get(raw.id);
-      // raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
+      raw.createdTimestamp = Snowflake.deconstruct(raw.id).timestamp;
       raw.createdAt = new Date(raw.createdTimestamp);
 
       /**
