@@ -1,5 +1,6 @@
 const User = require('../Classes/User');
-const Message = require('../Classes/Message');
+const Message = require('./Message');
+const Guild = require('./Guild');
 const request = require('../Connection');
 
 /**
@@ -42,7 +43,7 @@ class Member {
      * @type {Guild}
      */
 
-    this.guild = raw.guild;
+    this.guild = new Guild(guild, this.client);
 
     /**
      * The nickname of the member if there is one
@@ -66,7 +67,7 @@ class Member {
     return new Promise((res) => {
       request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
         });
     });
   }
@@ -85,7 +86,7 @@ class Member {
     return new Promise((res) => {
       request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
         });
     });
   }

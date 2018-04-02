@@ -1,5 +1,6 @@
 const request = require('../Connection');
-const Guild = require('../Classes/Guild');
+const Guild = require('./Guild');
+const Member = require('./Member');
 const TextChannel = require('./TextChannel');
 
 /**
@@ -15,7 +16,6 @@ class Message {
      */
 
     this.id = raw.id;
-
     /**
      * The channel the message was sent in
      * @type {TextChannel}
@@ -42,8 +42,7 @@ class Message {
      * @type {Member}
      */
 
-    this.member = raw.member;
-
+    this.member = new Member(raw.member, new Guild(raw.guild, client), client);
     /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
      * @type {String}

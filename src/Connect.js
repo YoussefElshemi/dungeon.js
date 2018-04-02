@@ -92,7 +92,6 @@ module.exports = function(TOKEN) {
           if (channel.genre === 'text') chn = new TextChannel(channel, _this);
           if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
           if (chn) _this.channels.set(chn.id, chn);
-          //if (channel.genre !== 'voice' || channel.genre !== 'text') continue;
         }
 
         if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
