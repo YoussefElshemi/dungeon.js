@@ -46,7 +46,6 @@ class TextChannel extends GuildChannel {
 
   send(content, opt = {}) {
     if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
-
     let embed;
     if (typeof content === 'object') {
       embed = {
