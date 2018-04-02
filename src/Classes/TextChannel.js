@@ -49,11 +49,12 @@ class TextChannel extends GuildChannel {
     if (typeof content === 'object') {
       embed = {
         title: (content && content.title) || null,
-        description: (content && content.body) || null,
+        description: (content && content.description) || null,
         url: (content && content.url) || null,
         timestamp: (content && content.timestamp) || null,
         color: (content && content.color) || null,
-        //footer: {} 
+        footer: (content && content.footer) || null,
+        author: (content && content.author) || null
       };
     }
     return new Promise((res) => {

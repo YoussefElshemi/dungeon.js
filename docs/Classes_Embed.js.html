@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/TextChannel.js - Documentation</title>
+    <title>Classes/Embed.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/TextChannel.js</h1>
+    <h1 class="page-title">Classes/Embed.js</h1>
     
 
     
@@ -39,184 +39,169 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const GuildChannel = require('./GuildChannel');
-const Message = require('./Message');
-const request = require('../Connection');
-
-/**
- * This class represents a Text Channel
- * @extends {GuildChannel} 
+            <pre class="prettyprint source linenums"><code>/**
+ * This class represents an embed object
  */
 
-class TextChannel extends GuildChannel {
-  constructor(raw, client) {
-    super(raw, client);
+class Embed {
+  constructor(data = {}) {
 
     /**
-     * This is the ID of the last message in the channel
+     * The title of the embed 
      * @type {String}
      */
-    this.lastMessageID = raw.last_message_id;
+
+    this.title = data.title;
 
     /**
-     * Whether the channel is nsfw or not
-     * @type {Boolean}
-     */
-
-    this.nsfw = raw.nsfw;
-
-    /**
-     * The topic of the channel
+     * The description of the embed
      * @type {String}
+     */
+  
+    this.description = data.description;
+
+    /**
+     * The URL for the embed
+     * @type {String}
+     */
+  
+    this.url = data.url;
+
+    /**
+     * The color of the embed
+     * @type {Color}
+     */
+  
+    this.color = data.color;
+
+    /**
+     * The author of the embed
+     * @type {Object}
      */
     
-    this.topic = raw.topic;
+    this.author = data.author;
 
+    /**
+     * The timestamp of the embed
+     * @type {Date}
+     */
+  
+    this.timestamp = data.timestamp;
+
+    /**
+     * The fields of the embed
+     * @type {Array}
+     */
+  
+    this.fields = data.fields || [];
+
+    /**
+     * The thumbnail of the embed
+     * @type {String}
+     */
+  
+    this.thumbnail = data.thumbnail;
+
+    /**
+     * The image of the embed
+     * @type {String}
+     */
+  
+    this.image = data.image;
+
+    /**
+     * The footer of the embed 
+     * @type {Object}
+     */
+
+    this.footer = data.footer;
+    
   }
 
   /**
-   * @description This method will send a mssage to the channel specified
-   * @param {String|Object} content The string if it's a normal message or object if it's a richembed
-   * @param {Object} [opt = {}] The options, nonce and tts
-   * @returns {Promise&lt;Message>} Returns a promise and discord message
-   * @example
-   * msg.channel.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
-   * msg.channel.send("Hi!", {tts: true});
+   * @description This method sets the title of the embed
+   * @param {String} title The title of the embed
    */
 
-  send(content, opt = {}) {
-    if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
-    let embed;
-    if (typeof content === 'object') {
-      embed = {
-        title: (content &amp;&amp; content.title) || null,
-        description: (content &amp;&amp; content.description) || null,
-        url: (content &amp;&amp; content.url) || null,
-        timestamp: (content &amp;&amp; content.timestamp) || null,
-        color: (content &amp;&amp; content.color) || null,
-        footer: (content &amp;&amp; content.footer) || null,
-        author: (content &amp;&amp; content.author) || null
-      };
-    }
-    return new Promise((res) => {
-      if (embed) {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          embed: embed
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });  
-      } else {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt &amp;&amp; opt.nonce) || false,
-          tts: (opt &amp;&amp; opt.tts) || false,
-          content: content || null
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          }); 
-      }     
-    });
+  setTitle(title) {
+    this.title = title;
+    return this;
   }
 
   /**
-   * @description This method will get the most recent message sent
-   * @returns {Promise&lt;Message>} Returns a promise and a discord message
+   * @description This method sets the description of the embed
+   * @param {String} description The description of the embed
    */
 
-  lastMessage() {
-    return new Promise((res) => {
-      request.req('GET',`/channels/${this.id}/messages/${this.lastMessageID}`, {}, this.client.token)
-        .then(m => {
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-        })
-        .catch(console.log);
-    });
+  setDescription(description) {
+    this.description = description;
+    return this;
   }
 
   /**
-   * @description Will fetch a message if not cached
-   * @param {String} id The ID of the message
-   * @returns {Promise&lt;Message>} Returns a promise and a discord message
+   * @description This method sets the footer of the embed
+   * @param {String} footerText The footer text of the embed
+   * @param {String} [footerImage=''] The image placed in the footer
    */
 
-  getMessage(id) {
-    if (!id) throw new this.client.MissingParameter('You are missing the parameter \'snowflake\'!');
-    return new Promise((res) => {
-      request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
-        .then(m => {
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-        });
-    });
+  setFooter(footerText, footerImage = '') {
+    this.footer = { text: footerText, icon_url: footerImage };
+    return this;
   }
 
   /**
-   * @description Will fetch a group of messages if not cached
-   * @param {Array} id An array of message snowflakes
-   * @returns {Promise&lt;Message>} Returns a promise and (a) discord message(s)
+   * @description This method sets the image of the embed
+   * @param {String} image The image URL of the embed
    */
 
-  getMessages(opt = {}) {
-    if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
-    return new Promise((res) => {
-      request.req('GET', `/channels/${this.id}/messages`, {
-        around: opt.around || null,
-        before: opt.before || null,
-        after: opt.after || null,
-        limit: opt.limit || null
-      }, this.client.token)
-        .then(m => {
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-        });
-    });
+  setImage(image) {
+    this.image = image;
+    return this;
   }
-
 
   /**
-   * @description Sets the nsfw of the channel
-   * @param {Boolean} boolean Whether the channel should be nsfw or not
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   * @description This method sets the thumbnail of the embed
+   * @param {String} thumbnail The thumbnail image URL of the embed
    */
 
-  setNSFW(boolean) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        nsfw: boolean
-      }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-      });
-    });
+  setThumbnail(thumbnail) {
+    this.thumbnail = thumbnail;
+    return this;
   }
-
 
   /**
-   * @description Sets the topic of the channel
-   * @param {String} newtopic The topic of the channel
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
+   * @description This method sets the color of the embed
+   * @param {Color} color The color of the embed
    */
 
-  setTopic(newtopic) {
-    if (this.type === 'voice') throw new this.client.WrongType('This method only available on text based channels');
-
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        topic: newtopic
-      }, this.client.token).then(m => {
-        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-      });
-    });
+  setColor(color) {
+    this.color = color;
+    return this;
   }
 
+  /**
+   * @description This method sets the date of the embed
+   * @param {String} [timestamp = new Date()] The date of the embed
+   */
+
+  setTimestamp(timestamp = new Date()) {
+    this.title = timestamp;
+    return this;
+  }
+
+  /**
+   * @description This method sets the author of the embed
+   * @param {String} authorText The author text of the embed
+   * @param {String} [authorImage=''] The image placed in the author area
+   */
+
+  setAuthor(authorText, authorImage = '') {
+    this.author = { name: authorText, icon_url: authorImage };
+    return this;
+  }
 }
 
-module.exports = TextChannel;</code></pre>
+module.exports = Embed;</code></pre>
         </article>
     </section>
 
