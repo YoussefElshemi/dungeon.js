@@ -142,22 +142,22 @@ class Member {
     if (typeof content === 'object') {
       embed = {
         title: (content && content.title) || null,
-        description: (content && content.body) || null,
+        description: (content && content.description) || null,
         url: (content && content.url) || null,
         timestamp: (content && content.timestamp) || null,
         color: (content && content.color) || null,
-        //footer: {} 
+        footer: (content && content.footer) || null,
+        author: (content && content.author) || null
       };
     }
     return new Promise((res) => {
       if (embed) {
         request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt && opt.nonce) || false,
-          tts: (opt && opt.tts) || false,
-          embed: embed || null
+          embed: embed
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(new Message(m, this.client)));
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -168,7 +168,8 @@ class Member {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(new Message(m, this.client)));
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 
