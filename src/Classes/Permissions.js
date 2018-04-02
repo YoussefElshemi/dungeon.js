@@ -27,6 +27,11 @@ const permission = {
   'USE_VOICE_ACTIVITY': 33554432
 };
 
+/**
+ * This class represents permissions
+ */
+
+
 class Permissions extends Number {
   constructor(array) {
     if (array.indexOf('ADMINISTRATOR') + 1) super(8);
@@ -40,7 +45,21 @@ class Permissions extends Number {
       super(int);
     }
 
+    /**
+     * The permissions provided in the constructor
+     * @type {Array}
+     */
+
     this.permissions = array;
+  }
+
+  /**
+   * This method returns the bitfield of the permissions provided as an array in the constrcutor
+   * @returns {Number} The bitfield of the permissions
+   */
+
+  toBitField() {
+    return Number(this);
   }
 }
 
