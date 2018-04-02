@@ -46,6 +46,8 @@ class TextChannel extends GuildChannel {
 
   send(content, opt = {}) {
     if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
+    if (typeof content === 'object') throw new this.client.WrongType('Embeds currently not supported.');
+
     let embed;
     if (typeof content === 'object') {
       embed = {
