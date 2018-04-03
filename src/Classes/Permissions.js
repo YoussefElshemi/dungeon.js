@@ -34,23 +34,36 @@ const permission = {
 
 class Permissions extends Number {
   constructor(array) {
-    if (array.indexOf('ADMINISTRATOR') + 1) super(8);
-    else {
-      let int = 0;
+    if (Array.isArray(array)) {
+        if (array.indexOf('ADMINISTRATOR') + 1) super(8);
+        else {
+          let int = 0;
 
-      array.forEach(c => {
-        int += permission[c] || 0;
+          array.forEach(c => {
+            int += permission[c] || 0;
+          });
+
+          super(int);
+        }
+
+      /**
+       * The permissions provided in the constructor
+       * @type {Array}
+       */
+
+      this.permissions = array;
+    } else if (typeof array == "number") {
+      const numArr = array.toString(2).split('').reverse().map( (x, idx) => x=='1'?2**idx:false).filter(x=>x);
+      let permArr = [];
+      
+      numArr.forEach(c => {
+        permArr.push(Object.keys(permission)[Object.values(permission).indexOf(c)]);
       });
-
-      super(int);
+      
+      super(array);
+      
+      this.array = permArr;
     }
-
-    /**
-     * The permissions provided in the constructor
-     * @type {Array}
-     */
-
-    this.permissions = array;
   }
 
   /**
@@ -60,6 +73,10 @@ class Permissions extends Number {
 
   toBitField() {
     return Number(this);
+  }
+  
+  toArray() {
+    return this.array; // haha Youssef, I cheated. (ln.65)
   }
 }
 
