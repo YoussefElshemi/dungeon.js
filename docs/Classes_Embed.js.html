@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Global - Documentation</title>
+    <title>Classes/Embed.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,350 +29,181 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Classes/Embed.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        
-        </h2>
-        
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This class represents an embed object
+ */
+
+class Embed {
+  constructor(data = {}) {
+
+    /**
+     * The title of the embed 
+     * @type {String}
+     */
+
+    this.title = data.title;
+
+    /**
+     * The description of the embed
+     * @type {String}
+     */
+  
+    this.description = data.description;
+
+    /**
+     * The URL for the embed
+     * @type {String}
+     */
+  
+    this.url = data.url;
+
+    /**
+     * The color of the embed
+     * @type {Color}
+     */
+  
+    this.color = data.color;
+
+    /**
+     * The author of the embed
+     * @type {Object}
+     */
     
-</header>
+    this.author = data.author;
 
-<article>
-    <div class="container-overview">
+    /**
+     * The timestamp of the embed
+     * @type {Date}
+     */
+  
+    this.timestamp = data.timestamp;
+
+    /**
+     * The fields of the embed
+     * @type {Array}
+     */
+  
+    this.fields = data.fields || [];
+
+    /**
+     * The thumbnail of the embed
+     * @type {String}
+     */
+  
+    this.thumbnail = data.thumbnail;
+
+    /**
+     * The image of the embed
+     * @type {String}
+     */
+  
+    this.image = data.image;
+
+    /**
+     * The footer of the embed 
+     * @type {Object}
+     */
+
+    this.footer = data.footer;
     
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
-<div class="section-members">
-<h4 class="name" id="DeconstructedSnowflake">DeconstructedSnowflake</h4>
-
-
-
-
-<div class="description">
-    A deconstructed snowflake.
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Timestamp the snowflake was created</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>date</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Date</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Date the snowflake was created</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>workerID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Worker ID in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>processID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Process ID in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>increment</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Increment in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>binary</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Binary representation of the snowflake</td>
-        </tr>
-
-        
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="util_Snowflake.js.html">util/Snowflake.js</a>, <a href="util_Snowflake.js.html#line24">line 24</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>Object</code></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</div>
-
-            
-    
-
-    
-</article>
-
-</section>
+  }
+
+  /**
+   * @description This method sets the title of the embed
+   * @param {String} title The title of the embed
+   */
+
+  setTitle(title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * @description This method sets the description of the embed
+   * @param {String} description The description of the embed
+   */
+
+  setDescription(description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * @description This method sets the footer of the embed
+   * @param {String} footerText The footer text of the embed
+   * @param {String} [footerImage=''] The image placed in the footer
+   */
+
+  setFooter(footerText, footerImage = '') {
+    this.footer = { text: footerText, icon_url: footerImage };
+    return this;
+  }
+
+  /**
+   * @description This method sets the image of the embed
+   * @param {String} image The image URL of the embed
+   */
+
+  setImage(image) {
+    this.image = image;
+    return this;
+  }
+
+  /**
+   * @description This method sets the thumbnail of the embed
+   * @param {String} thumbnail The thumbnail image URL of the embed
+   */
+
+  setThumbnail(thumbnail) {
+    this.thumbnail = thumbnail;
+    return this;
+  }
+
+  /**
+   * @description This method sets the color of the embed
+   * @param {Color} color The color of the embed
+   */
+
+  setColor(color) {
+    this.color = color;
+    return this;
+  }
+
+  /**
+   * @description This method sets the date of the embed
+   * @param {String} [timestamp = new Date()] The date of the embed
+   */
+
+  setTimestamp(timestamp = new Date()) {
+    this.title = timestamp;
+    return this;
+  }
+
+  /**
+   * @description This method sets the author of the embed
+   * @param {String} authorText The author text of the embed
+   * @param {String} [authorImage=''] The image placed in the author area
+   */
+
+  setAuthor(authorText, authorImage = '') {
+    this.author = { name: authorText, icon_url: authorImage };
+    return this;
+  }
+}
+
+module.exports = Embed;</code></pre>
+        </article>
+    </section>
 
 
 

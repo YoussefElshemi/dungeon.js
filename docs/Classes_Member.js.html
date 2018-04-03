@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Global - Documentation</title>
+    <title>Classes/Member.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,350 +29,200 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Classes/Member.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        
-                
-<div class="section-members">
-<h4 class="name" id="DeconstructedSnowflake">DeconstructedSnowflake</h4>
-
-
-
-
-<div class="description">
-    A deconstructed snowflake.
-</div>
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Timestamp the snowflake was created</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>date</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Date</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Date the snowflake was created</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>workerID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Worker ID in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>processID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Process ID in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>increment</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Increment in the snowflake</td>
-        </tr>
-
-        
-
-    
-
-        <tr>
-            
-                <td class="name"><code>binary</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Binary representation of the snowflake</td>
-        </tr>
-
-        
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="util_Snowflake.js.html">util/Snowflake.js</a>, <a href="util_Snowflake.js.html#line24">line 24</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>Object</code></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</div>
-
-            
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const User = require('../Classes/User');
+const Message = require('./Message');
+const Guild = require('./Guild');
+const request = require('../Connection');
+
+/**
+ * This class represents a member object
+ */
+
+class Member {
+  constructor(raw, guild, client) {
+
+    /**
+     * The ID of the member
+     * @type {Number}
+     */
+
+    this.id = raw.id;
+
+    /**
+     * The user object of the member
+     * @type {User}
+     */
+
+    this.user = new User(raw, client);
+
+    /**
+     * The roles that the member has 
+     * @type {Collection&lt;ID, Role>}
+     */
+
+    this.roles = raw.roles;
+
+    /**
+     * The client object which is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The guild object of the member
+     * @type {Guild}
+     */
+
+    this.guild = new Guild(guild, this.client);
+
+    /**
+     * The nickname of the member if there is one
+     * @type {String}
+     */
+
+    this.nickname = raw.nickname;
+
+  }
+
+  /**
+   * @description This method adds a role to the member
+   * @param {RoleObject|RoleID} role The role to add to the member 
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  addRole(role) {
+    let roleid;
+    if (typeof role === 'string') roleid = role;
+    if (typeof role === 'object') roleid = role.id;
+    return new Promise((res) => {
+      request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
+        });
+    });
+  }
+
+
+  /**
+   * @description This method removes a role to the member
+   * @param {RoleObject|RoleID} role The role to remove from the member 
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  removeRole(role) {
+    let roleid;
+    if (typeof role === 'string') roleid = role;
+    if (typeof role === 'object') roleid = role.id;
+    return new Promise((res) => {
+      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
+        });
+    });
+  }
+
+
+  /**
+   * @description This method will ban a member
+   * @param {Object} [opt = {}] The options to pass: days, number from 0-7 and reason, string      
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  ban(opt) {
+    return new Promise((res) => {
+      request.req('PUT', `/guilds/${this.guild.id}/bans/${this.id}`, {
+        days: opt.days || 0,
+        reason: opt.reason || ''
+      }, _this.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild)));
+        });
+    });
+  }
+
+  /**
+   * @description This method will kick a member from a guild
+   * @param {String} [reason = ""] The options to pass: reason, a string
+   * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
+   */
+
+  kick(reason) {
+    return new Promise((res) => {
+      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}`, {
+        reason: reason || ''
+      }, _this.token)
+        .then(m => {
+          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+        });
+    });
+  }
+
+  /**
+   * @description This method will send a message to the member
+   * @param {String|Object} [content] The string if it's a normal message or object if it's a richembed
+   * @param {Object} [opt = {}] The options, nonce and tts
+   * @returns {Promise&lt;Message>} Returns a promise and discord message
+   * @example
+   * &lt;Member>.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+   * &lt;Member>.send("Hi!", {tts: true});
+   */
+
+  send(content, opt = {}) {
+    if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
+    let embed;
+    if (typeof content === 'object') {
+      embed = {
+        title: (content &amp;&amp; content.title) || null,
+        description: (content &amp;&amp; content.description) || null,
+        url: (content &amp;&amp; content.url) || null,
+        timestamp: (content &amp;&amp; content.timestamp) || null,
+        color: (content &amp;&amp; content.color) || null,
+        footer: (content &amp;&amp; content.footer) || null,
+        author: (content &amp;&amp; content.author) || null
+      };
+    }
+    return new Promise((res) => {
+      if (embed) {
+        request.req('POST', `/channels/${this.id}/messages`, {
+          embed: embed
+        }, this.client.token)
+          .then(m => {
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });  
+      } else {
+        request.req('POST', `/channels/${this.id}/messages`, {
+          nonce: (opt &amp;&amp; opt.nonce) || false,
+          tts: (opt &amp;&amp; opt.tts) || false,
+          content: content || null
+        }, this.client.token)
+          .then(m => {
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          }); 
+      }     
+    });
+  }
+}
+
+module.exports = Member;</code></pre>
+        </article>
+    </section>
 
 
 

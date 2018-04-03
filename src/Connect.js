@@ -92,7 +92,6 @@ module.exports = function(TOKEN) {
           if (channel.genre === 'text') chn = new TextChannel(channel, _this);
           if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
           if (chn) _this.channels.set(chn.id, chn);
-          //if (channel.genre !== 'voice' || channel.genre !== 'text') continue;
         }
 
         if (Array.from(_this.guilds.keys()).length == _this.amOfGuilds) {
@@ -119,7 +118,7 @@ module.exports = function(TOKEN) {
         _(t, channel);
       }
       if (t == 'MESSAGE_CREATE') {
-        const msg = new Message(_this.message_methods().fromRaw(message.d), _this);
+        const msg = _this.message_methods().fromRaw(message.d);
         _this.messages.set(msg.id, msg);
         _(t, msg);
       }
