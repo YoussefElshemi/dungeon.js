@@ -118,7 +118,8 @@ module.exports = function(TOKEN) {
         _(t, channel);
       }
       if (t == 'MESSAGE_CREATE') {
-        const msg = _this.message_methods().fromRaw(message.d);
+        const mesData = _this.message_methods().fromRaw(message.d);
+        const msg = new Message(mesData, _this);
         _this.messages.set(msg.id, msg);
         _(t, msg);
       }
