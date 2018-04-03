@@ -1,6 +1,9 @@
 const request = require('../Connection');
-const Guild = require('../Classes/Guild');
+const Guild = require('./Guild');
+const Member = require('./Member');
 const TextChannel = require('./TextChannel');
+const Snowflake = require('../util/Snowflake');
+
 
 /**
  * This class represents a message object
@@ -15,7 +18,6 @@ class Message {
      */
 
     this.id = raw.id;
-
     /**
      * The channel the message was sent in
      * @type {TextChannel}
@@ -42,8 +44,7 @@ class Message {
      * @type {Member}
      */
 
-    this.member = raw.member;
-
+    this.member = new Member(raw.member, new Guild(raw.guild, client), client);
     /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
      * @type {String}
@@ -64,6 +65,13 @@ class Message {
      */
 
     this.createdAt = raw.createdAt;
+
+    /**
+     * The timestamp in which the message was created at
+     * @type {Date}
+     */
+
+    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
 
     /**
      * A collection of all of the users mentioned in the message

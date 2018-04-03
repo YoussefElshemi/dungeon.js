@@ -70,8 +70,7 @@ class Guild {
      * A URL to the guild's icon
      * @type {String}
      */
-
-    this.icon = `https://cdn.discordapp.com/icons/${this.id}/${raw.icon}.png`;
+    this.iconURL = `https://cdn.discordapp.com/icons/${this.id}/${raw.icon}.png`;
 
     /**
      * The guild owner's ID
