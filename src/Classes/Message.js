@@ -2,6 +2,8 @@ const request = require('../Connection');
 const Guild = require('./Guild');
 const Member = require('./Member');
 const TextChannel = require('./TextChannel');
+const Snowflake = require('../util/Snowflake');
+
 
 /**
  * This class represents a message object
@@ -63,6 +65,13 @@ class Message {
      */
 
     this.createdAt = raw.createdAt;
+
+    /**
+     * The timestamp in which the message was created at
+     * @type {Date}
+     */
+
+    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
 
     /**
      * A collection of all of the users mentioned in the message
