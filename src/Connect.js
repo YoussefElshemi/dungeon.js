@@ -112,8 +112,8 @@ module.exports = function(TOKEN) {
         let chn;
         if (message.d.type === 0) chn = new TextChannel(message.d, _this);
         if (message.d.type === 2) chn = new VoiceChannel(message.d, _this);
-        _this.channels.delete(channel.id);
-        _(t, channel);
+        _this.channels.delete(chn.id);
+        _(t, chn);
       }
 
       if (t == 'MESSAGE_CREATE') {
