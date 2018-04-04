@@ -66,6 +66,7 @@ module.exports = function(TOKEN) {
         _this.messages = new Collection();
         _this.presences = new Collection();
         _this.message_methods = require('./Methods/Messages');
+        _this.channel_methods = require('./Methods/Channels');
         _this.guild_methods = require('./Methods/Guilds');
         _this.permission_methods = require('./Methods/Permissions');
         _this.role_methods = require('./Methods/Roles');
@@ -87,8 +88,9 @@ module.exports = function(TOKEN) {
 
         for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
           const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
-          if (item.type === 0) chn = new TextChannel(item, guild, _this);
-          if (item.type === 2) chn = new VoiceChannel(item, guild, _this);
+          const channel = _this.channel_methods().fromRaw(item, message.d);
+          if (channel.genre === 'text') chn = new TextChannel(channel, _this);
+          if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
           if (chn) _this.channels.set(chn.id, chn);
         }
 
@@ -102,20 +104,19 @@ module.exports = function(TOKEN) {
 
       if (t == 'CHANNEL_CREATE') {
         let chn;
-        if (message.d.type === 0) chn = new TextChannel(message.d, _this);
-        if (message.d.type === 2) chn = new VoiceChannel(message.d, _this);
+        const channel = _this.channel_methods().fromRaw(message.d);
+        if (channel.genre === 'text') chn = new TextChannel(channel, _this);
+        if (channel.genre === 'voice') chn = new VoiceChannel(channel, _this);
         _this.channels.set(chn.id, chn);
-        _(t, chn);
-      }
 
-      if (t == 'CHANNEL_DELETE') {
-        let chn;
-        if (message.d.type === 0) chn = new TextChannel(message.d, _this);
-        if (message.d.type === 2) chn = new VoiceChannel(message.d, _this);
-        _this.channels.delete(channel.id);
         _(t, channel);
       }
+      if (t == 'CHANNEL_DELETE') {
+        const channel = _this.channel_methods().fromRaw(message.d);
+        _this.channels.delete(channel.id);
 
+        _(t, channel);
+      }
       if (t == 'MESSAGE_CREATE') {
         const mesData = _this.message_methods().fromRaw(message.d);
         const msg = new Message(mesData, _this);

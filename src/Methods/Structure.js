@@ -11,6 +11,7 @@ class Structures {
 
 const structures = {
   Category: require('./Category'),
+  Channel: require('./Channels'),
   Emoji: require('./Emojis'),
   Guild: require('./Guilds'),
   Member: require('./Members'),

@@ -8,8 +8,8 @@ const request = require('../Connection');
  */
 
 class TextChannel extends GuildChannel {
-  constructor(raw, guild, client) {
-    super(raw, guild, client);
+  constructor(raw, client) {
+    super(raw, client);
 
     /**
      * This is the ID of the last message in the channel
@@ -149,7 +149,7 @@ class TextChannel extends GuildChannel {
         nsfw: boolean
       }, this.client.token).then(m => {
         const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
       });
     });
   }
@@ -168,8 +168,7 @@ class TextChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         topic: newtopic
       }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
       });
     });
   }

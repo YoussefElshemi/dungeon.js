@@ -1,6 +1,5 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
-const GuildChannel = require('../Classes/GuildChannel');
 
 module.exports = function() {
   const _this = this;
@@ -14,7 +13,7 @@ module.exports = function() {
       const allPresences = new Collection();
 
       for (let i = 0; i < raw.channels.length; i++) {
-        newChannels.set(raw.channels[i].id, raw.channels[i]);
+        newChannels.set(raw.channels[i].id, _this.channel_methods().fromRaw(raw.channels[i], raw));
       }
 
       raw.channels = newChannels;

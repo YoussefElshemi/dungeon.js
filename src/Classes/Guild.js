@@ -170,8 +170,8 @@ class Guild {
         nsfw: (type === 'text' && opt && opt.nsfw) || null,
         topic: (type === 'text' && opt && opt.topic) || null
       }, this.client.token).then(c => {
-        if (type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this, this.client)));
-        if (type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this, this.client)));
+        if (type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(c), this.client)));
+        if (type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(c), this.client)));
       }).catch(rej);
     });
   }

@@ -3,7 +3,7 @@ const Guild = require('./Guild');
 const Member = require('./Member');
 const TextChannel = require('./TextChannel');
 const Snowflake = require('../util/Snowflake');
-const GuildChannel = require('./GuildChannel');
+
 
 /**
  * This class represents a message object
@@ -18,13 +18,12 @@ class Message {
      */
 
     this.id = raw.id;
-
     /**
      * The channel the message was sent in
      * @type {TextChannel}
      */
 
-    this.channel = new TextChannel(client.channels.get(raw.channel_id), client.channels.get(raw.channel_id).guild, client);
+    this.channel = new TextChannel(raw.channel, client);
 
     /**
      * The guild the message was sent it
@@ -45,7 +44,7 @@ class Message {
      * @type {Member}
      */
 
-    //this.member = new Member(raw.member, new Guild(raw.guild, client), client);
+    this.member = new Member(raw.member, new Guild(raw.guild, client), client);
     /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
      * @type {String}
