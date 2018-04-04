@@ -1,5 +1,7 @@
 const Connect = require('../Connect');
 const request = require('../Connection');
+const https = require('https');
+
 /**
  * This Class is the base client for this API
  */
@@ -8,6 +10,7 @@ class Client {
   constructor(token) {
     
     /**
+     * @description The token for your client
      * @type {String}
      */
 
@@ -31,6 +34,20 @@ class Client {
     this.WrongType = require('../Errors/WrongType');
 
     this.MissingParameter = require('../Errors/MissingParameter');
+
+    /**
+     * @description An array of pings made by the client 
+     * @type {Array}
+     */
+
+    this.pings = [];
+
+    /**
+     * @description A ping for the client, an average of client#pings
+     * @type {Number}
+     */
+
+    this.latency;
   }
 
   on(event, callback) {

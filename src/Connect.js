@@ -6,6 +6,7 @@ const Collection = require('./Classes/Collection');
 const GuildChannel = require('./Classes/GuildChannel');
 const TextChannel = require('./Classes/TextChannel');
 const VoiceChannel = require('./Classes/VoiceChannel');
+const https = require('https');
 
 module.exports = function(TOKEN) {
   const _this = this;
@@ -86,31 +87,23 @@ module.exports = function(TOKEN) {
         _this.latency = 0;
         _this.ping = function ping() {
           const t1 = new Date();
-          
           return new Promise((res, rej) => {
             https.get('https://discordapp.com/api/v6/ping', r => { // not a real endpoint, but works for 404 error response.
               r.on('data' , () => {
                 const t2 = new Date();
-
+                //_this.pings.push(t2-t1);
                 _this.pings.splice(0, 0, t2 - t1);
-                
                 if (_this.pings.length == 11) _this.pings.pop();
-
-                _this.latency = Math.round((_this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);
-
-                res(_this.latency);
-                
+                _this.latency = Math.round((_this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);                
                 _('PINGED', res);
               });
-
-              r.on('error', rej);
             });
           });
-        }
+        };
         
-        setTimeout(() => {
+        setInterval(() => {
           _this.ping();
-        }, 60 * 1000)
+        }, 60000);
       }
 
       if (t == 'GUILD_CREATE') {

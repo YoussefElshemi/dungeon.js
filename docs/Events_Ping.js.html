@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classes/Client.js - Documentation</title>
+    <title>Events/Ping.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Classes/Client.js</h1>
+    <h1 class="page-title">Events/Ping.js</h1>
     
 
     
@@ -39,87 +39,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Connect = require('../Connect');
-const request = require('../Connection');
-const https = require('https');
-
-/**
- * This Class is the base client for this API
- */
-
-class Client {
-  constructor(token) {
-    
-    /**
-     * @description The token for your client
-     * @type {String}
-     */
-
-    this.token = token;
-
-    if (this.length === 0) throw new Error('The first Parameter must be a token!');
-
-    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
-
-    this.Connect = Connect;
-    this.Connect(this.token);
-
-    this._events = {};
-
-    this.amOfGuilds = 0;
-
-    this.MissingPermissions = require('../Errors/MissingPermissions');
-
-    this.DiscordAPIError = require('../Errors/DiscordAPIError');
-
-    this.WrongType = require('../Errors/WrongType');
-
-    this.MissingParameter = require('../Errors/MissingParameter');
-
-    /**
-     * @description An array of pings made by the client 
-     * @type {Array}
-     */
-
-    this.pings = [];
-
-    /**
-     * @description A ping for the client, an average of client#pings
-     * @type {Number}
-     */
-
-    this.latency;
-  }
-
-  on(event, callback) {
-    this._events[event] = callback;
-  }
-
+            <pre class="prettyprint source linenums"><code>class Ping {
   /**
-   * @description Destroys the client process
+   * This event is emitted whenever the client makes a ping to the discord api
+   * @event Client#ping
    */
-
-  destroy() {
-    process.exit();
-  }
-
-  /**
-   * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
-   */
-
-  getUser(id) {
-    return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(new User(m, this)));
-      }).catch(error => {
-        if (error.status === 403) throw new Error('Missing Permissions');
-      });        
-    });
-  }
 }
-
-module.exports = Client;</code></pre>
+  
+module.exports = Ping;</code></pre>
         </article>
     </section>
 

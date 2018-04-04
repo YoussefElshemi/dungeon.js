@@ -1,5 +1,3 @@
-const snekfetch = require('snekfetch');
-
 class Util {
   constructor() {
     throw new Error(`The ${this.constructor.name} class cannot be instantiated.`);

@@ -4,16 +4,18 @@
   "description": "A discord API wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gendocs": "jsdoc ./src/Classes/ ./src/util README.md -t ./node_modules/minami"
+    "test": "eslint fix ./",
+    "gendocs": "jsdoc -t node_modules/minami -R README.md ./src/Classes ./src/Util ./src/Events -d ./docs/"
   },
+  "contributors": [
+    "OGNovuh (https://aetherya.stream/novuh.html)"
+  ],
   "keywords": [],
   "author": "Youssef (http://doylebot.com)",
   "license": "GPL-3.0",
   "dependencies": {
-    "minami": "^1.2.3",
+    "https": "^1.0.0",
     "nekocurl": "^1.5.1",
-    "snekfetch": "^3.6.4",
     "ws": "^5.1.0"
   },
   "devDependencies": {
@@ -22,6 +24,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jsdoc": "^3.5.5"
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3"
   }
 }

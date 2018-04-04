@@ -86,7 +86,7 @@ module.exports = function() {
       };
 
       /**
-       * @description This method will send a mssage to the channel specified
+       * @description This method will send a message to the channel specified
        * @param {String|Object} [content] The string if it's a normal message or object if it's a richembed
        * @param {Object} [opt = {}] The options, nonce and tts
        * @returns {Promise<Message>} Returns a promise and discord message
