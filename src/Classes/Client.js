@@ -53,7 +53,7 @@ class Client {
   getUser(id) {
     return new Promise((res) => {
       request.req('GET', `/users/${id}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(this.gu_methods().fromRaw(m)));
+        setTimeout(res, 100, res(new User(m, this)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });        

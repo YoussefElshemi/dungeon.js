@@ -5,7 +5,7 @@ const request = require('../Connection');
  */
 
 class GuildChannel {
-  constructor(raw, client) {
+  constructor(raw, guild, client) {
 
     /**
      * The ID of the channel
@@ -33,8 +33,7 @@ class GuildChannel {
      * @type {String}
      */
 
-    this.type = raw.genre;
-
+    this.genre = ['text', 'dm', 'voice', 'group_dm', 'category'][raw.type];
     /**
      * The position of the channel on the left-hand side
      * @type {Number}
@@ -53,9 +52,7 @@ class GuildChannel {
      * The guild the channel is in
      * @type {Guild}
      */
-
-    this.guild = raw.guild;
-
+    this.guild = guild;
   }
 
   /**
@@ -72,9 +69,9 @@ class GuildChannel {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        setTimeout(res, 100, res(new GuildChannel(this.client.channel_methods().fromRaw(m), this.client)));
+        if (this.genre === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
+        if (this.genre === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
+        setTimeout(res, 100, res(new GuildChannel(m, this.client)));
       });
     });
   }
@@ -93,9 +90,9 @@ class GuildChannel {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        setTimeout(res, 100, res(new GuildChannel(this.client.channel_methods().fromRaw(m), this.client)));      
+        if (this.genre === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
+        if (this.genre === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
+        setTimeout(res, 100, res(new GuildChannel(m, this.client)));  
       });
     });
   }
@@ -117,9 +114,9 @@ class GuildChannel {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client)));
-        setTimeout(res, 100, res(new GuildChannel(this.client.channel_methods().fromRaw(m), this.client)));      
+        if (this.genre === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
+        if (this.genre === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
+        setTimeout(res, 100, res(new GuildChannel(m, this.client)));    
       });
     });
   }
@@ -136,9 +133,9 @@ class GuildChannel {
           const GuildChannel = require('./GuildChannel');
           const TextChannel = require('./TextChannel');
           const VoiceChannel = require('./VoiceChannel');
-          if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-          if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client)));
-          setTimeout(res, 100, res(new GuildChannel(this.client.channel_methods().fromRaw(m), this.client)));        
+          if (this.genre === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
+          if (this.genre === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
+          setTimeout(res, 100, res(new GuildChannel(m, this.client)));      
         });
     });
   }
@@ -165,9 +162,9 @@ class GuildChannel {
           const GuildChannel = require('./GuildChannel');
           const TextChannel = require('./TextChannel');
           const VoiceChannel = require('./VoiceChannel');
-          if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(this.client.channel_methods().fromRaw(m), this.client)));
-          if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(this.client.channel_methods().fromRaw(m), this.client)));
-          setTimeout(res, 100, res(new GuildChannel(this.client.channel_methods().fromRaw(m), this.client)));        
+          if (this.genre === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
+          if (this.genre === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
+          setTimeout(res, 100, res(new GuildChannel(m, this.client)));   
         });
     });
   }
