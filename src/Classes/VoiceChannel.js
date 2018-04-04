@@ -8,8 +8,8 @@ const Collection = require('./Collection');
  */
 
 class VoiceChannel extends GuildChannel {
-  constructor(raw, client) {
-    super(raw, client);
+  constructor(raw, guild, client) {
+    super(raw, guild, client);
 
     /**
      * The bitrate of the call
@@ -38,7 +38,8 @@ class VoiceChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         bitrate: bitrate
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const VoiceChannel = require('./VoiceChannel')
+        setTimeout(res, 100, res(new VoiceChannel(m, this.guild, this.client)));
       });
     });
   }
@@ -54,7 +55,8 @@ class VoiceChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         user_limit: Number(limit)
       }, this.client.token).then(m => {
-        setTimeout(res, 100, res(this.client.channel_methods().fromRaw(m)));
+        const VoiceChannel = require('./VoiceChannel')
+        setTimeout(res, 100, res(new VoiceChannel(m, this.guild, this.client)));
       });
     });
   }
