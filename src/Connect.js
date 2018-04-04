@@ -60,11 +60,14 @@ module.exports = function(TOKEN) {
       const t = message.t;
 
       if (t == 'READY') {
+        /* CACHE */
         _this.amOfGuilds = message.d.guilds.length;
         _this.guilds = new Collection();
         _this.channels = new Collection();
         _this.messages = new Collection();
         _this.presences = new Collection();
+        
+        /* METHODS */
         _this.message_methods = require('./Methods/Messages');
         _this.channel_methods = require('./Methods/Channels');
         _this.guild_methods = require('./Methods/Guilds');
@@ -77,8 +80,39 @@ module.exports = function(TOKEN) {
         _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
         _this.ban_methods = require('./Methods/Bans');
+        
+        /* MISC */
         _this.token = _this.token;
+        _this.pings = [];
+        _this.latency = 0;
+        _this.ping = function ping() {
+          const t1 = new Date();
+          
+          return new Promise((res, rej) => {
+            https.get('https://discordapp.com/api/v6/ping', r => { // not a real endpoint, but works for 404 error response.
+              r.on('data' , () => {
+                const t2 = new Date();
+
+                _this.pings.splice(0, 0, t2 - t1);
+                
+                if (_this.pings.length == 11) _this.pings.pop();
+
+                _this.latency = Math.round((_this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);
+
+                res(_this.latency);
+                
+                _('PINGED', res);
+              });
+
+              r.on('error', rej);
+            });
+          });
+        }
       }
+      
+      setTimeout(() => {
+        _this.ping();
+      }, 60 * 1000);
 
       if (t == 'GUILD_CREATE') {
         let chn;
