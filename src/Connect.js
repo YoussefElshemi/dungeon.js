@@ -102,8 +102,8 @@ module.exports = function(TOKEN) {
 
       if (t == 'CHANNEL_CREATE') {
         let chn;
-        if (message.d.type === 0) chn = new TextChannel(message.d, _this);
-        if (message.d.type === 2) chn = new VoiceChannel(message.d, _this);
+        if (message.d.type === 0) chn = new TextChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
+        if (message.d.type === 2) chn = new VoiceChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
         _this.channels.set(chn.id, chn);
         _(t, chn);
       }
