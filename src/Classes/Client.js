@@ -48,6 +48,55 @@ class Client {
      */
 
     this.latency;
+
+    /**
+     * @description The guilds the client is in
+     * @type {Collection<ID, Guild>}
+     */
+
+    this.guilds;
+
+    /**
+     * @description The users the client shares guilds with
+     * @type {Collection<ID, User>}
+     */
+
+    this.users;
+
+    /**
+     * @description The client's uptime in ms
+     * @type {Number}
+     */
+
+    this.uptime;
+
+    /**
+     * @description The client's user object
+     * @type {User}
+     */
+
+    this.user;
+
+    /**
+     * @description The channels the client has access to
+     * @type {Collection<ID, GuildChannel>}
+     */
+  
+    this.channels;
+
+    /**
+     * @description The messages been sent after the client logged in
+     * @type {Collection<ID, Message>}
+     */
+
+    this.messages;
+
+    /**
+     * @description The presences of each user the client shares a guild with
+     * @type {Collection<ID, Presence>}
+     */
+
+    this.presences;
   }
 
   on(event, callback) {

@@ -39,7 +39,10 @@ class TextChannel extends GuildChannel {
    * @param {Object} [opt = {}] The options, nonce and tts
    * @returns {Promise<Message>} Returns a promise and discord message
    * @example
-   * msg.channel.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+   * // Sending an embed
+   * msg.channel.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
+   * @example
+   * // Sending a tts message
    * msg.channel.send("Hi!", {tts: true});
    */
 
@@ -54,7 +57,8 @@ class TextChannel extends GuildChannel {
         timestamp: (content && content.timestamp) || null,
         color: (content && content.color) || null,
         footer: (content && content.footer) || null,
-        author: (content && content.author) || null
+        author: (content && content.author) || null,
+        fields: (content && content.fields) || null
       };
     }
     return new Promise((res) => {

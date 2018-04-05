@@ -61,6 +61,7 @@ module.exports = function(TOKEN) {
       const t = message.t;
 
       if (t == 'READY') {
+        const startdate = new Date();
         /* CACHE */
         _this.amOfGuilds = message.d.guilds.length;
         _this.guilds = new Collection();
@@ -80,8 +81,9 @@ module.exports = function(TOKEN) {
         _this.user_methods = require('./Methods/Users');
         _this.user = _this.gu_methods().fromRaw(message.d.user);
         _this.ban_methods = require('./Methods/Bans');
-        
+
         /* MISC */
+        _this.readyTime = new Date();
         _this.token = _this.token;
         _this.pings = [];
         _this.latency = 0;
@@ -91,7 +93,6 @@ module.exports = function(TOKEN) {
             https.get('https://discordapp.com/api/v6/ping', r => { // not a real endpoint, but works for 404 error response.
               r.on('data' , () => {
                 const t2 = new Date();
-                //_this.pings.push(t2-t1);
                 _this.pings.splice(0, 0, t2 - t1);
                 if (_this.pings.length == 11) _this.pings.pop();
                 _this.latency = Math.round((_this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);                
@@ -100,7 +101,12 @@ module.exports = function(TOKEN) {
             });
           });
         };
-        
+        _this.ping();
+
+        setInterval(() => {
+          _this.uptime = new Date() - _this.readyTime;
+        }, 1);
+
         setInterval(() => {
           _this.ping();
         }, 60000);

@@ -158,6 +158,28 @@ class Embed {
     this.author = { name: authorText, icon_url: authorImage };
     return this;
   }
+
+  /**
+   * @description This method adds a field to the embed
+   * @param {String} name The name of the field
+   * @param {String} value The value of the field
+   * @param {Boolean} [inline=false] Set the field to display inline
+   */
+
+  addField(name, value, inline = false) {
+    this.fields.push({ name, value, inline });
+    return this;
+  }
+
+  /**
+   * @description This method sets the URL of the embed
+   * @param {String} url the URL
+  */
+
+  setURL(url) {
+    this.url = url;
+    return this;
+  }
 }
 
 module.exports = Embed;

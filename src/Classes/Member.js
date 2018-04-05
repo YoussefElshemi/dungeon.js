@@ -133,8 +133,11 @@ class Member {
    * @param {Object} [opt = {}] The options, nonce and tts
    * @returns {Promise<Message>} Returns a promise and discord message
    * @example
-   * <Member>.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
-   * <Member>.send("Hi!", {tts: true});
+   * // Sending an embed
+   * Member.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
+   * @example
+   * // Sending a tts message
+   * Member.send("Hi!", {tts: true});
    */
 
   send(content, opt = {}) {
@@ -148,7 +151,8 @@ class Member {
         timestamp: (content && content.timestamp) || null,
         color: (content && content.color) || null,
         footer: (content && content.footer) || null,
-        author: (content && content.author) || null
+        author: (content && content.author) || null,
+        fields: (content && content.fields) || null
       };
     }
     return new Promise((res) => {

@@ -107,8 +107,11 @@ class User {
    * @param {Object} [opt = {}] The options, nonce and tts
    * @returns {Promise<Message>} Returns a promise and discord message
    * @example
-   * <UserObject>.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
-   * <UserObject>.send("Hi!", {tts: true});
+   * // Sending an embed
+   * User.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
+   * @example
+   * // Sending a tts message
+   * User.send("Hi!", {tts: true});
    */
 
   send(content, opt = {}) {
@@ -117,22 +120,23 @@ class User {
     if (typeof content === 'object') {
       embed = {
         title: (content && content.title) || null,
-        description: (content && content.body) || null,
+        description: (content && content.description) || null,
         url: (content && content.url) || null,
         timestamp: (content && content.timestamp) || null,
         color: (content && content.color) || null,
-        //footer: {} 
+        footer: (content && content.footer) || null,
+        author: (content && content.author) || null,
+        fields: (content && content.fields) || null
       };
     }
     return new Promise((res) => {
       if (embed) {
         request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt && opt.nonce) || false,
-          tts: (opt && opt.tts) || false,
-          embed: embed || null
+          embed: embed
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -143,7 +147,8 @@ class User {
           content: content || null
         }, this.client.token)
           .then(m => {
-            setTimeout(res, 100, res(this.client.message_methods().fromRaw(m)));
+            const Message = require('./Message');
+            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 

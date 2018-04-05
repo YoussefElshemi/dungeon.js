@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint fix ./",
-    "gendocs": "jsdoc -t node_modules/minami -R README.md ./src/Classes ./src/Util ./src/Events -d ./docs/"
+    "genjsondocs": "jsdoc -t node_modules/jsdoc-json -R README.md ./src/Classes ./src/Util ./src/Events -d out.json",
+    "gendocs": "jsdoc -t node_modules/minami -R README.md ./src/Classes ./src/Util ./src/Events -d ./docs/",
+    "docs": "npm run gendocs && npm run genjsondocs"
   },
   "contributors": [
     "OGNovuh (https://aetherya.stream/novuh.html)"
@@ -15,6 +17,8 @@
   "license": "GPL-3.0",
   "dependencies": {
     "https": "^1.0.0",
+    "jsdoc-json": "^2.0.2",
+    "jsdoc-vue": "^1.0.0",
     "nekocurl": "^1.5.1",
     "ws": "^5.1.0"
   },

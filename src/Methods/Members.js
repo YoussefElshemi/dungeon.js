@@ -91,7 +91,7 @@ module.exports = function() {
        * @param {Object} [opt = {}] The options, nonce and tts
        * @returns {Promise<Message>} Returns a promise and discord message
        * @example
-       * msg.channel.send({title: "Ping!", body: "This User Was Pinged!", color: 0x00AE86});
+       * msg.channel.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
        * msg.channel.send("Hi!", {tts: true});
        */
 
@@ -101,7 +101,7 @@ module.exports = function() {
         if (typeof content === 'object') {
           embed = {
             title: (content && content.title) || null,
-            description: (content && content.body) || null,
+            description: (content && content.description) || null,
             url: (content && content.url) || null,
             timestamp: (content && content.timestamp) || null,
             color: (content && content.color) || null,
