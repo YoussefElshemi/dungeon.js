@@ -1,5 +1,11 @@
 # dungeon.js
-A Discord API wrapper
+A Discord API wrapper for node.js
+
+![](https://img.shields.io/npm/dt/dungeon.js.png)
+![](https://img.shields.io/github/downloads/YoussefElshemi/dungeon.js/total.png)
+![](https://img.shields.io/npm/v/dungeon.js.png)
+
+![](https://nodei.co/npm/dungeon.js.png?downloads=true&downloadRank=true&stars=true/)
 
 ## Information
 This library was started of by one of our developers, tolopolop. After a few months of giving up, I, Youssef, decided to carry on the project along with tolopolop, I invited two new developers, Caalyx and OGNovuh, who have become a tremendous help with creating the library and make it more efficient. 
