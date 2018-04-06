@@ -12,7 +12,6 @@ module.exports = function() {
 
       if (raw.channel && raw.channel.guild) {
         raw.guild = raw.channel.guild;
-        raw.member = new Member(_this.gu_methods().fromRaw(raw.author, raw.guild), new Guild(raw.guild, _this), _this);
       }
 
       raw.user = new User(_this.gu_methods().fromRaw(raw.author, raw.guild), _this);

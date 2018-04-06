@@ -15,6 +15,7 @@ class TextChannel extends GuildChannel {
      * This is the ID of the last message in the channel
      * @type {String}
      */
+    
     this.lastMessageID = raw.last_message_id;
 
     /**

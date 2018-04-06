@@ -45,7 +45,8 @@ class Message {
      * @type {Member}
      */
 
-    //this.member = new Member(raw.member, new Guild(raw.guild, client), client);
+    this.member = new Member(this.guild.members.get(this.author.id), this.guild, client);
+
     /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
      * @type {String}
@@ -76,7 +77,7 @@ class Message {
 
     /**
      * A collection of all of the users mentioned in the message
-     * @type {Collection<ID, User>}
+     * @type {Collection}
      */
 
     this.mentionedUsers = raw.mentionedUsers;

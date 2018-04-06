@@ -26,7 +26,7 @@ class Guild {
 
     /**
      * A collection of all the channels in the guild
-     * @type {Collection<ID, GuildChannel>}
+     * @type {Collection}
      */
 
     this.channels = raw.channels;
@@ -40,28 +40,28 @@ class Guild {
 
     /**
      * A collection of all the roles in the guild
-     * @type {Collection<ID, Role>}
+     * @type {Collection}
      */
 
     this.roles = raw.roles;
 
     /**
      * A collection of all the emojis in the guild
-     * @type {Collection<ID, Emoji>}
+     * @type {Collection}
      */
 
     this.emojis = raw.emojis;
 
     /**
      * A collection of all the members in the guild
-     * @type {Collection<ID, Emoji>}
+     * @type {Collection}
      */
 
     this.members = raw.members;
 
     /**
      * A collection of all the user's presences in the guild
-     * @type {Collection<ID, Presence>}
+     * @type {Collection}
      */
 
     this.presences = raw.presences;

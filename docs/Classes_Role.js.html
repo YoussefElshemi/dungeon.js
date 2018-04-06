@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Events/ChannelAdded.js - Documentation</title>
+    <title>Classes/Role.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Events/ChannelAdded.js</h1>
+    <h1 class="page-title">Classes/Role.js</h1>
     
 
     
@@ -39,15 +39,68 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class ChannelAdded {
-  /**
-   * This event is emitted whenever a channel is created
-   * @event Client#channelAdded
-   * @param {GuildChannel} channel The channel that was created and triggered this event
-   */
+            <pre class="prettyprint source linenums"><code>const Permissions = require('./Permissions');
+
+/**
+ * This class represents a role of a member
+ */
+
+class Role {
+  constructor(raw, client) {
+
+    /**
+     * The name of the role
+     * @type {String}
+     */
+
+    this.name = raw.name;
+
+    /**
+     * The permissions of the role
+     * @type {Array}
+     */
+
+    this.permissions = new Permissions().toArray(raw.permissions);
+
+    /**
+     * If the role is managed or not
+     * @type {Boolean}
+     */
+
+    this.managed = raw.managed;
+
+    /**
+     * The position of the role
+     * @type {Number}
+     */
+
+    this.position = raw.position;
+
+    /**
+     * If the role is mentionable or not
+     * @type {Boolean}
+     */
+
+    this.mentionable = raw.mentionable;
+
+    /**
+     * If the role is hoisted or not
+     * @type {Boolean}
+     */
+
+    this.hoisted = raw.hoist;
+
+    /**
+     * The color of the role
+     * @type {Number}
+     */
+
+    this.color = raw.color;
+  }
+
 }
-  
-module.exports = ChannelAdded;</code></pre>
+
+module.exports = Role;</code></pre>
         </article>
     </section>
 

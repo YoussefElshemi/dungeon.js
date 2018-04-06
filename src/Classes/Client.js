@@ -51,14 +51,14 @@ class Client {
 
     /**
      * @description The guilds the client is in
-     * @type {Collection<ID, Guild>}
+     * @type {Collection}
      */
 
     this.guilds;
 
     /**
      * @description The users the client shares guilds with
-     * @type {Collection<ID, User>}
+     * @type {Collection}
      */
 
     this.users;
@@ -79,21 +79,21 @@ class Client {
 
     /**
      * @description The channels the client has access to
-     * @type {Collection<ID, GuildChannel>}
+     * @type {Collection}
      */
   
     this.channels;
 
     /**
      * @description The messages been sent after the client logged in
-     * @type {Collection<ID, Message>}
+     * @type {Collection}
      */
 
     this.messages;
 
     /**
      * @description The presences of each user the client shares a guild with
-     * @type {Collection<ID, Presence>}
+     * @type {Collection}
      */
 
     this.presences;

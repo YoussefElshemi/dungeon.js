@@ -2,6 +2,8 @@ const User = require('../Classes/User');
 const Message = require('./Message');
 const Guild = require('./Guild');
 const request = require('../Connection');
+const Collection = require('./Collection');
+const Role = require('./Role');
 
 /**
  * This class represents a member object
@@ -9,27 +11,32 @@ const request = require('../Connection');
 
 class Member {
   constructor(raw, guild, client) {
+    const allRoles = new Collection();
+
+    for (let i = 0; i < raw.roles.length; i++) {
+      allRoles.set(raw.roles[i], new Role(guild.roles.get(raw.roles[i]), client));
+    }
 
     /**
      * The ID of the member
      * @type {Number}
      */
 
-    this.id = raw.id;
+    this.id = raw.user.id;
 
     /**
      * The user object of the member
      * @type {User}
      */
 
-    this.user = new User(raw, client);
+    this.user = new User(raw.user, client);
 
     /**
      * The roles that the member has 
-     * @type {Collection<ID, Role>}
+     * @type {Collection}
      */
 
-    this.roles = raw.roles;
+    this.roles = allRoles;
 
     /**
      * The client object which is logged in
@@ -50,7 +57,7 @@ class Member {
      * @type {String}
      */
 
-    this.nickname = raw.nickname;
+    this.nickname = raw.nick;
 
   }
 
@@ -180,6 +187,18 @@ class Member {
           }); 
       }     
     });
+  }
+
+  /**
+   * @description This method returns a boolean if the member has a certain permission
+   * @param {String} perm The permission eg:
+   * 'ADMINISTRATOR'
+   * @returns {Boolean}
+   */
+
+  hasPermission(perm) {
+    if (this.roles.some(r => r.permissions.includes(perm))) return true;
+    else return false;
   }
 }
 
