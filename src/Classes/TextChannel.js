@@ -177,7 +177,20 @@ class TextChannel extends GuildChannel {
       });
     });
   }
-
+  
+  invite(opt) {
+    return new Promise((res) => {
+      request.req('POST', `/channels/${this.id}/invite`, {
+        max_age: opt.max_age || 86400,
+        max_uses: opt.max_uses || 0,
+        temporary: opt.temp || false,
+        unique: opt.unique || false
+      }, this.client.token).then(m => {
+        const Invite = require('./Invite.js');
+        setTimeout(res, 100, res(new Invite(m, this.client)));
+      });
+    });
+  }
 }
 
 module.exports = TextChannel;
