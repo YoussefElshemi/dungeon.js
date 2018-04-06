@@ -70,7 +70,7 @@ class User {
      * @type {Boolean}
      */
 
-    this.bot = raw.bot;
+    this.bot = raw.bot ||	false;
 
     /**
      * The timestamp the user was created at

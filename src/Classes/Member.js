@@ -13,8 +13,10 @@ class Member {
   constructor(raw, guild, client) {
     const allRoles = new Collection();
 
-    for (let i = 0; i < raw.roles.length; i++) {
-      allRoles.set(raw.roles[i], new Role(guild.roles.get(raw.roles[i]), client));
+    if (raw && raw.roles) {
+      for (let i = 0; i < raw.roles.length; i++) {
+        allRoles.set(raw.roles[i], new Role(guild.roles.get(raw.roles[i]), client));
+      }
     }
 
     /**
@@ -29,7 +31,7 @@ class Member {
      * @type {User}
      */
 
-    this.user = new User(raw.user, client);
+    this.user = new User(client.gu_methods().fromRaw(raw.user), client);
 
     /**
      * The roles that the member has 
@@ -50,7 +52,7 @@ class Member {
      * @type {Guild}
      */
 
-    this.guild = new Guild(guild, this.client);
+    this.guild = guild;
 
     /**
      * The nickname of the member if there is one
@@ -58,6 +60,48 @@ class Member {
      */
 
     this.nickname = raw.nick;
+
+    /**
+     * If the member is muted
+     * @type {Boolean}
+     */
+
+    this.mute = raw.mute;
+
+    /**
+     * If the member is deafened
+     * @type {Boolean}
+     */
+
+    this.deaf = raw.deaf;
+
+    /**
+     * The date of when the member joined the guild
+     * @type {Date}
+     */
+
+    this.joinedAt = new Date(raw.joined_at);
+
+    /**
+     * The timestamp of when the member joined the guild
+     * @type {Date}
+     */
+
+    this.joinedTimestamp = new Date(raw.joined_at).getTime();
+
+    const perms = [];
+    this.roles.forEach(r => {
+      for (let x = 0; x < r.permissions.length; x++) {
+        perms.push(r.permissions[x]);
+      }
+    });
+
+    /**
+     * The permissions of the member
+     * @type {Array}
+     */
+
+    this.permissions = perms.filter((v, i, a) => a.indexOf(v) === i); 
 
   }
 

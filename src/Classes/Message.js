@@ -4,6 +4,7 @@ const Member = require('./Member');
 const TextChannel = require('./TextChannel');
 const Snowflake = require('../util/Snowflake');
 const GuildChannel = require('./GuildChannel');
+const User = require('./User');
 
 /**
  * This class represents a message object
@@ -38,7 +39,7 @@ class Message {
      * @type {User}
      */
 
-    this.author = raw.author;
+    this.author = new User(raw.author, client);
 
     /**
      * The guild member object of the person who sent the message
