@@ -1,5 +1,5 @@
 const request = require('../Connection');
-const Snowflake = require('../Util/Snowflake');
+const Snowflake = require('../util/Snowflake');
 
 module.exports = function() {
   const _this = this;
