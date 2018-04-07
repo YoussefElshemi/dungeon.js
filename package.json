@@ -1,6 +1,6 @@
 {
   "name": "dungeon.js",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A discord API wrapper",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,6 @@
   "license": "GPL-3.0",
   "dependencies": {
     "https": "^1.0.0",
-    "jsdoc-json": "^2.0.2",
-    "jsdoc-vue": "^1.0.0",
     "nekocurl": "^1.5.1",
     "ws": "^5.1.0"
   },
@@ -29,6 +27,8 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "jsdoc": "^3.5.5",
-    "minami": "^1.2.3"
+    "minami": "^1.2.3",
+    "jsdoc-json": "^2.0.2",
+    "jsdoc-vue": "^1.0.0"
   }
 }
