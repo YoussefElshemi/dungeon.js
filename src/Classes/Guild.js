@@ -156,6 +156,11 @@ class Guild {
     * @param {String} type The type of the channel, available ones: text, dm, voice, group_dm, category
     * @param {Object} [opt={}] The options for the channel: bitrate, userLimit, permissions, parent, nsfw
     * @returns {Promise<Channel>} Returns the newly created Discord Channel
+    * @example 
+    * // Creating a text-channel
+    * guild.createChannel('general', 'text').then(c => {
+    *     c.send('Hi');
+    * })
     */
 
   createChannel(name, type, opt = {}) {
@@ -181,6 +186,11 @@ class Guild {
    * @param {String} name The name of the role
    * @param {Object} [opt={}] The options for the role: color, permissions, hoist, mentionable
    * @returns {Promise<Role>} Returns the newly created Discord Role
+   * @example 
+   * // Creating a role 
+   * guild.createRole('role').then(c => {
+   *    member.addRole(c);
+   * });
    */
 
   createRole(name, opt = {}) {

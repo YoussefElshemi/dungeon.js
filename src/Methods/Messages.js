@@ -23,8 +23,10 @@ module.exports = function() {
       raw.mentioned = raw.mentions;
       raw.mentionedUsers = new Collection();
 
-      for (let i = 0; i < raw.mentions.length; i++) {
-        raw.mentionedUsers.set(raw.mentions[i].id, raw.mentions[i]);
+      if (raw.mentions) {
+        for (let i = 0; i < raw.mentions.length; i++) {
+          raw.mentionedUsers.set(raw.mentions[i].id, raw.mentions[i]);
+        }
       }
 
       raw.mentioned = null;

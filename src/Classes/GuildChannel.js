@@ -59,6 +59,10 @@ class GuildChannel {
    * @description Sets the name of the channel
    * @param {String} newname The name of the channel
    * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
+   * @example
+   * //Naming a channel 'general'
+   * channel.setName('general')
+   * // This example is for most methods on this constructor
    */
 
   setName(newname) {
@@ -168,7 +172,19 @@ class GuildChannel {
         });
     });
   }
-  
 }
+
+/**
+ * The options for making/editing a channel
+ * @typedef {Object} ChannelOptions
+ * @property {String} [name = null] The name of the channel
+ * @property {Number} [position = null] Position of the channel 
+ * @property {String} [topic = null] The topic of the channel (textchannel only)
+ * @property {Boolean} [nsfw = null] If the channel is NSFW or not (textchannel only)
+ * @property {Number} [bitrate = null] The bitrate of the channel (voicechannel only)
+ * @property {Number} [userlimit = null] The user limit of the channel (voicechannel only)
+ * @property {String} [parent = null] The parent channel's ID of the channel
+ */
+
 
 module.exports = GuildChannel;

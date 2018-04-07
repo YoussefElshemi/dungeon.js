@@ -6,7 +6,7 @@ class Util {
   /**
    * Transforms a snowflake from a decimal string to a bit string.
    * @param {Snowflake} num Snowflake to be transformed
-   * @returns {string}
+   * @returns {String}
    * @private
    */
   static idToBinary(num) {
@@ -26,7 +26,7 @@ class Util {
 
   /**
    * Transforms a snowflake from a bit string to a decimal string.
-   * @param {string} num Bit string to be transformed
+   * @param {String} num Bit string to be transformed
    * @returns {Snowflake}
    * @private
    */

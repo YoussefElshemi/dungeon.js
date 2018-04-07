@@ -1,5 +1,5 @@
 /**
- * A Map with additional utility methods. This is used throughout discord.js rather than Arrays for anything that has
+ * A Map with additional utility methods. This is used throughout dungeon.js rather than Arrays for anything that has
  * an ID, for significantly improved performance and ease-of-use.
  * @extends {Map}
  */
@@ -62,7 +62,7 @@ class Collection extends Map {
   
   /**
      * Obtains the first value(s) in this collection.
-     * @param {number} [amount] Amount of values to obtain from the beginning
+     * @param {Number} [amount] Amount of values to obtain from the beginning
      * @returns {*|Array<*>} A single value if no amount is provided or an array of values, starting from the end if
      * amount is negative
      */
@@ -78,7 +78,7 @@ class Collection extends Map {
   
   /**
      * Obtains the first key(s) in this collection.
-     * @param {number} [amount] Amount of keys to obtain from the beginning
+     * @param {Number} [amount] Amount of keys to obtain from the beginning
      * @returns {*|Array<*>} A single key if no amount is provided or an array of keys, starting from the end if
      * amount is negative
      */
@@ -95,7 +95,7 @@ class Collection extends Map {
   /**
      * Obtains the last value(s) in this collection. This relies on {@link Collection#array}, and thus the caching
      * mechanism applies here as well.
-     * @param {number} [amount] Amount of values to obtain from the end
+     * @param {Number} [amount] Amount of values to obtain from the end
      * @returns {*|Array<*>} A single value if no amount is provided or an array of values, starting from the end if
      * amount is negative
      */
@@ -110,7 +110,7 @@ class Collection extends Map {
   /**
      * Obtains the last key(s) in this collection. This relies on {@link Collection#keyArray}, and thus the caching
      * mechanism applies here as well.
-     * @param {number} [amount] Amount of keys to obtain from the end
+     * @param {Number} [amount] Amount of keys to obtain from the end
      * @returns {*|Array<*>} A single key if no amount is provided or an array of keys, starting from the end if
      * amount is negative
      */
@@ -125,7 +125,7 @@ class Collection extends Map {
   /**
      * Obtains random value(s) from this collection. This relies on {@link Collection#array}, and thus the caching
      * mechanism applies here as well.
-     * @param {number} [amount] Amount of values to obtain randomly
+     * @param {Number} [amount] Amount of values to obtain randomly
      * @returns {*|Array<*>} A single value if no amount is provided or an array of values
      */
   random(amount) {
@@ -141,7 +141,7 @@ class Collection extends Map {
   /**
      * Obtains random key(s) from this collection. This relies on {@link Collection#keyArray}, and thus the caching
      * mechanism applies here as well.
-     * @param {number} [amount] Amount of keys to obtain randomly
+     * @param {Number} [amount] Amount of keys to obtain randomly
      * @returns {*|Array<*>} A single key if no amount is provided or an array
      */
   randomKey(amount) {
@@ -157,7 +157,7 @@ class Collection extends Map {
   /**
      * Searches for all items where their specified property's value is identical to the given value
      * (`item[prop] === value`).
-     * @param {string} prop The property to test against
+     * @param {String} prop The property to test against
      * @param {*} value The expected value
      * @returns {Array}
      * @example
@@ -177,7 +177,7 @@ class Collection extends Map {
      * Searches for a single item where its specified property's value is identical to the given value
      * (`item[prop] === value`), or the given function returns a truthy value. In the latter case, this is identical to
      * [Array.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find).
-     * <warn>All collections used in Discord.js are mapped using their `id` property, and if you want to find by id you
+     * <warn>All collections used in dungeon.js are mapped using their `id` property, and if you want to find by id you
      * should use the `get` method. See
      * [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get) for details.</warn>
      * @param {string|Function} propOrFn The property to test against, or the function to test with

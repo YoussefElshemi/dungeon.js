@@ -197,6 +197,37 @@ class Message {
   }
 
   /**
+   * @description Remove a certain reaction of a certain user
+   * @param {User} user The user whos reaction you want to remove
+   * @param {String} reaction The emoji you want to remove
+   */
+
+  removeReaction(user, reaction) {
+    return new Promise((res) => {
+      request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
+        setTimeout(res, 100, res(m));
+      }).catch(error => {
+        if (error.status === 403) throw new Error('Missing Permissions');
+      });
+    });
+  }
+
+  /**
+   * @description This method will clear all reactions on a message
+   */
+
+  clearReactions() {
+    return new Promise((res) => {
+      request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions`, {}, this.client.token).then(m => {
+        setTimeout(res, 100, res(m));
+      }).catch(error => {
+        if (error.status === 403) throw new Error('Missing Permissions');
+      });
+    });
+  }
+
+
+  /**
     * @description This method checks if a user is mentioned
     * @param {String} id The id of the user to be checked
     * @returns {Boolean} If the id given belonged to a mentioned user, it will return true, vice versa

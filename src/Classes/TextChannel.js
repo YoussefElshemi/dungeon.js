@@ -37,7 +37,7 @@ class TextChannel extends GuildChannel {
   /**
    * @description This method will send a message to the channel specified
    * @param {String|Object} content The string if it's a normal message or object if it's a richembed
-   * @param {Object} [opt = {}] The options, nonce and tts
+   * @param {Object} [opt = {}] The options, nonce and tts {@link MessageOptions}
    * @returns {Promise<Message>} Returns a promise and discord message
    * @example
    * // Sending an embed
@@ -98,6 +98,7 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('GET',`/channels/${this.id}/messages/${this.lastMessageID}`, {}, this.client.token)
         .then(m => {
+          const Message = require('./Message');
           setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
         })
         .catch(console.log);
@@ -122,11 +123,11 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Will fetch a group of messages if not cached
-   * @param {Array} id An array of message snowflakes
+   * @param {Object} opt The options: around, before, after and limit
    * @returns {Promise<Message>} Returns a promise and (a) discord message(s)
    */
 
-  getMessages(opt = {}) {
+  getMessages(opt) {
     if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/messages`, {
@@ -136,7 +137,12 @@ class TextChannel extends GuildChannel {
         limit: opt.limit || null
       }, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+          const messages = [];
+          const Message = require('./Message');
+          for (var i = 0; i < m.length; i++) {
+            messages.push(new Message(this.client.message_methods().fromRaw(m[i]), this.client));
+          }
+          setTimeout(res, 100, res(messages));
         });
     });
   }
@@ -178,12 +184,18 @@ class TextChannel extends GuildChannel {
       });
     });
   }
+
+  /**
+   * @description This method will create an invite on the certain channel
+   * @param {Object} opt The options: maxAge, maxUses, temp and unique
+   * @returns {Promise<Invite>} Returns a promise and an invite
+   */
   
   invite(opt) {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.id}/invite`, {
-        max_age: opt.max_age || 86400,
-        max_uses: opt.max_uses || 0,
+        max_age: opt.maxAge || 86400,
+        max_uses: opt.maxUses || 0,
         temporary: opt.temp || false,
         unique: opt.unique || false
       }, this.client.token).then(m => {
@@ -192,6 +204,29 @@ class TextChannel extends GuildChannel {
       });
     });
   }
+
+  /**
+   * @description This method will bulk delete messages 
+   * @param {Number} number The number of messages to delete
+   */
+
+  bulkDelete(number) {
+    this.getMessages({ limit: number}).then(c => {
+      const array = c.map(c => c.id);
+      return new Promise((res) => {
+        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token).then(d => {
+          setTimeout(res, 100, res(d));
+        });
+      });
+    });
+  }
 }
+
+/**
+ * The options for sending/editting a message
+ * @typedef {Object} MessageOptions
+ * @property {Boolean} [tts = false] Whether the message should be sent as TTS or not
+ * @property {String} [nonce = ''] The nonce for the message
+ */
 
 module.exports = TextChannel;

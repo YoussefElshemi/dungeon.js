@@ -24,12 +24,12 @@ class SnowflakeUtil {
   /**
    * A deconstructed snowflake.
    * @typedef {Object} DeconstructedSnowflake
-   * @property {number} timestamp Timestamp the snowflake was created
+   * @property {Number} timestamp Timestamp the snowflake was created
    * @property {Date} date Date the snowflake was created
-   * @property {number} workerID Worker ID in the snowflake
-   * @property {number} processID Process ID in the snowflake
-   * @property {number} increment Increment in the snowflake
-   * @property {string} binary Binary representation of the snowflake
+   * @property {Number} workerID Worker ID in the snowflake
+   * @property {Number} processID Process ID in the snowflake
+   * @property {Number} increment Increment in the snowflake
+   * @property {String} binary Binary representation of the snowflake
    */
 
   /**

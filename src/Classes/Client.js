@@ -16,12 +16,16 @@ class Client {
 
     this.token = token;
 
-    if (this.length === 0) throw new Error('The first Parameter must be a token!');
+    if (this.token && typeof this.token !== 'string') throw new Error('Token must be a string!');
 
-    if (typeof this.token !== 'string') throw new Error('Token must be a string!');
+    /**
+     * @description This method will log the client user in
+     * @param {String} token The client's token
+     */
 
-    this.Connect = Connect;
-    this.Connect(this.token);
+    this.connect = Connect;
+
+    this.connect(this.token);
 
     this._events = {};
 
@@ -114,6 +118,11 @@ class Client {
   /**
    * @description If a user isn't cached, this will fetch the user object
    * @param {String} id The ID of the user to fetch;
+   * @example 
+   * // Fetching a user
+   * client.getUser('id').then(c => {
+   *    c.send('Test!');
+   * })
    */
 
   getUser(id) {

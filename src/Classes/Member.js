@@ -19,89 +19,92 @@ class Member {
       }
     }
 
-    /**
-     * The ID of the member
-     * @type {Number}
-     */
+    if (raw && raw.user) {
 
-    this.id = raw.user.id;
+      /**
+       * The ID of the member
+       * @type {Number}
+       */
 
-    /**
-     * The user object of the member
-     * @type {User}
-     */
+      this.id = raw.user.id;
 
-    this.user = new User(client.gu_methods().fromRaw(raw.user), client);
+      /**
+       * The user object of the member
+       * @type {User}
+       */
 
-    /**
-     * The roles that the member has 
-     * @type {Collection}
-     */
+      this.user = new User(client.gu_methods().fromRaw(raw.user), client);
 
-    this.roles = allRoles;
+      /**
+       * The roles that the member has 
+       * @type {Collection}
+       */
 
-    /**
-     * The client object which is logged in
-     * @type {Client}
-     */
+      this.roles = allRoles;
 
-    this.client = client;
+      /**
+       * The client object which is logged in
+       * @type {Client}
+       */
 
-    /**
-     * The guild object of the member
-     * @type {Guild}
-     */
+      this.client = client;
 
-    this.guild = guild;
+      /**
+       * The guild object of the member
+       * @type {Guild}
+       */
 
-    /**
-     * The nickname of the member if there is one
-     * @type {String}
-     */
+      this.guild = guild;
 
-    this.nickname = raw.nick;
+      /**
+       * The nickname of the member if there is one
+       * @type {String}
+       */
 
-    /**
-     * If the member is muted
-     * @type {Boolean}
-     */
+      this.nickname = raw.nick;
 
-    this.mute = raw.mute;
+      /**
+       * If the member is muted
+       * @type {Boolean}
+       */
 
-    /**
-     * If the member is deafened
-     * @type {Boolean}
-     */
+      this.mute = raw.mute;
 
-    this.deaf = raw.deaf;
+      /**
+       * If the member is deafened
+       * @type {Boolean}
+       */
 
-    /**
-     * The date of when the member joined the guild
-     * @type {Date}
-     */
+      this.deaf = raw.deaf;
 
-    this.joinedAt = new Date(raw.joined_at);
+      /**
+       * The date of when the member joined the guild
+       * @type {Date}
+       */
 
-    /**
-     * The timestamp of when the member joined the guild
-     * @type {Date}
-     */
+      this.joinedAt = new Date(raw.joined_at);
 
-    this.joinedTimestamp = new Date(raw.joined_at).getTime();
+      /**
+       * The timestamp of when the member joined the guild
+       * @type {Date}
+       */
 
-    const perms = [];
-    this.roles.forEach(r => {
-      for (let x = 0; x < r.permissions.length; x++) {
-        perms.push(r.permissions[x]);
-      }
-    });
+      this.joinedTimestamp = new Date(raw.joined_at).getTime();
 
-    /**
-     * The permissions of the member
-     * @type {Array}
-     */
+      const perms = [];
+      this.roles.forEach(r => {
+        for (let x = 0; x < r.permissions.length; x++) {
+          perms.push(r.permissions[x]);
+        }
+      });
 
-    this.permissions = perms.filter((v, i, a) => a.indexOf(v) === i); 
+      /**
+       * The permissions of the member
+       * @type {Array}
+       */
+
+      this.permissions = perms.filter((v, i, a) => a.indexOf(v) === i); 
+    }
 
   }
 
