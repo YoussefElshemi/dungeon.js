@@ -7922,7 +7922,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#event:channelAdded",
+      "longname": "Client#channelAdded",
       "scope": "instance",
       "___id": "T000002R000555",
       "___s": true
@@ -7951,7 +7951,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#event:channelRemoved",
+      "longname": "Client#channelRemoved",
       "scope": "instance",
       "___id": "T000002R000558",
       "___s": true
@@ -7980,7 +7980,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#event:message",
+      "longname": "Client#message",
       "scope": "instance",
       "___id": "T000002R000561",
       "___s": true
@@ -7998,7 +7998,7 @@
       "kind": "event",
       "name": "ping",
       "memberof": "Client",
-      "longname": "Client#event:ping",
+      "longname": "Client#ping",
       "scope": "instance",
       "___id": "T000002R000564",
       "___s": true
@@ -8016,7 +8016,7 @@
       "kind": "event",
       "name": "ready",
       "memberof": "Client",
-      "longname": "Client#event:ready",
+      "longname": "Client#ready",
       "scope": "instance",
       "___id": "T000002R000567",
       "___s": true
