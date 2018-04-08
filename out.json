@@ -2685,7 +2685,7 @@
       "meta": {
         "range": [
           234,
-          8498
+          8507
         ],
         "filename": "Guild.js",
         "lineno": 10,
@@ -3739,11 +3739,11 @@
       "___s": true
     },
     {
-      "comment": "/**\n   * @description Fetchs the guilds audit log\n   * @param opt The optiosn for getting the audit logs {@link AuditOptions}\n   */",
+      "comment": "/**\n   * @description Fetchs the guilds audit log\n   * @param {Object} opt The options for getting the audit logs {@link AuditOptions}\n   */",
       "meta": {
         "range": [
-          8111,
-          8496
+          8120,
+          8505
         ],
         "filename": "Guild.js",
         "lineno": 302,
@@ -3764,7 +3764,12 @@
       "description": "Fetchs the guilds audit log",
       "params": [
         {
-          "description": "The optiosn for getting the audit logs {@link AuditOptions}",
+          "type": {
+            "names": [
+              "Object"
+            ]
+          },
+          "description": "The options for getting the audit logs {@link AuditOptions}",
           "name": "opt"
         }
       ],
@@ -3781,7 +3786,7 @@
       "meta": {
         "range": [
           95,
-          6003
+          6004
         ],
         "filename": "GuildChannel.js",
         "lineno": 7,
@@ -3943,11 +3948,11 @@
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          697,
-          725
+          698,
+          726
         ],
         "filename": "GuildChannel.js",
-        "lineno": 42,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -3976,11 +3981,11 @@
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          818,
-          872
+          819,
+          873
         ],
         "filename": "GuildChannel.js",
-        "lineno": 49,
+        "lineno": 50,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4009,11 +4014,11 @@
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          951,
-          969
+          952,
+          970
         ],
         "filename": "GuildChannel.js",
-        "lineno": 55,
+        "lineno": 56,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4042,11 +4047,11 @@
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1308,
-          1938
+          1309,
+          1939
         ],
         "filename": "GuildChannel.js",
-        "lineno": 68,
+        "lineno": 69,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4098,11 +4103,11 @@
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2140,
-          2790
+          2141,
+          2791
         ],
         "filename": "GuildChannel.js",
-        "lineno": 89,
+        "lineno": 90,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4151,11 +4156,11 @@
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3006,
-          3785
+          3007,
+          3786
         ],
         "filename": "GuildChannel.js",
-        "lineno": 110,
+        "lineno": 111,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4204,11 +4209,11 @@
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3926,
-          4549
+          3927,
+          4550
         ],
         "filename": "GuildChannel.js",
-        "lineno": 133,
+        "lineno": 134,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4245,11 +4250,11 @@
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4812,
-          6001
+          4813,
+          6002
         ],
         "filename": "GuildChannel.js",
-        "lineno": 153,
+        "lineno": 154,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -4298,7 +4303,7 @@
       "comment": "/**\n * The options for making/editing a channel\n * @typedef {Object} ChannelOptions\n * @property {String} [name = null] The name of the channel\n * @property {Number} [position = null] Position of the channel \n * @property {String} [topic = null] The topic of the channel (textchannel only)\n * @property {Boolean} [nsfw = null] If the channel is NSFW or not (textchannel only)\n * @property {Number} [bitrate = null] The bitrate of the channel (voicechannel only)\n * @property {Number} [userlimit = null] The user limit of the channel (voicechannel only)\n * @property {String} [parent = null] The parent channel's ID of the channel\n */",
       "meta": {
         "filename": "GuildChannel.js",
-        "lineno": 177,
+        "lineno": 178,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {}
@@ -8299,11 +8304,11 @@
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          697,
-          725
+          698,
+          726
         ],
         "filename": "GuildChannel.js",
-        "lineno": 42,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8334,11 +8339,11 @@
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          818,
-          872
+          819,
+          873
         ],
         "filename": "GuildChannel.js",
-        "lineno": 49,
+        "lineno": 50,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8369,11 +8374,11 @@
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          951,
-          969
+          952,
+          970
         ],
         "filename": "GuildChannel.js",
-        "lineno": 55,
+        "lineno": 56,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8404,11 +8409,11 @@
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1308,
-          1938
+          1309,
+          1939
         ],
         "filename": "GuildChannel.js",
-        "lineno": 68,
+        "lineno": 69,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8462,11 +8467,11 @@
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2140,
-          2790
+          2141,
+          2791
         ],
         "filename": "GuildChannel.js",
-        "lineno": 89,
+        "lineno": 90,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8517,11 +8522,11 @@
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3006,
-          3785
+          3007,
+          3786
         ],
         "filename": "GuildChannel.js",
-        "lineno": 110,
+        "lineno": 111,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8572,11 +8577,11 @@
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3926,
-          4549
+          3927,
+          4550
         ],
         "filename": "GuildChannel.js",
-        "lineno": 133,
+        "lineno": 134,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8615,11 +8620,11 @@
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4812,
-          6001
+          4813,
+          6002
         ],
         "filename": "GuildChannel.js",
-        "lineno": 153,
+        "lineno": 154,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8810,11 +8815,11 @@
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          697,
-          725
+          698,
+          726
         ],
         "filename": "GuildChannel.js",
-        "lineno": 42,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8845,11 +8850,11 @@
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          818,
-          872
+          819,
+          873
         ],
         "filename": "GuildChannel.js",
-        "lineno": 49,
+        "lineno": 50,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8880,11 +8885,11 @@
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          951,
-          969
+          952,
+          970
         ],
         "filename": "GuildChannel.js",
-        "lineno": 55,
+        "lineno": 56,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8915,11 +8920,11 @@
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1308,
-          1938
+          1309,
+          1939
         ],
         "filename": "GuildChannel.js",
-        "lineno": 68,
+        "lineno": 69,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -8973,11 +8978,11 @@
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2140,
-          2790
+          2141,
+          2791
         ],
         "filename": "GuildChannel.js",
-        "lineno": 89,
+        "lineno": 90,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -9028,11 +9033,11 @@
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3006,
-          3785
+          3007,
+          3786
         ],
         "filename": "GuildChannel.js",
-        "lineno": 110,
+        "lineno": 111,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -9083,11 +9088,11 @@
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3926,
-          4549
+          3927,
+          4550
         ],
         "filename": "GuildChannel.js",
-        "lineno": 133,
+        "lineno": 134,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
@@ -9126,11 +9131,11 @@
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4812,
-          6001
+          4813,
+          6002
         ],
         "filename": "GuildChannel.js",
-        "lineno": 153,
+        "lineno": 154,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {

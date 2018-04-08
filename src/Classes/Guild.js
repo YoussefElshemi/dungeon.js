@@ -296,7 +296,7 @@ class Guild {
 
   /**
    * @description Fetchs the guilds audit log
-   * @param opt The optiosn for getting the audit logs {@link AuditOptions}
+   * @param {Object} opt The options for getting the audit logs {@link AuditOptions}
    */
 
   getAuditLogs(opt = {}) {
