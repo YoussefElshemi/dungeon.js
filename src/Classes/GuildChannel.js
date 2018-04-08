@@ -34,6 +34,7 @@ class GuildChannel {
      */
 
     this.genre = ['text', 'dm', 'voice', 'group_dm', 'category'][raw.type];
+
     /**
      * The position of the channel on the left-hand side
      * @type {Number}

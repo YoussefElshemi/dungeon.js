@@ -293,6 +293,33 @@ class Guild {
       }).catch(rej);
     });
   }
+
+  /**
+   * @description Fetchs the guilds audit log
+   * @param opt The optiosn for getting the audit logs {@link AuditOptions}
+   */
+
+  getAuditLogs(opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/audit-logs`, {
+        user_id: opt.target || null,
+        action_type: opt.actionType || null,
+        before: opt.before || null,
+        limit: opt.limit || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      }).catch(rej);
+    });
+  }
 }
 
 module.exports = Guild;
+
+/**
+ * The options for fetching audit logs
+ * @typedef {Object} AuditOptions
+ * @property {String} [target = null] The target's id (the user that the action was performed on)
+ * @property {Number} [actionType = null] The action type {@see https://discordapp.com/developers/docs/resources/audit-log#DOCS_AUDIT_LOG/audit-log-entry-object-audit-log-events}
+ * @property {String} [before = null] Filter the log before a certain entry ID
+ * @property {Number} [limit = null] How many entries are returned (default 50, minimum 1, maximum 100)
+ */
