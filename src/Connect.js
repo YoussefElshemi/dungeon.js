@@ -59,6 +59,7 @@ module.exports = function(TOKEN) {
     }
     if (message.op == 0) {
       const t = message.t;
+      _('RAW', message);
 
       if (t == 'READY') {
         const startdate = new Date();
@@ -154,6 +155,12 @@ module.exports = function(TOKEN) {
         const msg = new Message(mesData, _this);
         _this.messages.set(msg.id, msg);
         _(t, msg);
+      }
+
+      if (t == 'MESSAGE_REACTION_ADD') {
+        const reaction = message.d.emoji;
+        const user = _this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
+        _(t, [reaction, user]);
       }
     }
   });

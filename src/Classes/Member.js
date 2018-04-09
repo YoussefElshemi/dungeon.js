@@ -237,14 +237,38 @@ class Member {
   }
 
   /**
-   * @description This method returns a boolean if the member has a certain permission
-   * @param {String} perm The permission eg:
-   * 'ADMINISTRATOR'
-   * @returns {Boolean}
+   * @description This method checks whether a member has a single permission
+   * @param {String} perm The permission
+   * @returns {Boolean} True if the member has the permission, else it's false
+   * @example 
+   * // If the member is an admin
+   * member.hasPermission('ADMINISTRATOR');
+   * // If the member does, it'll return true else, it'll return false
    */
 
   hasPermission(perm) {
+    if (this.id === this.guild.ownerID) return true;
     if (this.roles.some(r => r.permissions.includes(perm))) return true;
+    else return false;
+  }
+
+  /**
+   * @description This method checks whether a member has multiple permissions
+   * @param {Array} perms The array of permissions
+   * @returns {Boolean} True if the member has the permissions, else it's false
+   * @example 
+   * // If the member can send messages and manage messages
+   * member.hasPermissions(['SEND_MESSAGES', 'MANAGE_MESSAGES']);
+   * // If the member does, it'll return true else, it'll return false
+   */
+
+  hasPermissions(perms) {
+    if (this.id === this.guild.ownerID) return true;
+    const perm = [];
+    for (let i = 0; i < perms.length; i++) {
+      if (this.roles.some(r => r.permissions.includes(perms[i]))) perm.push(perms.length);
+    }
+    if (perm && perm.length && perm.length > 0) return true;
     else return false;
   }
 }

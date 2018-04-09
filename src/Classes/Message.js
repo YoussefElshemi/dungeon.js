@@ -46,7 +46,7 @@ class Message {
      * @type {Member}
      */
 
-    this.member = new Member(this.guild.members.get(this.author.id), this.guild, client);
+    this.member = this.guild.members.get(this.author.id);
 
     /**
      * The clean content of the message which replaces <@id> to @Youssef#0001 for example
