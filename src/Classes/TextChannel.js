@@ -193,14 +193,15 @@ class TextChannel extends GuildChannel {
   
   invite(opt) {
     return new Promise((res) => {
-      request.req('POST', `/channels/${this.id}/invite`, {
-        max_age: opt.maxAge || 86400,
-        max_uses: opt.maxUses || 0,
-        temporary: opt.temp || false,
-        unique: opt.unique || false
+      request.req('POST', `/channels/${this.id}/invites`, {
+        max_age: (opt && opt.maxAge) || 86400,
+        max_uses: (opt && opt.maxUses)  || 0,
+        temporary: (opt && opt.temp) || false,
+        unique: (opt && opt.unique) || false
       }, this.client.token).then(m => {
         const Invite = require('./Invite.js');
         setTimeout(res, 100, res(new Invite(m, this.client)));
+        //setTimeout(res, 100, res(m));
       });
     });
   }

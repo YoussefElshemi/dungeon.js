@@ -22,10 +22,11 @@ module.exports = function() {
       raw.createdAt = new Date(raw.timestamp).toLocaleString();
       raw.mentioned = raw.mentions;
       raw.mentionedUsers = new Collection();
-
+      raw.mentionedMembers = new Collection();
       if (raw.mentions) {
         for (let i = 0; i < raw.mentions.length; i++) {
-          raw.mentionedUsers.set(raw.mentions[i].id, raw.mentions[i]);
+          raw.mentionedMembers.set(raw.mentions[i].id, raw.channel.guild.members.get(raw.mentions[i].id));
+          raw.mentionedUsers.set(raw.mentions[i].id, new User(raw.mentions[i], _this));
         }
       }
 

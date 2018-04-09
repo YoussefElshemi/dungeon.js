@@ -13,7 +13,7 @@ class User {
      * @type {Client}
      */
 
-    this.client = raw.client;
+    this.client = client;
 
     /**
      * The ID of the user

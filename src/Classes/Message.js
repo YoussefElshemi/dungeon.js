@@ -82,6 +82,13 @@ class Message {
      */
 
     this.mentionedUsers = raw.mentionedUsers;
+
+    /**
+     * A collection of all of the members mentioned in the message
+     * @type {Collection}
+     */
+
+    this.mentionedMembers = raw.mentionedMembers;
     
 
     /**

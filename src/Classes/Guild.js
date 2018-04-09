@@ -107,13 +107,6 @@ class Guild {
     this.systemChannel = this.channels.get(raw.system_channel_id);
 
     /**
-     * The date the guild was created at
-     * @type {Date}
-     */
-
-    //this.createdAt = new Date(this.joined_at).toLocaleString();
-
-    /**
      * Whether the guild is considered large by the Discord API
      * @type {Boolean}
      */
