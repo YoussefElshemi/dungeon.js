@@ -1776,6 +1776,392 @@
       "___s": true
     },
     {
+      "comment": "/**\n * This class represents a DM Channel object\n */",
+      "meta": {
+        "range": [
+          131,
+          4900
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 8,
+        "columnno": 0,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001495",
+          "name": "DMChannel",
+          "type": "ClassDeclaration",
+          "paramnames": [
+            "raw",
+            "client"
+          ]
+        }
+      },
+      "classdesc": "This class represents a DM Channel object",
+      "name": "DMChannel",
+      "longname": "DMChannel",
+      "kind": "class",
+      "scope": "global",
+      "params": [],
+      "___id": "T000002R000120",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
+      "meta": {
+        "range": [
+          249,
+          265
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 16,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001505",
+          "name": "this.type",
+          "type": "Literal",
+          "value": "dm",
+          "paramnames": []
+        }
+      },
+      "description": "The type of channel",
+      "type": {
+        "names": [
+          "String"
+        ]
+      },
+      "name": "type",
+      "longname": "DMChannel#type",
+      "kind": "member",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000122",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The client object which is logged in\n     * @type {Client}\n     */",
+      "meta": {
+        "range": [
+          355,
+          375
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 23,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001511",
+          "name": "this.client",
+          "type": "Identifier",
+          "value": "client",
+          "paramnames": []
+        }
+      },
+      "description": "The client object which is logged in",
+      "type": {
+        "names": [
+          "Client"
+        ]
+      },
+      "name": "client",
+      "longname": "DMChannel#client",
+      "kind": "member",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000123",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The ID of the DM channel\n     * @type {String}\n     */",
+      "meta": {
+        "range": [
+          453,
+          469
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 30,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001517",
+          "name": "this.id",
+          "type": "MemberExpression",
+          "value": "raw.id",
+          "paramnames": []
+        }
+      },
+      "description": "The ID of the DM channel",
+      "type": {
+        "names": [
+          "String"
+        ]
+      },
+      "name": "id",
+      "longname": "DMChannel#id",
+      "kind": "member",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000124",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * A collection of the members in the DM mapped by their ID\n     * @type {Collection}\n     */",
+      "meta": {
+        "range": [
+          773,
+          801
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 43,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001567",
+          "name": "this.recipients",
+          "type": "Identifier",
+          "value": "recipients",
+          "paramnames": []
+        }
+      },
+      "description": "A collection of the members in the DM mapped by their ID",
+      "type": {
+        "names": [
+          "Collection"
+        ]
+      },
+      "name": "recipients",
+      "longname": "DMChannel#recipients",
+      "kind": "member",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000127",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The ID of the last message sent in the DM Channel\n     */",
+      "meta": {
+        "range": [
+          882,
+          922
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 49,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001573",
+          "name": "this.lastMessageID",
+          "type": "MemberExpression",
+          "value": "raw.last_message_id",
+          "paramnames": []
+        }
+      },
+      "description": "The ID of the last message sent in the DM Channel",
+      "name": "lastMessageID",
+      "longname": "DMChannel#lastMessageID",
+      "kind": "member",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000128",
+      "___s": true
+    },
+    {
+      "comment": "/**\n   * @description This method will send a message to the channel specified\n   * @param {String|Object} content The string if it's a normal message or object if it's a richembed\n   * @param {Object} [opt = {}] The options, nonce and tts {@link MessageOptions}\n   * @returns {Promise<Message>} Returns a promise and discord message\n   * @example\n   * // Sending an embed\n   * DMChannel.send({ title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86 });\n   * @example\n   * // Sending a tts message\n   * DMChannel.send(\"Hi!\", { tts: true });\n   */",
+      "meta": {
+        "range": [
+          1521,
+          3238
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 68,
+        "columnno": 2,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001586",
+          "name": "DMChannel#send",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "content",
+            "opt"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "This method will send a message to the channel specified",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "String",
+              "Object"
+            ]
+          },
+          "description": "The string if it's a normal message or object if it's a richembed",
+          "name": "content"
+        },
+        {
+          "type": {
+            "names": [
+              "Object"
+            ]
+          },
+          "optional": true,
+          "defaultvalue": "{}",
+          "description": "The options, nonce and tts {@link MessageOptions}",
+          "name": "opt"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise.<Message>"
+            ]
+          },
+          "description": "Returns a promise and discord message"
+        }
+      ],
+      "examples": [
+        "// Sending an embed\nDMChannel.send({ title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86 });",
+        "// Sending a tts message\nDMChannel.send(\"Hi!\", { tts: true });"
+      ],
+      "name": "send",
+      "longname": "DMChannel#send",
+      "kind": "function",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000130",
+      "___s": true
+    },
+    {
+      "comment": "/**\n   * @description This method adds a user to a group DM\n   * @param {User} user The user to add to a DM, can be a user object or id\n   * @param {String} accessToken Access token of a user that has granted your app the gdm.join scope\n   * @param {String} nick The nickname of the user being added\n   * @returns {Promise<DMChannel>} Returns a promise and a DM Channel \n   */",
+      "meta": {
+        "range": [
+          3622,
+          4187
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 118,
+        "columnno": 2,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001840",
+          "name": "DMChannel#addRecipient",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "user",
+            "accessToken",
+            "nick"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "This method adds a user to a group DM",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "User"
+            ]
+          },
+          "description": "The user to add to a DM, can be a user object or id",
+          "name": "user"
+        },
+        {
+          "type": {
+            "names": [
+              "String"
+            ]
+          },
+          "description": "Access token of a user that has granted your app the gdm.join scope",
+          "name": "accessToken"
+        },
+        {
+          "type": {
+            "names": [
+              "String"
+            ]
+          },
+          "description": "The nickname of the user being added",
+          "name": "nick"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise.<DMChannel>"
+            ]
+          },
+          "description": "Returns a promise and a DM Channel"
+        }
+      ],
+      "name": "addRecipient",
+      "longname": "DMChannel#addRecipient",
+      "kind": "function",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000147",
+      "___s": true
+    },
+    {
+      "comment": "/**\n   * @description This method removes a user to a group DM\n   * @param {User} user The user to remove from the DM, can be a user object or id\n   * @returns {Promise<DMChannel>} Returns a promise and a DM Channel \n   */",
+      "meta": {
+        "range": [
+          4417,
+          4898
+        ],
+        "filename": "DMChannel.js",
+        "lineno": 139,
+        "columnno": 2,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100001939",
+          "name": "DMChannel#removeRecipient",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "user"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "This method removes a user to a group DM",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "User"
+            ]
+          },
+          "description": "The user to remove from the DM, can be a user object or id",
+          "name": "user"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "Promise.<DMChannel>"
+            ]
+          },
+          "description": "Returns a promise and a DM Channel"
+        }
+      ],
+      "name": "removeRecipient",
+      "longname": "DMChannel#removeRecipient",
+      "kind": "function",
+      "memberof": "DMChannel",
+      "scope": "instance",
+      "___id": "T000002R000153",
+      "___s": true
+    },
+    {
       "comment": "/**\n * This class represents an embed object\n */",
       "meta": {
         "range": [
@@ -1787,7 +2173,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001483",
+          "id": "astnode100002036",
           "name": "Embed",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -1801,7 +2187,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000118",
+      "___id": "T000002R000158",
       "___s": true
     },
     {
@@ -1816,7 +2202,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001494",
+          "id": "astnode100002047",
           "name": "this.title",
           "type": "MemberExpression",
           "value": "data.title",
@@ -1834,7 +2220,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000120",
+      "___id": "T000002R000160",
       "___s": true
     },
     {
@@ -1849,7 +2235,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001502",
+          "id": "astnode100002055",
           "name": "this.description",
           "type": "MemberExpression",
           "value": "data.description",
@@ -1867,7 +2253,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000121",
+      "___id": "T000002R000161",
       "___s": true
     },
     {
@@ -1882,7 +2268,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001510",
+          "id": "astnode100002063",
           "name": "this.url",
           "type": "MemberExpression",
           "value": "data.url",
@@ -1900,7 +2286,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000122",
+      "___id": "T000002R000162",
       "___s": true
     },
     {
@@ -1915,7 +2301,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001518",
+          "id": "astnode100002071",
           "name": "this.color",
           "type": "MemberExpression",
           "value": "data.color",
@@ -1933,7 +2319,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000123",
+      "___id": "T000002R000163",
       "___s": true
     },
     {
@@ -1948,7 +2334,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001526",
+          "id": "astnode100002079",
           "name": "this.author",
           "type": "MemberExpression",
           "value": "data.author",
@@ -1966,7 +2352,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000124",
+      "___id": "T000002R000164",
       "___s": true
     },
     {
@@ -1981,7 +2367,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001534",
+          "id": "astnode100002087",
           "name": "this.timestamp",
           "type": "MemberExpression",
           "value": "data.timestamp",
@@ -1999,7 +2385,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000125",
+      "___id": "T000002R000165",
       "___s": true
     },
     {
@@ -2014,7 +2400,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001542",
+          "id": "astnode100002095",
           "name": "this.fields",
           "type": "LogicalExpression",
           "value": "",
@@ -2032,7 +2418,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000126",
+      "___id": "T000002R000166",
       "___s": true
     },
     {
@@ -2047,7 +2433,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001552",
+          "id": "astnode100002105",
           "name": "this.thumbnail",
           "type": "MemberExpression",
           "value": "data.thumbnail",
@@ -2065,7 +2451,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000127",
+      "___id": "T000002R000167",
       "___s": true
     },
     {
@@ -2080,7 +2466,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001560",
+          "id": "astnode100002113",
           "name": "this.image",
           "type": "MemberExpression",
           "value": "data.image",
@@ -2098,7 +2484,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000128",
+      "___id": "T000002R000168",
       "___s": true
     },
     {
@@ -2113,7 +2499,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001568",
+          "id": "astnode100002121",
           "name": "this.footer",
           "type": "MemberExpression",
           "value": "data.footer",
@@ -2131,7 +2517,7 @@
       "kind": "member",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000129",
+      "___id": "T000002R000169",
       "___s": true
     },
     {
@@ -2146,7 +2532,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001575",
+          "id": "astnode100002128",
           "name": "Embed#setTitle",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2174,7 +2560,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000130",
+      "___id": "T000002R000170",
       "___s": true
     },
     {
@@ -2189,7 +2575,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001588",
+          "id": "astnode100002141",
           "name": "Embed#setDescription",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2217,7 +2603,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000132",
+      "___id": "T000002R000172",
       "___s": true
     },
     {
@@ -2232,7 +2618,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001601",
+          "id": "astnode100002154",
           "name": "Embed#setFooter",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2272,7 +2658,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000134",
+      "___id": "T000002R000174",
       "___s": true
     },
     {
@@ -2287,7 +2673,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001621",
+          "id": "astnode100002174",
           "name": "Embed#setImage",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2315,7 +2701,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000138",
+      "___id": "T000002R000178",
       "___s": true
     },
     {
@@ -2330,7 +2716,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001634",
+          "id": "astnode100002187",
           "name": "Embed#setThumbnail",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2358,7 +2744,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000140",
+      "___id": "T000002R000180",
       "___s": true
     },
     {
@@ -2373,7 +2759,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001647",
+          "id": "astnode100002200",
           "name": "Embed#setColor",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2401,7 +2787,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000142",
+      "___id": "T000002R000182",
       "___s": true
     },
     {
@@ -2416,7 +2802,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001660",
+          "id": "astnode100002213",
           "name": "Embed#setTimestamp",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2446,7 +2832,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000144",
+      "___id": "T000002R000184",
       "___s": true
     },
     {
@@ -2461,7 +2847,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001676",
+          "id": "astnode100002229",
           "name": "Embed#setAuthor",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2501,7 +2887,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000146",
+      "___id": "T000002R000186",
       "___s": true
     },
     {
@@ -2516,7 +2902,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001696",
+          "id": "astnode100002249",
           "name": "Embed#addField",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2566,7 +2952,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000150",
+      "___id": "T000002R000190",
       "___s": true
     },
     {
@@ -2581,7 +2967,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001721",
+          "id": "astnode100002274",
           "name": "Embed#setURL",
           "type": "MethodDefinition",
           "paramnames": [
@@ -2609,7 +2995,7 @@
       "kind": "function",
       "memberof": "Embed",
       "scope": "instance",
-      "___id": "T000002R000154",
+      "___id": "T000002R000194",
       "___s": true
     },
     {
@@ -2677,7 +3063,7 @@
       ],
       "longname": "AuditOptions",
       "scope": "global",
-      "___id": "T000002R000157",
+      "___id": "T000002R000197",
       "___s": true
     },
     {
@@ -2685,14 +3071,14 @@
       "meta": {
         "range": [
           234,
-          8362
+          8367
         ],
         "filename": "Guild.js",
         "lineno": 10,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001766",
+          "id": "astnode100002319",
           "name": "Guild",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -2707,7 +3093,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000162",
+      "___id": "T000002R000202",
       "___s": true
     },
     {
@@ -2722,7 +3108,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001776",
+          "id": "astnode100002329",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -2740,7 +3126,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000164",
+      "___id": "T000002R000204",
       "___s": true
     },
     {
@@ -2755,7 +3141,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001782",
+          "id": "astnode100002335",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -2773,7 +3159,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000165",
+      "___id": "T000002R000205",
       "___s": true
     },
     {
@@ -2788,7 +3174,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001790",
+          "id": "astnode100002343",
           "name": "this.channels",
           "type": "MemberExpression",
           "value": "raw.channels",
@@ -2806,7 +3192,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000166",
+      "___id": "T000002R000206",
       "___s": true
     },
     {
@@ -2821,7 +3207,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001798",
+          "id": "astnode100002351",
           "name": "this.name",
           "type": "MemberExpression",
           "value": "raw.name",
@@ -2839,7 +3225,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000167",
+      "___id": "T000002R000207",
       "___s": true
     },
     {
@@ -2854,7 +3240,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001806",
+          "id": "astnode100002359",
           "name": "this.roles",
           "type": "MemberExpression",
           "value": "raw.roles",
@@ -2872,7 +3258,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000168",
+      "___id": "T000002R000208",
       "___s": true
     },
     {
@@ -2887,7 +3273,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001814",
+          "id": "astnode100002367",
           "name": "this.emojis",
           "type": "MemberExpression",
           "value": "raw.emojis",
@@ -2905,7 +3291,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000169",
+      "___id": "T000002R000209",
       "___s": true
     },
     {
@@ -2920,7 +3306,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001822",
+          "id": "astnode100002375",
           "name": "this.members",
           "type": "MemberExpression",
           "value": "raw.members",
@@ -2938,7 +3324,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000170",
+      "___id": "T000002R000210",
       "___s": true
     },
     {
@@ -2953,7 +3339,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001830",
+          "id": "astnode100002383",
           "name": "this.presences",
           "type": "MemberExpression",
           "value": "raw.presences",
@@ -2971,7 +3357,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000171",
+      "___id": "T000002R000211",
       "___s": true
     },
     {
@@ -2986,7 +3372,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001838",
+          "id": "astnode100002391",
           "name": "this.iconURL",
           "type": "TemplateLiteral",
           "value": "",
@@ -3004,7 +3390,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000172",
+      "___id": "T000002R000212",
       "___s": true
     },
     {
@@ -3019,7 +3405,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001853",
+          "id": "astnode100002406",
           "name": "this.ownerID",
           "type": "MemberExpression",
           "value": "raw.owner_id",
@@ -3037,7 +3423,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000173",
+      "___id": "T000002R000213",
       "___s": true
     },
     {
@@ -3052,7 +3438,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001861",
+          "id": "astnode100002414",
           "name": "this.afkChannel",
           "type": "LogicalExpression",
           "value": "",
@@ -3070,7 +3456,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000174",
+      "___id": "T000002R000214",
       "___s": true
     },
     {
@@ -3085,7 +3471,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001877",
+          "id": "astnode100002430",
           "name": "this.afkTimeout",
           "type": "LogicalExpression",
           "value": "",
@@ -3098,7 +3484,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000175",
+      "___id": "T000002R000215",
       "___s": true
     },
     {
@@ -3113,7 +3499,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001887",
+          "id": "astnode100002440",
           "name": "this.verificationLevel",
           "type": "MemberExpression",
           "value": "raw.verification_level",
@@ -3131,7 +3517,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000176",
+      "___id": "T000002R000216",
       "___s": true
     },
     {
@@ -3146,7 +3532,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001895",
+          "id": "astnode100002448",
           "name": "this.systemChannel",
           "type": "CallExpression",
           "value": "",
@@ -3164,7 +3550,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000177",
+      "___id": "T000002R000217",
       "___s": true
     },
     {
@@ -3179,7 +3565,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001909",
+          "id": "astnode100002462",
           "name": "this.large",
           "type": "MemberExpression",
           "value": "raw.large",
@@ -3197,7 +3583,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000178",
+      "___id": "T000002R000218",
       "___s": true
     },
     {
@@ -3212,7 +3598,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001917",
+          "id": "astnode100002470",
           "name": "this.available",
           "type": "UnaryExpression",
           "value": "!raw.unavailable",
@@ -3230,7 +3616,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000179",
+      "___id": "T000002R000219",
       "___s": true
     },
     {
@@ -3245,7 +3631,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001926",
+          "id": "astnode100002479",
           "name": "this.memberSize",
           "type": "MemberExpression",
           "value": "raw.member_count",
@@ -3263,7 +3649,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000180",
+      "___id": "T000002R000220",
       "___s": true
     },
     {
@@ -3278,7 +3664,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001934",
+          "id": "astnode100002487",
           "name": "this.createdTimestamp",
           "type": "MemberExpression",
           "value": ".timestamp",
@@ -3296,7 +3682,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000181",
+      "___id": "T000002R000221",
       "___s": true
     },
     {
@@ -3311,7 +3697,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001948",
+          "id": "astnode100002501",
           "name": "this.createdAt",
           "type": "NewExpression",
           "value": "",
@@ -3329,7 +3715,7 @@
       "kind": "member",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000182",
+      "___id": "T000002R000222",
       "___s": true
     },
     {
@@ -3344,7 +3730,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100001957",
+          "id": "astnode100002510",
           "name": "Guild#createChannel",
           "type": "MethodDefinition",
           "paramnames": [
@@ -3407,7 +3793,7 @@
       "kind": "function",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000183",
+      "___id": "T000002R000223",
       "___s": true
     },
     {
@@ -3422,7 +3808,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002116",
+          "id": "astnode100002669",
           "name": "Guild#createRole",
           "type": "MethodDefinition",
           "paramnames": [
@@ -3475,7 +3861,7 @@
       "kind": "function",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000192",
+      "___id": "T000002R000232",
       "___s": true
     },
     {
@@ -3490,7 +3876,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002202",
+          "id": "astnode100002755",
           "name": "Guild#pruneMembers",
           "type": "MethodDefinition",
           "paramnames": [
@@ -3528,7 +3914,7 @@
       "kind": "function",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000198",
+      "___id": "T000002R000238",
       "___s": true
     },
     {
@@ -3543,7 +3929,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002259",
+          "id": "astnode100002812",
           "name": "Guild#fetchInvites",
           "type": "MethodDefinition",
           "paramnames": []
@@ -3569,7 +3955,7 @@
       "memberof": "Guild",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000200",
+      "___id": "T000002R000240",
       "___s": true
     },
     {
@@ -3577,14 +3963,14 @@
       "meta": {
         "range": [
           6175,
-          6496
+          6499
         ],
         "filename": "Guild.js",
         "lineno": 238,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002325",
+          "id": "astnode100002878",
           "name": "Guild#fetchMembers",
           "type": "MethodDefinition",
           "paramnames": []
@@ -3610,22 +3996,22 @@
       "memberof": "Guild",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000202",
+      "___id": "T000002R000242",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Returns all users who are banned in the guild\n   * @returns {Promise<Member>} An array of all ban items\n   */",
       "meta": {
         "range": [
-          6635,
-          6948
+          6638,
+          6953
         ],
         "filename": "Guild.js",
         "lineno": 252,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002391",
+          "id": "astnode100002943",
           "name": "Guild#fetchBans",
           "type": "MethodDefinition",
           "paramnames": []
@@ -3651,22 +4037,22 @@
       "memberof": "Guild",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000204",
+      "___id": "T000002R000244",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Returns all users who are banned in the guild\n   * @returns {Promise<Member>} An array of all ban items\n   */",
       "meta": {
         "range": [
-          7087,
-          7398
+          7092,
+          7403
         ],
         "filename": "Guild.js",
         "lineno": 266,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002460",
+          "id": "astnode100003011",
           "name": "Guild#fetchRoles",
           "type": "MethodDefinition",
           "paramnames": []
@@ -3692,22 +4078,22 @@
       "memberof": "Guild",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000206",
+      "___id": "T000002R000246",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Returns the count of members who will be kicked upon prune\n   * @returns {Promise<Number>} A number of the amount of members who will be kicked\n   */",
       "meta": {
         "range": [
-          7577,
-          7827
+          7582,
+          7832
         ],
         "filename": "Guild.js",
         "lineno": 280,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002526",
+          "id": "astnode100003077",
           "name": "Guild#testPrune",
           "type": "MethodDefinition",
           "paramnames": [
@@ -3735,22 +4121,22 @@
       "memberof": "Guild",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000208",
+      "___id": "T000002R000248",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Fetchs the guilds audit log\n   * @param {Object} opt The options for getting the audit logs {@link AuditOptions}\n   */",
       "meta": {
         "range": [
-          7975,
-          8360
+          7980,
+          8365
         ],
         "filename": "Guild.js",
         "lineno": 295,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002578",
+          "id": "astnode100003129",
           "name": "Guild#getAuditLogs",
           "type": "MethodDefinition",
           "paramnames": [
@@ -3778,7 +4164,7 @@
       "kind": "function",
       "memberof": "Guild",
       "scope": "instance",
-      "___id": "T000002R000210",
+      "___id": "T000002R000250",
       "___s": true
     },
     {
@@ -3786,14 +4172,14 @@
       "meta": {
         "range": [
           95,
-          6004
+          5851
         ],
         "filename": "GuildChannel.js",
         "lineno": 7,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002666",
+          "id": "astnode100003217",
           "name": "GuildChannel",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -3809,7 +4195,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000217",
+      "___id": "T000002R000257",
       "___s": true
     },
     {
@@ -3824,7 +4210,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002677",
+          "id": "astnode100003228",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -3842,7 +4228,7 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000219",
+      "___id": "T000002R000259",
       "___s": true
     },
     {
@@ -3857,7 +4243,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002685",
+          "id": "astnode100003236",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -3875,7 +4261,7 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000220",
+      "___id": "T000002R000260",
       "___s": true
     },
     {
@@ -3890,7 +4276,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002691",
+          "id": "astnode100003242",
           "name": "this.name",
           "type": "MemberExpression",
           "value": "raw.name",
@@ -3908,55 +4294,22 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000221",
-      "___s": true
-    },
-    {
-      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
-      "meta": {
-        "range": [
-          525,
-          595
-        ],
-        "filename": "GuildChannel.js",
-        "lineno": 36,
-        "columnno": 4,
-        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
-        "code": {
-          "id": "astnode100002699",
-          "name": "this.genre",
-          "type": "MemberExpression",
-          "value": "[\"text\",\"dm\",\"voice\",\"group_dm\",\"category\"][undefined]",
-          "paramnames": []
-        }
-      },
-      "description": "The type of channel",
-      "type": {
-        "names": [
-          "String"
-        ]
-      },
-      "name": "genre",
-      "longname": "GuildChannel#genre",
-      "kind": "member",
-      "memberof": "GuildChannel",
-      "scope": "instance",
-      "___id": "T000002R000222",
+      "___id": "T000002R000261",
       "___s": true
     },
     {
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          698,
-          726
+          555,
+          583
         ],
         "filename": "GuildChannel.js",
-        "lineno": 43,
+        "lineno": 36,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002714",
+          "id": "astnode100003250",
           "name": "this.position",
           "type": "MemberExpression",
           "value": "raw.position",
@@ -3974,22 +4327,22 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000223",
+      "___id": "T000002R000262",
       "___s": true
     },
     {
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          819,
-          873
+          676,
+          730
         ],
         "filename": "GuildChannel.js",
-        "lineno": 50,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002722",
+          "id": "astnode100003258",
           "name": "this.permission_overwrites",
           "type": "MemberExpression",
           "value": "raw.permission_overwrites",
@@ -4007,22 +4360,22 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000224",
+      "___id": "T000002R000263",
       "___s": true
     },
     {
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          952,
-          970
+          809,
+          827
         ],
         "filename": "GuildChannel.js",
-        "lineno": 56,
+        "lineno": 49,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002730",
+          "id": "astnode100003266",
           "name": "this.guild",
           "type": "Identifier",
           "value": "guild",
@@ -4040,22 +4393,22 @@
       "kind": "member",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000225",
+      "___id": "T000002R000264",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1309,
-          1939
+          1166,
+          1794
         ],
         "filename": "GuildChannel.js",
-        "lineno": 69,
+        "lineno": 62,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002735",
+          "id": "astnode100003271",
           "name": "GuildChannel#setName",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4096,22 +4449,22 @@
       "kind": "function",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000226",
+      "___id": "T000002R000265",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2141,
-          2791
+          1996,
+          2644
         ],
         "filename": "GuildChannel.js",
-        "lineno": 90,
+        "lineno": 83,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002841",
+          "id": "astnode100003377",
           "name": "GuildChannel#setPosition",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4149,22 +4502,22 @@
       "kind": "function",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000231",
+      "___id": "T000002R000270",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3007,
-          3786
+          2860,
+          3637
         ],
         "filename": "GuildChannel.js",
-        "lineno": 111,
+        "lineno": 104,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002949",
+          "id": "astnode100003485",
           "name": "GuildChannel#setParent",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4202,22 +4555,22 @@
       "kind": "function",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000236",
+      "___id": "T000002R000275",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3927,
-          4550
+          3778,
+          4399
         ],
         "filename": "GuildChannel.js",
-        "lineno": 134,
+        "lineno": 127,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003078",
+          "id": "astnode100003614",
           "name": "GuildChannel#delete",
           "type": "MethodDefinition",
           "paramnames": []
@@ -4243,22 +4596,22 @@
       "memberof": "GuildChannel",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000244",
+      "___id": "T000002R000283",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4813,
-          6002
+          4662,
+          5849
         ],
         "filename": "GuildChannel.js",
-        "lineno": 154,
+        "lineno": 147,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003181",
+          "id": "astnode100003717",
           "name": "GuildChannel#edit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -4296,14 +4649,14 @@
       "kind": "function",
       "memberof": "GuildChannel",
       "scope": "instance",
-      "___id": "T000002R000248",
+      "___id": "T000002R000287",
       "___s": true
     },
     {
       "comment": "/**\n * The options for making/editing a channel\n * @typedef {Object} ChannelOptions\n * @property {String} [name = null] The name of the channel\n * @property {Number} [position = null] Position of the channel \n * @property {String} [topic = null] The topic of the channel (textchannel only)\n * @property {Boolean} [nsfw = null] If the channel is NSFW or not (textchannel only)\n * @property {Number} [bitrate = null] The bitrate of the channel (voicechannel only)\n * @property {Number} [userlimit = null] The user limit of the channel (voicechannel only)\n * @property {String} [parent = null] The parent channel's ID of the channel\n */",
       "meta": {
         "filename": "GuildChannel.js",
-        "lineno": 178,
+        "lineno": 171,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {}
@@ -4397,7 +4750,7 @@
       ],
       "longname": "ChannelOptions",
       "scope": "global",
-      "___id": "T000002R000259",
+      "___id": "T000002R000298",
       "___s": true
     },
     {
@@ -4412,7 +4765,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003403",
+          "id": "astnode100003939",
           "name": "Invite",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -4427,7 +4780,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000264",
+      "___id": "T000002R000303",
       "___s": true
     },
     {
@@ -4442,7 +4795,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003413",
+          "id": "astnode100003949",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -4460,7 +4813,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000266",
+      "___id": "T000002R000305",
       "___s": true
     },
     {
@@ -4475,7 +4828,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003419",
+          "id": "astnode100003955",
           "name": "this.code",
           "type": "MemberExpression",
           "value": "raw.code",
@@ -4493,7 +4846,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000267",
+      "___id": "T000002R000306",
       "___s": true
     },
     {
@@ -4508,7 +4861,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003427",
+          "id": "astnode100003963",
           "name": "this.guild",
           "type": "MemberExpression",
           "value": ".guild",
@@ -4526,7 +4879,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000268",
+      "___id": "T000002R000307",
       "___s": true
     },
     {
@@ -4541,7 +4894,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003447",
+          "id": "astnode100003983",
           "name": "this.channel",
           "type": "CallExpression",
           "value": "",
@@ -4559,7 +4912,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000269",
+      "___id": "T000002R000308",
       "___s": true
     },
     {
@@ -4574,7 +4927,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003465",
+          "id": "astnode100004001",
           "name": "this.uses",
           "type": "MemberExpression",
           "value": "raw.uses",
@@ -4592,7 +4945,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000270",
+      "___id": "T000002R000309",
       "___s": true
     },
     {
@@ -4607,7 +4960,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003473",
+          "id": "astnode100004009",
           "name": "this.inviter",
           "type": "NewExpression",
           "value": "",
@@ -4625,7 +4978,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000271",
+      "___id": "T000002R000310",
       "___s": true
     },
     {
@@ -4640,7 +4993,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003486",
+          "id": "astnode100004022",
           "name": "this.createdAt",
           "type": "NewExpression",
           "value": "",
@@ -4658,7 +5011,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000272",
+      "___id": "T000002R000311",
       "___s": true
     },
     {
@@ -4673,7 +5026,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003496",
+          "id": "astnode100004032",
           "name": "this.createdTimestamp",
           "type": "CallExpression",
           "value": "",
@@ -4691,7 +5044,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000273",
+      "___id": "T000002R000312",
       "___s": true
     },
     {
@@ -4706,7 +5059,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003509",
+          "id": "astnode100004045",
           "name": "this.maxUses",
           "type": "MemberExpression",
           "value": "raw.max_uses",
@@ -4724,7 +5077,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000274",
+      "___id": "T000002R000313",
       "___s": true
     },
     {
@@ -4739,7 +5092,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003517",
+          "id": "astnode100004053",
           "name": "this.temporary",
           "type": "MemberExpression",
           "value": "raw.temporary",
@@ -4757,7 +5110,7 @@
       "kind": "member",
       "memberof": "Invite",
       "scope": "instance",
-      "___id": "T000002R000275",
+      "___id": "T000002R000314",
       "___s": true
     },
     {
@@ -4772,7 +5125,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003524",
+          "id": "astnode100004060",
           "name": "Invite#delete",
           "type": "MethodDefinition",
           "paramnames": []
@@ -4798,7 +5151,7 @@
       "memberof": "Invite",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000276",
+      "___id": "T000002R000315",
       "___s": true
     },
     {
@@ -4806,14 +5159,14 @@
       "meta": {
         "range": [
           282,
-          8204
+          8396
         ],
         "filename": "Member.js",
         "lineno": 12,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003617",
+          "id": "astnode100004153",
           "name": "Member",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -4829,7 +5182,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000284",
+      "___id": "T000002R000323",
       "___s": true
     },
     {
@@ -4844,7 +5197,7 @@
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003686",
+          "id": "astnode100004222",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.user.id",
@@ -4862,7 +5215,7 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000288",
+      "___id": "T000002R000327",
       "___s": true
     },
     {
@@ -4870,14 +5223,14 @@
       "meta": {
         "range": [
           773,
-          840
+          811
         ],
         "filename": "Member.js",
         "lineno": 36,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003696",
+          "id": "astnode100004232",
           "name": "this.user",
           "type": "NewExpression",
           "value": "",
@@ -4895,22 +5248,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000289",
+      "___id": "T000002R000328",
       "___s": true
     },
     {
       "comment": "/**\n       * The roles that the member has \n       * @type {Collection}\n       */",
       "meta": {
         "range": [
-          938,
-          959
+          909,
+          930
         ],
         "filename": "Member.js",
         "lineno": 43,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003714",
+          "id": "astnode100004243",
           "name": "this.roles",
           "type": "Identifier",
           "value": "allRoles",
@@ -4928,22 +5281,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000290",
+      "___id": "T000002R000329",
       "___s": true
     },
     {
       "comment": "/**\n       * The client object which is logged in\n       * @type {Client}\n       */",
       "meta": {
         "range": [
-          1059,
-          1079
+          1030,
+          1050
         ],
         "filename": "Member.js",
         "lineno": 50,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003720",
+          "id": "astnode100004249",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -4961,22 +5314,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000291",
+      "___id": "T000002R000330",
       "___s": true
     },
     {
       "comment": "/**\n       * The guild object of the member\n       * @type {Guild}\n       */",
       "meta": {
         "range": [
-          1172,
-          1190
+          1143,
+          1161
         ],
         "filename": "Member.js",
         "lineno": 57,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003726",
+          "id": "astnode100004255",
           "name": "this.guild",
           "type": "Identifier",
           "value": "guild",
@@ -4994,22 +5347,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000292",
+      "___id": "T000002R000331",
       "___s": true
     },
     {
       "comment": "/**\n       * The nickname of the member if there is one\n       * @type {String}\n       */",
       "meta": {
         "range": [
-          1296,
-          1320
+          1267,
+          1291
         ],
         "filename": "Member.js",
         "lineno": 64,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003732",
+          "id": "astnode100004261",
           "name": "this.nickname",
           "type": "MemberExpression",
           "value": "raw.nick",
@@ -5027,22 +5380,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000293",
+      "___id": "T000002R000332",
       "___s": true
     },
     {
       "comment": "/**\n       * If the member is muted\n       * @type {Boolean}\n       */",
       "meta": {
         "range": [
-          1407,
-          1427
+          1378,
+          1398
         ],
         "filename": "Member.js",
         "lineno": 71,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003740",
+          "id": "astnode100004269",
           "name": "this.mute",
           "type": "MemberExpression",
           "value": "raw.mute",
@@ -5060,22 +5413,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000294",
+      "___id": "T000002R000333",
       "___s": true
     },
     {
       "comment": "/**\n       * If the member is deafened\n       * @type {Boolean}\n       */",
       "meta": {
         "range": [
-          1517,
-          1537
+          1488,
+          1508
         ],
         "filename": "Member.js",
         "lineno": 78,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003748",
+          "id": "astnode100004277",
           "name": "this.deaf",
           "type": "MemberExpression",
           "value": "raw.deaf",
@@ -5093,22 +5446,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000295",
+      "___id": "T000002R000334",
       "___s": true
     },
     {
       "comment": "/**\n       * The date of when the member joined the guild\n       * @type {Date}\n       */",
       "meta": {
         "range": [
-          1643,
-          1682
+          1614,
+          1653
         ],
         "filename": "Member.js",
         "lineno": 85,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003756",
+          "id": "astnode100004285",
           "name": "this.joinedAt",
           "type": "NewExpression",
           "value": "",
@@ -5126,22 +5479,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000296",
+      "___id": "T000002R000335",
       "___s": true
     },
     {
       "comment": "/**\n       * The timestamp of when the member joined the guild\n       * @type {Date}\n       */",
       "meta": {
         "range": [
-          1793,
-          1849
+          1764,
+          1820
         ],
         "filename": "Member.js",
         "lineno": 92,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003766",
+          "id": "astnode100004295",
           "name": "this.joinedTimestamp",
           "type": "CallExpression",
           "value": "",
@@ -5159,22 +5512,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000297",
+      "___id": "T000002R000336",
       "___s": true
     },
     {
       "comment": "/**\n       * The permissions of the member\n       * @type {Array}\n       */",
       "meta": {
         "range": [
-          2115,
-          2179
+          2086,
+          2150
         ],
         "filename": "Member.js",
         "lineno": 106,
         "columnno": 6,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003818",
+          "id": "astnode100004347",
           "name": "this.permissions",
           "type": "CallExpression",
           "value": "",
@@ -5192,22 +5545,22 @@
       "kind": "member",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000300",
+      "___id": "T000002R000339",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method adds a role to the member\n   * @param {RoleObject|RoleID} role The role to add to the member \n   * @returns {Promise<Member>} Returns a promise and a GuildMember object\n   */",
       "meta": {
         "range": [
-          2408,
-          2806
+          2385,
+          2783
         ],
         "filename": "Member.js",
-        "lineno": 117,
+        "lineno": 118,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003837",
+          "id": "astnode100004366",
           "name": "Member#addRole",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5246,22 +5599,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000301",
+      "___id": "T000002R000340",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method removes a role to the member\n   * @param {RoleObject|RoleID} role The role to remove from the member \n   * @returns {Promise<Member>} Returns a promise and a GuildMember object\n   */",
       "meta": {
         "range": [
-          3031,
-          3435
+          3008,
+          3412
         ],
         "filename": "Member.js",
-        "lineno": 136,
+        "lineno": 137,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003920",
+          "id": "astnode100004449",
           "name": "Member#removeRole",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5300,22 +5653,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000305",
+      "___id": "T000002R000344",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will ban a member\n   * @param {Object} [opt = {}] The options to pass: days, number from 0-7 and reason, string      \n   * @returns {Promise<Member>} Returns a promise and a GuildMember object\n   */",
       "meta": {
         "range": [
-          3676,
-          4006
+          3653,
+          3984
         ],
         "filename": "Member.js",
-        "lineno": 155,
+        "lineno": 156,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004003",
+          "id": "astnode100004532",
           "name": "Member#ban",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5355,22 +5708,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000309",
+      "___id": "T000002R000348",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will kick a member from a guild\n   * @param {String} [reason = \"\"] The options to pass: reason, a string\n   * @returns {Promise<Member>} Returns a promise and a GuildMember object\n   */",
       "meta": {
         "range": [
-          4233,
-          4561
+          4211,
+          4519
         ],
         "filename": "Member.js",
-        "lineno": 173,
+        "lineno": 174,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004074",
+          "id": "astnode100004601",
           "name": "Member#kick",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5410,22 +5763,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000312",
+      "___id": "T000002R000351",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will send a message to the member\n   * @param {String|Object} [content] The string if it's a normal message or object if it's a richembed\n   * @param {Object} [opt = {}] The options, nonce and tts\n   * @returns {Promise<Message>} Returns a promise and discord message\n   * @example\n   * // Sending an embed\n   * Member.send({title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86});\n   * @example\n   * // Sending a tts message\n   * Member.send(\"Hi!\", {tts: true});\n   */",
       "meta": {
         "range": [
-          5088,
-          6883
+          5046,
+          7075
         ],
         "filename": "Member.js",
-        "lineno": 197,
+        "lineno": 198,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004137",
+          "id": "astnode100004662",
           "name": "Member#send",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5481,22 +5834,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000314",
+      "___id": "T000002R000353",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method checks whether a member has a single permission\n   * @param {String} perm The permission\n   * @returns {Boolean} True if the member has the permission, else it's false\n   * @example \n   * // If the member is an admin\n   * member.hasPermission('ADMINISTRATOR');\n   * // If the member does, it'll return true else, it'll return false\n   */",
       "meta": {
         "range": [
-          7262,
-          7436
+          7454,
+          7628
         ],
         "filename": "Member.js",
-        "lineno": 249,
+        "lineno": 258,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004409",
+          "id": "astnode100004962",
           "name": "Member#hasPermission",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5537,22 +5890,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000331",
+      "___id": "T000002R000372",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method checks whether a member has multiple permissions\n   * @param {Array} perms The array of permissions\n   * @returns {Boolean} True if the member has the permissions, else it's false\n   * @example \n   * // If the member can send messages and manage messages\n   * member.hasPermissions(['SEND_MESSAGES', 'MANAGE_MESSAGES']);\n   * // If the member does, it'll return true else, it'll return false\n   */",
       "meta": {
         "range": [
-          7875,
-          8202
+          8067,
+          8394
         ],
         "filename": "Member.js",
-        "lineno": 265,
+        "lineno": 274,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004446",
+          "id": "astnode100004999",
           "name": "Member#hasPermissions",
           "type": "MethodDefinition",
           "paramnames": [
@@ -5593,22 +5946,22 @@
       "kind": "function",
       "memberof": "Member",
       "scope": "instance",
-      "___id": "T000002R000332",
+      "___id": "T000002R000373",
       "___s": true
     },
     {
       "comment": "/**\n * This class represents a message object\n */",
       "meta": {
         "range": [
-          338,
-          7223
+          382,
+          7618
         ],
         "filename": "Message.js",
-        "lineno": 13,
+        "lineno": 14,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004572",
+          "id": "astnode100005131",
           "name": "Message",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -5623,22 +5976,55 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000343",
+      "___id": "T000002R000385",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The channel the message was sent in\n     * @type {TextChannel}\n     */",
+      "meta": {
+        "range": [
+          519,
+          569
+        ],
+        "filename": "Message.js",
+        "lineno": 22,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100005141",
+          "name": "this.channel",
+          "type": "CallExpression",
+          "value": "",
+          "paramnames": []
+        }
+      },
+      "description": "The channel the message was sent in",
+      "type": {
+        "names": [
+          "TextChannel"
+        ]
+      },
+      "name": "channel",
+      "longname": "Message#channel",
+      "kind": "member",
+      "memberof": "Message",
+      "scope": "instance",
+      "___id": "T000002R000387",
       "___s": true
     },
     {
       "comment": "/**\n     * The ID of the message sent\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          461,
-          477
+          649,
+          665
         ],
         "filename": "Message.js",
-        "lineno": 21,
+        "lineno": 29,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004582",
+          "id": "astnode100005155",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -5656,58 +6042,25 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000345",
-      "___s": true
-    },
-    {
-      "comment": "/**\n     * The channel the message was sent in\n     * @type {TextChannel}\n     */",
-      "meta": {
-        "range": [
-          571,
-          689
-        ],
-        "filename": "Message.js",
-        "lineno": 28,
-        "columnno": 4,
-        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
-        "code": {
-          "id": "astnode100004590",
-          "name": "this.channel",
-          "type": "NewExpression",
-          "value": "",
-          "paramnames": []
-        }
-      },
-      "description": "The channel the message was sent in",
-      "type": {
-        "names": [
-          "TextChannel"
-        ]
-      },
-      "name": "channel",
-      "longname": "Message#channel",
-      "kind": "member",
-      "memberof": "Message",
-      "scope": "instance",
-      "___id": "T000002R000346",
+      "___id": "T000002R000388",
       "___s": true
     },
     {
       "comment": "/**\n     * The guild the message was sent it\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          775,
-          797
+          751,
+          826
         ],
         "filename": "Message.js",
-        "lineno": 35,
+        "lineno": 36,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004618",
+          "id": "astnode100005163",
           "name": "this.guild",
-          "type": "MemberExpression",
-          "value": "raw.guild",
+          "type": "ConditionalExpression",
+          "value": "",
           "paramnames": []
         }
       },
@@ -5722,22 +6075,22 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000347",
+      "___id": "T000002R000389",
       "___s": true
     },
     {
       "comment": "/** \n     * The user object of the person who sent the message\n     * @type {User}\n     */",
       "meta": {
         "range": [
-          900,
-          942
+          929,
+          971
         ],
         "filename": "Message.js",
-        "lineno": 42,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004626",
+          "id": "astnode100005184",
           "name": "this.author",
           "type": "NewExpression",
           "value": "",
@@ -5755,24 +6108,24 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000348",
+      "___id": "T000002R000390",
       "___s": true
     },
     {
       "comment": "/**\n     * The guild member object of the person who sent the message\n     * @type {Member}\n     */",
       "meta": {
         "range": [
-          1054,
-          1106
+          1083,
+          1197
         ],
         "filename": "Message.js",
-        "lineno": 49,
+        "lineno": 50,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004637",
+          "id": "astnode100005195",
           "name": "this.member",
-          "type": "CallExpression",
+          "type": "ConditionalExpression",
           "value": "",
           "paramnames": []
         }
@@ -5788,55 +6141,22 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000349",
-      "___s": true
-    },
-    {
-      "comment": "/**\n     * The clean content of the message which replaces <@id> to @Youssef#0001 for example\n     * @type {String}\n     */",
-      "meta": {
-        "range": [
-          1242,
-          1264
-        ],
-        "filename": "Message.js",
-        "lineno": 56,
-        "columnno": 4,
-        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
-        "code": {
-          "id": "astnode100004655",
-          "name": "this.clean",
-          "type": "MemberExpression",
-          "value": "raw.clean",
-          "paramnames": []
-        }
-      },
-      "description": "The clean content of the message which replaces <@id> to @Youssef#0001 for example",
-      "type": {
-        "names": [
-          "String"
-        ]
-      },
-      "name": "clean",
-      "longname": "Message#clean",
-      "kind": "member",
-      "memberof": "Message",
-      "scope": "instance",
-      "___id": "T000002R000350",
+      "___id": "T000002R000391",
       "___s": true
     },
     {
       "comment": "/**\n     * The client object which is logged in\n     * @type {Client}\n     */",
       "meta": {
         "range": [
-          1354,
-          1374
+          1287,
+          1307
         ],
         "filename": "Message.js",
-        "lineno": 63,
+        "lineno": 57,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004663",
+          "id": "astnode100005232",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -5854,25 +6174,25 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000351",
+      "___id": "T000002R000392",
       "___s": true
     },
     {
       "comment": "/**\n     * A formated date in which the message was created at\n     * @type {Date}\n     */",
       "meta": {
         "range": [
-          1477,
-          1507
+          1410,
+          1450
         ],
         "filename": "Message.js",
-        "lineno": 70,
+        "lineno": 64,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004669",
+          "id": "astnode100005238",
           "name": "this.createdAt",
-          "type": "MemberExpression",
-          "value": "raw.createdAt",
+          "type": "NewExpression",
+          "value": "",
           "paramnames": []
         }
       },
@@ -5887,22 +6207,22 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000352",
+      "___id": "T000002R000393",
       "___s": true
     },
     {
       "comment": "/**\n     * The timestamp in which the message was created at\n     * @type {Date}\n     */",
       "meta": {
         "range": [
-          1608,
-          1672
+          1551,
+          1615
         ],
         "filename": "Message.js",
-        "lineno": 77,
+        "lineno": 71,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004677",
+          "id": "astnode100005248",
           "name": "this.createdTimestamp",
           "type": "MemberExpression",
           "value": ".timestamp",
@@ -5920,26 +6240,24 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000353",
+      "___id": "T000002R000394",
       "___s": true
     },
     {
       "comment": "/**\n     * A collection of all of the users mentioned in the message\n     * @type {Collection}\n     */",
       "meta": {
         "range": [
-          1787,
-          1827
+          2105,
+          2124
         ],
         "filename": "Message.js",
-        "lineno": 84,
+        "lineno": 87,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004691",
+          "id": "astnode100005349",
           "name": "this.mentionedUsers",
-          "type": "MemberExpression",
-          "value": "raw.mentionedUsers",
-          "paramnames": []
+          "type": "MemberExpression"
         }
       },
       "description": "A collection of all of the users mentioned in the message",
@@ -5953,22 +6271,53 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000354",
+      "___id": "T000002R000398",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * A collection of all of the members mentioned in the message\n     * @type {Collection}\n     */",
+      "meta": {
+        "range": [
+          2241,
+          2262
+        ],
+        "filename": "Message.js",
+        "lineno": 94,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100005353",
+          "name": "this.mentionedMembers",
+          "type": "MemberExpression"
+        }
+      },
+      "description": "A collection of all of the members mentioned in the message",
+      "type": {
+        "names": [
+          "Collection"
+        ]
+      },
+      "name": "mentionedMembers",
+      "longname": "Message#mentionedMembers",
+      "kind": "member",
+      "memberof": "Message",
+      "scope": "instance",
+      "___id": "T000002R000399",
       "___s": true
     },
     {
       "comment": "/**\n     * The content of the message\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          1912,
-          1938
+          2347,
+          2373
         ],
         "filename": "Message.js",
-        "lineno": 92,
+        "lineno": 102,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004699",
+          "id": "astnode100005357",
           "name": "this.content",
           "type": "MemberExpression",
           "value": "raw.content",
@@ -5986,22 +6335,55 @@
       "kind": "member",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000355",
+      "___id": "T000002R000400",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The clean content of the message which replaces <@id> to @Youssef#0001 for example\n     * @type {String}\n     */",
+      "meta": {
+        "range": [
+          2509,
+          2540
+        ],
+        "filename": "Message.js",
+        "lineno": 109,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100005365",
+          "name": "this.clean",
+          "type": "CallExpression",
+          "value": "",
+          "paramnames": []
+        }
+      },
+      "description": "The clean content of the message which replaces <@id> to @Youssef#0001 for example",
+      "type": {
+        "names": [
+          "String"
+        ]
+      },
+      "name": "clean",
+      "longname": "Message#clean",
+      "kind": "member",
+      "memberof": "Message",
+      "scope": "instance",
+      "___id": "T000002R000401",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will reply by mentioning the user first\n   * @param {String} content The string to send the message with\n   * @returns {Promise<Message>} Returns a promise and discord message\n   */",
       "meta": {
         "range": [
-          2167,
-          2657
+          2769,
+          3183
         ],
         "filename": "Message.js",
-        "lineno": 102,
+        "lineno": 119,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004706",
+          "id": "astnode100005372",
           "name": "Message#reply",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6039,22 +6421,22 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000356",
+      "___id": "T000002R000402",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will delete a message\n   * @param {String} [reason = ''] The reason why the message is deleted\n   * @returns {Promise<Message>} Returns a promise and the message deleted\n   */",
       "meta": {
         "range": [
-          2874,
-          3330
+          3400,
+          3780
         ],
         "filename": "Message.js",
-        "lineno": 121,
+        "lineno": 137,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004798",
+          "id": "astnode100005451",
           "name": "Message#delete",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6094,22 +6476,22 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000359",
+      "___id": "T000002R000404",
       "___s": true
     },
     {
       "comment": "/**\n    * @description This method will edit a message sent by the client\n    * @param {String} newmessage The string to edit the current message with\n    * @returns {Promise<Message>} Returns a promise and discord message\n    */",
       "meta": {
         "range": [
-          3567,
-          4024
+          4017,
+          4446
         ],
         "filename": "Message.js",
-        "lineno": 138,
+        "lineno": 153,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004887",
+          "id": "astnode100005527",
           "name": "Message#edit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6147,22 +6529,22 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000362",
+      "___id": "T000002R000406",
       "___s": true
     },
     {
       "comment": "/**\n    * @description This method will pin a discord message in a channel\n    * @returns {Promise<Message>} Returns a promise and discord message (pin)\n    */",
       "meta": {
         "range": [
-          4191,
-          4615
+          4613,
+          5004
         ],
         "filename": "Message.js",
-        "lineno": 154,
+        "lineno": 169,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100004974",
+          "id": "astnode100005601",
           "name": "Message#pin",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6188,22 +6570,22 @@
       "memberof": "Message",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000365",
+      "___id": "T000002R000408",
       "___s": true
     },
     {
       "comment": "/**\n    * @description This method will unpin a discord message in a channel\n    * @returns {Promise<Message>} Returns a promise and discord message (unpinned message)\n    */",
       "meta": {
         "range": [
-          4797,
-          5226
+          5186,
+          5584
         ],
         "filename": "Message.js",
-        "lineno": 170,
+        "lineno": 185,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005058",
+          "id": "astnode100005678",
           "name": "Message#unpin",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6229,22 +6611,22 @@
       "memberof": "Message",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000367",
+      "___id": "T000002R000410",
       "___s": true
     },
     {
       "comment": "/**\n    * @description This method will make the client react to a message\n    * @param {Emoji} emoji The unicode emoji or the emoji id if it's custom\n    */",
       "meta": {
         "range": [
-          5391,
-          5866
+          5749,
+          6261
         ],
         "filename": "Message.js",
-        "lineno": 186,
+        "lineno": 201,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005142",
+          "id": "astnode100005749",
           "name": "Message#react",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6272,22 +6654,22 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000369",
+      "___id": "T000002R000411",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Remove a certain reaction of a certain user\n   * @param {User} user The user whos reaction you want to remove\n   * @param {String} reaction The emoji you want to remove\n   */",
       "meta": {
         "range": [
-          6070,
-          6455
+          6465,
+          6850
         ],
         "filename": "Message.js",
-        "lineno": 205,
+        "lineno": 220,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005230",
+          "id": "astnode100005838",
           "name": "Message#removeReaction",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6325,22 +6707,22 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000373",
+      "___id": "T000002R000414",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will clear all reactions on a message\n   */",
       "meta": {
         "range": [
-          6540,
-          6877
+          6935,
+          7272
         ],
         "filename": "Message.js",
-        "lineno": 219,
+        "lineno": 234,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005304",
+          "id": "astnode100005912",
           "name": "Message#clearReactions",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6356,22 +6738,22 @@
       "memberof": "Message",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000374",
+      "___id": "T000002R000415",
       "___s": true
     },
     {
       "comment": "/**\n    * @description This method checks if a user is mentioned\n    * @param {String} id The id of the user to be checked\n    * @returns {Boolean} If the id given belonged to a mentioned user, it will return true, vice versa\n    */",
       "meta": {
         "range": [
-          7118,
-          7221
+          7513,
+          7616
         ],
         "filename": "Message.js",
-        "lineno": 236,
+        "lineno": 251,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005368",
+          "id": "astnode100005976",
           "name": "Message#isMentioned",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6409,7 +6791,7 @@
       "kind": "function",
       "memberof": "Message",
       "scope": "instance",
-      "___id": "T000002R000375",
+      "___id": "T000002R000416",
       "___s": true
     },
     {
@@ -6424,7 +6806,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005452",
+          "id": "astnode100006124",
           "name": "Permissions",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -6438,7 +6820,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000405",
+      "___id": "T000002R000448",
       "___s": true
     },
     {
@@ -6453,7 +6835,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005503",
+          "id": "astnode100006175",
           "name": "this.permissions",
           "type": "Identifier",
           "value": "array",
@@ -6471,7 +6853,7 @@
       "kind": "member",
       "memberof": "Permissions",
       "scope": "instance",
-      "___id": "T000002R000409",
+      "___id": "T000002R000452",
       "___s": true
     },
     {
@@ -6486,7 +6868,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005508",
+          "id": "astnode100006180",
           "name": "Permissions#toBitField",
           "type": "MethodDefinition",
           "paramnames": []
@@ -6512,7 +6894,7 @@
       "memberof": "Permissions",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000410",
+      "___id": "T000002R000453",
       "___s": true
     },
     {
@@ -6527,7 +6909,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005516",
+          "id": "astnode100006188",
           "name": "Permissions#toArray",
           "type": "MethodDefinition",
           "paramnames": [
@@ -6565,7 +6947,7 @@
       "kind": "function",
       "memberof": "Permissions",
       "scope": "instance",
-      "___id": "T000002R000411",
+      "___id": "T000002R000454",
       "___s": true
     },
     {
@@ -6580,7 +6962,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005640",
+          "id": "astnode100006312",
           "name": "Role",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -6595,7 +6977,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000420",
+      "___id": "T000002R000463",
       "___s": true
     },
     {
@@ -6610,7 +6992,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005650",
+          "id": "astnode100006322",
           "name": "this.name",
           "type": "MemberExpression",
           "value": "raw.name",
@@ -6628,7 +7010,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000422",
+      "___id": "T000002R000465",
       "___s": true
     },
     {
@@ -6643,7 +7025,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005658",
+          "id": "astnode100006330",
           "name": "this.permissions",
           "type": "CallExpression",
           "value": "",
@@ -6661,7 +7043,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000423",
+      "___id": "T000002R000466",
       "___s": true
     },
     {
@@ -6676,7 +7058,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005671",
+          "id": "astnode100006343",
           "name": "this.managed",
           "type": "MemberExpression",
           "value": "raw.managed",
@@ -6694,7 +7076,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000424",
+      "___id": "T000002R000467",
       "___s": true
     },
     {
@@ -6709,7 +7091,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005679",
+          "id": "astnode100006351",
           "name": "this.position",
           "type": "MemberExpression",
           "value": "raw.position",
@@ -6727,7 +7109,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000425",
+      "___id": "T000002R000468",
       "___s": true
     },
     {
@@ -6742,7 +7124,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005687",
+          "id": "astnode100006359",
           "name": "this.mentionable",
           "type": "MemberExpression",
           "value": "raw.mentionable",
@@ -6760,7 +7142,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000426",
+      "___id": "T000002R000469",
       "___s": true
     },
     {
@@ -6775,7 +7157,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005695",
+          "id": "astnode100006367",
           "name": "this.hoisted",
           "type": "MemberExpression",
           "value": "raw.hoist",
@@ -6793,7 +7175,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000427",
+      "___id": "T000002R000470",
       "___s": true
     },
     {
@@ -6808,7 +7190,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005703",
+          "id": "astnode100006375",
           "name": "this.color",
           "type": "MemberExpression",
           "value": "raw.color",
@@ -6826,7 +7208,7 @@
       "kind": "member",
       "memberof": "Role",
       "scope": "instance",
-      "___id": "T000002R000428",
+      "___id": "T000002R000471",
       "___s": true
     },
     {
@@ -6834,14 +7216,14 @@
       "meta": {
         "range": [
           206,
-          7481
+          7134
         ],
         "filename": "TextChannel.js",
         "lineno": 10,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005736",
+          "id": "astnode100006408",
           "name": "TextChannel",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -6860,22 +7242,55 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000433",
+      "___id": "T000002R000476",
       "___s": true
     },
     {
-      "comment": "/**\n     * This is the ID of the last message in the channel\n     * @type {String}\n     */",
+      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          419,
-          459
+          385,
+          403
         ],
         "filename": "TextChannel.js",
         "lineno": 19,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005754",
+          "id": "astnode100006426",
+          "name": "this.type",
+          "type": "Literal",
+          "value": "text",
+          "paramnames": []
+        }
+      },
+      "description": "The type of channel",
+      "type": {
+        "names": [
+          "String"
+        ]
+      },
+      "name": "type",
+      "longname": "TextChannel#type",
+      "kind": "member",
+      "memberof": "TextChannel",
+      "scope": "instance",
+      "___id": "T000002R000478",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * This is the ID of the last message in the channel\n     * @type {String}\n     */",
+      "meta": {
+        "range": [
+          510,
+          550
+        ],
+        "filename": "TextChannel.js",
+        "lineno": 26,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100006432",
           "name": "this.lastMessageID",
           "type": "MemberExpression",
           "value": "raw.last_message_id",
@@ -6893,22 +7308,22 @@
       "kind": "member",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000435",
+      "___id": "T000002R000479",
       "___s": true
     },
     {
       "comment": "/**\n     * Whether the channel is nsfw or not\n     * @type {Boolean}\n     */",
       "meta": {
         "range": [
-          548,
-          568
+          639,
+          659
         ],
         "filename": "TextChannel.js",
-        "lineno": 26,
+        "lineno": 33,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005762",
+          "id": "astnode100006440",
           "name": "this.nsfw",
           "type": "MemberExpression",
           "value": "raw.nsfw",
@@ -6926,22 +7341,22 @@
       "kind": "member",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000436",
+      "___id": "T000002R000480",
       "___s": true
     },
     {
       "comment": "/**\n     * The topic of the channel\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          650,
-          672
+          741,
+          763
         ],
         "filename": "TextChannel.js",
-        "lineno": 33,
+        "lineno": 40,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005770",
+          "id": "astnode100006448",
           "name": "this.topic",
           "type": "MemberExpression",
           "value": "raw.topic",
@@ -6959,22 +7374,22 @@
       "kind": "member",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000437",
+      "___id": "T000002R000481",
       "___s": true
     },
     {
-      "comment": "/**\n   * @description This method will send a message to the channel specified\n   * @param {String|Object} content The string if it's a normal message or object if it's a richembed\n   * @param {Object} [opt = {}] The options, nonce and tts {@link MessageOptions}\n   * @returns {Promise<Message>} Returns a promise and discord message\n   * @example\n   * // Sending an embed\n   * msg.channel.send({title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86});\n   * @example\n   * // Sending a tts message\n   * msg.channel.send(\"Hi!\", {tts: true});\n   */",
+      "comment": "/**\n   * @description This method will send a message to the channel specified\n   * @param {String|Object} content The string if it's a normal message or object if it's a richembed\n   * @param {Object} [opt = {}] The options, nonce and tts {@link MessageOptions}\n   * @returns {Promise<Message>} Returns a promise and discord message\n   * @example\n   * // Sending an embed\n   * TextChannel.send({ title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86 });\n   * @example\n   * // Sending a tts message\n   * TextChannel.send(\"Hi!\", { tts: true });\n   */",
       "meta": {
         "range": [
-          1247,
-          3042
+          1342,
+          3059
         ],
         "filename": "TextChannel.js",
-        "lineno": 50,
+        "lineno": 57,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100005777",
+          "id": "astnode100006455",
           "name": "TextChannel#send",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7021,30 +7436,30 @@
         }
       ],
       "examples": [
-        "// Sending an embed\nmsg.channel.send({title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86});",
-        "// Sending a tts message\nmsg.channel.send(\"Hi!\", {tts: true});"
+        "// Sending an embed\nTextChannel.send({ title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86 });",
+        "// Sending a tts message\nTextChannel.send(\"Hi!\", { tts: true });"
       ],
       "name": "send",
       "longname": "TextChannel#send",
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000438",
+      "___id": "T000002R000482",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will get the most recent message sent\n   * @returns {Promise<Message>} Returns a promise and a discord message\n   */",
       "meta": {
         "range": [
-          3200,
-          3577
+          3217,
+          3555
         ],
         "filename": "TextChannel.js",
-        "lineno": 97,
+        "lineno": 104,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006049",
+          "id": "astnode100006709",
           "name": "TextChannel#lastMessage",
           "type": "MethodDefinition",
           "paramnames": []
@@ -7070,22 +7485,22 @@
       "memberof": "TextChannel",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000455",
+      "___id": "T000002R000499",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Will fetch a message if not cached\n   * @param {String} id The ID of the message\n   * @returns {Promise<Message>} Returns a promise and a discord message\n   */",
       "meta": {
         "range": [
-          3766,
-          4154
+          3744,
+          4093
         ],
         "filename": "TextChannel.js",
-        "lineno": 114,
+        "lineno": 121,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006121",
+          "id": "astnode100006772",
           "name": "TextChannel#getMessage",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7123,22 +7538,22 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000457",
+      "___id": "T000002R000501",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Will fetch a group of messages if not cached\n   * @param {Object} opt The options: around, before, after and limit\n   * @returns {Promise<Message>} Returns a promise and (a) discord message(s)\n   */",
       "meta": {
         "range": [
-          4382,
-          5089
+          4321,
+          4860
         ],
         "filename": "TextChannel.js",
-        "lineno": 130,
+        "lineno": 137,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006191",
+          "id": "astnode100006833",
           "name": "TextChannel#getMessages",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7176,22 +7591,22 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000458",
+      "___id": "T000002R000502",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the nsfw of the channel\n   * @param {Boolean} boolean Whether the channel should be nsfw or not\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          5302,
-          5625
+          5073,
+          5396
         ],
         "filename": "TextChannel.js",
-        "lineno": 157,
+        "lineno": 160,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006314",
+          "id": "astnode100006926",
           "name": "TextChannel#setNSFW",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7229,22 +7644,22 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000466",
+      "___id": "T000002R000508",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the topic of the channel\n   * @param {String} newtopic The topic of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          5822,
-          6267
+          5593,
+          5920
         ],
         "filename": "TextChannel.js",
-        "lineno": 175,
+        "lineno": 178,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006373",
+          "id": "astnode100006985",
           "name": "TextChannel#setTopic",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7282,22 +7697,22 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000469",
+      "___id": "T000002R000511",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will create an invite on the certain channel\n   * @param {Object} opt The options: maxAge, maxUses, temp and unique\n   * @returns {Promise<Invite>} Returns a promise and an invite\n   */",
       "meta": {
         "range": [
-          6496,
-          7000
+          6149,
+          6653
         ],
         "filename": "TextChannel.js",
-        "lineno": 194,
+        "lineno": 195,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006446",
+          "id": "astnode100007044",
           "name": "TextChannel#invite",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7335,22 +7750,22 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000472",
+      "___id": "T000002R000514",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will bulk delete messages \n   * @param {Number} number The number of messages to delete\n   */",
       "meta": {
         "range": [
-          7135,
-          7479
+          6788,
+          7132
         ],
         "filename": "TextChannel.js",
-        "lineno": 214,
+        "lineno": 215,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006532",
+          "id": "astnode100007130",
           "name": "TextChannel#bulkDelete",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7378,14 +7793,14 @@
       "kind": "function",
       "memberof": "TextChannel",
       "scope": "instance",
-      "___id": "T000002R000478",
+      "___id": "T000002R000520",
       "___s": true
     },
     {
       "comment": "/**\n * The options for sending/editting a message\n * @typedef {Object} MessageOptions\n * @property {Boolean} [tts = false] Whether the message should be sent as TTS or not\n * @property {String} [nonce = ''] The nonce for the message\n */",
       "meta": {
         "filename": "TextChannel.js",
-        "lineno": 226,
+        "lineno": 227,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {}
@@ -7424,22 +7839,22 @@
       ],
       "longname": "MessageOptions",
       "scope": "global",
-      "___id": "T000002R000482",
+      "___id": "T000002R000524",
       "___s": true
     },
     {
       "comment": "/**\n * This class represents a User Object\n */",
       "meta": {
         "range": [
-          92,
-          4418
+          140,
+          4827
         ],
         "filename": "User.js",
-        "lineno": 8,
+        "lineno": 9,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006617",
+          "id": "astnode100007221",
           "name": "User",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -7454,22 +7869,22 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000485",
+      "___id": "T000002R000528",
       "___s": true
     },
     {
       "comment": "/**\n     * The client object \n     * @type {Client}\n     */",
       "meta": {
         "range": [
-          204,
-          224
+          252,
+          272
         ],
         "filename": "User.js",
-        "lineno": 16,
+        "lineno": 17,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006627",
+          "id": "astnode100007231",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -7487,22 +7902,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000487",
+      "___id": "T000002R000530",
       "___s": true
     },
     {
       "comment": "/**\n     * The ID of the user\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          296,
-          312
+          344,
+          360
         ],
         "filename": "User.js",
-        "lineno": 23,
+        "lineno": 24,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006633",
+          "id": "astnode100007237",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -7520,22 +7935,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000488",
+      "___id": "T000002R000531",
       "___s": true
     },
     {
       "comment": "/**\n     * The username of the user\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          391,
-          419
+          439,
+          467
         ],
         "filename": "User.js",
-        "lineno": 31,
+        "lineno": 32,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006641",
+          "id": "astnode100007245",
           "name": "this.username",
           "type": "MemberExpression",
           "value": "raw.username",
@@ -7553,22 +7968,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000489",
+      "___id": "T000002R000532",
       "___s": true
     },
     {
       "comment": "/**\n     * The four lettered discriminator of the user\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          516,
-          554
+          564,
+          602
         ],
         "filename": "User.js",
-        "lineno": 38,
+        "lineno": 39,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006649",
+          "id": "astnode100007253",
           "name": "this.discriminator",
           "type": "MemberExpression",
           "value": "raw.discriminator",
@@ -7586,25 +8001,25 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000490",
+      "___id": "T000002R000533",
       "___s": true
     },
     {
       "comment": "/**\n     * The username+discriminator eg. Youssef#0001\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          651,
-          669
+          699,
+          749
         ],
         "filename": "User.js",
-        "lineno": 45,
+        "lineno": 46,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006657",
+          "id": "astnode100007261",
           "name": "this.tag",
-          "type": "MemberExpression",
-          "value": "raw.tag",
+          "type": "TemplateLiteral",
+          "value": "",
           "paramnames": []
         }
       },
@@ -7619,22 +8034,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000491",
+      "___id": "T000002R000534",
       "___s": true
     },
     {
       "comment": "/**\n     * The avatar hash of the user\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          750,
-          774
+          830,
+          854
         ],
         "filename": "User.js",
-        "lineno": 52,
+        "lineno": 53,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006665",
+          "id": "astnode100007276",
           "name": "this.avatar",
           "type": "MemberExpression",
           "value": "raw.avatar",
@@ -7652,22 +8067,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000492",
+      "___id": "T000002R000535",
       "___s": true
     },
     {
       "comment": "/**\n     * The avatarURL of a a user, defaulted at png\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          871,
-          954
+          951,
+          1034
         ],
         "filename": "User.js",
-        "lineno": 59,
+        "lineno": 60,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006673",
+          "id": "astnode100007284",
           "name": "this.avatarURL",
           "type": "TemplateLiteral",
           "value": "",
@@ -7685,25 +8100,25 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000493",
+      "___id": "T000002R000536",
       "___s": true
     },
     {
       "comment": "/**\n     * The presence of the user\n     * @type {Object}\n     */",
       "meta": {
         "range": [
-          1032,
-          1060
+          1112,
+          1170
         ],
         "filename": "User.js",
-        "lineno": 66,
+        "lineno": 67,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006688",
+          "id": "astnode100007299",
           "name": "this.presence",
-          "type": "MemberExpression",
-          "value": "raw.presence",
+          "type": "LogicalExpression",
+          "value": "",
           "paramnames": []
         }
       },
@@ -7718,22 +8133,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000494",
+      "___id": "T000002R000537",
       "___s": true
     },
     {
       "comment": "/**\n     * Whether the use is a bot or not\n     * @type {Boolean}\n     */",
       "meta": {
         "range": [
-          1146,
-          1173
+          1256,
+          1283
         ],
         "filename": "User.js",
-        "lineno": 73,
+        "lineno": 74,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006696",
+          "id": "astnode100007317",
           "name": "this.bot",
           "type": "LogicalExpression",
           "value": "",
@@ -7751,25 +8166,25 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000495",
+      "___id": "T000002R000538",
       "___s": true
     },
     {
       "comment": "/**\n     * The timestamp the user was created at\n     * @type {Date}\n     */",
       "meta": {
         "range": [
-          1268,
-          1312
+          1378,
+          1442
         ],
         "filename": "User.js",
-        "lineno": 80,
+        "lineno": 81,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006706",
+          "id": "astnode100007327",
           "name": "this.createdTimestamp",
           "type": "MemberExpression",
-          "value": "raw.createdTimestamp",
+          "value": ".timestamp",
           "paramnames": []
         }
       },
@@ -7784,25 +8199,25 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000496",
+      "___id": "T000002R000539",
       "___s": true
     },
     {
       "comment": "/**\n     * The date the user was created at\n     * @type {Date}\n     */",
       "meta": {
         "range": [
-          1396,
-          1426
+          1526,
+          1574
         ],
         "filename": "User.js",
-        "lineno": 87,
+        "lineno": 88,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006714",
+          "id": "astnode100007341",
           "name": "this.createdAt",
-          "type": "MemberExpression",
-          "value": "raw.createdAt",
+          "type": "NewExpression",
+          "value": "",
           "paramnames": []
         }
       },
@@ -7817,22 +8232,22 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000497",
+      "___id": "T000002R000540",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Returns the avatar's url of a user\n   * @param {Object} [options = {}] The options, format eg. \"png\" and size, eg. 256\n   * @returns {String} The user's avatar as a URL\n   */",
       "meta": {
         "range": [
-          1635,
-          1924
+          1783,
+          2072
         ],
         "filename": "User.js",
-        "lineno": 96,
+        "lineno": 97,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006721",
+          "id": "astnode100007350",
           "name": "User#avatarURL",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7872,22 +8287,22 @@
       "kind": "function",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000498",
+      "___id": "T000002R000541",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will send a message to the channel specified\n   * @param {String|Object} content The string if it's a normal message or object if it's a richembed\n   * @param {Object} [opt = {}] The options, nonce and tts\n   * @returns {Promise<Message>} Returns a promise and discord message\n   * @example\n   * // Sending an embed\n   * User.send({title: \"Ping!\", description: \"This User Was Pinged!\", color: 0x00AE86});\n   * @example\n   * // Sending a tts message\n   * User.send(\"Hi!\", {tts: true});\n   */",
       "meta": {
         "range": [
-          2456,
-          4251
+          2604,
+          4660
         ],
         "filename": "User.js",
-        "lineno": 117,
+        "lineno": 118,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100006770",
+          "id": "astnode100007399",
           "name": "User#send",
           "type": "MethodDefinition",
           "paramnames": [
@@ -7942,22 +8357,22 @@
       "kind": "function",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000499",
+      "___id": "T000002R000542",
       "___s": true
     },
     {
       "comment": "/**\n   * @description This method will mention a user\n   * @returns {String} The mention as a string: <@id>\n   */",
       "meta": {
         "range": [
-          4372,
-          4415
+          4781,
+          4824
         ],
         "filename": "User.js",
-        "lineno": 164,
+        "lineno": 174,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007042",
+          "id": "astnode100007705",
           "name": "User#mention",
           "type": "MethodDefinition",
           "paramnames": []
@@ -7983,7 +8398,7 @@
       "memberof": "User",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000516",
+      "___id": "T000002R000561",
       "___s": true
     },
     {
@@ -7991,14 +8406,14 @@
       "meta": {
         "range": [
           213,
-          1625
+          1721
         ],
         "filename": "VoiceChannel.js",
         "lineno": 10,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007079",
+          "id": "astnode100007742",
           "name": "VoiceChannel",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -8017,22 +8432,55 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000521",
+      "___id": "T000002R000566",
       "___s": true
     },
     {
-      "comment": "/**\n     * The bitrate of the call\n     * @type {Number}\n     */",
+      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
       "meta": {
         "range": [
-          397,
-          423
+          393,
+          412
         ],
         "filename": "VoiceChannel.js",
         "lineno": 19,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007097",
+          "id": "astnode100007760",
+          "name": "this.type",
+          "type": "Literal",
+          "value": "voice",
+          "paramnames": []
+        }
+      },
+      "description": "The type of channel",
+      "type": {
+        "names": [
+          "String"
+        ]
+      },
+      "name": "type",
+      "longname": "VoiceChannel#type",
+      "kind": "member",
+      "memberof": "VoiceChannel",
+      "scope": "instance",
+      "___id": "T000002R000568",
+      "___s": true
+    },
+    {
+      "comment": "/**\n     * The bitrate of the call\n     * @type {Number}\n     */",
+      "meta": {
+        "range": [
+          493,
+          519
+        ],
+        "filename": "VoiceChannel.js",
+        "lineno": 26,
+        "columnno": 4,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100007766",
           "name": "this.bitrate",
           "type": "MemberExpression",
           "value": "raw.bitrate",
@@ -8050,22 +8498,22 @@
       "kind": "member",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000523",
+      "___id": "T000002R000569",
       "___s": true
     },
     {
       "comment": "/**\n     * The limit of the users in the call\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          511,
-          541
+          607,
+          637
         ],
         "filename": "VoiceChannel.js",
-        "lineno": 26,
+        "lineno": 33,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007105",
+          "id": "astnode100007774",
           "name": "this.userLimit",
           "type": "MemberExpression",
           "value": "raw.userLimit",
@@ -8083,22 +8531,22 @@
       "kind": "member",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000524",
+      "___id": "T000002R000570",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the bitrate of the channel\n   * @param {Number} bitrate The bitrate of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          746,
-          1078
+          842,
+          1174
         ],
         "filename": "VoiceChannel.js",
-        "lineno": 36,
+        "lineno": 43,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007112",
+          "id": "astnode100007781",
           "name": "VoiceChannel#setBitrate",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8136,22 +8584,22 @@
       "kind": "function",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000525",
+      "___id": "T000002R000571",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the user limit of the channel\n   * @param {Number} limit The user limit of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          1281,
-          1622
+          1377,
+          1718
         ],
         "filename": "VoiceChannel.js",
-        "lineno": 53,
+        "lineno": 60,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007171",
+          "id": "astnode100007840",
           "name": "VoiceChannel#setUserLimit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8189,7 +8637,7 @@
       "kind": "function",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000528",
+      "___id": "T000002R000574",
       "___s": true
     },
     {
@@ -8204,7 +8652,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007272",
+          "id": "astnode100007941",
           "name": "SnowflakeUtil.generate",
           "type": "MethodDefinition",
           "paramnames": []
@@ -8230,7 +8678,7 @@
       "memberof": "SnowflakeUtil",
       "scope": "static",
       "params": [],
-      "___id": "T000002R000537",
+      "___id": "T000002R000583",
       "___s": true
     },
     {
@@ -8308,7 +8756,7 @@
       ],
       "longname": "DeconstructedSnowflake",
       "scope": "global",
-      "___id": "T000002R000540",
+      "___id": "T000002R000586",
       "___s": true
     },
     {
@@ -8323,7 +8771,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007323",
+          "id": "astnode100007992",
           "name": "SnowflakeUtil.deconstruct",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8361,7 +8809,7 @@
       "kind": "function",
       "memberof": "SnowflakeUtil",
       "scope": "static",
-      "___id": "T000002R000541",
+      "___id": "T000002R000587",
       "___s": true
     },
     {
@@ -8376,7 +8824,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007441",
+          "id": "astnode100008110",
           "name": "Util.idToBinary",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8414,7 +8862,7 @@
       "kind": "function",
       "memberof": "Util",
       "scope": "static",
-      "___id": "T000002R000554",
+      "___id": "T000002R000600",
       "___s": true
     },
     {
@@ -8429,7 +8877,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007529",
+          "id": "astnode100008198",
           "name": "Util.binaryToID",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8467,7 +8915,7 @@
       "kind": "function",
       "memberof": "Util",
       "scope": "static",
-      "___id": "T000002R000562",
+      "___id": "T000002R000608",
       "___s": true
     },
     {
@@ -8496,7 +8944,7 @@
       "memberof": "Client",
       "longname": "Client#channelAdded",
       "scope": "instance",
-      "___id": "T000002R000573",
+      "___id": "T000002R000619",
       "___s": true
     },
     {
@@ -8525,7 +8973,7 @@
       "memberof": "Client",
       "longname": "Client#channelRemoved",
       "scope": "instance",
-      "___id": "T000002R000576",
+      "___id": "T000002R000622",
       "___s": true
     },
     {
@@ -8554,7 +9002,7 @@
       "memberof": "Client",
       "longname": "Client#message",
       "scope": "instance",
-      "___id": "T000002R000579",
+      "___id": "T000002R000625",
       "___s": true
     },
     {
@@ -8592,7 +9040,7 @@
       "memberof": "Client",
       "longname": "Client#messageReactionAdd",
       "scope": "instance",
-      "___id": "T000002R000582",
+      "___id": "T000002R000628",
       "___s": true
     },
     {
@@ -8610,7 +9058,7 @@
       "memberof": "Client",
       "longname": "Client#ping",
       "scope": "instance",
-      "___id": "T000002R000585",
+      "___id": "T000002R000631",
       "___s": true
     },
     {
@@ -8639,7 +9087,7 @@
       "memberof": "Client",
       "longname": "Client#raw",
       "scope": "instance",
-      "___id": "T000002R000588",
+      "___id": "T000002R000634",
       "___s": true
     },
     {
@@ -8657,7 +9105,7 @@
       "memberof": "Client",
       "longname": "Client#ready",
       "scope": "instance",
-      "___id": "T000002R000591",
+      "___id": "T000002R000637",
       "___s": true
     },
     {
@@ -8666,6 +9114,7 @@
       "files": [
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\Client.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\Collection.js",
+        "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\DMChannel.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\Embed.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\Guild.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes\\GuildChannel.js",
@@ -8687,7 +9136,7 @@
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Events\\Raw.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Events\\Ready.js"
       ],
-      "___id": "T000002R000593",
+      "___id": "T000002R000639",
       "___s": true
     },
     {
@@ -8702,7 +9151,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002677",
+          "id": "astnode100003228",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -8722,7 +9171,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#id",
       "inherited": true,
-      "___id": "T000002R000594",
+      "___id": "T000002R000640",
       "___s": true
     },
     {
@@ -8737,7 +9186,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002685",
+          "id": "astnode100003236",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -8757,7 +9206,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#client",
       "inherited": true,
-      "___id": "T000002R000595",
+      "___id": "T000002R000641",
       "___s": true
     },
     {
@@ -8772,7 +9221,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002691",
+          "id": "astnode100003242",
           "name": "this.name",
           "type": "MemberExpression",
           "value": "raw.name",
@@ -8792,57 +9241,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#name",
       "inherited": true,
-      "___id": "T000002R000596",
-      "___s": true
-    },
-    {
-      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
-      "meta": {
-        "range": [
-          525,
-          595
-        ],
-        "filename": "GuildChannel.js",
-        "lineno": 36,
-        "columnno": 4,
-        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
-        "code": {
-          "id": "astnode100002699",
-          "name": "this.genre",
-          "type": "MemberExpression",
-          "value": "[\"text\",\"dm\",\"voice\",\"group_dm\",\"category\"][undefined]",
-          "paramnames": []
-        }
-      },
-      "description": "The type of channel",
-      "type": {
-        "names": [
-          "String"
-        ]
-      },
-      "name": "genre",
-      "longname": "TextChannel#genre",
-      "kind": "member",
-      "memberof": "TextChannel",
-      "scope": "instance",
-      "inherits": "GuildChannel#genre",
-      "inherited": true,
-      "___id": "T000002R000597",
+      "___id": "T000002R000642",
       "___s": true
     },
     {
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          698,
-          726
+          555,
+          583
         ],
         "filename": "GuildChannel.js",
-        "lineno": 43,
+        "lineno": 36,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002714",
+          "id": "astnode100003250",
           "name": "this.position",
           "type": "MemberExpression",
           "value": "raw.position",
@@ -8862,22 +9276,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#position",
       "inherited": true,
-      "___id": "T000002R000598",
+      "___id": "T000002R000643",
       "___s": true
     },
     {
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          819,
-          873
+          676,
+          730
         ],
         "filename": "GuildChannel.js",
-        "lineno": 50,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002722",
+          "id": "astnode100003258",
           "name": "this.permission_overwrites",
           "type": "MemberExpression",
           "value": "raw.permission_overwrites",
@@ -8897,22 +9311,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#permission_overwrites",
       "inherited": true,
-      "___id": "T000002R000599",
+      "___id": "T000002R000644",
       "___s": true
     },
     {
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          952,
-          970
+          809,
+          827
         ],
         "filename": "GuildChannel.js",
-        "lineno": 56,
+        "lineno": 49,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002730",
+          "id": "astnode100003266",
           "name": "this.guild",
           "type": "Identifier",
           "value": "guild",
@@ -8932,22 +9346,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#guild",
       "inherited": true,
-      "___id": "T000002R000600",
+      "___id": "T000002R000645",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1309,
-          1939
+          1166,
+          1794
         ],
         "filename": "GuildChannel.js",
-        "lineno": 69,
+        "lineno": 62,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002735",
+          "id": "astnode100003271",
           "name": "GuildChannel#setName",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8990,22 +9404,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setName",
       "inherited": true,
-      "___id": "T000002R000601",
+      "___id": "T000002R000646",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2141,
-          2791
+          1996,
+          2644
         ],
         "filename": "GuildChannel.js",
-        "lineno": 90,
+        "lineno": 83,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002841",
+          "id": "astnode100003377",
           "name": "GuildChannel#setPosition",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9045,22 +9459,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setPosition",
       "inherited": true,
-      "___id": "T000002R000602",
+      "___id": "T000002R000647",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3007,
-          3786
+          2860,
+          3637
         ],
         "filename": "GuildChannel.js",
-        "lineno": 111,
+        "lineno": 104,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002949",
+          "id": "astnode100003485",
           "name": "GuildChannel#setParent",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9100,22 +9514,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setParent",
       "inherited": true,
-      "___id": "T000002R000603",
+      "___id": "T000002R000648",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3927,
-          4550
+          3778,
+          4399
         ],
         "filename": "GuildChannel.js",
-        "lineno": 134,
+        "lineno": 127,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003078",
+          "id": "astnode100003614",
           "name": "GuildChannel#delete",
           "type": "MethodDefinition",
           "paramnames": []
@@ -9143,22 +9557,22 @@
       "params": [],
       "inherits": "GuildChannel#delete",
       "inherited": true,
-      "___id": "T000002R000604",
+      "___id": "T000002R000649",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4813,
-          6002
+          4662,
+          5849
         ],
         "filename": "GuildChannel.js",
-        "lineno": 154,
+        "lineno": 147,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003181",
+          "id": "astnode100003717",
           "name": "GuildChannel#edit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9198,7 +9612,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#edit",
       "inherited": true,
-      "___id": "T000002R000605",
+      "___id": "T000002R000650",
       "___s": true
     },
     {
@@ -9213,7 +9627,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002677",
+          "id": "astnode100003228",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -9233,7 +9647,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#id",
       "inherited": true,
-      "___id": "T000002R000606",
+      "___id": "T000002R000651",
       "___s": true
     },
     {
@@ -9248,7 +9662,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002685",
+          "id": "astnode100003236",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -9268,7 +9682,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#client",
       "inherited": true,
-      "___id": "T000002R000607",
+      "___id": "T000002R000652",
       "___s": true
     },
     {
@@ -9283,7 +9697,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002691",
+          "id": "astnode100003242",
           "name": "this.name",
           "type": "MemberExpression",
           "value": "raw.name",
@@ -9303,57 +9717,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#name",
       "inherited": true,
-      "___id": "T000002R000608",
-      "___s": true
-    },
-    {
-      "comment": "/**\n     * The type of channel\n     * @type {String}\n     */",
-      "meta": {
-        "range": [
-          525,
-          595
-        ],
-        "filename": "GuildChannel.js",
-        "lineno": 36,
-        "columnno": 4,
-        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
-        "code": {
-          "id": "astnode100002699",
-          "name": "this.genre",
-          "type": "MemberExpression",
-          "value": "[\"text\",\"dm\",\"voice\",\"group_dm\",\"category\"][undefined]",
-          "paramnames": []
-        }
-      },
-      "description": "The type of channel",
-      "type": {
-        "names": [
-          "String"
-        ]
-      },
-      "name": "genre",
-      "longname": "VoiceChannel#genre",
-      "kind": "member",
-      "memberof": "VoiceChannel",
-      "scope": "instance",
-      "inherits": "GuildChannel#genre",
-      "inherited": true,
-      "___id": "T000002R000609",
+      "___id": "T000002R000653",
       "___s": true
     },
     {
       "comment": "/**\n     * The position of the channel on the left-hand side\n     * @type {Number}\n     */",
       "meta": {
         "range": [
-          698,
-          726
+          555,
+          583
         ],
         "filename": "GuildChannel.js",
-        "lineno": 43,
+        "lineno": 36,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002714",
+          "id": "astnode100003250",
           "name": "this.position",
           "type": "MemberExpression",
           "value": "raw.position",
@@ -9373,22 +9752,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#position",
       "inherited": true,
-      "___id": "T000002R000610",
+      "___id": "T000002R000654",
       "___s": true
     },
     {
       "comment": "/**\n     * The permission overwrites of the channel\n     * @type {Array}\n     */",
       "meta": {
         "range": [
-          819,
-          873
+          676,
+          730
         ],
         "filename": "GuildChannel.js",
-        "lineno": 50,
+        "lineno": 43,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002722",
+          "id": "astnode100003258",
           "name": "this.permission_overwrites",
           "type": "MemberExpression",
           "value": "raw.permission_overwrites",
@@ -9408,22 +9787,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#permission_overwrites",
       "inherited": true,
-      "___id": "T000002R000611",
+      "___id": "T000002R000655",
       "___s": true
     },
     {
       "comment": "/**\n     * The guild the channel is in\n     * @type {Guild}\n     */",
       "meta": {
         "range": [
-          952,
-          970
+          809,
+          827
         ],
         "filename": "GuildChannel.js",
-        "lineno": 56,
+        "lineno": 49,
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002730",
+          "id": "astnode100003266",
           "name": "this.guild",
           "type": "Identifier",
           "value": "guild",
@@ -9443,22 +9822,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#guild",
       "inherited": true,
-      "___id": "T000002R000612",
+      "___id": "T000002R000656",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the name of the channel\n   * @param {String} newname The name of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   * @example\n   * //Naming a channel 'general'\n   * channel.setName('general')\n   * // This example is for most methods on this constructor\n   */",
       "meta": {
         "range": [
-          1309,
-          1939
+          1166,
+          1794
         ],
         "filename": "GuildChannel.js",
-        "lineno": 69,
+        "lineno": 62,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002735",
+          "id": "astnode100003271",
           "name": "GuildChannel#setName",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9501,22 +9880,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setName",
       "inherited": true,
-      "___id": "T000002R000613",
+      "___id": "T000002R000657",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the position of the channel\n   * @param {Number} position The position of the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          2141,
-          2791
+          1996,
+          2644
         ],
         "filename": "GuildChannel.js",
-        "lineno": 90,
+        "lineno": 83,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002841",
+          "id": "astnode100003377",
           "name": "GuildChannel#setPosition",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9556,22 +9935,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setPosition",
       "inherited": true,
-      "___id": "T000002R000614",
+      "___id": "T000002R000658",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Sets the parent of the channel\n   * @param {Snowflake} setParent The parent channel or parent channel id\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          3007,
-          3786
+          2860,
+          3637
         ],
         "filename": "GuildChannel.js",
-        "lineno": 111,
+        "lineno": 104,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100002949",
+          "id": "astnode100003485",
           "name": "GuildChannel#setParent",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9611,22 +9990,22 @@
       "scope": "instance",
       "inherits": "GuildChannel#setParent",
       "inherited": true,
-      "___id": "T000002R000615",
+      "___id": "T000002R000659",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Deletes the channel\n   * @returns {Promise<GuildChannel>} Returns a promise and the Guild Channel deleted\n   */",
       "meta": {
         "range": [
-          3927,
-          4550
+          3778,
+          4399
         ],
         "filename": "GuildChannel.js",
-        "lineno": 134,
+        "lineno": 127,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003078",
+          "id": "astnode100003614",
           "name": "GuildChannel#delete",
           "type": "MethodDefinition",
           "paramnames": []
@@ -9654,22 +10033,22 @@
       "params": [],
       "inherits": "GuildChannel#delete",
       "inherited": true,
-      "___id": "T000002R000616",
+      "___id": "T000002R000660",
       "___s": true
     },
     {
       "comment": "/**\n   * @description Edits the channel \n   * @param {Object} options Available options: name, position, topic, nsfw, bitrate, userlimit and parent, similar to above methods\n   * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel\n   */",
       "meta": {
         "range": [
-          4813,
-          6002
+          4662,
+          5849
         ],
         "filename": "GuildChannel.js",
-        "lineno": 154,
+        "lineno": 147,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100003181",
+          "id": "astnode100003717",
           "name": "GuildChannel#edit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -9709,7 +10088,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#edit",
       "inherited": true,
-      "___id": "T000002R000617",
+      "___id": "T000002R000661",
       "___s": true
     }
   ]

@@ -6,6 +6,8 @@ const Collection = require('./Classes/Collection');
 const GuildChannel = require('./Classes/GuildChannel');
 const TextChannel = require('./Classes/TextChannel');
 const VoiceChannel = require('./Classes/VoiceChannel');
+const DMChannel = require('./Classes/DMChannel');
+const User = require('./Classes/User');
 const https = require('https');
 
 module.exports = function(TOKEN) {
@@ -62,25 +64,22 @@ module.exports = function(TOKEN) {
       _('RAW', message);
 
       if (t == 'READY') {
+        /** CACHE */
         const startdate = new Date();
-        /* CACHE */
         _this.amOfGuilds = message.d.guilds.length;
+        _this.users = new Collection();
         _this.guilds = new Collection();
         _this.channels = new Collection();
         _this.messages = new Collection();
         _this.presences = new Collection();
         
         /* METHODS */
-        _this.message_methods = require('./Methods/Messages');
         _this.guild_methods = require('./Methods/Guilds');
         _this.permission_methods = require('./Methods/Permissions');
         _this.role_methods = require('./Methods/Roles');
         _this.emoji_methods = require('./Methods/Emojis');
         _this.cat_methods = require('./Methods/Category');
-        _this.gu_methods = require('./Methods/Members');
         _this.invite_methods = require('./Methods/Invites');
-        _this.user_methods = require('./Methods/Users');
-        _this.user = _this.gu_methods().fromRaw(message.d.user);
         _this.ban_methods = require('./Methods/Bans');
 
         /* MISC */
@@ -88,6 +87,8 @@ module.exports = function(TOKEN) {
         _this.token = _this.token;
         _this.pings = [];
         _this.latency = 0;
+        _this.user = new User(message.d.user, _this);
+
         _this.ping = function ping() {
           const t1 = new Date();
           return new Promise((res, rej) => {
@@ -136,9 +137,11 @@ module.exports = function(TOKEN) {
 
       if (t == 'CHANNEL_CREATE') {
         let chn;
+        if (message.d.type === 1) chn = new DMChannel(message.d, _this);
         if (message.d.type === 0) chn = new TextChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
         if (message.d.type === 2) chn = new VoiceChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
         _this.channels.set(chn.id, chn);
+        _this.channels.filter(c => c.type === 'dm').size;
         _(t, chn);
       }
 
@@ -151,8 +154,7 @@ module.exports = function(TOKEN) {
       }
 
       if (t == 'MESSAGE_CREATE') {
-        const mesData = _this.message_methods().fromRaw(message.d);
-        const msg = new Message(mesData, _this);
+        const msg = new Message(message.d, _this);
         _this.messages.set(msg.id, msg);
         _(t, msg);
       }

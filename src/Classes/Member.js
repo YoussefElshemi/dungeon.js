@@ -33,7 +33,7 @@ class Member {
        * @type {User}
        */
 
-      this.user = new User(client.gu_methods().fromRaw(raw.user), client);
+      this.user = new User(raw.user, client);
 
       /**
        * The roles that the member has 
@@ -103,7 +103,8 @@ class Member {
        * @type {Array}
        */
 
-      this.permissions = perms.filter((v, i, a) => a.indexOf(v) === i); 
+      this.permissions = perms.filter((v, i, a) => a.indexOf(v) === i);
+      
     }
 
   }
@@ -159,7 +160,7 @@ class Member {
         reason: opt.reason || ''
       }, _this.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild)));
+          setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
         });
     });
   }
@@ -176,7 +177,7 @@ class Member {
         reason: reason || ''
       }, _this.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.gu_methods().fromRaw(m, this.guild))); // needs fixing here
+          setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
         });
     });
   }
@@ -211,27 +212,35 @@ class Member {
     }
     return new Promise((res) => {
       if (embed) {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          embed: embed
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });  
+        request.req('POST', '/users/@me/channels', {
+          recipient_id: this.id
+        }, this.client.token).then(c => {
+          request.req('POST', `/channels/${c.id}/messages`, {
+            embed: embed
+          }, this.client.token)
+            .then(m => {
+              const Message = require('./Message');
+              setTimeout(res, 100, res(new Message(m, this.client)));
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            });  
+        });
       } else {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt && opt.nonce) || false,
-          tts: (opt && opt.tts) || false,
-          content: content || null
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          }); 
+        request.req('POST', '/users/@me/channels', {
+          recipient_id: this.id
+        }, this.client.token).then(c => {
+          request.req('POST', `/channels/${c.id}/messages`, {
+            nonce: (opt && opt.nonce) || false,
+            tts: (opt && opt.tts) || false,
+            content: content || null
+          }, this.client.token)
+            .then(m => {
+              const Message = require('./Message');
+              setTimeout(res, 100, res(new Message(m, this.client)));          
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            }); 
+        });
       }     
     });
   }

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: Embed</title>
+    <title>Class: DMChannel</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -843,7 +843,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Embed.html">Class: Embed</h1>
+        <h1 class="page-title" data-filename="DMChannel.html">Class: DMChannel</h1>
         
 
 
@@ -852,10 +852,10 @@
     
 <header>
     <h2>
-    Embed
+    DMChannel
     </h2>
     
-        <div class="class-description">This class represents an embed object</div>
+        <div class="class-description">This class represents a DM Channel object</div>
     
 </header>  
 
@@ -867,14 +867,14 @@
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="Embed">
+        <h4 class="name" id="DMChannel">
             
-            new Embed<span class="signature">()</span>
+            new DMChannel<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line5">line 5</a>
+            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line8">line 8</a>
         </div>
         
     </div>
@@ -950,7 +950,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="author">author<span class="type-signature type object">Object</span> </h4>
+        <h4 class="name" id="client">client<span class="type-signature type client"><a href="Client.html">Client</a></span> </h4>
     </div>
     
     
@@ -958,7 +958,7 @@
 <dd>
     
     <div class="description">
-        The author of the embed
+        The client object which is logged in
     </div>
     
     
@@ -995,7 +995,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="color">color<span class="type-signature type color">Color</span> </h4>
+        <h4 class="name" id="id">id<span class="type-signature type string">String</span> </h4>
     </div>
     
     
@@ -1003,7 +1003,7 @@
 <dd>
     
     <div class="description">
-        The color of the embed
+        The ID of the DM channel
     </div>
     
     
@@ -1040,7 +1040,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="description">description<span class="type-signature type string">String</span> </h4>
+        <h4 class="name" id="lastMessageID">lastMessageID</h4>
     </div>
     
     
@@ -1048,7 +1048,7 @@
 <dd>
     
     <div class="description">
-        The description of the embed
+        The ID of the last message sent in the DM Channel
     </div>
     
     
@@ -1085,7 +1085,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="fields">fields<span class="type-signature type array">Array</span> </h4>
+        <h4 class="name" id="recipients">recipients<span class="type-signature type collection"><a href="Collection.html">Collection</a></span> </h4>
     </div>
     
     
@@ -1093,7 +1093,7 @@
 <dd>
     
     <div class="description">
-        The fields of the embed
+        A collection of the members in the DM mapped by their ID
     </div>
     
     
@@ -1130,7 +1130,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="footer">footer<span class="type-signature type object">Object</span> </h4>
+        <h4 class="name" id="type">type<span class="type-signature type string">String</span> </h4>
     </div>
     
     
@@ -1138,232 +1138,7 @@
 <dd>
     
     <div class="description">
-        The footer of the embed
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="image">image<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The image of the embed
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="thumbnail">thumbnail<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The thumbnail of the embed
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="timestamp">timestamp<span class="type-signature type date">Date</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The timestamp of the embed
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="title">title<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The title of the embed
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="url">url<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The URL for the embed
+        The type of channel
     </div>
     
     
@@ -1406,14 +1181,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="addField">
+        <h4 class="name" id="addRecipient">
             
-            addField<span class="signature">(name, value, <span class="optional">inline</span>)</span>
+            addRecipient<span class="signature">(user, accessToken, nick)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line169">line 169</a>
+            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line118">line 118</a>
         </div>
         
     </div>
@@ -1424,7 +1199,343 @@
     
     
     <div class="description">
-        This method adds a field to the embed
+        This method adds a user to a group DM
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="User.html">User</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user to add to a DM, can be a user object or id</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>accessToken</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Access token of a user that has granted your app the gdm.join scope</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>nick</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The nickname of the user being added</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
+                        
+                    
+            </td>
+            <td class="description last">Returns a promise and a DM Channel</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="removeRecipient">
+            
+            removeRecipient<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line139">line 139</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method removes a user to a group DM
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="User.html">User</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user to remove from the DM, can be a user object or id</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
+                        
+                    
+            </td>
+            <td class="description last">Returns a promise and a DM Channel</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="send">
+            
+            send<span class="signature">(content, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line68">line 68</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will send a message to the channel specified
     </div>
     
 
@@ -1457,13 +1568,16 @@
 	
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>content</code></td>
             
             
             <td class="type">
             
                 
 <span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
 
 
             
@@ -1482,20 +1596,20 @@
                         
                     
                 
-                The name of the field</td>
+                The string if it's a normal message or object if it's a richembed</td>
         </tr>
 	
 	
 	
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>opt</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -1504,39 +1618,7 @@
             
                 <td class="default">
                 
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                The value of the field</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>inline</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    false
+                    {}
                 
                 </td>
             
@@ -1550,7 +1632,7 @@
                         
                     
                 
-                Set the field to display inline</td>
+                The options, nonce and tts <a href="global.html#MessageOptions">MessageOptions</a></td>
         </tr>
 	
 	
@@ -1593,1160 +1675,51 @@
     
     
     
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setAuthor">
-            
-            setAuthor<span class="signature">(authorText, <span class="optional">authorImage</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line157">line 157</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the author of the embed
-    </div>
+    <h5>Returns:</h5>
     
 
-    
-    
-    
-    
-    
-        
 
 <table class="params">
     <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
         <tr>
-            
-                <td class="name"><code>authorText</code></td>
-            
             
             <td class="type">
             
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
+                        Promise.&lt;<a href="Message.html">Message</a>>
                         
                     
-                
-                The author text of the embed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>authorImage</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
             </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The image placed in the author area</td>
+            <td class="description last">Returns a promise and discord message</td>
         </tr>
-	
-	
-	</tbody>
+    
+    </tbody>
 </table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
 
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setColor">
-            
-            setColor<span class="signature">(color)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line136">line 136</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the color of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
+        <h5>Examples</h5>
         
 
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>color</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Color</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The color of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setDescription">
-            
-            setDescription<span class="signature">(description)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line95">line 95</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the description of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>description</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The description of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setFooter">
-            
-            setFooter<span class="signature">(footerText, <span class="optional">footerImage</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line106">line 106</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the footer of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>footerText</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                The footer text of the embed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>footerImage</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    ''
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The image placed in the footer</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setImage">
-            
-            setImage<span class="signature">(image)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line116">line 116</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the image of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>image</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The image URL of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setThumbnail">
-            
-            setThumbnail<span class="signature">(thumbnail)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line126">line 126</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the thumbnail of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>thumbnail</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The thumbnail image URL of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setTimestamp">
-            
-            setTimestamp<span class="signature">(<span class="optional">timestamp</span>)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line146">line 146</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the date of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>timestamp</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    new Date()
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The date of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
     
+    <pre class="prettyprint"><code>// Sending an embed
+DMChannel.send({ title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86 });</code></pre>
     
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setTitle">
-            
-            setTitle<span class="signature">(title)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line85">line 85</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the title of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The title of the embed</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="setURL">
-            
-            setURL<span class="signature">(url)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Embed.js.html">Classes/Embed.js</a>, <a href="Classes_Embed.js.html#line179">line 179</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method sets the URL of the embed
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                the URL</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
 
-    
     
-
+    <pre class="prettyprint"><code>// Sending a tts message
+DMChannel.send("Hi!", { tts: true });</code></pre>
     
 
-    
-    
-    
-    
-    
-    
     
 </dd>
 

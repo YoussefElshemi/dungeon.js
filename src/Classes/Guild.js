@@ -238,7 +238,7 @@ class Guild {
   fetchMembers() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
-        const member_methods = members.map(i => this.client.gu_methods().fromRaw(i));
+        const member_methods = members.map(i => new Member(i, this.guild, this.client));
         setTimeout(res, 100, res(member_methods));
       }).catch(rej);
     });
@@ -252,7 +252,7 @@ class Guild {
   fetchBans() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
-        const ban_methods = bans.map(i => this.client.ban_methods().fromRaw(i));
+        const ban_methods = bans.map(i => new Member(i, this.guild, this.client));
         setTimeout(res, 100, res(ban_methods, this.id));
       }).catch(rej);
     });
