@@ -12,6 +12,13 @@ class VoiceChannel extends GuildChannel {
     super(raw, guild, client);
 
     /**
+     * The type of channel
+     * @type {String}
+     */
+
+    this.type = 'voice';
+    
+    /**
      * The bitrate of the call
      * @type {Number}
      */

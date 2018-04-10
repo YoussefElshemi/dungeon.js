@@ -1,6 +1,8 @@
 const request = require('../Connection');
 const Collection = require('../Classes/Collection');
 const GuildChannel = require('../Classes/GuildChannel');
+const Member = require('../Classes/Member');
+const Guild = require('../Classes/Guild');
 
 module.exports = function() {
   const _this = this;
@@ -32,9 +34,9 @@ module.exports = function() {
       raw.emojis = allEmojis;
 
       for (let i = 0; i < raw.members.length; i++) {
-        allMembers.set(raw.members[i].user.id, raw.members[i]);
+        allMembers.set(raw.members[i].user.id, new Member(raw.members[i], new Guild(raw, _this), _this));
       }
-
+      
       raw.members = allMembers;
 
 

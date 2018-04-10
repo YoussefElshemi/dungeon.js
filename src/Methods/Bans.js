@@ -12,7 +12,7 @@ module.exports = function() {
           }).catch(rej);
         });
       } BUGGED */
-      raw.user = _this.user_methods().fromRaw(raw.user);
+      raw.user = new User(raw.user, _this);
 
       return raw;
     }

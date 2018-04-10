@@ -1,12 +1,12 @@
 {
   "name": "dungeon.js",
-  "version": "1.5.2",
+  "version": "1.6.1",
   "description": "A discord API wrapper",
   "main": "index.js",
   "scripts": {
     "test": "eslint fix ./",
     "genjsondocs": "jsdoc -t node_modules/jsdoc-json -R README.md ./src/Classes ./src/Util ./src/Events -d out.json",
-    "gendocs": "jsdoc -t node_modules/minami -R README.md ./src/Classes ./src/Util ./src/Events -d ./docs/",
+    "gendocs": "jsdoc -t node_modules/jaguarjs-jsdoc -R README.md ./src/Classes ./src/Util ./src/Events -d ./docs/",
     "docs": "npm run gendocs && npm run genjsondocs"
   },
   "contributors": [
@@ -26,9 +26,8 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
+    "jaguarjs-jsdoc": "^1.1.0",
     "jsdoc": "^3.5.5",
-    "minami": "^1.2.3",
-    "jsdoc-json": "^2.0.2",
-    "jsdoc-vue": "^1.0.0"
+    "jsdoc-json": "^2.0.2"
   }
 }

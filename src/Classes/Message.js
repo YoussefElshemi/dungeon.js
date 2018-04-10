@@ -5,6 +5,7 @@ const TextChannel = require('./TextChannel');
 const Snowflake = require('../util/Snowflake');
 const GuildChannel = require('./GuildChannel');
 const User = require('./User');
+const Collection = require('./Collection');
 
 /**
  * This class represents a message object
@@ -14,6 +15,13 @@ class Message {
   constructor(raw, client) {
 
     /**
+     * The channel the message was sent in
+     * @type {TextChannel}
+     */
+
+    this.channel = client.channels.get(raw.channel_id);
+
+    /**
      * The ID of the message sent
      * @type {String}
      */
@@ -21,18 +29,11 @@ class Message {
     this.id = raw.id;
 
     /**
-     * The channel the message was sent in
-     * @type {TextChannel}
-     */
-
-    this.channel = new TextChannel(client.channels.get(raw.channel_id), client.channels.get(raw.channel_id).guild, client);
-
-    /**
      * The guild the message was sent it
      * @type {Guild}
      */
 
-    this.guild = raw.guild;
+    this.guild = this.channel && this.channel.guild ? this.channel.guild : null;
 
     /** 
      * The user object of the person who sent the message
@@ -46,14 +47,7 @@ class Message {
      * @type {Member}
      */
 
-    this.member = new Member(this.guild.members.get(this.author.id), this.guild, client);
-
-    /**
-     * The clean content of the message which replaces <@id> to @Youssef#0001 for example
-     * @type {String}
-     */
-
-    this.clean = raw.clean;
+    this.member = this.guild && this.guild.members.has(this.author.id) ? this.guild.members.get(this.author.id) :	null;
 
     /**
      * The client object which is logged in
@@ -67,7 +61,7 @@ class Message {
      * @type {Date}
      */
 
-    this.createdAt = raw.createdAt;
+    this.createdAt = new Date(raw.timestamp);
 
     /**
      * The timestamp in which the message was created at
@@ -76,12 +70,28 @@ class Message {
 
     this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
 
+    this.mentionedUsers = new Collection();
+    this.mentionedMembers = new Collection();
+    if (raw.mentions) {
+      for (let i = 0; i < raw.mentions.length; i++) {
+        this.mentionedMembers.set(raw.mentions[i].id, this.guild.members.get(raw.mentions[i].id));
+        this.mentionedUsers.set(raw.mentions[i].id, new User(raw.mentions[i], this.client));
+      }
+    }
+
     /**
      * A collection of all of the users mentioned in the message
      * @type {Collection}
      */
 
-    this.mentionedUsers = raw.mentionedUsers;
+    this.mentionedUsers;
+
+    /**
+     * A collection of all of the members mentioned in the message
+     * @type {Collection}
+     */
+
+    this.mentionedMembers;
     
 
     /**
@@ -90,6 +100,13 @@ class Message {
      */
 
     this.content = raw.content;
+
+    /**
+     * The clean content of the message which replaces <@id> to @Youssef#0001 for example
+     * @type {String}
+     */
+
+    this.clean = cleanMessage(this);
 
   }
 
@@ -104,8 +121,7 @@ class Message {
       request.req('POST', `/channels/${this.channel.id}/messages`, {
         content: `<@${this.author.id}>, ${content}`
       }, this.client.token).then(m => {
-        const Message = require('./Message');
-        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });        
@@ -121,8 +137,7 @@ class Message {
   delete(reason = '') {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}`, {reason: reason} , this.client.token).then(m => {
-        const Message = require('./Message');
-        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -138,8 +153,8 @@ class Message {
   edit(newmessage) {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.channel.id}/messages/${this.id}`, {content: newmessage} , this.client.token).then(m => {
-        const Message = require('./Message');
-        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+        //const Message = require('./Message');
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -155,7 +170,7 @@ class Message {
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/pins/${this.id}`, {} , this.client.token).then(m => {
         const Message = require('./Message');
-        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(this), this.client)));
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -170,8 +185,8 @@ class Message {
   unpin() {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/pins/${this.id}`, {} , this.client.token).then(m => {
-        const Message = require('./Message');
-        setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(this), this.client)));
+        //const Message = require('./Message');
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -188,8 +203,8 @@ class Message {
     if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
-        const Message = require('./Message');
-        setTimeout(res, 100, res(m));
+        //const Message = require('./Message');
+        setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -240,3 +255,14 @@ class Message {
 }
 
 module.exports = Message;
+
+function cleanMessage(message) {
+  return message.content
+    .replace(/@(everyone|here)/g, '@\u200b$1')
+    .replace(/<@!?[0-9]+>/g, input => {
+      const id = input.replace(/<|!|>|@/g, '');
+      if (message.channel.type === 'dm') {
+        return message.client.users.has(id) ? `@${this.client.users.get(id).username}` : input;
+      }
+    });
+}

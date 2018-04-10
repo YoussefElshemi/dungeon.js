@@ -107,13 +107,6 @@ class Guild {
     this.systemChannel = this.channels.get(raw.system_channel_id);
 
     /**
-     * The date the guild was created at
-     * @type {Date}
-     */
-
-    //this.createdAt = new Date(this.joined_at).toLocaleString();
-
-    /**
      * Whether the guild is considered large by the Discord API
      * @type {Boolean}
      */
@@ -245,7 +238,7 @@ class Guild {
   fetchMembers() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
-        const member_methods = members.map(i => this.client.gu_methods().fromRaw(i));
+        const member_methods = members.map(i => new Member(i, this.guild, this.client));
         setTimeout(res, 100, res(member_methods));
       }).catch(rej);
     });
@@ -259,7 +252,7 @@ class Guild {
   fetchBans() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
-        const ban_methods = bans.map(i => this.client.ban_methods().fromRaw(i));
+        const ban_methods = bans.map(i => new Member(i, this.guild, this.client));
         setTimeout(res, 100, res(ban_methods, this.id));
       }).catch(rej);
     });
@@ -293,6 +286,33 @@ class Guild {
       }).catch(rej);
     });
   }
+
+  /**
+   * @description Fetchs the guilds audit log
+   * @param {Object} opt The options for getting the audit logs {@link AuditOptions}
+   */
+
+  getAuditLogs(opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/audit-logs`, {
+        user_id: opt.target || null,
+        action_type: opt.actionType || null,
+        before: opt.before || null,
+        limit: opt.limit || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      }).catch(rej);
+    });
+  }
 }
 
 module.exports = Guild;
+
+/**
+ * The options for fetching audit logs
+ * @typedef {Object} AuditOptions
+ * @property {String} [target = null] The target's id (the user that the action was performed on)
+ * @property {Number} [actionType = null] The action type {@see https://discordapp.com/developers/docs/resources/audit-log#DOCS_AUDIT_LOG/audit-log-entry-object-audit-log-events}
+ * @property {String} [before = null] Filter the log before a certain entry ID
+ * @property {Number} [limit = null] How many entries are returned (default 50, minimum 1, maximum 100)
+ */

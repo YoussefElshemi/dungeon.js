@@ -3,5 +3,7 @@ module.exports = {
   'MESSAGE_CREATE': 'message',
   'CHANNEL_DELETE': 'channelRemoved',
   'CHANNEL_CREATE': 'channelAdded',
-  'PINGED': 'ping'
+  'PINGED': 'ping',
+  'RAW': 'raw',
+  'MESSAGE_REACTION_ADD': 'messageReactionAdd'
 };

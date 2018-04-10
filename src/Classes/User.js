@@ -1,5 +1,6 @@
 
 const request = require('../Connection');
+const Snowflake = require('../util/Snowflake');
 
 /**
  * This class represents a User Object
@@ -13,7 +14,7 @@ class User {
      * @type {Client}
      */
 
-    this.client = raw.client;
+    this.client = client;
 
     /**
      * The ID of the user
@@ -42,7 +43,7 @@ class User {
      * @type {String}
      */
 
-    this.tag = raw.tag;
+    this.tag =`${this.username}#${this.discriminator}`;
 
     /**
      * The avatar hash of the user
@@ -63,7 +64,7 @@ class User {
      * @type {Object}
      */
 
-    this.presence = raw.presence;
+    this.presence = this.client.presences.get(this.id) ||	null;
 
     /**
      * Whether the use is a bot or not
@@ -77,14 +78,14 @@ class User {
      * @type {Date}
      */
       
-    this.createdTimestamp = raw.createdTimestamp;
+    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
 
     /**
      * The date the user was created at
      * @type {Date}
      */
 
-    this.createdAt = raw.createdAt;
+    this.createdAt = new Date(this.createdTimestamp);
   }
 
   /**
@@ -131,27 +132,35 @@ class User {
     }
     return new Promise((res) => {
       if (embed) {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          embed: embed
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });  
+        request.req('POST', '/users/@me/channels', {
+          recipient_id: this.id
+        }, this.client.token).then(c => {
+          request.req('POST', `/channels/${c.id}/messages`, {
+            embed: embed
+          }, this.client.token)
+            .then(m => {
+              const Message = require('./Message');
+              setTimeout(res, 100, res(new Message(m, this.client)));
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            });  
+        });
       } else {
-        request.req('POST', `/channels/${this.id}/messages`, {
-          nonce: (opt && opt.nonce) || false,
-          tts: (opt && opt.tts) || false,
-          content: content || null
-        }, this.client.token)
-          .then(m => {
-            const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          }); 
+        request.req('POST', '/users/@me/channels', {
+          recipient_id: this.id
+        }, this.client.token).then(c => {
+          request.req('POST', `/channels/${c.id}/messages`, {
+            nonce: (opt && opt.nonce) || false,
+            tts: (opt && opt.tts) || false,
+            content: content || null
+          }, this.client.token)
+            .then(m => {
+              const Message = require('./Message');
+              setTimeout(res, 100, res(new Message(m, this.client)));          
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            }); 
+        });
       }     
     });
   }

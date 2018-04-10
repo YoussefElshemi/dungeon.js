@@ -12,6 +12,13 @@ class TextChannel extends GuildChannel {
     super(raw, guild, client);
 
     /**
+     * The type of channel
+     * @type {String}
+     */
+
+    this.type = 'text';
+
+    /**
      * This is the ID of the last message in the channel
      * @type {String}
      */
@@ -41,10 +48,10 @@ class TextChannel extends GuildChannel {
    * @returns {Promise<Message>} Returns a promise and discord message
    * @example
    * // Sending an embed
-   * msg.channel.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
+   * TextChannel.send({ title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86 });
    * @example
    * // Sending a tts message
-   * msg.channel.send("Hi!", {tts: true});
+   * TextChannel.send("Hi!", { tts: true });
    */
 
   send(content, opt = {}) {
@@ -69,7 +76,7 @@ class TextChannel extends GuildChannel {
         }, this.client.token)
           .then(m => {
             const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+            setTimeout(res, 100, res(new Message(m, this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });  
@@ -81,7 +88,7 @@ class TextChannel extends GuildChannel {
         }, this.client.token)
           .then(m => {
             const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));          
+            setTimeout(res, 100, res(new Message(m, this.client)));          
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           }); 
@@ -99,7 +106,7 @@ class TextChannel extends GuildChannel {
       request.req('GET',`/channels/${this.id}/messages/${this.lastMessageID}`, {}, this.client.token)
         .then(m => {
           const Message = require('./Message');
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+          setTimeout(res, 100, res(new Message(m, this.client)));
         })
         .catch(console.log);
     });
@@ -116,7 +123,7 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(new Message(this.client.message_methods().fromRaw(m), this.client)));
+          setTimeout(res, 100, res(new Message(m, this.client)));
         });
     });
   }
@@ -137,11 +144,7 @@ class TextChannel extends GuildChannel {
         limit: opt.limit || null
       }, this.client.token)
         .then(m => {
-          const messages = [];
-          const Message = require('./Message');
-          for (var i = 0; i < m.length; i++) {
-            messages.push(new Message(this.client.message_methods().fromRaw(m[i]), this.client));
-          }
+          const messages = m.map(c => new Message(c, this.client));
           setTimeout(res, 100, res(messages));
         });
     });
@@ -173,8 +176,6 @@ class TextChannel extends GuildChannel {
    */
 
   setTopic(newtopic) {
-    if (this.type === 'voice') throw new this.client.WrongType('This method only available on text based channels');
-
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         topic: newtopic
@@ -193,14 +194,15 @@ class TextChannel extends GuildChannel {
   
   invite(opt) {
     return new Promise((res) => {
-      request.req('POST', `/channels/${this.id}/invite`, {
-        max_age: opt.maxAge || 86400,
-        max_uses: opt.maxUses || 0,
-        temporary: opt.temp || false,
-        unique: opt.unique || false
+      request.req('POST', `/channels/${this.id}/invites`, {
+        max_age: (opt && opt.maxAge) || 86400,
+        max_uses: (opt && opt.maxUses)  || 0,
+        temporary: (opt && opt.temp) || false,
+        unique: (opt && opt.unique) || false
       }, this.client.token).then(m => {
         const Invite = require('./Invite.js');
         setTimeout(res, 100, res(new Invite(m, this.client)));
+        //setTimeout(res, 100, res(m));
       });
     });
   }
