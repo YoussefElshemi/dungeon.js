@@ -1,6 +1,6 @@
 {
   "name": "dungeon.js",
-  "version": "1.6.1",
+  "version": "1.7.1",
   "description": "A discord API wrapper",
   "main": "index.js",
   "scripts": {
