@@ -7847,7 +7847,7 @@
       "meta": {
         "range": [
           140,
-          4827
+          4800
         ],
         "filename": "User.js",
         "lineno": 9,
@@ -8295,7 +8295,7 @@
       "meta": {
         "range": [
           2604,
-          4660
+          4633
         ],
         "filename": "User.js",
         "lineno": 118,
@@ -8364,15 +8364,15 @@
       "comment": "/**\n   * @description This method will mention a user\n   * @returns {String} The mention as a string: <@id>\n   */",
       "meta": {
         "range": [
-          4781,
-          4824
+          4754,
+          4797
         ],
         "filename": "User.js",
-        "lineno": 174,
+        "lineno": 173,
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007705",
+          "id": "astnode100007699",
           "name": "User#mention",
           "type": "MethodDefinition",
           "paramnames": []
@@ -8413,7 +8413,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007742",
+          "id": "astnode100007736",
           "name": "VoiceChannel",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -8447,7 +8447,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007760",
+          "id": "astnode100007754",
           "name": "this.type",
           "type": "Literal",
           "value": "voice",
@@ -8480,7 +8480,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007766",
+          "id": "astnode100007760",
           "name": "this.bitrate",
           "type": "MemberExpression",
           "value": "raw.bitrate",
@@ -8513,7 +8513,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007774",
+          "id": "astnode100007768",
           "name": "this.userLimit",
           "type": "MemberExpression",
           "value": "raw.userLimit",
@@ -8546,7 +8546,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007781",
+          "id": "astnode100007775",
           "name": "VoiceChannel#setBitrate",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8599,7 +8599,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007840",
+          "id": "astnode100007834",
           "name": "VoiceChannel#setUserLimit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8652,7 +8652,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007941",
+          "id": "astnode100007935",
           "name": "SnowflakeUtil.generate",
           "type": "MethodDefinition",
           "paramnames": []
@@ -8771,7 +8771,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100007992",
+          "id": "astnode100007986",
           "name": "SnowflakeUtil.deconstruct",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8824,7 +8824,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008110",
+          "id": "astnode100008104",
           "name": "Util.idToBinary",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8877,7 +8877,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008198",
+          "id": "astnode100008192",
           "name": "Util.binaryToID",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8942,7 +8942,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#channelAdded",
+      "longname": "client#channelAdded",
       "scope": "instance",
       "___id": "T000002R000619",
       "___s": true
@@ -8971,7 +8971,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#channelRemoved",
+      "longname": "client#channelRemoved",
       "scope": "instance",
       "___id": "T000002R000622",
       "___s": true
@@ -9000,7 +9000,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#message",
+      "longname": "client#message",
       "scope": "instance",
       "___id": "T000002R000625",
       "___s": true
@@ -9038,7 +9038,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#messageReactionAdd",
+      "longname": "client#messageReactionAdd",
       "scope": "instance",
       "___id": "T000002R000628",
       "___s": true
@@ -9056,7 +9056,7 @@
       "kind": "event",
       "name": "ping",
       "memberof": "Client",
-      "longname": "Client#ping",
+      "longname": "client#ping",
       "scope": "instance",
       "___id": "T000002R000631",
       "___s": true
@@ -9085,7 +9085,7 @@
         }
       ],
       "memberof": "Client",
-      "longname": "Client#raw",
+      "longname": "client#raw",
       "scope": "instance",
       "___id": "T000002R000634",
       "___s": true
@@ -9103,7 +9103,7 @@
       "kind": "event",
       "name": "ready",
       "memberof": "Client",
-      "longname": "Client#ready",
+      "longname": "client#ready",
       "scope": "instance",
       "___id": "T000002R000637",
       "___s": true
