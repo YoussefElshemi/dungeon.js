@@ -72,6 +72,7 @@ class Message {
 
     this.mentionedUsers = new Collection();
     this.mentionedMembers = new Collection();
+
     if (raw.mentions) {
       for (let i = 0; i < raw.mentions.length; i++) {
         this.mentionedMembers.set(raw.mentions[i].id, this.guild.members.get(raw.mentions[i].id));
@@ -106,7 +107,7 @@ class Message {
      * @type {String}
      */
 
-    this.clean = cleanMessage(this);
+    this.cleanContent = cleanMessage(this);
 
   }
 
@@ -262,7 +263,28 @@ function cleanMessage(message) {
     .replace(/<@!?[0-9]+>/g, input => {
       const id = input.replace(/<|!|>|@/g, '');
       if (message.channel.type === 'dm') {
-        return message.client.users.has(id) ? `@${this.client.users.get(id).username}` : input;
+        return message.client.users.has(id) ? `@${message.client.users.get(id).username}` : input;
       }
+
+      const member = message.channel.guild.members.get(id);
+      if (member) {
+        if (member.nickname) return `@${member.nickname}`;
+        return `@${member.user.username}`;
+      } else {
+        const user = message.client.users.get(id);
+        if (user) return `@${user.username}`;
+        return input;
+      }
+    })
+    .replace(/<#[0-9]+>/g, input => {
+      const channel = message.client.channels.get(input.replace(/<|#|>/g, ''));
+      if (channel) return `#${channel.name}`;
+      return input;
+    })
+    .replace(/<@&[0-9]+>/g, input => {
+      if (message.channel.type === 'dm') return input;
+      const role = message.guild.roles.get(input.replace(/<|@|>|&/g, ''));
+      if (role) return `@${role.name}`;
+      return input;
     });
 }
