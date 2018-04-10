@@ -7216,7 +7216,7 @@
       "meta": {
         "range": [
           206,
-          7134
+          7558
         ],
         "filename": "TextChannel.js",
         "lineno": 10,
@@ -7797,10 +7797,55 @@
       "___s": true
     },
     {
+      "comment": "/**\n   * @description This will make the client type in this channel\n   * @param {Nunber} [loops=1] How many loops to make, each loop lasts 10 seconds\n   */",
+      "meta": {
+        "range": [
+          7296,
+          7556
+        ],
+        "filename": "TextChannel.js",
+        "lineno": 231,
+        "columnno": 2,
+        "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
+        "code": {
+          "id": "astnode100007342",
+          "name": "TextChannel#startTyping",
+          "type": "MethodDefinition",
+          "paramnames": [
+            "loops"
+          ]
+        },
+        "vars": {
+          "": null
+        }
+      },
+      "description": "This will make the client type in this channel",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "Nunber"
+            ]
+          },
+          "optional": true,
+          "defaultvalue": 1,
+          "description": "How many loops to make, each loop lasts 10 seconds",
+          "name": "loops"
+        }
+      ],
+      "name": "startTyping",
+      "longname": "TextChannel#startTyping",
+      "kind": "function",
+      "memberof": "TextChannel",
+      "scope": "instance",
+      "___id": "T000002R000528",
+      "___s": true
+    },
+    {
       "comment": "/**\n * The options for sending/editting a message\n * @typedef {Object} MessageOptions\n * @property {Boolean} [tts = false] Whether the message should be sent as TTS or not\n * @property {String} [nonce = ''] The nonce for the message\n */",
       "meta": {
         "filename": "TextChannel.js",
-        "lineno": 227,
+        "lineno": 242,
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {}
@@ -7839,7 +7884,7 @@
       ],
       "longname": "MessageOptions",
       "scope": "global",
-      "___id": "T000002R000528",
+      "___id": "T000002R000530",
       "___s": true
     },
     {
@@ -7854,7 +7899,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007362",
+          "id": "astnode100007417",
           "name": "User",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -7869,7 +7914,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000532",
+      "___id": "T000002R000534",
       "___s": true
     },
     {
@@ -7884,7 +7929,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007372",
+          "id": "astnode100007427",
           "name": "this.client",
           "type": "Identifier",
           "value": "client",
@@ -7902,7 +7947,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000534",
+      "___id": "T000002R000536",
       "___s": true
     },
     {
@@ -7917,7 +7962,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007378",
+          "id": "astnode100007433",
           "name": "this.id",
           "type": "MemberExpression",
           "value": "raw.id",
@@ -7935,7 +7980,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000535",
+      "___id": "T000002R000537",
       "___s": true
     },
     {
@@ -7950,7 +7995,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007386",
+          "id": "astnode100007441",
           "name": "this.username",
           "type": "MemberExpression",
           "value": "raw.username",
@@ -7968,7 +8013,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000536",
+      "___id": "T000002R000538",
       "___s": true
     },
     {
@@ -7983,7 +8028,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007394",
+          "id": "astnode100007449",
           "name": "this.discriminator",
           "type": "MemberExpression",
           "value": "raw.discriminator",
@@ -8001,7 +8046,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000537",
+      "___id": "T000002R000539",
       "___s": true
     },
     {
@@ -8016,7 +8061,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007402",
+          "id": "astnode100007457",
           "name": "this.tag",
           "type": "TemplateLiteral",
           "value": "",
@@ -8034,7 +8079,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000538",
+      "___id": "T000002R000540",
       "___s": true
     },
     {
@@ -8049,7 +8094,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007417",
+          "id": "astnode100007472",
           "name": "this.avatar",
           "type": "MemberExpression",
           "value": "raw.avatar",
@@ -8067,7 +8112,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000539",
+      "___id": "T000002R000541",
       "___s": true
     },
     {
@@ -8082,7 +8127,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007425",
+          "id": "astnode100007480",
           "name": "this.avatarURL",
           "type": "TemplateLiteral",
           "value": "",
@@ -8100,7 +8145,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000540",
+      "___id": "T000002R000542",
       "___s": true
     },
     {
@@ -8115,7 +8160,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007440",
+          "id": "astnode100007495",
           "name": "this.presence",
           "type": "LogicalExpression",
           "value": "",
@@ -8133,7 +8178,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000541",
+      "___id": "T000002R000543",
       "___s": true
     },
     {
@@ -8148,7 +8193,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007458",
+          "id": "astnode100007513",
           "name": "this.bot",
           "type": "LogicalExpression",
           "value": "",
@@ -8166,7 +8211,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000542",
+      "___id": "T000002R000544",
       "___s": true
     },
     {
@@ -8181,7 +8226,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007468",
+          "id": "astnode100007523",
           "name": "this.createdTimestamp",
           "type": "MemberExpression",
           "value": ".timestamp",
@@ -8199,7 +8244,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000543",
+      "___id": "T000002R000545",
       "___s": true
     },
     {
@@ -8214,7 +8259,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007482",
+          "id": "astnode100007537",
           "name": "this.createdAt",
           "type": "NewExpression",
           "value": "",
@@ -8232,7 +8277,7 @@
       "kind": "member",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000544",
+      "___id": "T000002R000546",
       "___s": true
     },
     {
@@ -8247,7 +8292,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007491",
+          "id": "astnode100007546",
           "name": "User#avatarURL",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8287,7 +8332,7 @@
       "kind": "function",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000545",
+      "___id": "T000002R000547",
       "___s": true
     },
     {
@@ -8302,7 +8347,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007540",
+          "id": "astnode100007595",
           "name": "User#send",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8357,7 +8402,7 @@
       "kind": "function",
       "memberof": "User",
       "scope": "instance",
-      "___id": "T000002R000546",
+      "___id": "T000002R000548",
       "___s": true
     },
     {
@@ -8372,7 +8417,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007840",
+          "id": "astnode100007895",
           "name": "User#mention",
           "type": "MethodDefinition",
           "paramnames": []
@@ -8398,7 +8443,7 @@
       "memberof": "User",
       "scope": "instance",
       "params": [],
-      "___id": "T000002R000565",
+      "___id": "T000002R000567",
       "___s": true
     },
     {
@@ -8413,7 +8458,7 @@
         "columnno": 0,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007877",
+          "id": "astnode100007932",
           "name": "VoiceChannel",
           "type": "ClassDeclaration",
           "paramnames": [
@@ -8432,7 +8477,7 @@
       "kind": "class",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000570",
+      "___id": "T000002R000572",
       "___s": true
     },
     {
@@ -8447,7 +8492,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007895",
+          "id": "astnode100007950",
           "name": "this.type",
           "type": "Literal",
           "value": "voice",
@@ -8465,7 +8510,7 @@
       "kind": "member",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000572",
+      "___id": "T000002R000574",
       "___s": true
     },
     {
@@ -8480,7 +8525,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007901",
+          "id": "astnode100007956",
           "name": "this.bitrate",
           "type": "MemberExpression",
           "value": "raw.bitrate",
@@ -8498,7 +8543,7 @@
       "kind": "member",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000573",
+      "___id": "T000002R000575",
       "___s": true
     },
     {
@@ -8513,7 +8558,7 @@
         "columnno": 4,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007909",
+          "id": "astnode100007964",
           "name": "this.userLimit",
           "type": "MemberExpression",
           "value": "raw.userLimit",
@@ -8531,7 +8576,7 @@
       "kind": "member",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000574",
+      "___id": "T000002R000576",
       "___s": true
     },
     {
@@ -8546,7 +8591,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007916",
+          "id": "astnode100007971",
           "name": "VoiceChannel#setBitrate",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8584,7 +8629,7 @@
       "kind": "function",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000575",
+      "___id": "T000002R000577",
       "___s": true
     },
     {
@@ -8599,7 +8644,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Classes",
         "code": {
-          "id": "astnode100007975",
+          "id": "astnode100008030",
           "name": "VoiceChannel#setUserLimit",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8637,7 +8682,7 @@
       "kind": "function",
       "memberof": "VoiceChannel",
       "scope": "instance",
-      "___id": "T000002R000578",
+      "___id": "T000002R000580",
       "___s": true
     },
     {
@@ -8652,7 +8697,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008076",
+          "id": "astnode100008131",
           "name": "SnowflakeUtil.generate",
           "type": "MethodDefinition",
           "paramnames": []
@@ -8678,7 +8723,7 @@
       "memberof": "SnowflakeUtil",
       "scope": "static",
       "params": [],
-      "___id": "T000002R000587",
+      "___id": "T000002R000589",
       "___s": true
     },
     {
@@ -8756,7 +8801,7 @@
       ],
       "longname": "DeconstructedSnowflake",
       "scope": "global",
-      "___id": "T000002R000590",
+      "___id": "T000002R000592",
       "___s": true
     },
     {
@@ -8771,7 +8816,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008127",
+          "id": "astnode100008182",
           "name": "SnowflakeUtil.deconstruct",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8809,7 +8854,7 @@
       "kind": "function",
       "memberof": "SnowflakeUtil",
       "scope": "static",
-      "___id": "T000002R000591",
+      "___id": "T000002R000593",
       "___s": true
     },
     {
@@ -8824,7 +8869,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008245",
+          "id": "astnode100008300",
           "name": "Util.idToBinary",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8862,7 +8907,7 @@
       "kind": "function",
       "memberof": "Util",
       "scope": "static",
-      "___id": "T000002R000604",
+      "___id": "T000002R000606",
       "___s": true
     },
     {
@@ -8877,7 +8922,7 @@
         "columnno": 2,
         "path": "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Util",
         "code": {
-          "id": "astnode100008333",
+          "id": "astnode100008388",
           "name": "Util.binaryToID",
           "type": "MethodDefinition",
           "paramnames": [
@@ -8915,7 +8960,7 @@
       "kind": "function",
       "memberof": "Util",
       "scope": "static",
-      "___id": "T000002R000612",
+      "___id": "T000002R000614",
       "___s": true
     },
     {
@@ -8942,9 +8987,9 @@
         }
       ],
       "memberof": "Client",
-      "longname": "client#channelAdded",
+      "longname": "Client#channelAdded",
       "scope": "instance",
-      "___id": "T000002R000623",
+      "___id": "T000002R000625",
       "___s": true
     },
     {
@@ -8971,9 +9016,9 @@
         }
       ],
       "memberof": "Client",
-      "longname": "client#channelRemoved",
+      "longname": "Client#channelRemoved",
       "scope": "instance",
-      "___id": "T000002R000626",
+      "___id": "T000002R000628",
       "___s": true
     },
     {
@@ -9000,9 +9045,9 @@
         }
       ],
       "memberof": "Client",
-      "longname": "client#message",
+      "longname": "Client#message",
       "scope": "instance",
-      "___id": "T000002R000629",
+      "___id": "T000002R000631",
       "___s": true
     },
     {
@@ -9038,9 +9083,9 @@
         }
       ],
       "memberof": "Client",
-      "longname": "client#messageReactionAdd",
+      "longname": "Client#messageReactionAdd",
       "scope": "instance",
-      "___id": "T000002R000632",
+      "___id": "T000002R000634",
       "___s": true
     },
     {
@@ -9056,9 +9101,9 @@
       "kind": "event",
       "name": "ping",
       "memberof": "Client",
-      "longname": "client#ping",
+      "longname": "Client#ping",
       "scope": "instance",
-      "___id": "T000002R000635",
+      "___id": "T000002R000637",
       "___s": true
     },
     {
@@ -9085,9 +9130,9 @@
         }
       ],
       "memberof": "Client",
-      "longname": "client#raw",
+      "longname": "Client#raw",
       "scope": "instance",
-      "___id": "T000002R000638",
+      "___id": "T000002R000640",
       "___s": true
     },
     {
@@ -9103,9 +9148,9 @@
       "kind": "event",
       "name": "ready",
       "memberof": "Client",
-      "longname": "client#ready",
+      "longname": "Client#ready",
       "scope": "instance",
-      "___id": "T000002R000641",
+      "___id": "T000002R000643",
       "___s": true
     },
     {
@@ -9136,7 +9181,7 @@
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Events\\Raw.js",
         "C:\\Users\\youss\\Desktop\\dungeon.js\\src\\Events\\Ready.js"
       ],
-      "___id": "T000002R000643",
+      "___id": "T000002R000645",
       "___s": true
     },
     {
@@ -9171,7 +9216,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#id",
       "inherited": true,
-      "___id": "T000002R000644",
+      "___id": "T000002R000646",
       "___s": true
     },
     {
@@ -9206,7 +9251,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#client",
       "inherited": true,
-      "___id": "T000002R000645",
+      "___id": "T000002R000647",
       "___s": true
     },
     {
@@ -9241,7 +9286,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#name",
       "inherited": true,
-      "___id": "T000002R000646",
+      "___id": "T000002R000648",
       "___s": true
     },
     {
@@ -9276,7 +9321,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#position",
       "inherited": true,
-      "___id": "T000002R000647",
+      "___id": "T000002R000649",
       "___s": true
     },
     {
@@ -9311,7 +9356,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#permission_overwrites",
       "inherited": true,
-      "___id": "T000002R000648",
+      "___id": "T000002R000650",
       "___s": true
     },
     {
@@ -9346,7 +9391,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#guild",
       "inherited": true,
-      "___id": "T000002R000649",
+      "___id": "T000002R000651",
       "___s": true
     },
     {
@@ -9404,7 +9449,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setName",
       "inherited": true,
-      "___id": "T000002R000650",
+      "___id": "T000002R000652",
       "___s": true
     },
     {
@@ -9459,7 +9504,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setPosition",
       "inherited": true,
-      "___id": "T000002R000651",
+      "___id": "T000002R000653",
       "___s": true
     },
     {
@@ -9514,7 +9559,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setParent",
       "inherited": true,
-      "___id": "T000002R000652",
+      "___id": "T000002R000654",
       "___s": true
     },
     {
@@ -9557,7 +9602,7 @@
       "params": [],
       "inherits": "GuildChannel#delete",
       "inherited": true,
-      "___id": "T000002R000653",
+      "___id": "T000002R000655",
       "___s": true
     },
     {
@@ -9612,7 +9657,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#edit",
       "inherited": true,
-      "___id": "T000002R000654",
+      "___id": "T000002R000656",
       "___s": true
     },
     {
@@ -9647,7 +9692,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#id",
       "inherited": true,
-      "___id": "T000002R000655",
+      "___id": "T000002R000657",
       "___s": true
     },
     {
@@ -9682,7 +9727,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#client",
       "inherited": true,
-      "___id": "T000002R000656",
+      "___id": "T000002R000658",
       "___s": true
     },
     {
@@ -9717,7 +9762,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#name",
       "inherited": true,
-      "___id": "T000002R000657",
+      "___id": "T000002R000659",
       "___s": true
     },
     {
@@ -9752,7 +9797,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#position",
       "inherited": true,
-      "___id": "T000002R000658",
+      "___id": "T000002R000660",
       "___s": true
     },
     {
@@ -9787,7 +9832,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#permission_overwrites",
       "inherited": true,
-      "___id": "T000002R000659",
+      "___id": "T000002R000661",
       "___s": true
     },
     {
@@ -9822,7 +9867,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#guild",
       "inherited": true,
-      "___id": "T000002R000660",
+      "___id": "T000002R000662",
       "___s": true
     },
     {
@@ -9880,7 +9925,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setName",
       "inherited": true,
-      "___id": "T000002R000661",
+      "___id": "T000002R000663",
       "___s": true
     },
     {
@@ -9935,7 +9980,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setPosition",
       "inherited": true,
-      "___id": "T000002R000662",
+      "___id": "T000002R000664",
       "___s": true
     },
     {
@@ -9990,7 +10035,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#setParent",
       "inherited": true,
-      "___id": "T000002R000663",
+      "___id": "T000002R000665",
       "___s": true
     },
     {
@@ -10033,7 +10078,7 @@
       "params": [],
       "inherits": "GuildChannel#delete",
       "inherited": true,
-      "___id": "T000002R000664",
+      "___id": "T000002R000666",
       "___s": true
     },
     {
@@ -10088,7 +10133,7 @@
       "scope": "instance",
       "inherits": "GuildChannel#edit",
       "inherited": true,
-      "___id": "T000002R000665",
+      "___id": "T000002R000667",
       "___s": true
     }
   ]

@@ -222,6 +222,21 @@ class TextChannel extends GuildChannel {
       });
     });
   }
+
+  /**
+   * @description This will make the client type in this channel
+   * @param {Nunber} [loops=1] How many loops to make, each loop lasts 10 seconds
+   */
+
+  startTyping(loops = 1) {
+    return new Promise((res) => {
+      for (let i; i < loops; i++) {
+        request.req('POST', `/channels/${this.id}/typing`, {}, this.client.token).then(c => {
+          setTimeout(res, 100, res(c));
+        });
+      }
+    });
+  }
 }
 
 /**
