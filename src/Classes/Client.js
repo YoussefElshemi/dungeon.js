@@ -1,6 +1,5 @@
 const Connect = require('../Connect');
 const request = require('../Connection');
-const https = require('https');
 
 /**
  * This Class is the base client for this API

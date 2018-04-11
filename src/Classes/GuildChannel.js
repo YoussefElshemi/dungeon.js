@@ -63,7 +63,7 @@ class GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         name: newname
-      }, this.client.token).then(m => {
+      }, this.client.token).then(c => {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
@@ -84,7 +84,7 @@ class GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         position: Number(position)
-      }, this.client.token).then(m => {
+      }, this.client.token).then(c => {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
@@ -108,7 +108,7 @@ class GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         parent_id: parent
-      }, this.client.token).then(m => {
+      }, this.client.token).then(c => {
         const GuildChannel = require('./GuildChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
@@ -127,7 +127,7 @@ class GuildChannel {
   delete() {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.id}`, {}, this.client.token)
-        .then(m => {
+        .then(c => {
           const GuildChannel = require('./GuildChannel');
           const TextChannel = require('./TextChannel');
           const VoiceChannel = require('./VoiceChannel');
@@ -156,7 +156,7 @@ class GuildChannel {
           user_limit: (this.type === 'voice' && options && options.userlimit) || null,
           parent_id: ((this.type === 'text' || this.type === 'voice') && options && options.parent) || null  
         }, this.client.token)
-        .then(m => {
+        .then(c => {
           const GuildChannel = require('./GuildChannel');
           const TextChannel = require('./TextChannel');
           const VoiceChannel = require('./VoiceChannel');
