@@ -85,19 +85,19 @@
             
             <span class="subtitle">Events</span>
             
-                <li data-name="Client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
+                <li data-name="client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
             
-                <li data-name="Client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
+                <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
             
-                <li data-name="Client#message"><a href="Client.html#event:message">message</a></li>
+                <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
-                <li data-name="Client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+                <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
             
-                <li data-name="Client#ping"><a href="Client.html#event:ping">ping</a></li>
+                <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
-                <li data-name="Client#raw"><a href="Client.html#event:raw">raw</a></li>
+                <li data-name="client#raw"><a href="Client.html#event:raw">raw</a></li>
             
-                <li data-name="Client#ready"><a href="Client.html#event:ready">ready</a></li>
+                <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
             </ul>
         </li>
@@ -311,7 +311,7 @@
             
                 <li data-name="Guild#members"><a href="Guild.html#members">Properties</a></li>
             
-                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">Propertiesize</a></li>
+                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">memberSize</a></li>
             
                 <li data-name="Guild#name"><a href="Guild.html#name">name</a></li>
             
@@ -395,6 +395,8 @@
                 <li data-name="GuildChannel#delete"><a href="GuildChannel.html#delete">delete</a></li>
             
                 <li data-name="GuildChannel#edit"><a href="GuildChannel.html#edit">edit</a></li>
+            
+                <li data-name="GuildChannel#editPermissions"><a href="GuildChannel.html#editPermissions">editPermissions</a></li>
             
                 <li data-name="GuildChannel#setName"><a href="GuildChannel.html#setName">setName</a></li>
             
@@ -702,13 +704,19 @@
             
                 <li data-name="TextChannel#edit"><a href="TextChannel.html#edit">edit</a></li>
             
+                <li data-name="TextChannel#editPermissions"><a href="TextChannel.html#editPermissions">editPermissions</a></li>
+            
                 <li data-name="TextChannel#getMessage"><a href="TextChannel.html#getMessage">getMessage</a></li>
             
                 <li data-name="TextChannel#getMessages"><a href="TextChannel.html#getMessages">getMessages</a></li>
             
-                <li data-name="TextChannel#invite"><a href="TextChannel.html#invite">invite</a></li>
+                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
+            
+                <li data-name="TextChannel#pinMessage"><a href="TextChannel.html#pinMessage">pinMessage</a></li>
+            
+                <li data-name="TextChannel#removePinned"><a href="TextChannel.html#removePinned">removePinned</a></li>
             
                 <li data-name="TextChannel#send"><a href="TextChannel.html#send">send</a></li>
             
@@ -826,6 +834,8 @@
             
                 <li data-name="VoiceChannel#edit"><a href="VoiceChannel.html#edit">edit</a></li>
             
+                <li data-name="VoiceChannel#editPermissions"><a href="VoiceChannel.html#editPermissions">editPermissions</a></li>
+            
                 <li data-name="VoiceChannel#setBitrate"><a href="VoiceChannel.html#setBitrate">setBitrate</a></li>
             
                 <li data-name="VoiceChannel#setName"><a href="VoiceChannel.html#setName">setName</a></li>
@@ -855,10 +865,11 @@
             <pre id="source-code" class="prettyprint source "><code>const GuildChannel = require('./GuildChannel');
 const Message = require('./Message');
 const request = require('../Connection');
+const Collection = require('./Collection');
 
 /**
  * This class represents a Text Channel
- * @extends {GuildChannel} 
+ * @extends {GuildChannel}
  */
 
 class TextChannel extends GuildChannel {
@@ -876,7 +887,7 @@ class TextChannel extends GuildChannel {
      * This is the ID of the last message in the channel
      * @type {String}
      */
-    
+
     this.lastMessageID = raw.last_message_id;
 
     /**
@@ -890,7 +901,7 @@ class TextChannel extends GuildChannel {
      * The topic of the channel
      * @type {String}
      */
-    
+
     this.topic = raw.topic;
 
   }
@@ -933,7 +944,7 @@ class TextChannel extends GuildChannel {
             setTimeout(res, 100, res(new Message(m, this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });  
+          });
       } else {
         request.req('POST', `/channels/${this.id}/messages`, {
           nonce: (opt &amp;&amp; opt.nonce) || false,
@@ -942,11 +953,11 @@ class TextChannel extends GuildChannel {
         }, this.client.token)
           .then(m => {
             const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(m, this.client)));          
+            setTimeout(res, 100, res(new Message(m, this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          }); 
-      }     
+          });
+      }
     });
   }
 
@@ -962,7 +973,9 @@ class TextChannel extends GuildChannel {
           const Message = require('./Message');
           setTimeout(res, 100, res(new Message(m, this.client)));
         })
-        .catch(console.log);
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -978,6 +991,9 @@ class TextChannel extends GuildChannel {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(new Message(m, this.client)));
+        })
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
     });
   }
@@ -1000,6 +1016,9 @@ class TextChannel extends GuildChannel {
         .then(m => {
           const messages = m.map(c => new Message(c, this.client));
           setTimeout(res, 100, res(messages));
+        })
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
     });
   }
@@ -1015,10 +1034,13 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         nsfw: boolean
-      }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
-      });
+      }, this.client.token)
+        .then(m => {
+          const TextChannel = require('./TextChannel');
+          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -1033,10 +1055,13 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         topic: newtopic
-      }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
-      });
+      }, this.client.token)
+        .then(m => {
+          const TextChannel = require('./TextChannel');
+          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -1045,8 +1070,8 @@ class TextChannel extends GuildChannel {
    * @param {Object} opt The options: maxAge, maxUses, temp and unique
    * @returns {Promise&lt;Invite>} Returns a promise and an invite
    */
-  
-  invite(opt) {
+
+  /*  invite(opt) {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.id}/invites`, {
         max_age: (opt &amp;&amp; opt.maxAge) || 86400,
@@ -1056,23 +1081,25 @@ class TextChannel extends GuildChannel {
       }, this.client.token).then(m => {
         const Invite = require('./Invite.js');
         setTimeout(res, 100, res(new Invite(m, this.client)));
-        //setTimeout(res, 100, res(m));
       });
     });
-  }
+  }*/
 
   /**
-   * @description This method will bulk delete messages 
+   * @description This method will bulk delete messages
    * @param {Number} number The number of messages to delete
    */
 
   bulkDelete(number) {
-    this.getMessages({ limit: number}).then(c => {
+    this.getMessages({limit: number}).then(c => {
       const array = c.map(c => c.id);
       return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token).then(d => {
-          setTimeout(res, 100, res(d));
-        });
+        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
+          .then(d => {
+            setTimeout(res, 100, res(d));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });
       });
     });
   }
@@ -1087,8 +1114,63 @@ class TextChannel extends GuildChannel {
       for (let i; i &lt; loops; i++) {
         request.req('POST', `/channels/${this.id}/typing`, {}, this.client.token).then(c => {
           setTimeout(res, 100, res(c));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
       }
+    });
+  }
+
+  /**
+   * @description This will retreive all pinned messages on the channel.
+   * @returns {Array} Returns an array of messages
+    */
+
+  getPinned() {
+    return new Promise((res) => {
+      request.req('GET', `/channels/${this.id}/pins`, {}, this.client.token).then(m => {
+        const Message = require('./Message');
+        const messages = m.map(c => new Message(c, this.client));
+        setTimeout(res, 100, res(messages));
+      }).catch(error => {
+        if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+      });
+    });
+  }
+
+  /**
+   * @description Will add a pinned message to the channel.
+   * @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
+   * @returns {Message} The messages that was pinned
+   */
+
+  pinMessage(id) {
+    return new Promise((res) => {
+      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+          const Message = require('/Message');
+          const msg = new Message(message, this.client);
+          setTimeout(res, 100, res(msg));
+        });
+      });
+    });
+  }
+
+  /**
+   * @description Removes a pinned Message from the channel.
+   * @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
+   * @returns {Message} The messages that was pinned
+   */
+
+  removePinned(id) {
+    return new Promise((res) => {
+      request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+          const Message = require('/Message');
+          const msg = new Message(message, this.client);
+          setTimeout(res, 100, res(msg));
+        });
+      });
     });
   }
 }
@@ -1100,7 +1182,8 @@ class TextChannel extends GuildChannel {
  * @property {String} [nonce = ''] The nonce for the message
  */
 
-module.exports = TextChannel;</code></pre>
+module.exports = TextChannel;
+</code></pre>
         </article>
     </section>
 
@@ -1112,7 +1195,7 @@ module.exports = TextChannel;</code></pre>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 10 2018 20:41:26 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 12 2018 21:40:12 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

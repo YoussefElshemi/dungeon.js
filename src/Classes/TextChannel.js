@@ -207,7 +207,7 @@ class TextChannel extends GuildChannel {
    * @returns {Promise<Invite>} Returns a promise and an invite
    */
 
-/*  invite(opt) {
+  /*  invite(opt) {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.id}/invites`, {
         max_age: (opt && opt.maxAge) || 86400,
@@ -258,37 +258,34 @@ class TextChannel extends GuildChannel {
   }
 
   /**
-    @description This will retreive all pinned messages on the channel.
+   * @description This will retreive all pinned messages on the channel.
+   * @returns {Array} Returns an array of messages
     */
 
   getPinned() {
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/pins`, {}, this.client.token).then(m => {
         const Message = require('./Message');
-
-				const messages = m.map(c => new Message(c, this.client));
-
-				setTimeout(res, 100, res(messages));
-	  	}).catch(error => {
-        console.log(error);
+        const messages = m.map(c => new Message(c, this.client));
+        setTimeout(res, 100, res(messages));
+      }).catch(error => {
         if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
       });
     });
   }
 
   /**
-    @description Will add a pinned message to the channel.
-    @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
-    */
+   * @description Will add a pinned message to the channel.
+   * @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
+   * @returns {Message} The messages that was pinned
+   */
 
   pinMessage(id) {
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
         request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
           const Message = require('/Message');
-
           const msg = new Message(message, this.client);
-
           setTimeout(res, 100, res(msg));
         });
       });
@@ -296,18 +293,17 @@ class TextChannel extends GuildChannel {
   }
 
   /**
-    @description Removes a pinned Message from the channel.
-    @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
-    */
+   * @description Removes a pinned Message from the channel.
+   * @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
+   * @returns {Message} The messages that was pinned
+   */
 
   removePinned(id) {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
         request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
           const Message = require('/Message');
-
           const msg = new Message(message, this.client);
-
           setTimeout(res, 100, res(msg));
         });
       });

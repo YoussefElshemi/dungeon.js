@@ -1,4 +1,5 @@
 const request = require('../Connection');
+const Permissions = require('./Permissions');
 
 /**
  * This class represents any Guild Channel
@@ -97,7 +98,7 @@ class GuildChannel {
 
   /**
    * @description Sets the parent of the channel
-   * @param {Snowflake} setParent The parent channel or parent channel id
+   * @param {String} setParent The parent channel or parent channel id
    * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
    */
 
@@ -168,20 +169,17 @@ class GuildChannel {
   }
 
   /**
-    @description Edit permissions of the channels
-    @param {String} rm Available options: Role or Member.
-    @param {Snowflake} id The ID for the role or member.
-    @param {Object} opt Available options: Allow (Bitfield of Permissions) and Deny (Bitfield of Permissions)
-    */
+   * @description Edit permissions of the channels
+   * @param {role} RoleOrMember The role or the member to overwrite the permissions
+   * @param {Object} opt Available options: Allow (Bitfield of Permissions) and Deny (Bitfield of Permissions)
+   */
 
-  editPermissions(rm, id, opt) { /* SUBJECT TO CHANGE */
-    const opt = opt || {};
-
+  editPermissions(RoleOrMember, opt = {}) {
     return new Promise((res) => {
-      request.req('PUT', `/channels/${this.id}/permissions/${id}`, {
-        allow: opt.allow || 0,
-        deny: opt.deny || 0,
-        type: rm
+      request.req('PUT', `/channels/${this.id}/permissions/${RoleOrMember.id}`, {
+        allow: new Permissions().toBitField(opt.allow) || 0,
+        deny: new Permissions().toBitField(opt.deny) || 0,
+        type: RoleOrMember.constructor.name.toLowerCase()
       }, this.client.token).then(success => {
         request.req('GET', `/channels/${this.id}`, {}, this.client.token).then(channel => {
           setTImeout(res, 100, res(new this.constructor(channel, this.client)));

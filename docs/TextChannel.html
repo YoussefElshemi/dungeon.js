@@ -85,19 +85,19 @@
             
             <span class="subtitle">Events</span>
             
-                <li data-name="Client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
+                <li data-name="client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
             
-                <li data-name="Client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
+                <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
             
-                <li data-name="Client#message"><a href="Client.html#event:message">message</a></li>
+                <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
-                <li data-name="Client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+                <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
             
-                <li data-name="Client#ping"><a href="Client.html#event:ping">ping</a></li>
+                <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
-                <li data-name="Client#raw"><a href="Client.html#event:raw">raw</a></li>
+                <li data-name="client#raw"><a href="Client.html#event:raw">raw</a></li>
             
-                <li data-name="Client#ready"><a href="Client.html#event:ready">ready</a></li>
+                <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
             </ul>
         </li>
@@ -311,7 +311,7 @@
             
                 <li data-name="Guild#members"><a href="Guild.html#members">Properties</a></li>
             
-                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">Propertiesize</a></li>
+                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">memberSize</a></li>
             
                 <li data-name="Guild#name"><a href="Guild.html#name">name</a></li>
             
@@ -395,6 +395,8 @@
                 <li data-name="GuildChannel#delete"><a href="GuildChannel.html#delete">delete</a></li>
             
                 <li data-name="GuildChannel#edit"><a href="GuildChannel.html#edit">edit</a></li>
+            
+                <li data-name="GuildChannel#editPermissions"><a href="GuildChannel.html#editPermissions">editPermissions</a></li>
             
                 <li data-name="GuildChannel#setName"><a href="GuildChannel.html#setName">setName</a></li>
             
@@ -702,13 +704,19 @@
             
                 <li data-name="TextChannel#edit"><a href="TextChannel.html#edit">edit</a></li>
             
+                <li data-name="TextChannel#editPermissions"><a href="TextChannel.html#editPermissions">editPermissions</a></li>
+            
                 <li data-name="TextChannel#getMessage"><a href="TextChannel.html#getMessage">getMessage</a></li>
             
                 <li data-name="TextChannel#getMessages"><a href="TextChannel.html#getMessages">getMessages</a></li>
             
-                <li data-name="TextChannel#invite"><a href="TextChannel.html#invite">invite</a></li>
+                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
+            
+                <li data-name="TextChannel#pinMessage"><a href="TextChannel.html#pinMessage">pinMessage</a></li>
+            
+                <li data-name="TextChannel#removePinned"><a href="TextChannel.html#removePinned">removePinned</a></li>
             
                 <li data-name="TextChannel#send"><a href="TextChannel.html#send">send</a></li>
             
@@ -826,6 +834,8 @@
             
                 <li data-name="VoiceChannel#edit"><a href="VoiceChannel.html#edit">edit</a></li>
             
+                <li data-name="VoiceChannel#editPermissions"><a href="VoiceChannel.html#editPermissions">editPermissions</a></li>
+            
                 <li data-name="VoiceChannel#setBitrate"><a href="VoiceChannel.html#setBitrate">setBitrate</a></li>
             
                 <li data-name="VoiceChannel#setName"><a href="VoiceChannel.html#setName">setName</a></li>
@@ -876,7 +886,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line10">line 10</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line11">line 11</a>
         </div>
         
     </div>
@@ -1421,7 +1431,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line215">line 215</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line229">line 229</a>
         </div>
         
     </div>
@@ -1539,7 +1549,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line127">line 127</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line128">line 128</a>
         </div>
         
     </div>
@@ -1641,7 +1651,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line147">line 147</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line148">line 148</a>
         </div>
         
     </div>
@@ -1778,6 +1788,147 @@
         
             
 <dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="editPermissions">
+            
+                <span class="inherited"><a href="GuildChannel.html#editPermissions">inherited</a></span>
+            
+            editPermissions<span class="signature">(RoleOrMember, opt)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line177">line 177</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Edit permissions of the channels
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>RoleOrMember</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">role</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The role or the member to overwrite the permissions</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Available options: Allow (Bitfield of Permissions) and Deny (Bitfield of Permissions)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <div class="nameContainer">
         <h4 class="name" id="getMessage">
             
@@ -1786,7 +1937,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line121">line 121</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line124">line 124</a>
         </div>
         
     </div>
@@ -1931,7 +2082,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line137">line 137</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line143">line 143</a>
         </div>
         
     </div>
@@ -2069,14 +2220,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="invite">
+        <h4 class="name" id="getPinned">
             
-            invite<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Invite.html">Invite</a>>}</span>
+            getPinned<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line195">line 195</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line265">line 265</a>
         </div>
         
     </div>
@@ -2087,7 +2238,7 @@
     
     
     <div class="description">
-        This method will create an invite on the certain channel
+        This will retreive all pinned messages on the channel.
     </div>
     
 
@@ -2095,51 +2246,6 @@
     
     
     
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>opt</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The options: maxAge, maxUses, temp and unique</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
     
     
     
@@ -2195,11 +2301,11 @@
             
             <td class="type">
             
-                        Promise.&lt;<a href="Invite.html">Invite</a>>
+                        Array
                         
                     
             </td>
-            <td class="description last">Returns a promise and an invite</td>
+            <td class="description last">Returns an array of messages</td>
         </tr>
     
     </tbody>
@@ -2221,7 +2327,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line104">line 104</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line105">line 105</a>
         </div>
         
     </div>
@@ -2314,6 +2420,302 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="pinMessage">
+            
+            pinMessage<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Message.html">Message</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line283">line 283</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Will add a pinned message to the channel.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Snowflake</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Use message object for id or directly input id for message to pin.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="Message.html">Message</a>
+                        
+                    
+            </td>
+            <td class="description last">The messages that was pinned</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="removePinned">
+            
+            removePinned<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Message.html">Message</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line301">line 301</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Removes a pinned Message from the channel.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Snowflake</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Use message object for id or directly input id for pinned message to be removed.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="Message.html">Message</a>
+                        
+                    
+            </td>
+            <td class="description last">The messages that was pinned</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="send">
             
             send<span class="signature">(content, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
@@ -2321,7 +2723,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line57">line 57</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line58">line 58</a>
         </div>
         
     </div>
@@ -2533,7 +2935,7 @@ TextChannel.send("Hi!", { tts: true });</code></pre>
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line62">line 62</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line63">line 63</a>
         </div>
         
     </div>
@@ -2688,7 +3090,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line160">line 160</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line169">line 169</a>
         </div>
         
     </div>
@@ -2835,7 +3237,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line104">line 104</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line105">line 105</a>
         </div>
         
     </div>
@@ -2883,7 +3285,7 @@ channel.setName('general')
             <td class="type">
             
                 
-<span class="param-type">Snowflake</span>
+<span class="param-type">String</span>
 
 
             
@@ -2982,7 +3384,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line83">line 83</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line84">line 84</a>
         </div>
         
     </div>
@@ -3127,7 +3529,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line178">line 178</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line190">line 190</a>
         </div>
         
     </div>
@@ -3272,7 +3674,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line231">line 231</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line248">line 248</a>
         </div>
         
     </div>
@@ -3411,7 +3813,7 @@ channel.setName('general')
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 10 2018 20:41:26 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 12 2018 21:40:13 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

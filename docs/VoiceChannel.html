@@ -85,19 +85,19 @@
             
             <span class="subtitle">Events</span>
             
-                <li data-name="Client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
+                <li data-name="client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
             
-                <li data-name="Client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
+                <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
             
-                <li data-name="Client#message"><a href="Client.html#event:message">message</a></li>
+                <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
-                <li data-name="Client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+                <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
             
-                <li data-name="Client#ping"><a href="Client.html#event:ping">ping</a></li>
+                <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
-                <li data-name="Client#raw"><a href="Client.html#event:raw">raw</a></li>
+                <li data-name="client#raw"><a href="Client.html#event:raw">raw</a></li>
             
-                <li data-name="Client#ready"><a href="Client.html#event:ready">ready</a></li>
+                <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
             </ul>
         </li>
@@ -311,7 +311,7 @@
             
                 <li data-name="Guild#members"><a href="Guild.html#members">Properties</a></li>
             
-                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">Propertiesize</a></li>
+                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">memberSize</a></li>
             
                 <li data-name="Guild#name"><a href="Guild.html#name">name</a></li>
             
@@ -395,6 +395,8 @@
                 <li data-name="GuildChannel#delete"><a href="GuildChannel.html#delete">delete</a></li>
             
                 <li data-name="GuildChannel#edit"><a href="GuildChannel.html#edit">edit</a></li>
+            
+                <li data-name="GuildChannel#editPermissions"><a href="GuildChannel.html#editPermissions">editPermissions</a></li>
             
                 <li data-name="GuildChannel#setName"><a href="GuildChannel.html#setName">setName</a></li>
             
@@ -702,13 +704,19 @@
             
                 <li data-name="TextChannel#edit"><a href="TextChannel.html#edit">edit</a></li>
             
+                <li data-name="TextChannel#editPermissions"><a href="TextChannel.html#editPermissions">editPermissions</a></li>
+            
                 <li data-name="TextChannel#getMessage"><a href="TextChannel.html#getMessage">getMessage</a></li>
             
                 <li data-name="TextChannel#getMessages"><a href="TextChannel.html#getMessages">getMessages</a></li>
             
-                <li data-name="TextChannel#invite"><a href="TextChannel.html#invite">invite</a></li>
+                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
+            
+                <li data-name="TextChannel#pinMessage"><a href="TextChannel.html#pinMessage">pinMessage</a></li>
+            
+                <li data-name="TextChannel#removePinned"><a href="TextChannel.html#removePinned">removePinned</a></li>
             
                 <li data-name="TextChannel#send"><a href="TextChannel.html#send">send</a></li>
             
@@ -825,6 +833,8 @@
                 <li data-name="VoiceChannel#delete"><a href="VoiceChannel.html#delete">delete</a></li>
             
                 <li data-name="VoiceChannel#edit"><a href="VoiceChannel.html#edit">edit</a></li>
+            
+                <li data-name="VoiceChannel#editPermissions"><a href="VoiceChannel.html#editPermissions">editPermissions</a></li>
             
                 <li data-name="VoiceChannel#setBitrate"><a href="VoiceChannel.html#setBitrate">setBitrate</a></li>
             
@@ -1378,7 +1388,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line127">line 127</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line128">line 128</a>
         </div>
         
     </div>
@@ -1480,7 +1490,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line147">line 147</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line148">line 148</a>
         </div>
         
     </div>
@@ -1609,6 +1619,147 @@
     </tbody>
 </table>
 
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer inherited">
+        <h4 class="name" id="editPermissions">
+            
+                <span class="inherited"><a href="GuildChannel.html#editPermissions">inherited</a></span>
+            
+            editPermissions<span class="signature">(RoleOrMember, opt)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line177">line 177</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Edit permissions of the channels
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>RoleOrMember</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">role</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The role or the member to overwrite the permissions</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Available options: Allow (Bitfield of Permissions) and Deny (Bitfield of Permissions)</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
     
     
     
@@ -1772,7 +1923,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line62">line 62</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line63">line 63</a>
         </div>
         
     </div>
@@ -1929,7 +2080,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line104">line 104</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line105">line 105</a>
         </div>
         
     </div>
@@ -1977,7 +2128,7 @@ channel.setName('general')
             <td class="type">
             
                 
-<span class="param-type">Snowflake</span>
+<span class="param-type">String</span>
 
 
             
@@ -2076,7 +2227,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line83">line 83</a>
+            <a href="Classes_GuildChannel.js.html">Classes/GuildChannel.js</a>, <a href="Classes_GuildChannel.js.html#line84">line 84</a>
         </div>
         
     </div>
@@ -2374,7 +2525,7 @@ channel.setName('general')
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 10 2018 20:41:26 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 12 2018 21:40:13 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>
