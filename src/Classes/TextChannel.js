@@ -1,10 +1,11 @@
 const GuildChannel = require('./GuildChannel');
 const Message = require('./Message');
 const request = require('../Connection');
+const Collection = require('./Collection');
 
 /**
  * This class represents a Text Channel
- * @extends {GuildChannel} 
+ * @extends {GuildChannel}
  */
 
 class TextChannel extends GuildChannel {
@@ -22,7 +23,7 @@ class TextChannel extends GuildChannel {
      * This is the ID of the last message in the channel
      * @type {String}
      */
-    
+
     this.lastMessageID = raw.last_message_id;
 
     /**
@@ -36,7 +37,7 @@ class TextChannel extends GuildChannel {
      * The topic of the channel
      * @type {String}
      */
-    
+
     this.topic = raw.topic;
 
   }
@@ -79,7 +80,7 @@ class TextChannel extends GuildChannel {
             setTimeout(res, 100, res(new Message(m, this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });  
+          });
       } else {
         request.req('POST', `/channels/${this.id}/messages`, {
           nonce: (opt && opt.nonce) || false,
@@ -88,11 +89,11 @@ class TextChannel extends GuildChannel {
         }, this.client.token)
           .then(m => {
             const Message = require('./Message');
-            setTimeout(res, 100, res(new Message(m, this.client)));          
+            setTimeout(res, 100, res(new Message(m, this.client)));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          }); 
-      }     
+          });
+      }
     });
   }
 
@@ -108,7 +109,9 @@ class TextChannel extends GuildChannel {
           const Message = require('./Message');
           setTimeout(res, 100, res(new Message(m, this.client)));
         })
-        .catch(console.log);
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -124,6 +127,9 @@ class TextChannel extends GuildChannel {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(new Message(m, this.client)));
+        })
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
     });
   }
@@ -146,6 +152,9 @@ class TextChannel extends GuildChannel {
         .then(m => {
           const messages = m.map(c => new Message(c, this.client));
           setTimeout(res, 100, res(messages));
+        })
+        .catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
     });
   }
@@ -161,10 +170,13 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         nsfw: boolean
-      }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
-      });
+      }, this.client.token)
+        .then(m => {
+          const TextChannel = require('./TextChannel');
+          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -179,10 +191,13 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
         topic: newtopic
-      }, this.client.token).then(m => {
-        const TextChannel = require('./TextChannel');
-        setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
-      });
+      }, this.client.token)
+        .then(m => {
+          const TextChannel = require('./TextChannel');
+          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+        });
     });
   }
 
@@ -191,8 +206,8 @@ class TextChannel extends GuildChannel {
    * @param {Object} opt The options: maxAge, maxUses, temp and unique
    * @returns {Promise<Invite>} Returns a promise and an invite
    */
-  
-  invite(opt) {
+
+/*  invite(opt) {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.id}/invites`, {
         max_age: (opt && opt.maxAge) || 86400,
@@ -202,23 +217,25 @@ class TextChannel extends GuildChannel {
       }, this.client.token).then(m => {
         const Invite = require('./Invite.js');
         setTimeout(res, 100, res(new Invite(m, this.client)));
-        //setTimeout(res, 100, res(m));
       });
     });
-  }
+  }*/
 
   /**
-   * @description This method will bulk delete messages 
+   * @description This method will bulk delete messages
    * @param {Number} number The number of messages to delete
    */
 
   bulkDelete(number) {
-    this.getMessages({ limit: number}).then(c => {
+    this.getMessages({limit: number}).then(c => {
       const array = c.map(c => c.id);
       return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token).then(d => {
-          setTimeout(res, 100, res(d));
-        });
+        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
+          .then(d => {
+            setTimeout(res, 100, res(d));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });
       });
     });
   }
@@ -233,8 +250,67 @@ class TextChannel extends GuildChannel {
       for (let i; i < loops; i++) {
         request.req('POST', `/channels/${this.id}/typing`, {}, this.client.token).then(c => {
           setTimeout(res, 100, res(c));
+        }).catch(error => {
+          if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
       }
+    });
+  }
+
+  /**
+    @description This will retreive all pinned messages on the channel.
+    */
+
+  getPinned() {
+    return new Promise((res) => {
+      request.req('GET', `/channels/${this.id}/pins`, {}, this.client.token).then(m => {
+        const Message = require('./Message');
+
+				const messages = m.map(c => new Message(c, this.client));
+
+				setTimeout(res, 100, res(messages));
+	  	}).catch(error => {
+        console.log(error);
+        if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+      });
+    });
+  }
+
+  /**
+    @description Will add a pinned message to the channel.
+    @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
+    */
+
+  pinMessage(id) {
+    return new Promise((res) => {
+      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+          const Message = require('/Message');
+
+          const msg = new Message(message, this.client);
+
+          setTimeout(res, 100, res(msg));
+        });
+      });
+    });
+  }
+
+  /**
+    @description Removes a pinned Message from the channel.
+    @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
+    */
+
+  removePinned(id) {
+    return new Promise((res) => {
+      request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+          const Message = require('/Message');
+
+          const msg = new Message(message, this.client);
+
+          setTimeout(res, 100, res(msg));
+        });
+      });
     });
   }
 }
