@@ -282,9 +282,9 @@ class TextChannel extends GuildChannel {
 
   pinMessage(id) {
     return new Promise((res) => {
-      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
+      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(m => {
         request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
-          const Message = require('/Message');
+          const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));
         });
@@ -302,7 +302,7 @@ class TextChannel extends GuildChannel {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
         request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
-          const Message = require('/Message');
+          const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));
         });

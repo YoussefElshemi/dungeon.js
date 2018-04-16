@@ -141,7 +141,6 @@ module.exports = function(TOKEN) {
         if (message.d.type === 0) chn = new TextChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
         if (message.d.type === 2) chn = new VoiceChannel(message.d, _this.guilds.get(message.d.guild_id), _this);
         _this.channels.set(chn.id, chn);
-        _this.channels.filter(c => c.type === 'dm').size;
         _(t, chn);
       }
 

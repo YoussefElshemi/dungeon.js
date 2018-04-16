@@ -3,6 +3,7 @@ const Collection = require('../Classes/Collection');
 const GuildChannel = require('../Classes/GuildChannel');
 const Member = require('../Classes/Member');
 const Guild = require('../Classes/Guild');
+const TextChannel = require('../Classes/TextChannel');
 
 module.exports = function() {
   const _this = this;
