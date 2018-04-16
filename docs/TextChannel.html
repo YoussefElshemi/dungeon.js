@@ -704,15 +704,17 @@
             
                 <li data-name="TextChannel#bulkDelete"><a href="TextChannel.html#bulkDelete">bulkDelete</a></li>
             
+                <li data-name="TextChannel#createInvite"><a href="TextChannel.html#createInvite">createInvite</a></li>
+            
                 <li data-name="TextChannel#delete"><a href="TextChannel.html#delete">delete</a></li>
             
                 <li data-name="TextChannel#edit"><a href="TextChannel.html#edit">edit</a></li>
             
                 <li data-name="TextChannel#editPermissions"><a href="TextChannel.html#editPermissions">editPermissions</a></li>
             
-                <li data-name="TextChannel#getMessage"><a href="TextChannel.html#getMessage">getMessage</a></li>
+                <li data-name="TextChannel#fetchMessage"><a href="TextChannel.html#fetchMessage">fetchMessage</a></li>
             
-                <li data-name="TextChannel#getMessages"><a href="TextChannel.html#getMessages">getMessages</a></li>
+                <li data-name="TextChannel#fetchMessages"><a href="TextChannel.html#fetchMessages">fetchMessages</a></li>
             
                 <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
             
@@ -1435,7 +1437,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line229">line 229</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line228">line 228</a>
         </div>
         
     </div>
@@ -1535,6 +1537,151 @@
     
     
     
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="createInvite">
+            
+            createInvite<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Invite.html">Invite</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line209">line 209</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will create an invite on the certain channel
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The options: maxAge, maxUses, temp and unique</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Invite.html">Invite</a>>
+                        
+                    
+            </td>
+            <td class="description last">Returns a promise and an invite</td>
+        </tr>
+    
+    </tbody>
+</table>
+
     
     
     
@@ -1934,9 +2081,9 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getMessage">
+        <h4 class="name" id="fetchMessage">
             
-            getMessage<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
+            fetchMessage<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
         </h4>
     
         
@@ -2079,9 +2226,9 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getMessages">
+        <h4 class="name" id="fetchMessages">
             
-            getMessages<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
+            fetchMessages<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
         </h4>
     
         
@@ -2231,7 +2378,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line265">line 265</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line270">line 270</a>
         </div>
         
     </div>
@@ -2431,7 +2578,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line283">line 283</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line288">line 288</a>
         </div>
         
     </div>
@@ -2579,7 +2726,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line301">line 301</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line306">line 306</a>
         </div>
         
     </div>
@@ -3094,7 +3241,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line169">line 169</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line168">line 168</a>
         </div>
         
     </div>
@@ -3533,7 +3680,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line190">line 190</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line189">line 189</a>
         </div>
         
     </div>
@@ -3678,7 +3825,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line248">line 248</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line253">line 253</a>
         </div>
         
     </div>
@@ -3817,7 +3964,7 @@ channel.setName('general')
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 16 2018 21:28:13 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 16 2018 22:40:36 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

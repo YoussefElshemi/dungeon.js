@@ -121,7 +121,7 @@ class TextChannel extends GuildChannel {
    * @returns {Promise<Message>} Returns a promise and a discord message
    */
 
-  getMessage(id) {
+  fetchMessage(id) {
     if (!id) throw new this.client.MissingParameter('You are missing the parameter \'snowflake\'!');
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
@@ -140,18 +140,17 @@ class TextChannel extends GuildChannel {
    * @returns {Promise<Message>} Returns a promise and (a) discord message(s)
    */
 
-  getMessages(opt) {
+  fetchMessages(opt) {
     if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
     return new Promise((res) => {
-      request.req('GET', `/channels/${this.id}/messages`, {
-        around: opt.around || null,
-        before: opt.before || null,
-        after: opt.after || null,
-        limit: opt.limit || null
-      }, this.client.token)
+      request.req('GET', `/channels/${this.id}/messages?around=${opt.around || 0}&before=${opt.before || 0}&after=${opt.after || 0}&limit=${opt.limit || 0}`, {}, this.client.token)
         .then(m => {
-          const messages = m.map(c => new Message(c, this.client));
-          setTimeout(res, 100, res(messages));
+          const Message = require('./Message');
+          const msgs = new Collection();
+          for (let i = 0; i < m.length; i++) {
+            msgs.set(m[i].id, new Message(m[i], this.client));
+          }
+          setTimeout(res, 100, res(msgs));
         })
         .catch(error => {
           if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
@@ -207,7 +206,7 @@ class TextChannel extends GuildChannel {
    * @returns {Promise<Invite>} Returns a promise and an invite
    */
 
-  /*  invite(opt) {
+  createInvite(opt) {
     return new Promise((res) => {
       request.req('POST', `/channels/${this.id}/invites`, {
         max_age: (opt && opt.maxAge) || 86400,
@@ -219,7 +218,7 @@ class TextChannel extends GuildChannel {
         setTimeout(res, 100, res(new Invite(m, this.client)));
       });
     });
-  }*/
+  }
 
   /**
    * @description This method will bulk delete messages
@@ -227,12 +226,17 @@ class TextChannel extends GuildChannel {
    */
 
   bulkDelete(number) {
-    this.getMessages({limit: number}).then(c => {
+    this.fetchMessages({limit: number}).then(c => {
       const array = c.map(c => c.id);
       return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
+        request.req('POST', `/channels/${this.id}/messages/bulk-delete?messages=${array}`, { messages: array }, this.client.token)
           .then(d => {
-            setTimeout(res, 100, res(d));
+            const returned = new Collection();
+            const mesArray = c.map(c => c);
+            for (let i = 0; i < mesArray.length; i++) {
+              returned.set(mesArray[i].id, mesArray[i]);
+            }
+            setTimeout(res, 100, res(returned));
           }).catch(error => {
             if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
           });

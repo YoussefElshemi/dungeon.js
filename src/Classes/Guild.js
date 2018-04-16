@@ -245,10 +245,7 @@ class Guild {
 
   fetchMembers(opt = {}) {
     return new Promise((res, rej) => {
-      request.req('GET', `/guilds/${this.id}/members`, {
-        limit: (opt && opt.limit) || 1000,
-        after: (opt && opt.after) || 0
-      }, this.client.token).then(members => {
+      request.req('GET', `/guilds/${this.id}/members?limit=${opt.limit || this.memberSize}&after=${opt.after || 0}`, {}, this.client.token).then(members => {
         const returned = new Collection();
         for (let i = 0; i < members.length; i++) {
           returned.set(members[i].user.id, new Member(members[i], this, this.client));
