@@ -260,6 +260,21 @@ class Guild {
   }
 
   /**
+   * @description Fetches the member by id and caches them
+   * @param {String} id The ID of the user to fetch
+   * @returns {Promise<Member>} A collection of all of the  members
+   */
+
+  fetchMember(id) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/members/${id}`, {}, this.client.token).then(member => {
+        setTimeout(res, 100, res(new Member(member, this, this.client)));
+        this.members.set(member.user.id, new Member(member, this, this.client));        
+      }).catch(rej);
+    });
+  }
+
+  /**
    * @description Returns all users who are banned in the guild
    * @returns {Promise<Collection>} A collection of all banned members
    */
