@@ -45,8 +45,6 @@
             
                 <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
             
-                <li data-name="Client#connect"><a href="Client.html#connect">connect</a></li>
-            
                 <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
             
                 <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
@@ -57,9 +55,9 @@
             
                 <li data-name="Client#presences"><a href="Client.html#presences">presences</a></li>
             
-                <li data-name="Client#token"><a href="Client.html#token">token</a></li>
+                <li data-name="Client#readyTime"><a href="Client.html#readyTime">readyTime</a></li>
             
-                <li data-name="Client#uptime"><a href="Client.html#uptime">uptime</a></li>
+                <li data-name="Client#token"><a href="Client.html#token">token</a></li>
             
                 <li data-name="Client#user"><a href="Client.html#user">user</a></li>
             
@@ -892,7 +890,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line8">line 8</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line19">line 19</a>
         </div>
         
     </div>
@@ -976,52 +974,7 @@
 <dd>
     
     <div class="description">
-        The channels the client has access to
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="connect">connect</h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        This method will log the client user in
+        A collection of all the channels the client shares guilds with
     </div>
     
     
@@ -1066,7 +1019,7 @@
 <dd>
     
     <div class="description">
-        The guilds the client is in
+        A collection of all the guilds the client is in
     </div>
     
     
@@ -1111,7 +1064,7 @@
 <dd>
     
     <div class="description">
-        A ping for the client, an average of client#pings
+        The latency of the client, an average of pings
     </div>
     
     
@@ -1156,7 +1109,7 @@
 <dd>
     
     <div class="description">
-        The messages been sent after the client logged in
+        A collection of all of the messages sent when the client was ready
     </div>
     
     
@@ -1201,7 +1154,7 @@
 <dd>
     
     <div class="description">
-        An array of pings made by the client
+        The pings of the client
     </div>
     
     
@@ -1246,7 +1199,52 @@
 <dd>
     
     <div class="description">
-        The presences of each user the client shares a guild with
+        A collection of all of the presences of the user's the client shares guilds with
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="readyTime">readyTime<span class="type-signature type date">Date</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The date when the client logged in
     </div>
     
     
@@ -1289,55 +1287,6 @@
     
 </dt>
 <dd>
-    
-    <div class="description">
-        The token for your client
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="uptime">uptime<span class="type-signature type number">Number</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The client's uptime in ms
-    </div>
     
     
     
@@ -1426,7 +1375,7 @@
 <dd>
     
     <div class="description">
-        The users the client shares guilds with
+        A collection of all the users the client shares guilds with
     </div>
     
     
@@ -1476,7 +1425,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line113">line 113</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line250">line 250</a>
         </div>
         
     </div>
@@ -1547,7 +1496,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line127">line 127</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line259">line 259</a>
         </div>
         
     </div>
@@ -1649,17 +1598,6 @@
     
     
     
-    
-        <h5>Example</h5>
-        
-
-    
-    <pre class="prettyprint"><code>// Fetching a user
-client.getUser('id').then(c => {
-   c.send('Test!');
-})</code></pre>
-    
-
     
 </dd>
 
@@ -2431,7 +2369,7 @@ client.getUser('id').then(c => {
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 16 2018 22:40:36 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 17 2018 22:41:30 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

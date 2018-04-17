@@ -5,5 +5,5 @@ class ChannelAdded {
    * @param {GuildChannel} channel The channel that was created and triggered this event
    */
 }
-  
+
 module.exports = ChannelAdded;
