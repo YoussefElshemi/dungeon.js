@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Events/MessageReactionAdd.js</title>
+    <title>Source: Events/MessageUpdated.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -899,23 +899,23 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Events_MessageReactionAdd.js.html">Source: Events/MessageReactionAdd.js</h1>
+        <h1 class="page-title" data-filename="Events_MessageUpdated.js.html">Source: Events/MessageUpdated.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source "><code>class MessageReactionAdd {
+            <pre id="source-code" class="prettyprint source "><code>class MessageUpdated {
   /**
-   * This event is emitted whenever a user reacts on a message
-   * @event Client#messageReactionAdd
-   * @param {User} User The user that reacted on the message
-   * @param {Object} Emoji The emoji that was reacted
+   * This event is emitted whenever a message is updated
+   * @event Client#messageUpdated
+   * @param {Message} OldMessage The original message
+   * @param {Message} NewMessage The updated message
    */
 }
-  
-module.exports = MessageReactionAdd;</code></pre>
+
+module.exports = MessageUpdated;</code></pre>
         </article>
     </section>
 

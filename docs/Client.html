@@ -91,6 +91,10 @@
             
                 <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
             
+                <li data-name="client#messageRemoved"><a href="Client.html#event:messageRemoved">messageRemoved</a></li>
+            
+                <li data-name="client#messageUpdated"><a href="Client.html#event:messageUpdated">messageUpdated</a></li>
+            
                 <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
                 <li data-name="client#presenceUpdate"><a href="Client.html#event:presenceUpdate">presenceUpdate</a></li>
@@ -926,7 +930,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line20">line 20</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line19">line 19</a>
         </div>
         
     </div>
@@ -1461,7 +1465,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line262">line 262</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line273">line 273</a>
         </div>
         
     </div>
@@ -1532,7 +1536,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line271">line 271</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line282">line 282</a>
         </div>
         
     </div>
@@ -2138,6 +2142,261 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="event:messageRemoved">
+            
+            messageRemoved
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Events_MessageRemoved.js.html">Events/MessageRemoved.js</a>, <a href="Events_MessageRemoved.js.html#line2">line 2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever a message is deleted
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Message</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Message.html">Message</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The message that was deleted</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:messageUpdated">
+            
+            messageUpdated
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Events_MessageUpdated.js.html">Events/MessageUpdated.js</a>, <a href="Events_MessageUpdated.js.html#line2">line 2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever a message is updated
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>OldMessage</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Message.html">Message</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The original message</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>NewMessage</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Message.html">Message</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The updated message</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="event:ping">
             
             ping
@@ -2660,7 +2919,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:22:12 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:56:24 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

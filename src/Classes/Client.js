@@ -1,7 +1,6 @@
 const EventEmitter = require('events');
 const request = require('../Connection');
 const WebSocket = require('ws');
-const event_list = require('../Events');
 const Message = require('../Classes/Message');
 const Guild = require('../Classes/Guild');
 const Collection = require('../Classes/Collection');
@@ -204,10 +203,10 @@ class Client extends EventEmitter {
           });
   
           if (Array.from(this.guilds.keys()).length == this.amOfGuilds) {
-            this.emit(event_list.READY);
+            this.emit('ready');
           }
           if (Array.from(this.guilds.keys()).length > this.amOfGuilds) {
-            this.emit(event_list[t], guild);
+            this.emit('guildCreate', guild);
           }
         }
   
@@ -217,7 +216,7 @@ class Client extends EventEmitter {
           if (message.d.type === 0) chn = new TextChannel(message.d, this.guilds.get(message.d.guild_id), this);
           if (message.d.type === 2) chn = new VoiceChannel(message.d, this.guilds.get(message.d.guild_id), this);
           this.channels.set(chn.id, chn);
-          this.emit(event_list[t], chn);
+          this.emit('channelAdded', chn);
         }
   
         if (t == 'CHANNEL_DELETE') {
@@ -225,23 +224,35 @@ class Client extends EventEmitter {
           if (message.d.type === 0) chn = new TextChannel(message.d, this);
           if (message.d.type === 2) chn = new VoiceChannel(message.d, this);
           this.channels.delete(chn.id);
-          this.emit(event_list[t], chn);
+          this.emit('channelRemoved', chn);
         }
   
         if (t == 'MESSAGE_CREATE') {
           const msg = new Message(message.d, this);
           this.messages.set(msg.id, msg);
-          this.emit(event_list[t], msg);      
+          this.emit('message', msg);      
         }
   
         if (t == 'MESSAGE_REACTION_ADD') {
           const reaction = message.d.emoji;
           const user = this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
-          this.emit(event_list[t], reaction, user);
+          this.emit('messageReactionAdd', reaction, user);
         }
         if (t == 'PRESENCE_UPDATE') {
           const presence = new Presence(message.d, this);
-          this.emit(event_list[t], presence);
+          this.emit('presenceUpdate', presence);
+        }
+
+        if (t === 'MESSAGE_DELETE') {
+          const msg = this.messages.get(message.d.id) || null;
+          this.emit('messageRemoved', msg);
+        }
+
+        if (t === 'MESSAGE_UPDATE') {
+          const newmsg = new Message(message.d, this);
+          const oldmsg = this.messages.get(message.d.id) || null;
+          this.messages.set(newmsg.id, newmsg);
+          this.emit('messageUpdated', oldmsg, newmsg);          
         }
 
         if (t == 'TYPING_START') {
@@ -280,3 +291,36 @@ class Client extends EventEmitter {
 }
 
 module.exports = Client;
+
+/*MapIterator {
+  '407673106174443520',
+  '407673632492355602',
+  '407673703753711616',
+  '407680037958189066',
+  '407680128747962368',
+  '415983484432023583',
+  '418892643091611665',
+  '419685679233105921',
+  '428259877786484737',
+  '431109705998532618',
+  '431109846851518475',
+  '431109855789711361',
+  '431110400327680010',
+  '431110644662665267',
+  '431110801223450634',
+  '431111005641244682',
+  '431185477484412938',
+  '427501045057454092',
+  '427501045057454094',
+  '427502686628478990',
+  '427559950101774346',
+  '427560514269478923',
+  '427560883162578956',
+  '427564367509192724',
+  '427570594033434644',
+  '427579278394392587',
+  '427579495294173202',
+  '427581370580074496',
+  '429993376331464705',
+  '430531604927086603',
+  '431068120279678979' }*/
