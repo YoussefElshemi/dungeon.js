@@ -11,6 +11,7 @@ const VoiceChannel = require('../Classes/VoiceChannel');
 const DMChannel = require('../Classes/DMChannel');
 const User = require('../Classes/User');
 const https = require('https');
+const Presence = require('./Presence');
 
 /**
  * This Class is the base client for this API
@@ -82,6 +83,7 @@ class Client extends EventEmitter {
       }
       if (message.op == 0) {
         const t = message.t;
+        console.log(t);
         this.emit('raw', message);
   
         if (t == 'READY') {
@@ -236,6 +238,16 @@ class Client extends EventEmitter {
           const reaction = message.d.emoji;
           const user = this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
           this.emit(event_list[t], reaction, user);
+        }
+        if (t == 'PRESENCE_UPDATE') {
+          const presence = new Presence(message.d, this);
+          this.emit(event_list[t], presence);
+        }
+
+        if (t == 'TYPING_START') {
+          const user = this.users.get(message.d.user_id);
+          const channel = this.channels.get(message.d.channel_id);
+          this.emit('startTyping', user, channel);
         }
       }
     });

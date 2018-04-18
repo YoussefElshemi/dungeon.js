@@ -93,9 +93,13 @@
             
                 <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
+                <li data-name="client#presenceUpdate"><a href="Client.html#event:presenceUpdate">presenceUpdate</a></li>
+            
                 <li data-name="client#raw"><a href="Client.html#event:raw">raw</a></li>
             
                 <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
+            
+                <li data-name="client#startTyping"><a href="Client.html#event:startTyping">startTyping</a></li>
             
             </ul>
         </li>
@@ -620,6 +624,38 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Presence">
+            <span class="title">
+                <a href="Presence.html">Presence</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Presence#client"><a href="Presence.html#client">client</a></li>
+            
+                <li data-name="Presence#game"><a href="Presence.html#game">game</a></li>
+            
+                <li data-name="Presence#status"><a href="Presence.html#status">status</a></li>
+            
+                <li data-name="Presence#user"><a href="Presence.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Role">
             <span class="title">
                 <a href="Role.html">Role</a>
@@ -890,7 +926,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line19">line 19</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line20">line 20</a>
         </div>
         
     </div>
@@ -1425,7 +1461,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line250">line 250</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line262">line 262</a>
         </div>
         
     </div>
@@ -1496,7 +1532,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line259">line 259</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line271">line 271</a>
         </div>
         
     </div>
@@ -1664,7 +1700,7 @@
 	
         <tr>
             
-                <td class="name"><code>channel</code></td>
+                <td class="name"><code>Channel</code></td>
             
             
             <td class="type">
@@ -1780,7 +1816,7 @@
 	
         <tr>
             
-                <td class="name"><code>channel</code></td>
+                <td class="name"><code>Channel</code></td>
             
             
             <td class="type">
@@ -1896,7 +1932,7 @@
 	
         <tr>
             
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>Message</code></td>
             
             
             <td class="type">
@@ -2173,6 +2209,122 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="event:presenceUpdate">
+            
+            presenceUpdate
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Events_PresenceUpdate.js.html">Events/PresenceUpdate.js</a>, <a href="Events_PresenceUpdate.js.html#line2">line 2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever a user updates their presence
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Presence</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Presence.html">Presence</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user's presence</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="event:raw">
             
             raw
@@ -2356,6 +2508,145 @@
     
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:startTyping">
+            
+            startTyping
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Events_startTyping.js.html">Events/startTyping.js</a>, <a href="Events_startTyping.js.html#line2">line 2</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever a user updates their presence
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>User</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="User.html">User</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user that started typing</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>Channel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Channel</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The channel the user typed in</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         </dl>
     
 </article>
@@ -2369,7 +2660,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 17 2018 22:41:30 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:22:12 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

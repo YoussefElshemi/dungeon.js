@@ -61,7 +61,7 @@ class User {
 
     /**
      * The presence of the user
-     * @type {Object}
+     * @type {Presence}
      */
 
     this.presence = this.client.presences.get(this.id) ||	null;
