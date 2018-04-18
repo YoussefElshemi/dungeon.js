@@ -5,5 +5,6 @@ module.exports = {
   'CHANNEL_CREATE': 'channelAdded',
   'PINGED': 'ping',
   'RAW': 'raw',
-  'MESSAGE_REACTION_ADD': 'messageReactionAdd'
+  'MESSAGE_REACTION_ADD': 'messageReactionAdd',
+  'PRESENCE_UPDATE': 'presenceUpdate'
 };

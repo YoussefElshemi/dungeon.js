@@ -8,6 +8,13 @@ class Role {
   constructor(raw, client) {
 
     /**
+     * The roles ID
+     * @type {String}
+     */
+
+    this.id = raw.id;
+
+    /**
      * The name of the role
      * @type {String}
      */

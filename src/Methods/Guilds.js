@@ -3,6 +3,8 @@ const Collection = require('../Classes/Collection');
 const GuildChannel = require('../Classes/GuildChannel');
 const Member = require('../Classes/Member');
 const Guild = require('../Classes/Guild');
+const TextChannel = require('../Classes/TextChannel');
+const Presence = require('../Classes/Presence');
 
 module.exports = function() {
   const _this = this;
@@ -39,18 +41,12 @@ module.exports = function() {
       
       raw.members = allMembers;
 
-
       for (let i = 0; i < raw.presences.length; i++) {
-        allPresences.set(raw.presences[i].user.id, raw.presences[i]);
+        allPresences.set(raw.presences[i].user.id, new Presence(raw.presences[i], _this));
+        _this.presences.set(raw.presences[i].user.id, new Presence(raw.presences[i], _this));
       }
 
       raw.presences = allPresences;
-
-      for (let i = 0; i < _this.guilds.size; i++) {
-        raw.presences.forEach(r => {
-          _this.presences.set(r.user.id, r);
-        });
-      }
 
       return raw;
     }

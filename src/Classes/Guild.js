@@ -2,6 +2,9 @@ const request = require('../Connection');
 const Snowflake = require('../util/Snowflake');
 const TextChannel = require('./TextChannel');
 const VoiceChannel = require('./VoiceChannel');
+const Collection = require('./Collection');
+const Role = require('./Role');
+const Member = require('./Member');
 
 /**
  * This class represents a guild object
@@ -195,7 +198,7 @@ class Guild {
         hoist: opt.hoist || false,
         mentionable: opt.mentionable || false
       }, this.client.token).then(role => {
-        setTimeout(res, 100, res(this.client.role_methods().fromRaw(role)));
+        setTimeout(res, 100, res(new Role(role, this.client)));
       }).catch(rej);
     });
   }
@@ -210,50 +213,78 @@ class Guild {
     return new Promise((res, rej) => {
       request.req('POST', `/guilds/${this.id}/prune`, {
         days: days
-      }, _this.token).then(prune => {
-        setTimeout(res, 100, res(this.client.guild_methods().fromRaw(prune)));
+      }, this.client.token).then(prune => {
+        setTimeout(res, 100, res(this));
       }).catch(rej);
     });
   }
 
   /**
    * @description Returns all of the invites from the guild
-   * @returns {Promise<Invite>} An array of all of the invites
+   * @returns {Promise<Collection>} An array of all of the invites
     */
 
   fetchInvites() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
         const invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
-        setTimeout(res, 100, res(invite_methods));
+        const returned = new Collection();
+        for (let i = 0; i < invite_methods.length; i++) {
+          returned.set(invite_methods[i].code, invite_methods[i]);
+        }
+        setTimeout(res, 100, res(returned));
       }).catch(rej);
     });
   }
 
   /**
    * @description Returns all members of the guild if not cached
-   * @returns {Promise<Member>} An array of all members
+   * @param {Object} [opt = {}] The options: limit and after
+   * @returns {Promise<Collection>} A collection of all of the  members
    */
 
-  fetchMembers() {
+  fetchMembers(opt = {}) {
     return new Promise((res, rej) => {
-      request.req('GET', `/guilds/${this.id}/members`, {}, this.client.token).then(members => {
-        const member_methods = members.map(i => new Member(i, this.guild, this.client));
-        setTimeout(res, 100, res(member_methods));
+      request.req('GET', `/guilds/${this.id}/members?limit=${opt.limit || this.memberSize}&after=${opt.after || 0}`, {}, this.client.token).then(members => {
+        const returned = new Collection();
+        for (let i = 0; i < members.length; i++) {
+          returned.set(members[i].user.id, new Member(members[i], this, this.client));
+          this.members.set(members[i].user.id, new Member(members[i], this, this.client));
+        }        
+        setTimeout(res, 100, res(returned));
+      }).catch(rej);
+    });
+  }
+
+  /**
+   * @description Fetches the member by id and caches them
+   * @param {String} id The ID of the user to fetch
+   * @returns {Promise<Member>} A collection of all of the  members
+   */
+
+  fetchMember(id) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/members/${id}`, {}, this.client.token).then(member => {
+        setTimeout(res, 100, res(new Member(member, this, this.client)));
+        this.members.set(member.user.id, new Member(member, this, this.client));        
       }).catch(rej);
     });
   }
 
   /**
    * @description Returns all users who are banned in the guild
-   * @returns {Promise<Member>} An array of all ban items
+   * @returns {Promise<Collection>} A collection of all banned members
    */
 
   fetchBans() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
         const ban_methods = bans.map(i => new Member(i, this.guild, this.client));
-        setTimeout(res, 100, res(ban_methods, this.id));
+        const returned = new Collection();
+        for (let i = 0; i < ban_methods.length; i++) {
+          returned.set(ban_methods[i].id, ban_methods[i]);
+        }    
+        setTimeout(res, 100, res(returned));
       }).catch(rej);
     });
   }
@@ -266,8 +297,13 @@ class Guild {
   fetchRoles() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
-        const role_methods = roles.map(i => this.client.role_methods().fromRaw(i));
-        setTimeout(res, 100, res(role_methods));
+        const role_methods = roles.map(i => new Role(i, this.client));
+        const returned = new Collection();
+        for (let i = 0; i < role_methods.length; i++) {
+          returned.set(role_methods[i].id, role_methods[i]);
+          this.roles.set(role_methods[i].id, role_methods[i]);
+        }
+        setTimeout(res, 100, res(returned));
       }).catch(rej);
     });
   }
