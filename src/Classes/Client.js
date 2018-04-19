@@ -1,4 +1,5 @@
 const EventEmitter = require('events');
+const snekfetch = require('snekfetch');
 const request = require('../Connection');
 const WebSocket = require('ws');
 const Message = require('../Classes/Message');
@@ -11,6 +12,8 @@ const DMChannel = require('../Classes/DMChannel');
 const User = require('../Classes/User');
 const https = require('https');
 const Presence = require('./Presence');
+const Member = require('./Member');
+const CategoryChannel = require('./CategoryChannel');
 
 /**
  * This Class is the base client for this API
@@ -192,9 +195,19 @@ class Client extends EventEmitter {
   
           for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
             const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
-            if (item.type === 0) chn = new TextChannel(item, guild, this);
-            if (item.type === 2) chn = new VoiceChannel(item, guild, this);
-            if (chn) this.channels.set(chn.id, chn);
+            if (item.type == 0) {
+              this.channels.set(item.id, new TextChannel(item, guild, this));
+              guild.channels.set(item.id, new TextChannel(item, guild, this));
+            } else if (item.type == 2) {
+              this.channels.set(item.id, new VoiceChannel(item, guild, this));
+              guild.channels.set(item.id, new VoiceChannel(item, guild, this));
+            } else if (item.type == 4) {
+              this.channels.set(item.id, new CategoryChannel(item, guild, this));
+              guild.channels.set(item.id, new CategoryChannel(item, guild, this));
+            } else {
+              this.channels.set(item.id, item);
+              guild.channels.set(item.id, item);
+            }
           }
 
           guild.members.forEach(c => {
@@ -215,14 +228,18 @@ class Client extends EventEmitter {
           if (message.d.type === 1) chn = new DMChannel(message.d, this);
           if (message.d.type === 0) chn = new TextChannel(message.d, this.guilds.get(message.d.guild_id), this);
           if (message.d.type === 2) chn = new VoiceChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 4) chn = new CategoryChannel(message.d, this.guilds.get(message.d.guild_id), this);
+
           this.channels.set(chn.id, chn);
           this.emit('channelAdded', chn);
         }
   
         if (t == 'CHANNEL_DELETE') {
           let chn;
-          if (message.d.type === 0) chn = new TextChannel(message.d, this);
-          if (message.d.type === 2) chn = new VoiceChannel(message.d, this);
+          if (message.d.type === 1) chn = new DMChannel(message.d, this);
+          if (message.d.type === 0) chn = new TextChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 2) chn = new VoiceChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 4) chn = new CategoryChannel(message.d, this.guilds.get(message.d.guild_id), this);
           this.channels.delete(chn.id);
           this.emit('channelRemoved', chn);
         }
@@ -249,6 +266,7 @@ class Client extends EventEmitter {
         }
 
         if (t === 'MESSAGE_UPDATE') {
+          if (!message.d.content) return;
           const newmsg = new Message(message.d, this);
           const oldmsg = this.messages.get(message.d.id) || null;
           this.messages.set(newmsg.id, newmsg);
@@ -259,6 +277,18 @@ class Client extends EventEmitter {
           const user = this.users.get(message.d.user_id);
           const channel = this.channels.get(message.d.channel_id);
           this.emit('startTyping', user, channel);
+        }
+
+        if (t == 'VOICE_STATE_UPDATE') {
+          const member = this.guilds.get(message.d.guild_id).members.get(message.d.user_id) || null;
+          const channel = this.guilds.get(message.d.guild_id).channels.get(message.d.channel_id) || null;
+          this.emit('voiceStateUpdate', member, channel);
+        }
+
+        if (t == 'GUILD_MEMBER_UPDATE') {
+          const oldm = this.guilds.get(message.d.guild_id).members.get(message.d.user.id);
+          const newm = new Member(message.d, this.guilds.get(message.d.guild_id), this);
+          this.emit('guildMemberUpdate', oldm, newm);
         }
       }
     });
@@ -288,39 +318,57 @@ class Client extends EventEmitter {
       });        
     });
   }
+
+  /**
+   * @description This method will create a guild and the client will own it
+   * @param {String} name The name of the guild
+   * @param {Object} [obj = {}] The options for the guild {@link GuildOptions}
+   * @returns {Promise<Guild>} The guild created 
+   */
+
+  createGuild(name, obj = {}) {
+    return new Promise((res, rej) => {
+      request.req('POST', '/guilds', obj, this.token).then(c => {
+        setTimeout(res, 100, res(new Guild(this.guild_methods().fromRaw(c), this)));
+      });
+    });
+  }
+
+  /**
+   * @description This method will set the username of the client
+   * @param {String} newusername The new username
+   * @returns {Promise<User>} The updated user for the client
+   */
+
+  setUsername(newusername) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', '/users/@me', {
+        username: newusername
+      }, this.token).then(c => {
+        setTimeout(res, 100, res(new User(c, this)));
+      });
+    });
+  }
+
+  /**
+   * @description This method will set the avatar of the client
+   * @param {String} url The new avatar url
+   * @returns {Promise<User>} The updated user for the client
+   */
+
+  setAvatar(url) {
+    return new Promise((res, rej) => {
+      let newavatar;
+      snekfetch.get(url).then(c => {
+        newavatar = 'data:' + c.headers['content-type'] + ';base64,' + c.body.toString('base64');
+        request.req('PATCH', '/users/@me', {
+          avatar: newavatar
+        }, this.token).then(c => {
+          setTimeout(res, 100, res(new User(c, this)));
+        });
+      });
+    });
+  }
 }
 
 module.exports = Client;
-
-/*MapIterator {
-  '407673106174443520',
-  '407673632492355602',
-  '407673703753711616',
-  '407680037958189066',
-  '407680128747962368',
-  '415983484432023583',
-  '418892643091611665',
-  '419685679233105921',
-  '428259877786484737',
-  '431109705998532618',
-  '431109846851518475',
-  '431109855789711361',
-  '431110400327680010',
-  '431110644662665267',
-  '431110801223450634',
-  '431111005641244682',
-  '431185477484412938',
-  '427501045057454092',
-  '427501045057454094',
-  '427502686628478990',
-  '427559950101774346',
-  '427560514269478923',
-  '427560883162578956',
-  '427564367509192724',
-  '427570594033434644',
-  '427579278394392587',
-  '427579495294173202',
-  '427581370580074496',
-  '429993376331464705',
-  '430531604927086603',
-  '431068120279678979' }*/

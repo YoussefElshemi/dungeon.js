@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Classes/User.js</title>
+    <title>Source: Events/GuildMemberUpdate.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -951,192 +951,23 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Classes_User.js.html">Source: Classes/User.js</h1>
+        <h1 class="page-title" data-filename="Events_GuildMemberUpdate.js.html">Source: Events/GuildMemberUpdate.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source "><code>
-const request = require('../Connection');
-const Snowflake = require('../util/Snowflake');
-
-/**
- * This class represents a User Object
- */
-
-class User {
-  constructor(raw, client) {
-
-    /**
-     * The client object 
-     * @type {Client}
-     */
-
-    this.client = client;
-
-    /**
-     * The ID of the user
-     * @type {String}
-     */
-
-    this.id = raw.id;
-
-
-    /**
-     * The username of the user
-     * @type {String}
-     */
-
-    this.username = raw.username;
-
-    /**
-     * The four lettered discriminator of the user
-     * @type {String}
-     */
-
-    this.discriminator = raw.discriminator;
-
-    /**
-     * The username+discriminator eg. Youssef#0001
-     * @type {String}
-     */
-
-    this.tag =`${this.username}#${this.discriminator}`;
-
-    /**
-     * The avatar hash of the user
-     * @type {String}
-     */
-
-    this.avatar = raw.avatar;
-
-    /**
-     * The avatarURL of a a user, defaulted at png
-     * @type {String}
-     */
-
-    this.avatarURL = `https://cdn.discordapp.com/avatars/${this.id}/${this.avatar}.png`;
-
-    /**
-     * The presence of the user
-     * @type {Presence}
-     */
-
-    this.presence = this.client.presences.get(this.id) ||	null;
-
-    /**
-     * Whether the use is a bot or not
-     * @type {Boolean}
-     */
-
-    this.bot = raw.bot ||	false;
-
-    /**
-     * The timestamp the user was created at
-     * @type {Date}
-     */
-      
-    this.createdTimestamp = Snowflake.deconstruct(this.id).timestamp;
-
-    /**
-     * The date the user was created at
-     * @type {Date}
-     */
-
-    this.createdAt = new Date(this.createdTimestamp);
-  }
-
+            <pre id="source-code" class="prettyprint source "><code>class GuildMemberUpdate {
   /**
-   * @description Returns the avatar's url of a user
-   * @param {Object} [options = {}] The options, format eg. "png" and size, eg. 256
-   * @returns {String} The user's avatar as a URL
+   * This event is emitted whenever a guild member is updated
+   * @event Client#guildMemberUpdate
+   * @param {Member} OldMember The original member
+   * @param {Member} NewMember The new member (updated)
    */
-
-  avatarURL(options) {
-    if (options) {
-      return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.${options.format || 'png'}${options.size ? `?size=${options.size}` : ''}`;
-    } else {
-      return `https://cdn.discordapp.com/avatars/${raw.id}/${raw.avatar}.png`;
-    }
-  }
-
-  /**
-   * @description This method will send a message to the channel specified
-   * @param {String|Object} content The string if it's a normal message or object if it's a richembed
-   * @param {Object} [opt = {}] The options, nonce and tts
-   * @returns {Promise&lt;Message>} Returns a promise and discord message
-   * @example
-   * // Sending an embed
-   * User.send({title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86});
-   * @example
-   * // Sending a tts message
-   * User.send("Hi!", {tts: true});
-   */
-
-  send(content, opt = {}) {
-    if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
-    let embed;
-    if (typeof content === 'object') {
-      embed = {
-        title: (content &amp;&amp; content.title) || null,
-        description: (content &amp;&amp; content.description) || null,
-        url: (content &amp;&amp; content.url) || null,
-        timestamp: (content &amp;&amp; content.timestamp) || null,
-        color: (content &amp;&amp; content.color) || null,
-        footer: (content &amp;&amp; content.footer) || null,
-        author: (content &amp;&amp; content.author) || null,
-        fields: (content &amp;&amp; content.fields) || null
-      };
-    }
-    return new Promise((res) => {
-      if (embed) {
-        request.req('POST', '/users/@me/channels', {
-          recipient_id: this.id
-        }, this.client.token).then(c => {
-          request.req('POST', `/channels/${c.id}/messages`, {
-            embed: embed
-          }, this.client.token)
-            .then(m => {
-              const Message = require('./Message');
-              setTimeout(res, 100, res(new Message(m, this.client)));
-            }).catch(error => {
-              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-            });  
-        });
-      } else {
-        request.req('POST', '/users/@me/channels', {
-          recipient_id: this.id
-        }, this.client.token).then(c => {
-          request.req('POST', `/channels/${c.id}/messages`, {
-            nonce: (opt &amp;&amp; opt.nonce) || false,
-            tts: (opt &amp;&amp; opt.tts) || false,
-            content: content || null
-          }, this.client.token)
-            .then(m => {
-              const Message = require('./Message');
-              setTimeout(res, 100, res(new Message(m, this.client)));          
-            }).catch(error => {
-              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-            }); 
-        });
-      }     
-    });
-  }
-
-  /**
-   * @description This method will mention a user
-   * @returns {String} The mention as a string: &lt;@id>
-   */
-
-  mention() {
-    return `&lt;@${this.id}>`;
-  }
-
 }
 
-module.exports = User;</code></pre>
+module.exports = GuildMemberUpdate;</code></pre>
         </article>
     </section>
 

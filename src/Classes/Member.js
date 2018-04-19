@@ -153,14 +153,16 @@ class Member {
    * @returns {Promise<Member>} Returns a promise and a GuildMember object
    */
 
-  ban(opt) {
+  ban(opt = {}) {
     return new Promise((res) => {
       request.req('PUT', `/guilds/${this.guild.id}/bans/${this.id}`, {
-        days: opt.days || 0,
-        reason: opt.reason || ''
-      }, _this.token)
+        'delete-message-days': (opt && opt.days) || 0,
+        reason: (opt && opt.reason) || ''
+      }, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
+          request.req('GET', `/users/${this.id}`, {}, this.client.token).then(c => {
+            setTimeout(res, 100, res(new User(c, this.client)));
+          });        
         });
     });
   }
@@ -175,7 +177,7 @@ class Member {
     return new Promise((res) => {
       request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}`, {
         reason: reason || ''
-      }, _this.token)
+      }, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
         });
@@ -277,8 +279,80 @@ class Member {
     for (let i = 0; i < perms.length; i++) {
       if (this.roles.some(r => r.permissions.includes(perms[i]))) perm.push(perms.length);
     }
-    if (perm && perm.length && perm.length > 0) return true;
+    if (perm && perm.length && perm.length === perms.length) return true;
     else return false;
+  }
+
+  /**
+   * @description This method sets the nickname of the member
+   * @param {String} newnick The new nickname of the member
+   * @returns {Promise<Member>} The new member
+   */
+
+  setNickname(newnick) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        nick: newnick
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });
+      });
+    });
+  }
+
+  /**
+   * @description This method mutes a member in a voice channel
+   * @param {Boolean} boolean True if the member should be muted, and false if they should be unmuted
+   * @returns {Promise<Member>} The new member
+   */
+
+  setMute(boolean) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        mute: boolean
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });      
+      });
+    });
+  }
+
+  /**
+   * @description This method deafens a member in a voice channel
+   * @param {Boolean} boolean True if the member should be deafened, and false if they should be undeafened
+   * @returns {Promise<Member>} The new member
+   */
+
+  setDeaf(boolean) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        deaf: boolean
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });      
+      });
+    });
+  }
+
+  /**
+   * @description This method sets the voice channel of the member
+   * @param {String} id The voice channel's id to move the member to 
+   * @returns {Promise<Member>} The new member
+   */
+
+  moveCall(id) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        channel_id: id
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });     
+      });
+    });
   }
 }
 

@@ -74,9 +74,15 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
+            
                 <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
             
                 <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+            
+                <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
+            
+                <li data-name="Client#setUsername"><a href="Client.html#setUsername">setUsername</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -86,6 +92,8 @@
                 <li data-name="client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
             
                 <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
+            
+                <li data-name="client#guildMemberUpdate"><a href="Client.html#event:guildMemberUpdate">guildMemberUpdate</a></li>
             
                 <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
@@ -104,6 +112,8 @@
                 <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
                 <li data-name="client#startTyping"><a href="Client.html#event:startTyping">startTyping</a></li>
+            
+                <li data-name="client#voiceStateUpdate"><a href="Client.html#event:voiceStateUpdate">voiceStateUpdate</a></li>
             
             </ul>
         </li>
@@ -342,11 +352,25 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
+            
                 <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
+            
+                <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
             
                 <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
             
+                <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
+            
+                <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
+            
                 <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
+            
+                <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
+            
+                <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
             
                 <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
             
@@ -356,11 +380,31 @@
             
                 <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
             
-                <li data-name="Guild#getAuditLogs"><a href="Guild.html#getAuditLogs">getAuditLogs</a></li>
+                <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
             
                 <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
             
+                <li data-name="Guild#setAFKChannel"><a href="Guild.html#setAFKChannel">setAFKChannel</a></li>
+            
+                <li data-name="Guild#setAFKTimeout"><a href="Guild.html#setAFKTimeout">setAFKTimeout</a></li>
+            
+                <li data-name="Guild#setIcon"><a href="Guild.html#setIcon">setIcon</a></li>
+            
+                <li data-name="Guild#setName"><a href="Guild.html#setName">setName</a></li>
+            
+                <li data-name="Guild#setOwner"><a href="Guild.html#setOwner">setOwner</a></li>
+            
+                <li data-name="Guild#setRegion"><a href="Guild.html#setRegion">setRegion</a></li>
+            
+                <li data-name="Guild#setSplash"><a href="Guild.html#setSplash">setSplash</a></li>
+            
+                <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
+            
+                <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
                 <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
+            
+                <li data-name="Guild#unban"><a href="Guild.html#unban">unban</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -518,9 +562,17 @@
             
                 <li data-name="Member#kick"><a href="Member.html#kick">kick</a></li>
             
+                <li data-name="Member#moveCall"><a href="Member.html#moveCall">moveCall</a></li>
+            
                 <li data-name="Member#removeRole"><a href="Member.html#removeRole">removeRole</a></li>
             
                 <li data-name="Member#send"><a href="Member.html#send">send</a></li>
+            
+                <li data-name="Member#setDeaf"><a href="Member.html#setDeaf">setDeaf</a></li>
+            
+                <li data-name="Member#setMute"><a href="Member.html#setMute">setMute</a></li>
+            
+                <li data-name="Member#setNickname"><a href="Member.html#setNickname">setNickname</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1061,14 +1113,16 @@ class Member {
    * @returns {Promise&lt;Member>} Returns a promise and a GuildMember object
    */
 
-  ban(opt) {
+  ban(opt = {}) {
     return new Promise((res) => {
       request.req('PUT', `/guilds/${this.guild.id}/bans/${this.id}`, {
-        days: opt.days || 0,
-        reason: opt.reason || ''
-      }, _this.token)
+        'delete-message-days': (opt &amp;&amp; opt.days) || 0,
+        reason: (opt &amp;&amp; opt.reason) || ''
+      }, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
+          request.req('GET', `/users/${this.id}`, {}, this.client.token).then(c => {
+            setTimeout(res, 100, res(new User(c, this.client)));
+          });        
         });
     });
   }
@@ -1083,7 +1137,7 @@ class Member {
     return new Promise((res) => {
       request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}`, {
         reason: reason || ''
-      }, _this.token)
+      }, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
         });
@@ -1185,12 +1239,85 @@ class Member {
     for (let i = 0; i &lt; perms.length; i++) {
       if (this.roles.some(r => r.permissions.includes(perms[i]))) perm.push(perms.length);
     }
-    if (perm &amp;&amp; perm.length &amp;&amp; perm.length > 0) return true;
+    if (perm &amp;&amp; perm.length &amp;&amp; perm.length === perms.length) return true;
     else return false;
+  }
+
+  /**
+   * @description This method sets the nickname of the member
+   * @param {String} newnick The new nickname of the member
+   * @returns {Promise&lt;Member>} The new member
+   */
+
+  setNickname(newnick) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        nick: newnick
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });
+      });
+    });
+  }
+
+  /**
+   * @description This method mutes a member in a voice channel
+   * @param {Boolean} boolean True if the member should be muted, and false if they should be unmuted
+   * @returns {Promise&lt;Member>} The new member
+   */
+
+  setMute(boolean) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        mute: boolean
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });      
+      });
+    });
+  }
+
+  /**
+   * @description This method deafens a member in a voice channel
+   * @param {Boolean} boolean True if the member should be deafened, and false if they should be undeafened
+   * @returns {Promise&lt;Member>} The new member
+   */
+
+  setDeaf(boolean) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        deaf: boolean
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });      
+      });
+    });
+  }
+
+  /**
+   * @description This method sets the voice channel of the member
+   * @param {String} id The voice channel's id to move the member to 
+   * @returns {Promise&lt;Member>} The new member
+   */
+
+  moveCall(id) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+        channel_id: id
+      }, this.client.token).then(c => {
+        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+        });     
+      });
+    });
   }
 }
 
-module.exports = Member;</code></pre>
+module.exports = Member;
+</code></pre>
         </article>
     </section>
 
@@ -1202,7 +1329,7 @@ module.exports = Member;</code></pre>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:56:24 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 19 2018 22:55:56 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

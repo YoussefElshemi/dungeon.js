@@ -1,5 +1,6 @@
 const request = require('../Connection');
 const Permissions = require('./Permissions');
+const Guild = require('./Guild');
 
 /**
  * This class represents any Guild Channel
