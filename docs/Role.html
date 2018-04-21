@@ -45,6 +45,8 @@
             
                 <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
             
+                <li data-name="Client#emojis"><a href="Client.html#emojis">emojis</a></li>
+            
                 <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
             
                 <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
@@ -77,6 +79,10 @@
                 <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
             
                 <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
+            
+                <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
+            
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
             
                 <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
             
@@ -294,6 +300,52 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Emoji">
+            <span class="title">
+                <a href="Emoji.html">Emoji</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Emoji#animated"><a href="Emoji.html#animated">animated</a></li>
+            
+                <li data-name="Emoji#client"><a href="Emoji.html#client">client</a></li>
+            
+                <li data-name="Emoji#guild"><a href="Emoji.html#guild">guild</a></li>
+            
+                <li data-name="Emoji#id"><a href="Emoji.html#id">id</a></li>
+            
+                <li data-name="Emoji#managed"><a href="Emoji.html#managed">managed</a></li>
+            
+                <li data-name="Emoji#name"><a href="Emoji.html#name">name</a></li>
+            
+                <li data-name="Emoji#requireColons"><a href="Emoji.html#requireColons">requireColons</a></li>
+            
+                <li data-name="Emoji#roles"><a href="Emoji.html#roles">roles</a></li>
+            
+                <li data-name="Emoji#url"><a href="Emoji.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emoji#delete"><a href="Emoji.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Guild">
             <span class="title">
                 <a href="Guild.html">Guild</a>
@@ -352,25 +404,41 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Guild#addGuildMember"><a href="Guild.html#addGuildMember">addGuildMember</a></li>
+            
                 <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
             
                 <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
             
                 <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
             
+                <li data-name="Guild#createIntegration"><a href="Guild.html#createIntegration">createIntegration</a></li>
+            
                 <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
+            
+                <li data-name="Guild#delete"><a href="Guild.html#delete">delete</a></li>
             
                 <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
             
+                <li data-name="Guild#deleteIntegration"><a href="Guild.html#deleteIntegration">deleteIntegration</a></li>
+            
                 <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#editEmbed"><a href="Guild.html#editEmbed">editEmbed</a></li>
+            
+                <li data-name="Guild#editIntegration"><a href="Guild.html#editIntegration">editIntegration</a></li>
             
                 <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
             
                 <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
             
+                <li data-name="Guild#fetchEmbed"><a href="Guild.html#fetchEmbed">fetchEmbed</a></li>
+            
                 <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
             
                 <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
+            
+                <li data-name="Guild#fetchIntegrations"><a href="Guild.html#fetchIntegrations">fetchIntegrations</a></li>
             
                 <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
             
@@ -380,7 +448,15 @@
             
                 <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
             
+                <li data-name="Guild#fetchVanityURL"><a href="Guild.html#fetchVanityURL">fetchVanityURL</a></li>
+            
+                <li data-name="Guild#fetchVoiceRegions"><a href="Guild.html#fetchVoiceRegions">fetchVoiceRegions</a></li>
+            
+                <li data-name="Guild#fetchWebhooks"><a href="Guild.html#fetchWebhooks">fetchWebhooks</a></li>
+            
                 <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
+            
+                <li data-name="Guild#leave"><a href="Guild.html#leave">leave</a></li>
             
                 <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
             
@@ -401,6 +477,8 @@
                 <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
             
                 <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
+                <li data-name="Guild#syncIntegration"><a href="Guild.html#syncIntegration">syncIntegration</a></li>
             
                 <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
             
@@ -611,6 +689,8 @@
             
                 <li data-name="Message#mentionedMembers"><a href="Message.html#mentionedMembers">mentionedMembers</a></li>
             
+                <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
+            
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
             
             </ul>
@@ -721,7 +801,11 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Role#client"><a href="Role.html#client">client</a></li>
+            
                 <li data-name="Role#color"><a href="Role.html#color">color</a></li>
+            
+                <li data-name="Role#guild"><a href="Role.html#guild">guild</a></li>
             
                 <li data-name="Role#hoisted"><a href="Role.html#hoisted">hoisted</a></li>
             
@@ -745,6 +829,12 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Role#delete"><a href="Role.html#delete">delete</a></li>
+            
+                <li data-name="Role#setPosition"><a href="Role.html#setPosition">setPosition</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -948,6 +1038,54 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Webhook">
+            <span class="title">
+                <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Webhook#avatar"><a href="Webhook.html#avatar">avatar</a></li>
+            
+                <li data-name="Webhook#channel"><a href="Webhook.html#channel">channel</a></li>
+            
+                <li data-name="Webhook#client"><a href="Webhook.html#client">client</a></li>
+            
+                <li data-name="Webhook#guild"><a href="Webhook.html#guild">guild</a></li>
+            
+                <li data-name="Webhook#id"><a href="Webhook.html#id">id</a></li>
+            
+                <li data-name="Webhook#name"><a href="Webhook.html#name">name</a></li>
+            
+                <li data-name="Webhook#token"><a href="Webhook.html#token">token</a></li>
+            
+                <li data-name="Webhook#user"><a href="Webhook.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
     </ul>
 </div>
     <div class="main">
@@ -982,7 +1120,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Role.js.html">Classes/Role.js</a>, <a href="Classes_Role.js.html#line7">line 7</a>
+            <a href="Classes_Role.js.html">Classes/Role.js</a>, <a href="Classes_Role.js.html#line9">line 9</a>
         </div>
         
     </div>
@@ -1058,6 +1196,51 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="client">client<span class="type-signature type client"><a href="Client.html">Client</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The client that is logged in
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="color">color<span class="type-signature type number">Number</span> </h4>
     </div>
     
@@ -1067,6 +1250,51 @@
     
     <div class="description">
         The color of the role
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="guild">guild<span class="type-signature type guild"><a href="Guild.html">Guild</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The guild the role is in
     </div>
     
     
@@ -1418,6 +1646,255 @@
     
     
     
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="delete">
+            
+            delete<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Role.html">Role</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Role.js.html">Classes/Role.js</a>, <a href="Classes_Role.js.html#line88">line 88</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This delete's the role
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Role.html">Role</a>>
+                        
+                    
+            </td>
+            <td class="description last">The role that was deleted</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setPosition">
+            
+            setPosition<span class="signature">(number)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Role.js.html">Classes/Role.js</a>, <a href="Classes_Role.js.html#line102">line 102</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This sets the position of the role
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>number</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The position of the role</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">A collection of all of the roles as all of their positions update</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        </dl>
+    
     
     
     
@@ -1435,7 +1912,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 19 2018 22:55:56 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

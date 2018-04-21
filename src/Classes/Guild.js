@@ -7,6 +7,7 @@ const Collection = require('./Collection');
 const Role = require('./Role');
 const Member = require('./Member');
 const User = require('./User');
+const Webhook = require('./Webhook');
 
 /**
  * This class represents a guild object
@@ -199,7 +200,7 @@ class Guild {
         hoist: opt.hoist || false,
         mentionable: opt.mentionable || false
       }, this.client.token).then(role => {
-        setTimeout(res, 100, res(new Role(role, this.client)));
+        setTimeout(res, 100, res(new Role(role, this, this.client)));
       }).catch(rej);
     });
   }
@@ -353,7 +354,7 @@ class Guild {
   fetchRoles() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
-        const role_methods = roles.map(i => new Role(i, this.client));
+        const role_methods = roles.map(i => new Role(i, this, this.client));
         const returned = new Collection();
         for (let i = 0; i < role_methods.length; i++) {
           returned.set(role_methods[i].id, role_methods[i]);
@@ -361,6 +362,24 @@ class Guild {
         }
         setTimeout(res, 100, res(returned));
       }).catch(rej);
+    });
+  }
+
+  /**
+   * @description Fetches all of the guild's webhooks
+   * @returns {Promise<Collection>} A collection of webhooks mapped by their id
+   */
+
+  fetchWebhooks() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/webhooks`, {}, this.client.token).then(webhooks => {
+        const webhook_methods = webhooks.map(i => new Webhook(i, this.client));
+        const returned = new Collection();
+        for (let i = 0; i < webhook_methods.length; i++) {
+          returned.set(webhook_methods[i].id, webhook_methods[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
     });
   }
 
@@ -640,13 +659,18 @@ class Guild {
         afk_timeout: (obj && obj.afkTimeout) || null,
         icon:	finalicon || null,
         owner_id:	(obj && obj.ownerID) || null,
-        splash:	(obj && obj.splash)  || null,
+        splash:	(obj && obj.splash) || null,
         system_channel_id: (obj && obj.systemChannelID) || null
       }, this.client.token).then(c => {
         setTimeout(res, 100, res(this));
       });
     });
   }
+
+  /**
+   * @description This method will delete a guild
+   * @returns {Promise<Guild>} The guild that was deleted
+   */
 
   delete() {
     return new Promise((res, rej) => {
@@ -655,6 +679,191 @@ class Guild {
       });
     });
   }
+
+  /**
+   * @description This method will make the client leave a guild
+   * @returns {Promise<Guild>} The guild that was left
+   */
+
+  leave() {
+    return new Promise((res, rej) => {
+      request.req('DELETE', `users/@me/guilds/${this.id}`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(this));
+      });
+    });
+  }
+
+  /**
+   * @description This method will add a guild-member to a guild
+   * @param {String} id The id of the member to add
+   * @param {String} accessToken The access token obtained via Oauth2
+   * @param {Object} [opt={}] The options: roles, nick, mute and deaf
+   * @returns {Promise<Member>} The member that was added
+   */
+
+  addGuildMember(id, accessToken, opt = {}) {
+    return new Promise((res, rej) => {
+      let allRoles = [];
+      if (opt && opt.roles) {
+        allRoles = opt.roles.map(c => c.id);
+      }
+      request.req('PUT', `/guilds/${this.id}/members/${id}`, {
+        access_token: accessToken,
+        nick: (opt && opt.nick) || null,
+        roles: allRoles || null,
+        mute: (opt && opt.mute) || null,
+        deaf: (opt && opt.deaf) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(new Member(c, this, this.client)));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's voice regions
+   * @param {Boolean} [list=false] If it should return an array of the region names or not
+   * @returns {Promise<Collection>} A collection of the region objects mapped by their region name
+   */
+
+  fetchVoiceRegions(list = false) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/regions`, {}, this.client.token).then(c => {
+        if (list) {
+          const regions = c.map(d => d.id);
+          setTimeout(res, 100, res(regions));
+        } else {
+          const regions = new Collection();
+          for (let i = 0; i < c.length; i++) {
+            regions.set(c[i].id, c[i]);
+          }
+          setTimeout(res, 100, res(regions));
+        }
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's integrations
+   * @returns {Promise<Collection>} A collection of the integrations mapped by their id
+   */
+
+  fetchIntegrations() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/integrations`, {}, this.client.token).then(c => {
+        const returned = new Collection();
+        for (let i = 0; i < c.length; i++) {
+          returned.set(c[i].id, c[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
+  }
+
+  /**
+   * @description This method creates a guild integration
+   * @param {String} type The type of integration to create
+   * @param {String} id The id of the integration to create
+   */
+
+  createIntegration(type, id) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/integrations`, {
+        type: type || null,
+        id: id || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description This method edits a guild integration
+   * @param {String} id The id of the integration to edit
+   * @param {Object} opt The options: expireBehaviour, expireGracePeriod and enableEmoticons
+   */
+
+  editIntegration(id, opt) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.id}/integrations${id}`, {
+        expire_behaviour: (opt && opt.expireBehaviour) || null,
+        expire_grace_period: (opt && opt.expireGracePeriod) || null,
+        enable_emoticons: (opt && opt.enableEmoticons) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Deletes a guild's integration
+   * @param {String} id The id of the integration
+   * @returns {Promise<Collection>} The integration object deleted
+   */
+
+  deleteIntegration(id) {
+    return new Promise((res, rej) => {
+      request.req('DELETE', `/guilds/${this.id}/integrations${id}`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Syncs the guild's integrations
+   * @returns {Promise<Collection>} The synced integrations
+   */
+
+  syncIntegration(id) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/integrations/${id}/sync`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's embed
+   * @returns {Promise<Object>} An object for the guild's embed
+   */
+
+  fetchEmbed() { 
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/embed`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Edit's the guild's embed
+   * @param {Object} [opt = {}] The options: enabled and channelID
+   * @returns {Promise<Object>} The embed that was editted
+   */
+
+  editEmbed(opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.id}/embed`, {
+        enabled: (opt && opt.enabled) || null,
+        channel_id: (opt && opt.channelID) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description This fetches the guild's vanity URL
+   * @returns {Promise<Object>} The vanity URL 
+   */
+
+  fetchVanityURL() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/vanity-url`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    }); 
+  }
+
 }
 
 module.exports = Guild;

@@ -45,6 +45,8 @@
             
                 <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
             
+                <li data-name="Client#emojis"><a href="Client.html#emojis">emojis</a></li>
+            
                 <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
             
                 <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
@@ -77,6 +79,10 @@
                 <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
             
                 <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
+            
+                <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
+            
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
             
                 <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
             
@@ -294,6 +300,52 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Emoji">
+            <span class="title">
+                <a href="Emoji.html">Emoji</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Emoji#animated"><a href="Emoji.html#animated">animated</a></li>
+            
+                <li data-name="Emoji#client"><a href="Emoji.html#client">client</a></li>
+            
+                <li data-name="Emoji#guild"><a href="Emoji.html#guild">guild</a></li>
+            
+                <li data-name="Emoji#id"><a href="Emoji.html#id">id</a></li>
+            
+                <li data-name="Emoji#managed"><a href="Emoji.html#managed">managed</a></li>
+            
+                <li data-name="Emoji#name"><a href="Emoji.html#name">name</a></li>
+            
+                <li data-name="Emoji#requireColons"><a href="Emoji.html#requireColons">requireColons</a></li>
+            
+                <li data-name="Emoji#roles"><a href="Emoji.html#roles">roles</a></li>
+            
+                <li data-name="Emoji#url"><a href="Emoji.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emoji#delete"><a href="Emoji.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Guild">
             <span class="title">
                 <a href="Guild.html">Guild</a>
@@ -352,25 +404,41 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Guild#addGuildMember"><a href="Guild.html#addGuildMember">addGuildMember</a></li>
+            
                 <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
             
                 <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
             
                 <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
             
+                <li data-name="Guild#createIntegration"><a href="Guild.html#createIntegration">createIntegration</a></li>
+            
                 <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
+            
+                <li data-name="Guild#delete"><a href="Guild.html#delete">delete</a></li>
             
                 <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
             
+                <li data-name="Guild#deleteIntegration"><a href="Guild.html#deleteIntegration">deleteIntegration</a></li>
+            
                 <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#editEmbed"><a href="Guild.html#editEmbed">editEmbed</a></li>
+            
+                <li data-name="Guild#editIntegration"><a href="Guild.html#editIntegration">editIntegration</a></li>
             
                 <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
             
                 <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
             
+                <li data-name="Guild#fetchEmbed"><a href="Guild.html#fetchEmbed">fetchEmbed</a></li>
+            
                 <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
             
                 <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
+            
+                <li data-name="Guild#fetchIntegrations"><a href="Guild.html#fetchIntegrations">fetchIntegrations</a></li>
             
                 <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
             
@@ -380,7 +448,15 @@
             
                 <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
             
+                <li data-name="Guild#fetchVanityURL"><a href="Guild.html#fetchVanityURL">fetchVanityURL</a></li>
+            
+                <li data-name="Guild#fetchVoiceRegions"><a href="Guild.html#fetchVoiceRegions">fetchVoiceRegions</a></li>
+            
+                <li data-name="Guild#fetchWebhooks"><a href="Guild.html#fetchWebhooks">fetchWebhooks</a></li>
+            
                 <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
+            
+                <li data-name="Guild#leave"><a href="Guild.html#leave">leave</a></li>
             
                 <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
             
@@ -401,6 +477,8 @@
                 <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
             
                 <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
+                <li data-name="Guild#syncIntegration"><a href="Guild.html#syncIntegration">syncIntegration</a></li>
             
                 <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
             
@@ -611,6 +689,8 @@
             
                 <li data-name="Message#mentionedMembers"><a href="Message.html#mentionedMembers">mentionedMembers</a></li>
             
+                <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
+            
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
             
             </ul>
@@ -721,7 +801,11 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Role#client"><a href="Role.html#client">client</a></li>
+            
                 <li data-name="Role#color"><a href="Role.html#color">color</a></li>
+            
+                <li data-name="Role#guild"><a href="Role.html#guild">guild</a></li>
             
                 <li data-name="Role#hoisted"><a href="Role.html#hoisted">hoisted</a></li>
             
@@ -745,6 +829,12 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Role#delete"><a href="Role.html#delete">delete</a></li>
+            
+                <li data-name="Role#setPosition"><a href="Role.html#setPosition">setPosition</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -948,6 +1038,54 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Webhook">
+            <span class="title">
+                <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Webhook#avatar"><a href="Webhook.html#avatar">avatar</a></li>
+            
+                <li data-name="Webhook#channel"><a href="Webhook.html#channel">channel</a></li>
+            
+                <li data-name="Webhook#client"><a href="Webhook.html#client">client</a></li>
+            
+                <li data-name="Webhook#guild"><a href="Webhook.html#guild">guild</a></li>
+            
+                <li data-name="Webhook#id"><a href="Webhook.html#id">id</a></li>
+            
+                <li data-name="Webhook#name"><a href="Webhook.html#name">name</a></li>
+            
+                <li data-name="Webhook#token"><a href="Webhook.html#token">token</a></li>
+            
+                <li data-name="Webhook#user"><a href="Webhook.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
     </ul>
 </div>
     <div class="main">
@@ -967,6 +1105,7 @@ const Collection = require('./Collection');
 const Role = require('./Role');
 const Member = require('./Member');
 const User = require('./User');
+const Webhook = require('./Webhook');
 
 /**
  * This class represents a guild object
@@ -1159,7 +1298,7 @@ class Guild {
         hoist: opt.hoist || false,
         mentionable: opt.mentionable || false
       }, this.client.token).then(role => {
-        setTimeout(res, 100, res(new Role(role, this.client)));
+        setTimeout(res, 100, res(new Role(role, this, this.client)));
       }).catch(rej);
     });
   }
@@ -1313,7 +1452,7 @@ class Guild {
   fetchRoles() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/roles`, {}, this.client.token).then(roles => {
-        const role_methods = roles.map(i => new Role(i, this.client));
+        const role_methods = roles.map(i => new Role(i, this, this.client));
         const returned = new Collection();
         for (let i = 0; i &lt; role_methods.length; i++) {
           returned.set(role_methods[i].id, role_methods[i]);
@@ -1321,6 +1460,24 @@ class Guild {
         }
         setTimeout(res, 100, res(returned));
       }).catch(rej);
+    });
+  }
+
+  /**
+   * @description Fetches all of the guild's webhooks
+   * @returns {Promise&lt;Collection>} A collection of webhooks mapped by their id
+   */
+
+  fetchWebhooks() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/webhooks`, {}, this.client.token).then(webhooks => {
+        const webhook_methods = webhooks.map(i => new Webhook(i, this.client));
+        const returned = new Collection();
+        for (let i = 0; i &lt; webhook_methods.length; i++) {
+          returned.set(webhook_methods[i].id, webhook_methods[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
     });
   }
 
@@ -1600,13 +1757,18 @@ class Guild {
         afk_timeout: (obj &amp;&amp; obj.afkTimeout) || null,
         icon:	finalicon || null,
         owner_id:	(obj &amp;&amp; obj.ownerID) || null,
-        splash:	(obj &amp;&amp; obj.splash)  || null,
+        splash:	(obj &amp;&amp; obj.splash) || null,
         system_channel_id: (obj &amp;&amp; obj.systemChannelID) || null
       }, this.client.token).then(c => {
         setTimeout(res, 100, res(this));
       });
     });
   }
+
+  /**
+   * @description This method will delete a guild
+   * @returns {Promise&lt;Guild>} The guild that was deleted
+   */
 
   delete() {
     return new Promise((res, rej) => {
@@ -1615,6 +1777,191 @@ class Guild {
       });
     });
   }
+
+  /**
+   * @description This method will make the client leave a guild
+   * @returns {Promise&lt;Guild>} The guild that was left
+   */
+
+  leave() {
+    return new Promise((res, rej) => {
+      request.req('DELETE', `users/@me/guilds/${this.id}`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(this));
+      });
+    });
+  }
+
+  /**
+   * @description This method will add a guild-member to a guild
+   * @param {String} id The id of the member to add
+   * @param {String} accessToken The access token obtained via Oauth2
+   * @param {Object} [opt={}] The options: roles, nick, mute and deaf
+   * @returns {Promise&lt;Member>} The member that was added
+   */
+
+  addGuildMember(id, accessToken, opt = {}) {
+    return new Promise((res, rej) => {
+      let allRoles = [];
+      if (opt &amp;&amp; opt.roles) {
+        allRoles = opt.roles.map(c => c.id);
+      }
+      request.req('PUT', `/guilds/${this.id}/members/${id}`, {
+        access_token: accessToken,
+        nick: (opt &amp;&amp; opt.nick) || null,
+        roles: allRoles || null,
+        mute: (opt &amp;&amp; opt.mute) || null,
+        deaf: (opt &amp;&amp; opt.deaf) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(new Member(c, this, this.client)));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's voice regions
+   * @param {Boolean} [list=false] If it should return an array of the region names or not
+   * @returns {Promise&lt;Collection>} A collection of the region objects mapped by their region name
+   */
+
+  fetchVoiceRegions(list = false) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/regions`, {}, this.client.token).then(c => {
+        if (list) {
+          const regions = c.map(d => d.id);
+          setTimeout(res, 100, res(regions));
+        } else {
+          const regions = new Collection();
+          for (let i = 0; i &lt; c.length; i++) {
+            regions.set(c[i].id, c[i]);
+          }
+          setTimeout(res, 100, res(regions));
+        }
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's integrations
+   * @returns {Promise&lt;Collection>} A collection of the integrations mapped by their id
+   */
+
+  fetchIntegrations() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/integrations`, {}, this.client.token).then(c => {
+        const returned = new Collection();
+        for (let i = 0; i &lt; c.length; i++) {
+          returned.set(c[i].id, c[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
+  }
+
+  /**
+   * @description This method creates a guild integration
+   * @param {String} type The type of integration to create
+   * @param {String} id The id of the integration to create
+   */
+
+  createIntegration(type, id) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/integrations`, {
+        type: type || null,
+        id: id || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description This method edits a guild integration
+   * @param {String} id The id of the integration to edit
+   * @param {Object} opt The options: expireBehaviour, expireGracePeriod and enableEmoticons
+   */
+
+  editIntegration(id, opt) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.id}/integrations${id}`, {
+        expire_behaviour: (opt &amp;&amp; opt.expireBehaviour) || null,
+        expire_grace_period: (opt &amp;&amp; opt.expireGracePeriod) || null,
+        enable_emoticons: (opt &amp;&amp; opt.enableEmoticons) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Deletes a guild's integration
+   * @param {String} id The id of the integration
+   * @returns {Promise&lt;Collection>} The integration object deleted
+   */
+
+  deleteIntegration(id) {
+    return new Promise((res, rej) => {
+      request.req('DELETE', `/guilds/${this.id}/integrations${id}`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Syncs the guild's integrations
+   * @returns {Promise&lt;Collection>} The synced integrations
+   */
+
+  syncIntegration(id) {
+    return new Promise((res, rej) => {
+      request.req('POST', `/guilds/${this.id}/integrations/${id}/sync`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the guild's embed
+   * @returns {Promise&lt;Object>} An object for the guild's embed
+   */
+
+  fetchEmbed() { 
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/embed`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description Edit's the guild's embed
+   * @param {Object} [opt = {}] The options: enabled and channelID
+   * @returns {Promise&lt;Object>} The embed that was editted
+   */
+
+  editEmbed(opt = {}) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/guilds/${this.id}/embed`, {
+        enabled: (opt &amp;&amp; opt.enabled) || null,
+        channel_id: (opt &amp;&amp; opt.channelID) || null
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    });
+  }
+
+  /**
+   * @description This fetches the guild's vanity URL
+   * @returns {Promise&lt;Object>} The vanity URL 
+   */
+
+  fetchVanityURL() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/guilds/${this.id}/vanity-url`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(c));
+      });
+    }); 
+  }
+
 }
 
 module.exports = Guild;
@@ -1653,7 +2000,7 @@ module.exports = Guild;
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 19 2018 22:55:56 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

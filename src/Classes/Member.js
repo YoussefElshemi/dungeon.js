@@ -15,7 +15,7 @@ class Member {
 
     if (raw && raw.roles) {
       for (let i = 0; i < raw.roles.length; i++) {
-        allRoles.set(raw.roles[i], new Role(guild.roles.get(raw.roles[i]), client));
+        allRoles.set(raw.roles[i], new Role(guild.roles.get(raw.roles[i]), guild, client));
       }
     }
 

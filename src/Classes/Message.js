@@ -6,6 +6,8 @@ const Snowflake = require('../util/Snowflake');
 const GuildChannel = require('./GuildChannel');
 const User = require('./User');
 const Collection = require('./Collection');
+const Role = require('./Role');
+const Emoji = require('./Emoji');
 
 /**
  * This class represents a message object
@@ -72,11 +74,18 @@ class Message {
 
     this.mentionedUsers = new Collection();
     this.mentionedMembers = new Collection();
+    this.mentionedRoles = new Collection();
 
     if (raw.mentions) {
       for (let i = 0; i < raw.mentions.length; i++) {
         this.mentionedMembers.set(raw.mentions[i].id, this.guild.members.get(raw.mentions[i].id));
         this.mentionedUsers.set(raw.mentions[i].id, new User(raw.mentions[i], this.client));
+      }
+    }
+
+    if (raw.mention_roles) {
+      for (let i = 0; i < raw.mention_roles.length; i++) {
+        this.mentionedRoles.set(raw.mention_roles[i].id, new Role(raw.mentions[i], this.guild, this.client));
       }
     }
 
@@ -93,6 +102,13 @@ class Message {
      */
 
     this.mentionedMembers;
+
+    /**
+     * A collection of all of the roles mentioned in the message
+     * @type {Collection}
+     */
+
+    this.mentionedRoles;
     
 
     /**
@@ -109,6 +125,27 @@ class Message {
 
     this.cleanContent = cleanMessage(this);
 
+    this.embeds = raw.embeds;
+
+    this.pinned = raw.pinned;
+
+    this.nonce = raw.nonce;
+
+    this.editedTimestamp = raw.edited_timestamp;
+
+    this.attachments = raw.attachments;
+
+    this.mentionsEveryone = raw.mention_everyone;
+
+    this.type = ['DEFAULT', 'RECIPIENT_ADD', 'RECIPIENT_REMOVE', 'CALL', 'CHANNEL_NAME_CHANGE','CHANNEL_ICON_CHANGE','CHANNEL_PINNED_MESSAGE', 'GUILD_MEMBER_JOIN'][raw.type];
+
+    this.reactions = new Collection();
+
+    if (raw.reactions) {
+      for (let i = 0; i < raw.reactions.length; i++) {
+        this.reactions.set(raw.reactions[i].emoji.id, {count: raw.reactions[i].count, emoji: new Emoji(raw.reactions[i].emoji, this.guild, this.client)});
+      }
+    }
   }
 
   /**
@@ -202,9 +239,11 @@ class Message {
   react(emoji) {
     let reaction;
     if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
+    if (typeof parseInt(emoji) === 'number') {
+      reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    }
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
-        //const Message = require('./Message');
         setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
@@ -215,16 +254,29 @@ class Message {
   /**
    * @description Remove a certain reaction of a certain user
    * @param {User} user The user whos reaction you want to remove
-   * @param {String} reaction The emoji you want to remove
+   * @param {String} emoji The emoji you want to remove
    */
 
-  removeReaction(user, reaction) {
+  removeReaction(user, emoji) {
+    let reaction;
+    if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
+    if (typeof parseInt(emoji) === 'number') {
+      reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    }
     return new Promise((res) => {
-      request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
-        setTimeout(res, 100, res(m));
-      }).catch(error => {
-        if (error.status === 403) throw new Error('Missing Permissions');
-      });
+      if (user.id === this.client.user.id) {
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
+          setTimeout(res, 100, res(m));
+        }).catch(error => {
+          if (error.status === 403) throw new Error('Missing Permissions');
+        });
+      } else {
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/@me`, {}, this.client.token).then(m => {
+          setTimeout(res, 100, res(m));
+        }).catch(error => {
+          if (error.status === 403) throw new Error('Missing Permissions');
+        });
+      }
     });
   }
 

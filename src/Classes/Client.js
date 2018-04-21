@@ -85,7 +85,6 @@ class Client extends EventEmitter {
       }
       if (message.op == 0) {
         const t = message.t;
-        console.log(t);
         this.emit('raw', message);
   
         if (t == 'READY') {
@@ -161,6 +160,13 @@ class Client extends EventEmitter {
            */
 
           this.user = new User(message.d.user, this);
+
+          /**
+           * A collection of the client's emojis
+           * @type {Collection}
+           */
+
+          this.emojis = new Collection();
   
           this.ping = function ping() {
             const t1 = new Date();
@@ -366,6 +372,37 @@ class Client extends EventEmitter {
         }, this.token).then(c => {
           setTimeout(res, 100, res(new User(c, this)));
         });
+      });
+    });
+  }
+  
+  /**
+   * @description Fetches all the client's dms
+   * @returns {Promise<Collection>} A collection of all of the dms mapped by their ids
+   */
+
+  fetchDMs() {
+    return new Promise((res, rej) => {
+      request.req('GET', '/users/@me/channels', {}, this.token).then(c => {
+        const dms = c.map(d => new DMChannel(d, this));
+        const returned = new Collection();
+        for (let i = 0; i < dms.length; i++) {
+          returned.set(dms[i].id, dms[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the client user's connections
+   * @returns {Array} An array of all of the connections
+   */
+
+  fetchUserConnections() {
+    return new Promise((res, rej) => {
+      request.req('GET', '/users/@me/connections', {}, this.token).then(d => {
+        setTimeout(res, 100, res(d));
       });
     });
   }

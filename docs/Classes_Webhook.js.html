@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: DMChannel</title>
+    <title>Source: Classes/Webhook.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1089,897 +1089,173 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DMChannel.html">Class: DMChannel</h1>
+        <h1 class="page-title" data-filename="Classes_Webhook.js.html">Source: Classes/Webhook.js</h1>
         
 
 
-
-<section>
-    
-<header>
-    <h2>
-    DMChannel
-    </h2>
-    
-        <div class="class-description">This class represents a DM Channel object</div>
-    
-</header>  
-
-<article>
-    <div class="container-overview">
-    
-    
-    
-        
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="DMChannel">
-            
-            new DMChannel<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line8">line 8</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-    
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Properties</h3>
-        
-        <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="client">client<span class="type-signature type client"><a href="Client.html">Client</a></span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The client object which is logged in
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="id">id<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The ID of the DM channel
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="lastMessageID">lastMessageID</h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The ID of the last message sent in the DM Channel
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="recipients">recipients<span class="type-signature type collection"><a href="Collection.html">Collection</a></span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        A collection of the members in the DM mapped by their ID
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="type">type<span class="type-signature type string">String</span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        The type of channel
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
-        
-        <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="addRecipient">
-            
-            addRecipient<span class="signature">(user, accessToken, nick)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line118">line 118</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method adds a user to a group DM
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="User.html">User</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The user to add to a DM, can be a user object or id</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>accessToken</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                Access token of a user that has granted your app the gdm.join scope</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>nick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The nickname of the user being added</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
-                        
-                    
-            </td>
-            <td class="description last">Returns a promise and a DM Channel</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="removeRecipient">
-            
-            removeRecipient<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line139">line 139</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method removes a user to a group DM
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="User.html">User</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The user to remove from the DM, can be a user object or id</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
-                        
-                    
-            </td>
-            <td class="description last">Returns a promise and a DM Channel</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="send">
-            
-            send<span class="signature">(content, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line68">line 68</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method will send a message to the channel specified
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                The string if it's a normal message or object if it's a richembed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>opt</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The options, nonce and tts <a href="global.html#MessageOptions">MessageOptions</a></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Promise.&lt;<a href="Message.html">Message</a>>
-                        
-                    
-            </td>
-            <td class="description last">Returns a promise and discord message</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-        <h5>Examples</h5>
-        
-
-    
-    <pre class="prettyprint"><code>// Sending an embed
-DMChannel.send({ title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86 });</code></pre>
-    
-
-
-    
-    <pre class="prettyprint"><code>// Sending a tts message
-DMChannel.send("Hi!", { tts: true });</code></pre>
-    
-
-    
-</dd>
-
-        </dl>
-    
-    
-    
-    
-    
-
     
-</article>
+    <section>
+        <article>
+            <pre id="source-code" class="prettyprint source "><code>const User = require('./User');
+const request = require('../Connection');
+const Message = require('./Message');
+
+/**
+ * This class represents a webhook
+ */
+
+class Webhook {
+  constructor(raw, client) {
+
+    /**
+     * The webhook's token
+     * @type {String}
+     *
+     */
+    
+    this.token = raw.token;
+
+    /**
+     * The webhook's name
+     * @type {String}
+     */
+
+    this.name = raw.name;
+
+    /**
+     * The webhook's channel
+     * @type {GuildChannel}
+     */
+
+    this.channel = client.channels.get(raw.channel_id);
+
+    /**
+     * The webhook's guild
+     * @type {Guild}
+     */
+
+    this.guild = client.guilds.get(raw.guild_id);
+
+    /**
+     * The webhook's id
+     * @type {String}
+     */
+
+    this.id = raw.id;
+
+    /**
+     * The webhook's avatar hash
+     * @type {String}
+     */
+
+    this.avatar = raw.avatar;
+
+    /**
+     * The webhook's user
+     * @type {User}
+     */
+
+    this.user = new User(raw.user, client);
+
+    /**
+     * The client that is logged in
+     * @type {Client}
+     */
+    
+    this.client = client;
+  }
+
+  /**
+   * @description This method will send a message as a webhook
+   * @param {String|Object} content The string if it's a normal message or object if it's a richembed
+   * @param {Object} [opt = {}] The options, nonce and tts {@link MessageOptions}
+   * @returns {Promise&lt;Webhook>} The webhook used to send the message
+   */
+
+  send(content, opt = {}) {
+    if (!content) throw new this.client.MissingParameter('You are missing the parameter \'content\'!');
+    let embed;
+    if (typeof content === 'object') {
+      embed = {
+        title: (content &amp;&amp; content.title) || null,
+        description: (content &amp;&amp; content.description) || null,
+        url: (content &amp;&amp; content.url) || null,
+        timestamp: (content &amp;&amp; content.timestamp) || null,
+        color: (content &amp;&amp; content.color) || null,
+        footer: (content &amp;&amp; content.footer) || null,
+        author: (content &amp;&amp; content.author) || null,
+        fields: (content &amp;&amp; content.fields) || null
+      };
+    }
+    return new Promise((res) => {
+      if (embed) {
+        request.req('POST', `/webhooks/${this.id}/${this.token}`, {
+          embeds: [embed]
+        }, this.client.token)
+          .then(m => {
+            const Message = require('./Message');
+            setTimeout(res, 100, res(this));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });
+      } else {
+        request.req('POST', `/webhooks/${this.id}/${this.token}`, {
+          nonce: (opt &amp;&amp; opt.nonce) || false,
+          tts: (opt &amp;&amp; opt.tts) || false,
+          content: content || null
+        }, this.client.token)
+          .then(m => {
+            const Message = require('./Message');
+            setTimeout(res, 100, res(this));
+          }).catch(error => {
+            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+          });
+      }
+    });
+  }
+
+  /**
+   * @description This method deletes a webhook
+   * @returns {Promise&lt;Webhook>} The deleted webhook
+   */
+
+  delete() { 
+    return new Promise((res, rej) => {
+      request.req('DELETE', `/webhooks/${this.id}/${this.token}`, {}, this.client.token).then(c => {
+        setTimeout(res, 100, res(this));
+      });
+    });
+  }
+
+  /**
+   * @description This method edits a webhook
+   * @param {Object} opt The options: avatar, name and channel id
+   * @returns {Promise&lt;Webhook>} The editted webhook
+   */
+
+  edit(opt) {
+    return new Promise((res, rej) => {
+      let finalicon;
+      if (opt &amp;&amp; opt.avatar) {
+        snekfetch.get(opt.avatar).then(c => {
+          finalicon = 'data:' + c.headers['content-type'] + ';base64,' + c.body.toString('base64');
+        });
+      }
+      request.req('PATCH', `/webhooks/${this.id}`, {
+        name: (opt &amp;&amp; opt.name) || null,
+        channel_id: (opt &amp;&amp; opt.channelID) || null,
+        avatar: finalicon || null,
+      }, this.client.token).then(c => {
+        setTimeout(res, 100, res(new this.constructor(c, this.client)));
+      });
+    });
+  }
+}
+
+module.exports = Webhook;</code></pre>
+        </article>
+    </section>
 
-</section>  
 
 
 
@@ -1988,7 +1264,7 @@ DMChannel.send("Hi!", { tts: true });</code></pre>
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>
