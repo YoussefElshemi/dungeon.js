@@ -10,7 +10,6 @@ const TextChannel = require('../Classes/TextChannel');
 const VoiceChannel = require('../Classes/VoiceChannel');
 const DMChannel = require('../Classes/DMChannel');
 const User = require('../Classes/User');
-const https = require('https');
 const Presence = require('./Presence');
 const Member = require('./Member');
 const CategoryChannel = require('./CategoryChannel');
@@ -33,8 +32,6 @@ class Client extends EventEmitter {
 
     if (typeof this.token !== 'string') throw new Error('Token must be a string!');
 
-    this._events = {};
-
     this.amOfGuilds = 0;
 
     this.MissingPermissions = require('../Errors/MissingPermissions');
@@ -50,7 +47,6 @@ class Client extends EventEmitter {
 
     wss.on('message', m => {
       const message = JSON.parse(m);
-  
       if (message.op == 10) {
         this.heartbeat_int = message.d.heartbeat_interval;
   
@@ -171,14 +167,12 @@ class Client extends EventEmitter {
           this.ping = function ping() {
             const t1 = new Date();
             return new Promise((res, rej) => {
-              https.get('https://discordapp.com/api/v6/ping', r => { // not a real endpoint, but works for 404 error response.
-                r.on('data' , () => {
-                  const t2 = new Date();
-                  this.pings.splice(0, 0, t2 - t1);
-                  if (this.pings.length == 11) this.pings.pop();
-                  this.latency = Math.round((this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);                
-                  this.emit('ping', res);
-                });
+              snekfetch.get('https://discordapp.com/api/v6/ping').catch(c => {
+                const t2 = new Date();
+                this.pings.splice(0, 0, t2 - t1);
+                if (this.pings.length == 11) this.pings.pop();
+                this.latency = Math.round((this.pings.reduce((c, p) => c + p, 0))); 
+                this.emit('ping');
               });
             });
           };
