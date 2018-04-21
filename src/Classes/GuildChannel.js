@@ -1,5 +1,9 @@
 const request = require('../Connection');
 const Permissions = require('./Permissions');
+const Guild = require('./Guild');
+const Webhook = require('./Webhook');
+const snekfetch = require('snekfetch');
+const Collection = require('./Collection');
 
 /**
  * This class represents any Guild Channel
@@ -186,6 +190,42 @@ class GuildChannel {
         });
       }).catch(error => {
         if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+      });
+    });
+  }
+
+  createWebhook(name, icon) {
+    return new Promise((res, rej) => {
+      let finalicon;
+      snekfetch.get(icon).then(c => {
+        finalicon = 'data:' + c.headers['content-type'] + ';base64,' + c.body.toString('base64');
+        request.req('POST' , `/channels/${this.id}/webhooks`, {
+          name: name ||	null,
+          avatar: finalicon || null
+        }, this.client.token).then(d => {
+          setTimeout(res, 100, res(new Webhook(d, this.client)));
+        });
+      });
+    });
+  } 
+
+  fetchWebhooks() {
+    return new Promise((res, rej) => {
+      request.req('GET', `/channels/${this.id}/webhooks`, {}, this.client.token).then(webhooks => {
+        const webhook_methods = webhooks.map(i => new Webhook(i, this.client));
+        const returned = new Collection();
+        for (let i = 0; i < webhook_methods.length; i++) {
+          returned.set(webhook_methods[i].id, webhook_methods[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
+  }
+
+  fetchWebhook(id) {
+    return new Promise((res, rej) => {
+      request.req('GET', `/webhooks/${id}`, {}, this.client.token).then(i => {
+        setTimeout(res, 100, res(new Webhook(i, this.client)));
       });
     });
   }

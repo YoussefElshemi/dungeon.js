@@ -1,5 +1,4 @@
 const GuildChannel = require('./GuildChannel');
-const Message = require('./Message');
 const request = require('../Connection');
 const Collection = require('./Collection');
 
@@ -125,8 +124,10 @@ class TextChannel extends GuildChannel {
     if (!id) throw new this.client.MissingParameter('You are missing the parameter \'snowflake\'!');
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/messages/${id}`, {}, this.client.token)
-        .then(m => {
-          setTimeout(res, 100, res(new Message(m, this.client)));
+        .then(msg => {
+          const Message = require('./Message');
+          const m = new Message(msg, this.client);
+          setTimeout(res, 100, res(m));
         })
         .catch(error => {
           if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');

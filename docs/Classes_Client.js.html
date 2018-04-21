@@ -45,6 +45,8 @@
             
                 <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
             
+                <li data-name="Client#emojis"><a href="Client.html#emojis">emojis</a></li>
+            
                 <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
             
                 <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
@@ -74,9 +76,19 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
+            
                 <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
             
+                <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
+            
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+            
                 <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+            
+                <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
+            
+                <li data-name="Client#setUsername"><a href="Client.html#setUsername">setUsername</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -87,9 +99,15 @@
             
                 <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
             
+                <li data-name="client#guildMemberUpdate"><a href="Client.html#event:guildMemberUpdate">guildMemberUpdate</a></li>
+            
                 <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
                 <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+            
+                <li data-name="client#messageRemoved"><a href="Client.html#event:messageRemoved">messageRemoved</a></li>
+            
+                <li data-name="client#messageUpdated"><a href="Client.html#event:messageUpdated">messageUpdated</a></li>
             
                 <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
@@ -100,6 +118,8 @@
                 <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
                 <li data-name="client#startTyping"><a href="Client.html#event:startTyping">startTyping</a></li>
+            
+                <li data-name="client#voiceStateUpdate"><a href="Client.html#event:voiceStateUpdate">voiceStateUpdate</a></li>
             
             </ul>
         </li>
@@ -280,6 +300,52 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Emoji">
+            <span class="title">
+                <a href="Emoji.html">Emoji</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Emoji#animated"><a href="Emoji.html#animated">animated</a></li>
+            
+                <li data-name="Emoji#client"><a href="Emoji.html#client">client</a></li>
+            
+                <li data-name="Emoji#guild"><a href="Emoji.html#guild">guild</a></li>
+            
+                <li data-name="Emoji#id"><a href="Emoji.html#id">id</a></li>
+            
+                <li data-name="Emoji#managed"><a href="Emoji.html#managed">managed</a></li>
+            
+                <li data-name="Emoji#name"><a href="Emoji.html#name">name</a></li>
+            
+                <li data-name="Emoji#requireColons"><a href="Emoji.html#requireColons">requireColons</a></li>
+            
+                <li data-name="Emoji#roles"><a href="Emoji.html#roles">roles</a></li>
+            
+                <li data-name="Emoji#url"><a href="Emoji.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emoji#delete"><a href="Emoji.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Guild">
             <span class="title">
                 <a href="Guild.html">Guild</a>
@@ -338,11 +404,41 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Guild#addGuildMember"><a href="Guild.html#addGuildMember">addGuildMember</a></li>
+            
+                <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
+            
                 <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
+            
+                <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
+            
+                <li data-name="Guild#createIntegration"><a href="Guild.html#createIntegration">createIntegration</a></li>
             
                 <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
             
+                <li data-name="Guild#delete"><a href="Guild.html#delete">delete</a></li>
+            
+                <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
+            
+                <li data-name="Guild#deleteIntegration"><a href="Guild.html#deleteIntegration">deleteIntegration</a></li>
+            
+                <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#editEmbed"><a href="Guild.html#editEmbed">editEmbed</a></li>
+            
+                <li data-name="Guild#editIntegration"><a href="Guild.html#editIntegration">editIntegration</a></li>
+            
+                <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
+            
                 <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
+            
+                <li data-name="Guild#fetchEmbed"><a href="Guild.html#fetchEmbed">fetchEmbed</a></li>
+            
+                <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
+            
+                <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
+            
+                <li data-name="Guild#fetchIntegrations"><a href="Guild.html#fetchIntegrations">fetchIntegrations</a></li>
             
                 <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
             
@@ -352,11 +448,41 @@
             
                 <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
             
-                <li data-name="Guild#getAuditLogs"><a href="Guild.html#getAuditLogs">getAuditLogs</a></li>
+                <li data-name="Guild#fetchVanityURL"><a href="Guild.html#fetchVanityURL">fetchVanityURL</a></li>
+            
+                <li data-name="Guild#fetchVoiceRegions"><a href="Guild.html#fetchVoiceRegions">fetchVoiceRegions</a></li>
+            
+                <li data-name="Guild#fetchWebhooks"><a href="Guild.html#fetchWebhooks">fetchWebhooks</a></li>
+            
+                <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
+            
+                <li data-name="Guild#leave"><a href="Guild.html#leave">leave</a></li>
             
                 <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
             
+                <li data-name="Guild#setAFKChannel"><a href="Guild.html#setAFKChannel">setAFKChannel</a></li>
+            
+                <li data-name="Guild#setAFKTimeout"><a href="Guild.html#setAFKTimeout">setAFKTimeout</a></li>
+            
+                <li data-name="Guild#setIcon"><a href="Guild.html#setIcon">setIcon</a></li>
+            
+                <li data-name="Guild#setName"><a href="Guild.html#setName">setName</a></li>
+            
+                <li data-name="Guild#setOwner"><a href="Guild.html#setOwner">setOwner</a></li>
+            
+                <li data-name="Guild#setRegion"><a href="Guild.html#setRegion">setRegion</a></li>
+            
+                <li data-name="Guild#setSplash"><a href="Guild.html#setSplash">setSplash</a></li>
+            
+                <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
+            
+                <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
+                <li data-name="Guild#syncIntegration"><a href="Guild.html#syncIntegration">syncIntegration</a></li>
+            
                 <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
+            
+                <li data-name="Guild#unban"><a href="Guild.html#unban">unban</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -514,9 +640,17 @@
             
                 <li data-name="Member#kick"><a href="Member.html#kick">kick</a></li>
             
+                <li data-name="Member#moveCall"><a href="Member.html#moveCall">moveCall</a></li>
+            
                 <li data-name="Member#removeRole"><a href="Member.html#removeRole">removeRole</a></li>
             
                 <li data-name="Member#send"><a href="Member.html#send">send</a></li>
+            
+                <li data-name="Member#setDeaf"><a href="Member.html#setDeaf">setDeaf</a></li>
+            
+                <li data-name="Member#setMute"><a href="Member.html#setMute">setMute</a></li>
+            
+                <li data-name="Member#setNickname"><a href="Member.html#setNickname">setNickname</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -554,6 +688,8 @@
                 <li data-name="Message#member"><a href="Message.html#member">member</a></li>
             
                 <li data-name="Message#mentionedMembers"><a href="Message.html#mentionedMembers">mentionedMembers</a></li>
+            
+                <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
             
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
             
@@ -665,7 +801,11 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Role#client"><a href="Role.html#client">client</a></li>
+            
                 <li data-name="Role#color"><a href="Role.html#color">color</a></li>
+            
+                <li data-name="Role#guild"><a href="Role.html#guild">guild</a></li>
             
                 <li data-name="Role#hoisted"><a href="Role.html#hoisted">hoisted</a></li>
             
@@ -689,6 +829,12 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Role#delete"><a href="Role.html#delete">delete</a></li>
+            
+                <li data-name="Role#setPosition"><a href="Role.html#setPosition">setPosition</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -892,6 +1038,54 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Webhook">
+            <span class="title">
+                <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Webhook#avatar"><a href="Webhook.html#avatar">avatar</a></li>
+            
+                <li data-name="Webhook#channel"><a href="Webhook.html#channel">channel</a></li>
+            
+                <li data-name="Webhook#client"><a href="Webhook.html#client">client</a></li>
+            
+                <li data-name="Webhook#guild"><a href="Webhook.html#guild">guild</a></li>
+            
+                <li data-name="Webhook#id"><a href="Webhook.html#id">id</a></li>
+            
+                <li data-name="Webhook#name"><a href="Webhook.html#name">name</a></li>
+            
+                <li data-name="Webhook#token"><a href="Webhook.html#token">token</a></li>
+            
+                <li data-name="Webhook#user"><a href="Webhook.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
     </ul>
 </div>
     <div class="main">
@@ -903,9 +1097,9 @@
     <section>
         <article>
             <pre id="source-code" class="prettyprint source "><code>const EventEmitter = require('events');
+const snekfetch = require('snekfetch');
 const request = require('../Connection');
 const WebSocket = require('ws');
-const event_list = require('../Events');
 const Message = require('../Classes/Message');
 const Guild = require('../Classes/Guild');
 const Collection = require('../Classes/Collection');
@@ -916,6 +1110,8 @@ const DMChannel = require('../Classes/DMChannel');
 const User = require('../Classes/User');
 const https = require('https');
 const Presence = require('./Presence');
+const Member = require('./Member');
+const CategoryChannel = require('./CategoryChannel');
 
 /**
  * This Class is the base client for this API
@@ -987,7 +1183,6 @@ class Client extends EventEmitter {
       }
       if (message.op == 0) {
         const t = message.t;
-        console.log(t);
         this.emit('raw', message);
   
         if (t == 'READY') {
@@ -1063,6 +1258,13 @@ class Client extends EventEmitter {
            */
 
           this.user = new User(message.d.user, this);
+
+          /**
+           * A collection of the client's emojis
+           * @type {Collection}
+           */
+
+          this.emojis = new Collection();
   
           this.ping = function ping() {
             const t1 = new Date();
@@ -1097,9 +1299,19 @@ class Client extends EventEmitter {
   
           for (let i = 0; i &lt; Array.from(guild.channels.keys()).length; i++) {
             const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
-            if (item.type === 0) chn = new TextChannel(item, guild, this);
-            if (item.type === 2) chn = new VoiceChannel(item, guild, this);
-            if (chn) this.channels.set(chn.id, chn);
+            if (item.type == 0) {
+              this.channels.set(item.id, new TextChannel(item, guild, this));
+              guild.channels.set(item.id, new TextChannel(item, guild, this));
+            } else if (item.type == 2) {
+              this.channels.set(item.id, new VoiceChannel(item, guild, this));
+              guild.channels.set(item.id, new VoiceChannel(item, guild, this));
+            } else if (item.type == 4) {
+              this.channels.set(item.id, new CategoryChannel(item, guild, this));
+              guild.channels.set(item.id, new CategoryChannel(item, guild, this));
+            } else {
+              this.channels.set(item.id, item);
+              guild.channels.set(item.id, item);
+            }
           }
 
           guild.members.forEach(c => {
@@ -1108,10 +1320,10 @@ class Client extends EventEmitter {
           });
   
           if (Array.from(this.guilds.keys()).length == this.amOfGuilds) {
-            this.emit(event_list.READY);
+            this.emit('ready');
           }
           if (Array.from(this.guilds.keys()).length > this.amOfGuilds) {
-            this.emit(event_list[t], guild);
+            this.emit('guildCreate', guild);
           }
         }
   
@@ -1120,38 +1332,67 @@ class Client extends EventEmitter {
           if (message.d.type === 1) chn = new DMChannel(message.d, this);
           if (message.d.type === 0) chn = new TextChannel(message.d, this.guilds.get(message.d.guild_id), this);
           if (message.d.type === 2) chn = new VoiceChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 4) chn = new CategoryChannel(message.d, this.guilds.get(message.d.guild_id), this);
+
           this.channels.set(chn.id, chn);
-          this.emit(event_list[t], chn);
+          this.emit('channelAdded', chn);
         }
   
         if (t == 'CHANNEL_DELETE') {
           let chn;
-          if (message.d.type === 0) chn = new TextChannel(message.d, this);
-          if (message.d.type === 2) chn = new VoiceChannel(message.d, this);
+          if (message.d.type === 1) chn = new DMChannel(message.d, this);
+          if (message.d.type === 0) chn = new TextChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 2) chn = new VoiceChannel(message.d, this.guilds.get(message.d.guild_id), this);
+          if (message.d.type === 4) chn = new CategoryChannel(message.d, this.guilds.get(message.d.guild_id), this);
           this.channels.delete(chn.id);
-          this.emit(event_list[t], chn);
+          this.emit('channelRemoved', chn);
         }
   
         if (t == 'MESSAGE_CREATE') {
           const msg = new Message(message.d, this);
           this.messages.set(msg.id, msg);
-          this.emit(event_list[t], msg);      
+          this.emit('message', msg);      
         }
   
         if (t == 'MESSAGE_REACTION_ADD') {
           const reaction = message.d.emoji;
           const user = this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
-          this.emit(event_list[t], reaction, user);
+          this.emit('messageReactionAdd', reaction, user);
         }
         if (t == 'PRESENCE_UPDATE') {
           const presence = new Presence(message.d, this);
-          this.emit(event_list[t], presence);
+          this.emit('presenceUpdate', presence);
+        }
+
+        if (t === 'MESSAGE_DELETE') {
+          const msg = this.messages.get(message.d.id) || null;
+          this.emit('messageRemoved', msg);
+        }
+
+        if (t === 'MESSAGE_UPDATE') {
+          if (!message.d.content) return;
+          const newmsg = new Message(message.d, this);
+          const oldmsg = this.messages.get(message.d.id) || null;
+          this.messages.set(newmsg.id, newmsg);
+          this.emit('messageUpdated', oldmsg, newmsg);          
         }
 
         if (t == 'TYPING_START') {
           const user = this.users.get(message.d.user_id);
           const channel = this.channels.get(message.d.channel_id);
           this.emit('startTyping', user, channel);
+        }
+
+        if (t == 'VOICE_STATE_UPDATE') {
+          const member = this.guilds.get(message.d.guild_id).members.get(message.d.user_id) || null;
+          const channel = this.guilds.get(message.d.guild_id).channels.get(message.d.channel_id) || null;
+          this.emit('voiceStateUpdate', member, channel);
+        }
+
+        if (t == 'GUILD_MEMBER_UPDATE') {
+          const oldm = this.guilds.get(message.d.guild_id).members.get(message.d.user.id);
+          const newm = new Member(message.d, this.guilds.get(message.d.guild_id), this);
+          this.emit('guildMemberUpdate', oldm, newm);
         }
       }
     });
@@ -1181,6 +1422,88 @@ class Client extends EventEmitter {
       });        
     });
   }
+
+  /**
+   * @description This method will create a guild and the client will own it
+   * @param {String} name The name of the guild
+   * @param {Object} [obj = {}] The options for the guild {@link GuildOptions}
+   * @returns {Promise&lt;Guild>} The guild created 
+   */
+
+  createGuild(name, obj = {}) {
+    return new Promise((res, rej) => {
+      request.req('POST', '/guilds', obj, this.token).then(c => {
+        setTimeout(res, 100, res(new Guild(this.guild_methods().fromRaw(c), this)));
+      });
+    });
+  }
+
+  /**
+   * @description This method will set the username of the client
+   * @param {String} newusername The new username
+   * @returns {Promise&lt;User>} The updated user for the client
+   */
+
+  setUsername(newusername) {
+    return new Promise((res, rej) => {
+      request.req('PATCH', '/users/@me', {
+        username: newusername
+      }, this.token).then(c => {
+        setTimeout(res, 100, res(new User(c, this)));
+      });
+    });
+  }
+
+  /**
+   * @description This method will set the avatar of the client
+   * @param {String} url The new avatar url
+   * @returns {Promise&lt;User>} The updated user for the client
+   */
+
+  setAvatar(url) {
+    return new Promise((res, rej) => {
+      let newavatar;
+      snekfetch.get(url).then(c => {
+        newavatar = 'data:' + c.headers['content-type'] + ';base64,' + c.body.toString('base64');
+        request.req('PATCH', '/users/@me', {
+          avatar: newavatar
+        }, this.token).then(c => {
+          setTimeout(res, 100, res(new User(c, this)));
+        });
+      });
+    });
+  }
+  
+  /**
+   * @description Fetches all the client's dms
+   * @returns {Promise&lt;Collection>} A collection of all of the dms mapped by their ids
+   */
+
+  fetchDMs() {
+    return new Promise((res, rej) => {
+      request.req('GET', '/users/@me/channels', {}, this.token).then(c => {
+        const dms = c.map(d => new DMChannel(d, this));
+        const returned = new Collection();
+        for (let i = 0; i &lt; dms.length; i++) {
+          returned.set(dms[i].id, dms[i]);
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
+  }
+
+  /**
+   * @description Fetches the client user's connections
+   * @returns {Array} An array of all of the connections
+   */
+
+  fetchUserConnections() {
+    return new Promise((res, rej) => {
+      request.req('GET', '/users/@me/connections', {}, this.token).then(d => {
+        setTimeout(res, 100, res(d));
+      });
+    });
+  }
 }
 
 module.exports = Client;</code></pre>
@@ -1195,7 +1518,7 @@ module.exports = Client;</code></pre>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:22:12 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

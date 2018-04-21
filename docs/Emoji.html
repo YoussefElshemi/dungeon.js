@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Class: DMChannel</title>
+    <title>Class: Emoji</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1089,7 +1089,7 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="DMChannel.html">Class: DMChannel</h1>
+        <h1 class="page-title" data-filename="Emoji.html">Class: Emoji</h1>
         
 
 
@@ -1098,10 +1098,10 @@
     
 <header>
     <h2>
-    DMChannel
+    Emoji
     </h2>
     
-        <div class="class-description">This class represents a DM Channel object</div>
+        <div class="class-description">This class represents an emoji</div>
     
 </header>  
 
@@ -1113,14 +1113,14 @@
         
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="DMChannel">
+        <h4 class="name" id="Emoji">
             
-            new DMChannel<span class="signature">()</span>
+            new Emoji<span class="signature">()</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line8">line 8</a>
+            <a href="Classes_Emoji.js.html">Classes/Emoji.js</a>, <a href="Classes_Emoji.js.html#line10">line 10</a>
         </div>
         
     </div>
@@ -1196,6 +1196,51 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="animated">animated<span class="type-signature type boolean">Boolean</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Whether the emoji is animated or not
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="client">client<span class="type-signature type client"><a href="Client.html">Client</a></span> </h4>
     </div>
     
@@ -1204,7 +1249,52 @@
 <dd>
     
     <div class="description">
-        The client object which is logged in
+        The client in which is logged in
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="guild">guild<span class="type-signature type guild"><a href="Guild.html">Guild</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The guild in which the emoji is in
     </div>
     
     
@@ -1249,7 +1339,7 @@
 <dd>
     
     <div class="description">
-        The ID of the DM channel
+        The id of the emoji
     </div>
     
     
@@ -1286,7 +1376,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="lastMessageID">lastMessageID</h4>
+        <h4 class="name" id="managed">managed<span class="type-signature type boolean">Boolean</span> </h4>
     </div>
     
     
@@ -1294,7 +1384,7 @@
 <dd>
     
     <div class="description">
-        The ID of the last message sent in the DM Channel
+        Whether the emoji is managed or not
     </div>
     
     
@@ -1331,7 +1421,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="recipients">recipients<span class="type-signature type collection"><a href="Collection.html">Collection</a></span> </h4>
+        <h4 class="name" id="name">name<span class="type-signature type string">String</span> </h4>
     </div>
     
     
@@ -1339,7 +1429,7 @@
 <dd>
     
     <div class="description">
-        A collection of the members in the DM mapped by their ID
+        The name of the emoji
     </div>
     
     
@@ -1376,7 +1466,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="type">type<span class="type-signature type string">String</span> </h4>
+        <h4 class="name" id="requireColons">requireColons<span class="type-signature type boolean">Boolean</span> </h4>
     </div>
     
     
@@ -1384,7 +1474,97 @@
 <dd>
     
     <div class="description">
-        The type of channel
+        Whether the emoji requires colons or not
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="roles">roles<span class="type-signature type collection"><a href="Collection.html">Collection</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        A collection of roles that are whitelisted to use this emoji
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="url">url<span class="type-signature type string">String</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The URL of the emoji
     </div>
     
     
@@ -1427,14 +1607,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="addRecipient">
+        <h4 class="name" id="delete">
             
-            addRecipient<span class="signature">(user, accessToken, nick)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
+            delete<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Emoji.html">Emoji</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line118">line 118</a>
+            <a href="Classes_Emoji.js.html">Classes/Emoji.js</a>, <a href="Classes_Emoji.js.html#line86">line 86</a>
         </div>
         
     </div>
@@ -1445,7 +1625,7 @@
     
     
     <div class="description">
-        This method adds a user to a group DM
+        This method deletes the emoji from the guild
     </div>
     
 
@@ -1453,97 +1633,6 @@
     
     
     
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="User.html">User</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The user to add to a DM, can be a user object or id</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>accessToken</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                Access token of a user that has granted your app the gdm.join scope</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>nick</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The nickname of the user being added</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
     
     
     
@@ -1599,11 +1688,11 @@
             
             <td class="type">
             
-                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
+                        Promise.&lt;<a href="Emoji.html">Emoji</a>>
                         
                     
             </td>
-            <td class="description last">Returns a promise and a DM Channel</td>
+            <td class="description last">The emoji that was deleted</td>
         </tr>
     
     </tbody>
@@ -1611,361 +1700,6 @@
 
     
     
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="removeRecipient">
-            
-            removeRecipient<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="DMChannel.html">DMChannel</a>>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line139">line 139</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method removes a user to a group DM
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>user</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="User.html">User</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                The user to remove from the DM, can be a user object or id</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Promise.&lt;<a href="DMChannel.html">DMChannel</a>>
-                        
-                    
-            </td>
-            <td class="description last">Returns a promise and a DM Channel</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="send">
-            
-            send<span class="signature">(content, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_DMChannel.js.html">Classes/DMChannel.js</a>, <a href="Classes_DMChannel.js.html#line68">line 68</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        This method will send a message to the channel specified
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Default</th>
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>content</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                    
-                        
-                    
-                
-                The string if it's a normal message or object if it's a richembed</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>opt</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="default">
-                
-                    {}
-                
-                </td>
-            
-            
-            <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
-                
-                The options, nonce and tts <a href="global.html#MessageOptions">MessageOptions</a></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Promise.&lt;<a href="Message.html">Message</a>>
-                        
-                    
-            </td>
-            <td class="description last">Returns a promise and discord message</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-        <h5>Examples</h5>
-        
-
-    
-    <pre class="prettyprint"><code>// Sending an embed
-DMChannel.send({ title: "Ping!", description: "This User Was Pinged!", color: 0x00AE86 });</code></pre>
-    
-
-
-    
-    <pre class="prettyprint"><code>// Sending a tts message
-DMChannel.send("Hi!", { tts: true });</code></pre>
-    
-
     
 </dd>
 

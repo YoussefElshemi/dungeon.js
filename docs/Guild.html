@@ -45,6 +45,8 @@
             
                 <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
             
+                <li data-name="Client#emojis"><a href="Client.html#emojis">emojis</a></li>
+            
                 <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
             
                 <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
@@ -74,9 +76,19 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
+            
                 <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
             
+                <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
+            
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+            
                 <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+            
+                <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
+            
+                <li data-name="Client#setUsername"><a href="Client.html#setUsername">setUsername</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -87,9 +99,15 @@
             
                 <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
             
+                <li data-name="client#guildMemberUpdate"><a href="Client.html#event:guildMemberUpdate">guildMemberUpdate</a></li>
+            
                 <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
             
                 <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+            
+                <li data-name="client#messageRemoved"><a href="Client.html#event:messageRemoved">messageRemoved</a></li>
+            
+                <li data-name="client#messageUpdated"><a href="Client.html#event:messageUpdated">messageUpdated</a></li>
             
                 <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
             
@@ -100,6 +118,8 @@
                 <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
             
                 <li data-name="client#startTyping"><a href="Client.html#event:startTyping">startTyping</a></li>
+            
+                <li data-name="client#voiceStateUpdate"><a href="Client.html#event:voiceStateUpdate">voiceStateUpdate</a></li>
             
             </ul>
         </li>
@@ -280,6 +300,52 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Emoji">
+            <span class="title">
+                <a href="Emoji.html">Emoji</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Emoji#animated"><a href="Emoji.html#animated">animated</a></li>
+            
+                <li data-name="Emoji#client"><a href="Emoji.html#client">client</a></li>
+            
+                <li data-name="Emoji#guild"><a href="Emoji.html#guild">guild</a></li>
+            
+                <li data-name="Emoji#id"><a href="Emoji.html#id">id</a></li>
+            
+                <li data-name="Emoji#managed"><a href="Emoji.html#managed">managed</a></li>
+            
+                <li data-name="Emoji#name"><a href="Emoji.html#name">name</a></li>
+            
+                <li data-name="Emoji#requireColons"><a href="Emoji.html#requireColons">requireColons</a></li>
+            
+                <li data-name="Emoji#roles"><a href="Emoji.html#roles">roles</a></li>
+            
+                <li data-name="Emoji#url"><a href="Emoji.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emoji#delete"><a href="Emoji.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Guild">
             <span class="title">
                 <a href="Guild.html">Guild</a>
@@ -338,11 +404,41 @@
             
             <span class="subtitle">Methods</span>
             
+                <li data-name="Guild#addGuildMember"><a href="Guild.html#addGuildMember">addGuildMember</a></li>
+            
+                <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
+            
                 <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
+            
+                <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
+            
+                <li data-name="Guild#createIntegration"><a href="Guild.html#createIntegration">createIntegration</a></li>
             
                 <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
             
+                <li data-name="Guild#delete"><a href="Guild.html#delete">delete</a></li>
+            
+                <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
+            
+                <li data-name="Guild#deleteIntegration"><a href="Guild.html#deleteIntegration">deleteIntegration</a></li>
+            
+                <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#editEmbed"><a href="Guild.html#editEmbed">editEmbed</a></li>
+            
+                <li data-name="Guild#editIntegration"><a href="Guild.html#editIntegration">editIntegration</a></li>
+            
+                <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
+            
                 <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
+            
+                <li data-name="Guild#fetchEmbed"><a href="Guild.html#fetchEmbed">fetchEmbed</a></li>
+            
+                <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
+            
+                <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
+            
+                <li data-name="Guild#fetchIntegrations"><a href="Guild.html#fetchIntegrations">fetchIntegrations</a></li>
             
                 <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
             
@@ -352,11 +448,41 @@
             
                 <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
             
-                <li data-name="Guild#getAuditLogs"><a href="Guild.html#getAuditLogs">getAuditLogs</a></li>
+                <li data-name="Guild#fetchVanityURL"><a href="Guild.html#fetchVanityURL">fetchVanityURL</a></li>
+            
+                <li data-name="Guild#fetchVoiceRegions"><a href="Guild.html#fetchVoiceRegions">fetchVoiceRegions</a></li>
+            
+                <li data-name="Guild#fetchWebhooks"><a href="Guild.html#fetchWebhooks">fetchWebhooks</a></li>
+            
+                <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
+            
+                <li data-name="Guild#leave"><a href="Guild.html#leave">leave</a></li>
             
                 <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
             
+                <li data-name="Guild#setAFKChannel"><a href="Guild.html#setAFKChannel">setAFKChannel</a></li>
+            
+                <li data-name="Guild#setAFKTimeout"><a href="Guild.html#setAFKTimeout">setAFKTimeout</a></li>
+            
+                <li data-name="Guild#setIcon"><a href="Guild.html#setIcon">setIcon</a></li>
+            
+                <li data-name="Guild#setName"><a href="Guild.html#setName">setName</a></li>
+            
+                <li data-name="Guild#setOwner"><a href="Guild.html#setOwner">setOwner</a></li>
+            
+                <li data-name="Guild#setRegion"><a href="Guild.html#setRegion">setRegion</a></li>
+            
+                <li data-name="Guild#setSplash"><a href="Guild.html#setSplash">setSplash</a></li>
+            
+                <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
+            
+                <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
+                <li data-name="Guild#syncIntegration"><a href="Guild.html#syncIntegration">syncIntegration</a></li>
+            
                 <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
+            
+                <li data-name="Guild#unban"><a href="Guild.html#unban">unban</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -514,9 +640,17 @@
             
                 <li data-name="Member#kick"><a href="Member.html#kick">kick</a></li>
             
+                <li data-name="Member#moveCall"><a href="Member.html#moveCall">moveCall</a></li>
+            
                 <li data-name="Member#removeRole"><a href="Member.html#removeRole">removeRole</a></li>
             
                 <li data-name="Member#send"><a href="Member.html#send">send</a></li>
+            
+                <li data-name="Member#setDeaf"><a href="Member.html#setDeaf">setDeaf</a></li>
+            
+                <li data-name="Member#setMute"><a href="Member.html#setMute">setMute</a></li>
+            
+                <li data-name="Member#setNickname"><a href="Member.html#setNickname">setNickname</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -554,6 +688,8 @@
                 <li data-name="Message#member"><a href="Message.html#member">member</a></li>
             
                 <li data-name="Message#mentionedMembers"><a href="Message.html#mentionedMembers">mentionedMembers</a></li>
+            
+                <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
             
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
             
@@ -665,7 +801,11 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Role#client"><a href="Role.html#client">client</a></li>
+            
                 <li data-name="Role#color"><a href="Role.html#color">color</a></li>
+            
+                <li data-name="Role#guild"><a href="Role.html#guild">guild</a></li>
             
                 <li data-name="Role#hoisted"><a href="Role.html#hoisted">hoisted</a></li>
             
@@ -689,6 +829,12 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Role#delete"><a href="Role.html#delete">delete</a></li>
+            
+                <li data-name="Role#setPosition"><a href="Role.html#setPosition">setPosition</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -892,6 +1038,54 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Webhook">
+            <span class="title">
+                <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Webhook#avatar"><a href="Webhook.html#avatar">avatar</a></li>
+            
+                <li data-name="Webhook#channel"><a href="Webhook.html#channel">channel</a></li>
+            
+                <li data-name="Webhook#client"><a href="Webhook.html#client">client</a></li>
+            
+                <li data-name="Webhook#guild"><a href="Webhook.html#guild">guild</a></li>
+            
+                <li data-name="Webhook#id"><a href="Webhook.html#id">id</a></li>
+            
+                <li data-name="Webhook#name"><a href="Webhook.html#name">name</a></li>
+            
+                <li data-name="Webhook#token"><a href="Webhook.html#token">token</a></li>
+            
+                <li data-name="Webhook#user"><a href="Webhook.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
     </ul>
 </div>
     <div class="main">
@@ -926,7 +1120,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line13">line 13</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line16">line 16</a>
         </div>
         
     </div>
@@ -1863,6 +2057,422 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="addGuildMember">
+            
+            addGuildMember<span class="signature">(id, accessToken, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line704">line 704</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will add a guild-member to a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The id of the member to add</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>accessToken</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The access token obtained via Oauth2</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options: roles, nick, mute and deaf</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Member.html">Member</a>>
+                        
+                    
+            </td>
+            <td class="description last">The member that was added</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="ban">
+            
+            ban<span class="signature">(id, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line231">line 231</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method bans a member by id
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The id of the user to ban</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options: days and reason</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="User.html">User</a>>
+                        
+                    
+            </td>
+            <td class="description last">The user object of the member that was banned</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="createChannel">
             
             createChannel<span class="signature">(name, type, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;Channel>}</span>
@@ -1870,7 +2480,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line162">line 162</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line164">line 164</a>
         </div>
         
     </div>
@@ -2098,6 +2708,284 @@ guild.createChannel('general', 'text').then(c => {
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="createEmoji">
+            
+            createEmoji<span class="signature">(name, image)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line458">line 458</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will create an emoji
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The name of the emoji</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>image</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The url of the image of the emoji to create</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="createIntegration">
+            
+            createIntegration<span class="signature">(type, id)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line768">line 768</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method creates a guild integration
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The type of integration to create</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the integration to create</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="createRole">
             
             createRole<span class="signature">(name, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Role.html">Role</a>>}</span>
@@ -2105,7 +2993,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line192">line 192</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line194">line 194</a>
         </div>
         
     </div>
@@ -2301,6 +3189,1000 @@ guild.createRole('role').then(c => {
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="delete">
+            
+            delete<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line675">line 675</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will delete a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The guild that was deleted</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="deleteEmoji">
+            
+            deleteEmoji<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line479">line 479</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will delete an emoji id
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the emoji</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">The deleted emoji</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="deleteIntegration">
+            
+            deleteIntegration<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line803">line 803</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Deletes a guild's integration
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the integration</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">The integration object deleted</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="edit">
+            
+            edit<span class="signature">(<span class="optional">obj</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line644">line 644</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will edit the guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options <a href="global.html#GuildOptions">GuildOptions</a></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="editEmbed">
+            
+            editEmbed<span class="signature">(<span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;Object>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line843">line 843</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Edit's the guild's embed
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options: enabled and channelID</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;Object>
+                        
+                    
+            </td>
+            <td class="description last">The embed that was editted</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="editIntegration">
+            
+            editIntegration<span class="signature">(id, opt)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line785">line 785</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method edits a guild integration
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the integration to edit</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The options: expireBehaviour, expireGracePeriod and enableEmoticons</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchAuditLogs">
+            
+            fetchAuditLogs<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line407">line 407</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetchs the guilds audit log
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The options for getting the audit logs <a href="global.html#AuditOptions">AuditOptions</a></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Array
+                        
+                    
+            </td>
+            <td class="description last">The audit log entries</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="fetchBans">
             
             fetchBans<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
@@ -2308,7 +4190,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line279">line 279</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line336">line 336</a>
         </div>
         
     </div>
@@ -2401,6 +4283,406 @@ guild.createRole('role').then(c => {
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="fetchEmbed">
+            
+            fetchEmbed<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;Object>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line829">line 829</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the guild's embed
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;Object>
+                        
+                    
+            </td>
+            <td class="description last">An object for the guild's embed</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchEmoji">
+            
+            fetchEmoji<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Object}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line443">line 443</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches a single emoji by id and caches it
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Object
+                        
+                    
+            </td>
+            <td class="description last">The emoji</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchEmojis">
+            
+            fetchEmojis<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Collection.html">Collection</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line425">line 425</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetchs the guilds emojis and caches them
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="Collection.html">Collection</a>
+                        
+                    
+            </td>
+            <td class="description last">A collection of the emojis</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchIntegrations">
+            
+            fetchIntegrations<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line750">line 750</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the guild's integrations
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">A collection of the integrations mapped by their id</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="fetchInvites">
             
             fetchInvites<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
@@ -2408,7 +4690,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line227">line 227</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line284">line 284</a>
         </div>
         
     </div>
@@ -2508,7 +4790,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line265">line 265</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line322">line 322</a>
         </div>
         
     </div>
@@ -2653,7 +4935,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line246">line 246</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line303">line 303</a>
         </div>
         
     </div>
@@ -2813,7 +5095,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line297">line 297</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line354">line 354</a>
         </div>
         
     </div>
@@ -2906,14 +5188,14 @@ guild.createRole('role').then(c => {
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="getAuditLogs">
+        <h4 class="name" id="fetchVanityURL">
             
-            getAuditLogs<span class="signature">(opt)</span>
+            fetchVanityURL<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;Object>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line331">line 331</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line859">line 859</a>
         </div>
         
     </div>
@@ -2924,7 +5206,107 @@ guild.createRole('role').then(c => {
     
     
     <div class="description">
-        Fetchs the guilds audit log
+        This fetches the guild's vanity URL
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;Object>
+                        
+                    
+            </td>
+            <td class="description last">The vanity URL</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchVoiceRegions">
+            
+            fetchVoiceRegions<span class="signature">(<span class="optional">list</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line728">line 728</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the guild's voice regions
     </div>
     
 
@@ -2945,6 +5327,8 @@ guild.createRole('role').then(c => {
 		<th>Type</th>
 		
 		
+		<th>Default</th>
+		
 		
 		<th class="last">Description</th>
 	</tr>
@@ -2955,23 +5339,36 @@ guild.createRole('role').then(c => {
 	
         <tr>
             
-                <td class="name"><code>opt</code></td>
+                <td class="name"><code>list</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">Boolean</span>
 
 
             
             </td>
             
             
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
             
             <td class="description last">
                 
-                The options for getting the audit logs <a href="global.html#AuditOptions">AuditOptions</a></td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                If it should return an array of the region names or not</td>
         </tr>
 	
 	
@@ -3014,6 +5411,427 @@ guild.createRole('role').then(c => {
     
     
     
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">A collection of the region objects mapped by their region name</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchWebhooks">
+            
+            fetchWebhooks<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line373">line 373</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches all of the guild's webhooks
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">A collection of webhooks mapped by their id</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="kick">
+            
+            kick<span class="signature">(id, <span class="optional">reason</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line266">line 266</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will kick a member from a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The id of the member to kick</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reason</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options to pass: reason, a string</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Member.html">Member</a>>
+                        
+                    
+            </td>
+            <td class="description last">Returns a promise and a GuildMember object</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="leave">
+            
+            leave<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line688">line 688</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will make the client leave a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The guild that was left</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
     
     
 </dd>
@@ -3029,7 +5847,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line212">line 212</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line214">line 214</a>
         </div>
         
     </div>
@@ -3167,6 +5985,1411 @@ guild.createRole('role').then(c => {
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="setAFKChannel">
+            
+            setAFKChannel<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line542">line 542</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the afk channel of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the channel</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setAFKTimeout">
+            
+            setAFKTimeout<span class="signature">(time)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line558">line 558</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the afk timeout of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The time of the new afk timeout</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setIcon">
+            
+            setIcon<span class="signature">(url)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line574">line 574</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the icon of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The url of the icon for the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setName">
+            
+            setName<span class="signature">(newname)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line494">line 494</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will rename a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newname</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The name of the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setOwner">
+            
+            setOwner<span class="signature">(newname)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line593">line 593</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the owner of the guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newname</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The new owner's id of the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setRegion">
+            
+            setRegion<span class="signature">(newregion)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line510">line 510</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the region of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newregion</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The new region of the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setSplash">
+            
+            setSplash<span class="signature">(url)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line609">line 609</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the splash of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The url for the splash of the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setSystemChannel">
+            
+            setSystemChannel<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line628">line 628</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the system channel of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The id of the channel</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setVerificationLevel">
+            
+            setVerificationLevel<span class="signature">(newlevel)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Guild.html">Guild</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line526">line 526</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will set the verification level of a guild
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>newlevel</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The verification level of the guild</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Guild.html">Guild</a>>
+                        
+                    
+            </td>
+            <td class="description last">The edited guild</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="syncIntegration">
+            
+            syncIntegration<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line816">line 816</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Syncs the guild's integrations
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">The synced integrations</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="testPrune">
             
             testPrune<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;Number>}</span>
@@ -3174,7 +7397,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line316">line 316</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line391">line 391</a>
         </div>
         
     </div>
@@ -3263,6 +7486,106 @@ guild.createRole('role').then(c => {
     
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="unban">
+            
+            unban<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line249">line 249</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method unbans a member by id
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="User.html">User</a>>
+                        
+                    
+            </td>
+            <td class="description last">The user object of the member that was unbanned</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
         </dl>
     
     
@@ -3282,7 +7605,7 @@ guild.createRole('role').then(c => {
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Apr 18 2018 19:22:12 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Apr 21 2018 14:51:49 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

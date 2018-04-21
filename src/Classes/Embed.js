@@ -144,7 +144,7 @@ class Embed {
    */
 
   setTimestamp(timestamp = new Date()) {
-    this.title = timestamp;
+    this.timestamp = timestamp;
     return this;
   }
 
