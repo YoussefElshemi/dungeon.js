@@ -142,9 +142,8 @@ class TextChannel extends GuildChannel {
    */
 
   fetchMessages(opt) {
-    if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
     return new Promise((res) => {
-      request.req('GET', `/channels/${this.id}/messages?around=${opt.around || 0}&before=${opt.before || 0}&after=${opt.after || 0}&limit=${opt.limit || 0}`, {}, this.client.token)
+      request.req('GET', `/channels/${this.id}/messages${opt && opt.around ? `?around=${opt && opt.around}`: ''}${opt && opt.before ? `?before=${opt && opt.before}`: ''}${opt && opt.after ? `?around=${opt && opt.around}`: ''}?limit=${opt && opt.limit || 50}`, {}, this.client.token)
         .then(m => {
           const Message = require('./Message');
           const msgs = new Collection();
@@ -230,7 +229,7 @@ class TextChannel extends GuildChannel {
     this.fetchMessages({limit: number}).then(c => {
       const array = c.map(c => c.id);
       return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete?messages=${array}`, { messages: array }, this.client.token)
+        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
           .then(d => {
             const returned = new Collection();
             const mesArray = c.map(c => c);

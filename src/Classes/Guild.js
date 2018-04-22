@@ -8,6 +8,7 @@ const Role = require('./Role');
 const Member = require('./Member');
 const User = require('./User');
 const Webhook = require('./Webhook');
+const AuditLog = require('./AuditLog');
 
 /**
  * This class represents a guild object
@@ -412,7 +413,7 @@ class Guild {
         before: opt.before || null,
         limit: opt.limit || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(c));
+        setTimeout(res, 100, res(new AuditLog(c, this.client)));
       }).catch(rej);
     });
   }
