@@ -226,20 +226,17 @@ class TextChannel extends GuildChannel {
    */
 
   bulkDelete(number) {
-    this.fetchMessages({limit: number}).then(c => {
-      const array = c.map(c => c.id);
-      return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
-          .then(d => {
-            const returned = new Collection();
-            const mesArray = c.map(c => c);
-            for (let i = 0; i < mesArray.length; i++) {
-              returned.set(mesArray[i].id, mesArray[i]);
-            }
-            setTimeout(res, 100, res(returned));
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });
+    return new Promise((res) => {
+      this.fetchMessages({limit: number}).then(c => {
+        const array = c.map(c => c.id);
+        return new Promise((res) => {
+          request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
+            .then(d => {
+              setTimeout(res, 100, res(c));
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            });
+        });
       });
     });
   }
