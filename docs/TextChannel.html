@@ -798,6 +798,44 @@
             </ul>
         </li>
     
+        <li class="item" data-name="MessageCollector">
+            <span class="title">
+                <a href="MessageCollector.html">MessageCollector</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="MessageCollector#channel"><a href="MessageCollector.html#channel">channel</a></li>
+            
+                <li data-name="MessageCollector#client"><a href="MessageCollector.html#client">client</a></li>
+            
+                <li data-name="MessageCollector#filter"><a href="MessageCollector.html#filter">filter</a></li>
+            
+                <li data-name="MessageCollector#opt"><a href="MessageCollector.html#opt">opt</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="MessageCollector#event:collect"><a href="MessageCollector.html#event:collect">collect</a></li>
+            
+                <li data-name="MessageCollector#event:End"><a href="MessageCollector.html#event:End">End</a></li>
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Permissions">
             <span class="title">
                 <a href="Permissions.html">Permissions</a>
@@ -953,6 +991,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="TextChannel#bulkDelete"><a href="TextChannel.html#bulkDelete">bulkDelete</a></li>
+            
+                <li data-name="TextChannel#collectMessage"><a href="TextChannel.html#collectMessage">collectMessage</a></li>
             
                 <li data-name="TextChannel#createInvite"><a href="TextChannel.html#createInvite">createInvite</a></li>
             
@@ -1842,6 +1882,169 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="collectMessage">
+            
+            collectMessage<span class="signature">(filter)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="MessageCollector.html">MessageCollector</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line332">line 332</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This will wait for a message to be send which matches a certain filter and time
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The filter to pass through which will make sure the message matches those requirements</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="MessageCollector.html">MessageCollector</a>
+                        
+                    
+            </td>
+            <td class="description last">The message collector class, with two events, MessageCollector.on('collect', message) and MessageCollector.on('end')</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+        <h5>Example</h5>
+        
+
+    
+    <pre class="prettyprint"><code>// Waiting for a message response sent by the author and with the content of 'Hello there!'
+message.channel.send('Type `Hello there!` in 10 seconds');
+const collector = message.channel.collectMessage(m => m.content === 'Hello there!' && m.author.id === message.author.id);
+collector.on('collect', m => {
+   // m is our message object
+   console.log(m.content); // Returns 'Hello there!'
+});
+
+client.on('end', () => {
+   console.log('Unfortunately, the author didn't responde in time with the correct message!');
+});</code></pre>
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="createInvite">
             
             createInvite<span class="signature">(opt)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Invite.html">Invite</a>>}</span>
@@ -2674,7 +2877,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line269">line 269</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line266">line 266</a>
         </div>
         
     </div>
@@ -2874,7 +3077,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line287">line 287</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line284">line 284</a>
         </div>
         
     </div>
@@ -3022,7 +3225,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line305">line 305</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line302">line 302</a>
         </div>
         
     </div>
@@ -4121,7 +4324,7 @@ channel.setName('general')
     
         
         <div class="tag-source">
-            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line252">line 252</a>
+            <a href="Classes_TextChannel.js.html">Classes/TextChannel.js</a>, <a href="Classes_TextChannel.js.html#line249">line 249</a>
         </div>
         
     </div>
@@ -4260,7 +4463,7 @@ channel.setName('general')
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 22 2018 17:17:05 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 23 2018 23:25:17 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

@@ -293,6 +293,14 @@ class Client extends EventEmitter {
       }
     });
 
+    wss.on('error', error => {
+      console.log(error);
+    });
+
+    wss.on('headers', (headers, request) => {
+      console.log(headers, request);
+    });
+
   }
 
 

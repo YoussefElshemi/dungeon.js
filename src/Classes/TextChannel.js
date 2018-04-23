@@ -310,6 +310,29 @@ class TextChannel extends GuildChannel {
       });
     });
   }
+
+  /**
+   * @description This will wait for a message to be send which matches a certain filter and time
+   * @param {Function} filter The filter to pass through which will make sure the message matches those requirements
+   * @returns {MessageCollector} The message collector class, with two events, MessageCollector.on('collect', message) and MessageCollector.on('end')
+   * @example 
+   * // Waiting for a message response sent by the author and with the content of 'Hello there!'
+   * message.channel.send('Type `Hello there!` in 10 seconds');
+   * const collector = message.channel.collectMessage(m => m.content === 'Hello there!' && m.author.id === message.author.id);
+   * collector.on('collect', m => {
+   *    // m is our message object
+   *    console.log(m.content); // Returns 'Hello there!'
+   * });
+   * 
+   * client.on('end', () => {
+   *    console.log('Unfortunately, the author didn't responde in time with the correct message!');
+   * });
+   */
+
+  collectMessage(filter, opt = {}) { 
+    const MessageCollector = require('./MessageCollector');
+    return new MessageCollector(this, opt, filter);
+  }
 }
 
 /**
