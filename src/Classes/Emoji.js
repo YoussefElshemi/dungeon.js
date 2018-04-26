@@ -93,6 +93,9 @@ class Emoji {
     });
   }
 
+  toString() {
+    return this.animated ? `<:a:${this.name}:${this.id}>`: `<:${this.name}:${this.id}>`;
+  }
 }
 
 module.exports = Emoji;

@@ -354,6 +354,10 @@ class Member {
       });
     });
   }
+
+  toString() {
+    return `<#${this.id}>`;
+  }
 }
 
 module.exports = Member;

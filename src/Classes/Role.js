@@ -116,6 +116,10 @@ class Role {
     });
   }
 
+  toString() {
+    return `<@&${this.id}>`;
+  }
+
 }
 
 module.exports = Role;

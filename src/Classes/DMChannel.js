@@ -147,6 +147,10 @@ class DMChannel {
       if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
     });
   }
+
+  toString() {
+    return `<#${this.id}>`;
+  }
 }
 
 module.exports = DMChannel;

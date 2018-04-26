@@ -305,6 +305,11 @@ class Message {
     if (this.mentionedUsers.exists('id', id)) return true;
     else return false;
   }
+
+  collectReaction(filter, opt = {}) {
+    const MessageCollector = require('./ReactionCollector');
+    return new MessageCollector(this.channel, opt, filter);
+  }
 }
 
 module.exports = Message;

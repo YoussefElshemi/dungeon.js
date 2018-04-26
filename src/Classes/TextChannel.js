@@ -333,6 +333,10 @@ class TextChannel extends GuildChannel {
     const MessageCollector = require('./MessageCollector');
     return new MessageCollector(this, opt, filter);
   }
+
+  toString() {
+    return `<#${this.id}>`;
+  }
 }
 
 /**

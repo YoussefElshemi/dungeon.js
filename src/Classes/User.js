@@ -170,7 +170,7 @@ class User {
    * @returns {String} The mention as a string: <@id>
    */
 
-  mention() {
+  toString() {
     return `<@${this.id}>`;
   }
 
