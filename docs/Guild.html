@@ -129,6 +129,8 @@
             
                 <li data-name="Client#readyTime"><a href="Client.html#readyTime">readyTime</a></li>
             
+                <li data-name="Client#sessionID"><a href="Client.html#sessionID">sessionID</a></li>
+            
                 <li data-name="Client#token"><a href="Client.html#token">token</a></li>
             
                 <li data-name="Client#user"><a href="Client.html#user">user</a></li>
@@ -928,6 +930,38 @@
             </ul>
         </li>
     
+        <li class="item" data-name="ReactionCollector">
+            <span class="title">
+                <a href="ReactionCollector.html">ReactionCollector</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="ReactionCollector#channel"><a href="ReactionCollector.html#channel">channel</a></li>
+            
+                <li data-name="ReactionCollector#client"><a href="ReactionCollector.html#client">client</a></li>
+            
+                <li data-name="ReactionCollector#filter"><a href="ReactionCollector.html#filter">filter</a></li>
+            
+                <li data-name="ReactionCollector#opt"><a href="ReactionCollector.html#opt">opt</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Role">
             <span class="title">
                 <a href="Role.html">Role</a>
@@ -1106,9 +1140,9 @@
             
                 <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
             
-                <li data-name="User#mention"><a href="User.html#mention">mention</a></li>
-            
                 <li data-name="User#send"><a href="User.html#send">send</a></li>
+            
+                <li data-name="User#toString"><a href="User.html#toString">toString</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2200,7 +2234,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line705">line 705</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line706">line 706</a>
         </div>
         
     </div>
@@ -2419,7 +2453,7 @@
     <div class="nameContainer">
         <h4 class="name" id="ban">
             
-            ban<span class="signature">(id, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
+            ban<span class="signature">(user, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
         </h4>
     
         
@@ -2468,13 +2502,13 @@
 	
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>user</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#UserResolvable">UserResolvable</a></span>
 
 
             
@@ -2493,7 +2527,7 @@
                         
                     
                 
-                The id of the user to ban</td>
+                The user to ban</td>
         </tr>
 	
 	
@@ -2851,7 +2885,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line459">line 459</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line460">line 460</a>
         </div>
         
     </div>
@@ -2990,7 +3024,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line769">line 769</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line770">line 770</a>
         </div>
         
     </div>
@@ -3332,7 +3366,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line676">line 676</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line677">line 677</a>
         </div>
         
     </div>
@@ -3432,7 +3466,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line480">line 480</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line481">line 481</a>
         </div>
         
     </div>
@@ -3577,7 +3611,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line804">line 804</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line805">line 805</a>
         </div>
         
     </div>
@@ -3722,7 +3756,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line645">line 645</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line646">line 646</a>
         </div>
         
     </div>
@@ -3882,7 +3916,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line844">line 844</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line845">line 845</a>
         </div>
         
     </div>
@@ -4042,7 +4076,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line786">line 786</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line787">line 787</a>
         </div>
         
     </div>
@@ -4181,7 +4215,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line408">line 408</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line409">line 409</a>
         </div>
         
     </div>
@@ -4326,7 +4360,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line337">line 337</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line338">line 338</a>
         </div>
         
     </div>
@@ -4426,7 +4460,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line830">line 830</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line831">line 831</a>
         </div>
         
     </div>
@@ -4526,7 +4560,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line444">line 444</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line445">line 445</a>
         </div>
         
     </div>
@@ -4626,7 +4660,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line426">line 426</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line427">line 427</a>
         </div>
         
     </div>
@@ -4726,7 +4760,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line751">line 751</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line752">line 752</a>
         </div>
         
     </div>
@@ -4826,7 +4860,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line285">line 285</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line286">line 286</a>
         </div>
         
     </div>
@@ -4921,12 +4955,12 @@ guild.createRole('role').then(c => {
     <div class="nameContainer">
         <h4 class="name" id="fetchMember">
             
-            fetchMember<span class="signature">(id)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
+            fetchMember<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line323">line 323</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line324">line 324</a>
         </div>
         
     </div>
@@ -4968,13 +5002,13 @@ guild.createRole('role').then(c => {
 	
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>user</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#UserResolvable">UserResolvable</a></span>
 
 
             
@@ -4984,7 +5018,7 @@ guild.createRole('role').then(c => {
             
             <td class="description last">
                 
-                The ID of the user to fetch</td>
+                The user to fetch the member of</td>
         </tr>
 	
 	
@@ -5071,7 +5105,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line304">line 304</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line305">line 305</a>
         </div>
         
     </div>
@@ -5231,7 +5265,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line355">line 355</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line356">line 356</a>
         </div>
         
     </div>
@@ -5331,7 +5365,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line860">line 860</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line861">line 861</a>
         </div>
         
     </div>
@@ -5431,7 +5465,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line729">line 729</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line730">line 730</a>
         </div>
         
     </div>
@@ -5591,7 +5625,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line374">line 374</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line375">line 375</a>
         </div>
         
     </div>
@@ -5686,12 +5720,12 @@ guild.createRole('role').then(c => {
     <div class="nameContainer">
         <h4 class="name" id="kick">
             
-            kick<span class="signature">(id, <span class="optional">reason</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
+            kick<span class="signature">(user, <span class="optional">reason</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Member.html">Member</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line267">line 267</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line268">line 268</a>
         </div>
         
     </div>
@@ -5735,13 +5769,13 @@ guild.createRole('role').then(c => {
 	
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>user</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#UserResolvable">UserResolvable</a></span>
 
 
             
@@ -5760,7 +5794,7 @@ guild.createRole('role').then(c => {
                         
                     
                 
-                The id of the member to kick</td>
+                The user to kick</td>
         </tr>
 	
 	
@@ -5883,7 +5917,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line689">line 689</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line690">line 690</a>
         </div>
         
     </div>
@@ -6128,7 +6162,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line543">line 543</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line544">line 544</a>
         </div>
         
     </div>
@@ -6273,7 +6307,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line559">line 559</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line560">line 560</a>
         </div>
         
     </div>
@@ -6418,7 +6452,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line575">line 575</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line576">line 576</a>
         </div>
         
     </div>
@@ -6563,7 +6597,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line495">line 495</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line496">line 496</a>
         </div>
         
     </div>
@@ -6708,7 +6742,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line594">line 594</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line595">line 595</a>
         </div>
         
     </div>
@@ -6853,7 +6887,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line511">line 511</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line512">line 512</a>
         </div>
         
     </div>
@@ -6998,7 +7032,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line610">line 610</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line611">line 611</a>
         </div>
         
     </div>
@@ -7143,7 +7177,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line629">line 629</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line630">line 630</a>
         </div>
         
     </div>
@@ -7288,7 +7322,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line527">line 527</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line528">line 528</a>
         </div>
         
     </div>
@@ -7433,7 +7467,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line817">line 817</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line818">line 818</a>
         </div>
         
     </div>
@@ -7533,7 +7567,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line392">line 392</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line393">line 393</a>
         </div>
         
     </div>
@@ -7628,12 +7662,12 @@ guild.createRole('role').then(c => {
     <div class="nameContainer">
         <h4 class="name" id="unban">
             
-            unban<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
+            unban<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line250">line 250</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line251">line 251</a>
         </div>
         
     </div>
@@ -7652,6 +7686,51 @@ guild.createRole('role').then(c => {
     
     
     
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#UserResolvable">UserResolvable</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user to ban</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -7741,7 +7820,7 @@ guild.createRole('role').then(c => {
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 24 2018 18:50:34 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

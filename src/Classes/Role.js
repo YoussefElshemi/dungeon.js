@@ -123,3 +123,9 @@ class Role {
 }
 
 module.exports = Role;
+
+/**
+ * @typedef {Object} RoleResolvable
+ * @property {String} Snowflake This could be the ID of the role
+ * @property {Role} Role This could be an actual role class
+ */

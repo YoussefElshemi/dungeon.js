@@ -277,14 +277,14 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Will add a pinned message to the channel.
-   * @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
+   * @param {MessageResolvable} message The message to pin
    * @returns {Message} The messages that was pinned
    */
 
-  pinMessage(id) {
+  pinMessage(message) {
     return new Promise((res) => {
-      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(m => {
-        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+      request.req('PUT', `/channels/${this.id}/pins/${message.id || message}`, {}, this.client.token).then(m => {
+        request.req('GET', `/channels/${this.id}/messages/${message.id || message}`, {}, this.client.token).then(message => {
           const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));
@@ -295,14 +295,14 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Removes a pinned Message from the channel.
-   * @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
+   * @param {MessageResolvable} message The message to unpin
    * @returns {Message} The messages that was pinned
    */
 
-  removePinned(id) {
+  removePinned(message) {
     return new Promise((res) => {
-      request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
-        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+      request.req('DELETE', `/channels/${this.id}/pins/${message.id || message}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${message.id || message}`, {}, this.client.token).then(message => {
           const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));

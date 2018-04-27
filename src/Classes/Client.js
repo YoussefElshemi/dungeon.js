@@ -52,7 +52,7 @@ class Client extends EventEmitter {
       const message = JSON.parse(m);
       if (message.op == 10) {
         this.heartbeat_int = message.d.heartbeat_interval;
-        this.session_id = message.d.session_id;
+        this.sessionID = message.d.session_id;
         this.receivedAck;
         this.awaitingconnection = false;
         this.lastSeq = 0;
@@ -71,7 +71,7 @@ class Client extends EventEmitter {
                 op: 6,
                 d: {
                   token: _this.token,
-                  session_id: _this.session_id,
+                  session_id: _this.sessionID,
                   seq: _this.lastSeq
                 }
               }));
@@ -119,10 +119,10 @@ class Client extends EventEmitter {
 
           /**
             * Used for RESUMEing.
-            * @type {}
+            * @type {String}
             */
 
-          this.session_id = message.d.session_id;
+          this.sessionID = message.d.session_id;
 
           /**
            * A collection of all the users the client shares guilds with
@@ -344,12 +344,12 @@ class Client extends EventEmitter {
 
   /**
    * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
+   * @param {UserResolvable} user The user to fetch
    */
 
-  getUser(id) {
+  getUser(user) {
     return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
+      request.req('GET', `/users/${user.id ||	user}`, {}, this.token).then(m => {
         setTimeout(res, 100, res(new User(m, this)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');

@@ -177,3 +177,9 @@ class User {
 }
 
 module.exports = User;
+
+/**
+ * @typedef {Object} UserResolvable
+ * @property {String} Snowflake This could be the ID of the user
+ * @property {User} User This could be an actual user class
+ */

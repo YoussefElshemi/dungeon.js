@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Events/GuildMemberUpdate.js</title>
+    <title>Source: Classes/ReactionCollector.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1259,23 +1259,82 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Events_GuildMemberUpdate.js.html">Source: Events/GuildMemberUpdate.js</h1>
+        <h1 class="page-title" data-filename="Classes_ReactionCollector.js.html">Source: Classes/ReactionCollector.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source "><code>class GuildMemberUpdate {
-  /**
-   * This event is emitted whenever a guild member is updated
-   * @event Client#guildMemberUpdate
-   * @param {Member} OldMember The original member
-   * @param {Member} NewMember The new member (updated)
-   */
+            <pre id="source-code" class="prettyprint source "><code>const EventEmitter = require('events');
+
+/**
+ * This class is for the message collector for text channels
+ */
+
+class ReactionCollector extends EventEmitter {
+  constructor(channel, opt = {}, filter) {
+    super();
+
+    /**
+     * The textchannel the collector was called in
+     * @type {TextChannel}
+     */
+
+    this.channel = channel;
+
+    /**
+     * The client that is logged in
+     * @type {Client}
+     */
+
+    this.client = this.channel.client;
+
+    /**
+     * The options defined in the constructor
+     * @type {Object}
+     */
+
+    this.opt = opt;
+
+    /**
+     * The filter to pass onto the collector
+     * @type {Function}
+     */
+
+    this.filter = filter;
+
+    const date = new Date().getTime();
+    channel.client.once('messageReactionAdd', (reaction, user) => {
+      if (reaction.message.channel.id === this.channel.id &amp;&amp; date + opt.time >= new Date().getTime() &amp;&amp; filter(reaction, user)) {
+        this.emit('collect', reaction, user);
+      } else {
+        this.waitForMessage(date);
+      }
+    });
+
+    const interval = setInterval(() => {
+      if (((date + opt.time) - new Date().getTime()) &lt;= 0) {
+        this.emit('end');
+        clearInterval(interval);
+      }
+    }, 1);
+
+  }
+
+  waitForMessage(date) {
+    this.client.once('messageReactionAdd', (reaction, user) => {
+      if (reaction.message.channel.id === this.channel.id &amp;&amp; date + this.opt.time >= new Date().getTime() &amp;&amp; this.filter(message)) {
+        this.emit('collect', reaction, user);
+      } else {
+        this.waitForMessage(date);
+      }
+    });
+  }
+
 }
 
-module.exports = GuildMemberUpdate;</code></pre>
+module.exports = ReactionCollector;</code></pre>
         </article>
     </section>
 

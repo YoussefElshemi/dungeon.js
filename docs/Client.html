@@ -129,6 +129,8 @@
             
                 <li data-name="Client#readyTime"><a href="Client.html#readyTime">readyTime</a></li>
             
+                <li data-name="Client#sessionID"><a href="Client.html#sessionID">sessionID</a></li>
+            
                 <li data-name="Client#token"><a href="Client.html#token">token</a></li>
             
                 <li data-name="Client#user"><a href="Client.html#user">user</a></li>
@@ -928,6 +930,38 @@
             </ul>
         </li>
     
+        <li class="item" data-name="ReactionCollector">
+            <span class="title">
+                <a href="ReactionCollector.html">ReactionCollector</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="ReactionCollector#channel"><a href="ReactionCollector.html#channel">channel</a></li>
+            
+                <li data-name="ReactionCollector#client"><a href="ReactionCollector.html#client">client</a></li>
+            
+                <li data-name="ReactionCollector#filter"><a href="ReactionCollector.html#filter">filter</a></li>
+            
+                <li data-name="ReactionCollector#opt"><a href="ReactionCollector.html#opt">opt</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Role">
             <span class="title">
                 <a href="Role.html">Role</a>
@@ -1106,9 +1140,9 @@
             
                 <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
             
-                <li data-name="User#mention"><a href="User.html#mention">mention</a></li>
-            
                 <li data-name="User#send"><a href="User.html#send">send</a></li>
+            
+                <li data-name="User#toString"><a href="User.html#toString">toString</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1692,6 +1726,51 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="sessionID">sessionID<span class="type-signature type string">String</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Used for RESUMEing.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="token">token<span class="type-signature type string">String</span> </h4>
     </div>
     
@@ -1836,7 +1915,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line329">line 329</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line367">line 367</a>
         </div>
         
     </div>
@@ -2028,7 +2107,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line303">line 303</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line341">line 341</a>
         </div>
         
     </div>
@@ -2099,7 +2178,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line378">line 378</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line416">line 416</a>
         </div>
         
     </div>
@@ -2199,7 +2278,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line396">line 396</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line434">line 434</a>
         </div>
         
     </div>
@@ -2294,12 +2373,12 @@
     <div class="nameContainer">
         <h4 class="name" id="getUser">
             
-            getUser<span class="signature">(id)</span>
+            getUser<span class="signature">(user)</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line312">line 312</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line350">line 350</a>
         </div>
         
     </div>
@@ -2341,13 +2420,13 @@
 	
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>user</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="global.html#UserResolvable">UserResolvable</a></span>
 
 
             
@@ -2357,7 +2436,7 @@
             
             <td class="description last">
                 
-                The ID of the user to fetch;</td>
+                The user to fetch</td>
         </tr>
 	
 	
@@ -2415,7 +2494,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line359">line 359</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line397">line 397</a>
         </div>
         
     </div>
@@ -2560,7 +2639,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line343">line 343</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line381">line 381</a>
         </div>
         
     </div>
@@ -4250,7 +4329,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Apr 24 2018 18:50:34 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>
