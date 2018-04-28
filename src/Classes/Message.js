@@ -271,14 +271,14 @@ class Message {
     }
     return new Promise((res) => {
       if (user.id === this.client.user.id) {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
           setTimeout(res, 100, res(m));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
       } else {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/@me`, {}, this.client.token).then(m => {
-          setTimeout(res, 100, res(m));
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/${user.id}`, {}, this.client.token).then(m => {
+          setTimeout(res, 100, res(this));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
