@@ -233,14 +233,17 @@ class Message {
 
   /**
     * @description This method will make the client react to a message
-    * @param {Emoji} emoji The unicode emoji or the emoji id if it's custom
+    * @param {EmojiResolvable} emoji The unicode emoji or the emoji
     */
 
   react(emoji) {
     let reaction;
-    if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
-    if (typeof parseInt(emoji) === 'number') {
+    if (encodeURI(emoji) !== emoji) {
+      reaction = encodeURI(emoji);
+    } else if (typeof parseInt(emoji) === 'number') {
       reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    } else {
+      reaction = `${this.client.emojis.get(emoji.id).name}:${emoji.id}`;
     }
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
@@ -254,25 +257,28 @@ class Message {
   /**
    * @description Remove a certain reaction of a certain user
    * @param {User} user The user whos reaction you want to remove
-   * @param {String} emoji The emoji you want to remove
+   * @param {EmojiResolvable} emoji The emoji you want to remove
    */
 
   removeReaction(user, emoji) {
     let reaction;
-    if (encodeURI(emoji) !== emoji) reaction = encodeURI(emoji);
-    if (typeof parseInt(emoji) === 'number') {
+    if (encodeURI(emoji) !== emoji) {
+      reaction = encodeURI(emoji);
+    } else if (typeof parseInt(emoji) === 'number') {
       reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    } else {
+      reaction = `${this.client.emojis.get(emoji.id).name}:${emoji.id}`;
     }
     return new Promise((res) => {
       if (user.id === this.client.user.id) {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
           setTimeout(res, 100, res(m));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
       } else {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/@me`, {}, this.client.token).then(m => {
-          setTimeout(res, 100, res(m));
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/${user.id}`, {}, this.client.token).then(m => {
+          setTimeout(res, 100, res(this));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
@@ -297,13 +303,18 @@ class Message {
 
   /**
     * @description This method checks if a user is mentioned
-    * @param {String} id The id of the user to be checked
+    * @param {UserResolvable} user The user
     * @returns {Boolean} If the id given belonged to a mentioned user, it will return true, vice versa
     */
 
-  isMentioned(id) {
-    if (this.mentionedUsers.exists('id', id)) return true;
+  isMentioned(user) {
+    if (this.mentionedUsers.exists('id', user.id || user)) return true;
     else return false;
+  }
+
+  collectReaction(filter, opt = {}) {
+    const MessageCollector = require('./ReactionCollector');
+    return new MessageCollector(this.channel, opt, filter);
   }
 }
 
@@ -340,3 +351,9 @@ function cleanMessage(message) {
       return input;
     });
 }
+
+/**
+ * @typedef {Object} MessageResolvable
+ * @property {String} Snowflake This could be the ID of the message
+ * @property {Message} Message This could be an actual message class
+ */

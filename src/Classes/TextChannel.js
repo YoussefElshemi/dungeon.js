@@ -142,9 +142,8 @@ class TextChannel extends GuildChannel {
    */
 
   fetchMessages(opt) {
-    if (!opt) throw new this.client.MissingParameter('You are missing the parameter \'options\'!');
     return new Promise((res) => {
-      request.req('GET', `/channels/${this.id}/messages?around=${opt.around || 0}&before=${opt.before || 0}&after=${opt.after || 0}&limit=${opt.limit || 0}`, {}, this.client.token)
+      request.req('GET', `/channels/${this.id}/messages${opt && opt.around ? `?around=${opt && opt.around}`: ''}${opt && opt.before ? `?before=${opt && opt.before}`: ''}${opt && opt.after ? `?around=${opt && opt.around}`: ''}?limit=${opt && opt.limit || 50}`, {}, this.client.token)
         .then(m => {
           const Message = require('./Message');
           const msgs = new Collection();
@@ -227,20 +226,17 @@ class TextChannel extends GuildChannel {
    */
 
   bulkDelete(number) {
-    this.fetchMessages({limit: number}).then(c => {
-      const array = c.map(c => c.id);
-      return new Promise((res) => {
-        request.req('POST', `/channels/${this.id}/messages/bulk-delete?messages=${array}`, { messages: array }, this.client.token)
-          .then(d => {
-            const returned = new Collection();
-            const mesArray = c.map(c => c);
-            for (let i = 0; i < mesArray.length; i++) {
-              returned.set(mesArray[i].id, mesArray[i]);
-            }
-            setTimeout(res, 100, res(returned));
-          }).catch(error => {
-            if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
-          });
+    return new Promise((res) => {
+      this.fetchMessages({limit: number}).then(c => {
+        const array = c.map(c => c.id);
+        return new Promise((res) => {
+          request.req('POST', `/channels/${this.id}/messages/bulk-delete`, { messages: array }, this.client.token)
+            .then(d => {
+              setTimeout(res, 100, res(c));
+            }).catch(error => {
+              if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
+            });
+        });
       });
     });
   }
@@ -281,14 +277,14 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Will add a pinned message to the channel.
-   * @param {Object|Snowflake} id Use message object for id or directly input id for message to pin.
+   * @param {MessageResolvable} message The message to pin
    * @returns {Message} The messages that was pinned
    */
 
-  pinMessage(id) {
+  pinMessage(message) {
     return new Promise((res) => {
-      request.req('PUT', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(m => {
-        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+      request.req('PUT', `/channels/${this.id}/pins/${message.id || message}`, {}, this.client.token).then(m => {
+        request.req('GET', `/channels/${this.id}/messages/${message.id || message}`, {}, this.client.token).then(message => {
           const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));
@@ -299,20 +295,47 @@ class TextChannel extends GuildChannel {
 
   /**
    * @description Removes a pinned Message from the channel.
-   * @param {Object|Snowflake} id Use message object for id or directly input id for pinned message to be removed.
+   * @param {MessageResolvable} message The message to unpin
    * @returns {Message} The messages that was pinned
    */
 
-  removePinned(id) {
+  removePinned(message) {
     return new Promise((res) => {
-      request.req('DELETE', `/channels/${this.id}/pins/${id.id || id}`, {}, this.client.token).then(()=> {
-        request.req('GET', `/channels/${this.id}/messages/${id.id || id}`, {}, this.client.token).then(message => {
+      request.req('DELETE', `/channels/${this.id}/pins/${message.id || message}`, {}, this.client.token).then(()=> {
+        request.req('GET', `/channels/${this.id}/messages/${message.id || message}`, {}, this.client.token).then(message => {
           const Message = require('./Message');
           const msg = new Message(message, this.client);
           setTimeout(res, 100, res(msg));
         });
       });
     });
+  }
+
+  /**
+   * @description This will wait for a message to be send which matches a certain filter and time
+   * @param {Function} filter The filter to pass through which will make sure the message matches those requirements
+   * @returns {MessageCollector} The message collector class, with two events, MessageCollector.on('collect', message) and MessageCollector.on('end')
+   * @example 
+   * // Waiting for a message response sent by the author and with the content of 'Hello there!'
+   * message.channel.send('Type `Hello there!` in 10 seconds');
+   * const collector = message.channel.collectMessage(m => m.content === 'Hello there!' && m.author.id === message.author.id);
+   * collector.on('collect', m => {
+   *    // m is our message object
+   *    console.log(m.content); // Returns 'Hello there!'
+   * });
+   * 
+   * client.on('end', () => {
+   *    console.log('Unfortunately, the author didn't responde in time with the correct message!');
+   * });
+   */
+
+  collectMessage(filter, opt = {}) { 
+    const MessageCollector = require('./MessageCollector');
+    return new MessageCollector(this, opt, filter);
+  }
+
+  toString() {
+    return `<#${this.id}>`;
   }
 }
 

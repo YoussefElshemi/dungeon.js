@@ -57,7 +57,7 @@ class Webhook {
      * @type {User}
      */
 
-    this.user = new User(raw.user, client);
+    if (raw.user) this.user = new User(raw.user, client) || null;
 
     /**
      * The client that is logged in

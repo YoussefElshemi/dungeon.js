@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: Classes/AuditLog.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html"></a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="AuditLog">
+            <span class="title">
+                <a href="AuditLog.html">AuditLog</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="AuditLog#entries"><a href="AuditLog.html#entries">entries</a></li>
+            
+                <li data-name="AuditLog#users"><a href="AuditLog.html#users">users</a></li>
+            
+                <li data-name="AuditLog#webhooks"><a href="AuditLog.html#webhooks">webhooks</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="AuditLogEntry">
+            <span class="title">
+                <a href="AuditLogEntry.html">AuditLogEntry</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="AuditLogEntry#actionType"><a href="AuditLogEntry.html#actionType">actionType</a></li>
+            
+                <li data-name="AuditLogEntry#changes"><a href="AuditLogEntry.html#changes">changes</a></li>
+            
+                <li data-name="AuditLogEntry#client"><a href="AuditLogEntry.html#client">client</a></li>
+            
+                <li data-name="AuditLogEntry#id"><a href="AuditLogEntry.html#id">id</a></li>
+            
+                <li data-name="AuditLogEntry#options"><a href="AuditLogEntry.html#options">options</a></li>
+            
+                <li data-name="AuditLogEntry#reason"><a href="AuditLogEntry.html#reason">reason</a></li>
+            
+                <li data-name="AuditLogEntry#targetID"><a href="AuditLogEntry.html#targetID">targetID</a></li>
+            
+                <li data-name="AuditLogEntry#user"><a href="AuditLogEntry.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Client">
+            <span class="title">
+                <a href="Client.html">Client</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Client#channels"><a href="Client.html#channels">channels</a></li>
+            
+                <li data-name="Client#emojis"><a href="Client.html#emojis">emojis</a></li>
+            
+                <li data-name="Client#guilds"><a href="Client.html#guilds">guilds</a></li>
+            
+                <li data-name="Client#latency"><a href="Client.html#latency">latency</a></li>
+            
+                <li data-name="Client#messages"><a href="Client.html#messages">messages</a></li>
+            
+                <li data-name="Client#pings"><a href="Client.html#pings">pings</a></li>
+            
+                <li data-name="Client#presences"><a href="Client.html#presences">presences</a></li>
+            
+                <li data-name="Client#readyTime"><a href="Client.html#readyTime">readyTime</a></li>
+            
+                <li data-name="Client#sessionID"><a href="Client.html#sessionID">sessionID</a></li>
+            
+                <li data-name="Client#token"><a href="Client.html#token">token</a></li>
+            
+                <li data-name="Client#user"><a href="Client.html#user">user</a></li>
+            
+                <li data-name="Client#users"><a href="Client.html#users">users</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Client#createGuild"><a href="Client.html#createGuild">createGuild</a></li>
+            
+                <li data-name="Client#destroy"><a href="Client.html#destroy">destroy</a></li>
+            
+                <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
+            
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+            
+                <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+            
+                <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
+            
+                <li data-name="Client#setUsername"><a href="Client.html#setUsername">setUsername</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="client#channelAdded"><a href="Client.html#event:channelAdded">channelAdded</a></li>
+            
+                <li data-name="client#channelRemoved"><a href="Client.html#event:channelRemoved">channelRemoved</a></li>
+            
+                <li data-name="client#guildMemberUpdate"><a href="Client.html#event:guildMemberUpdate">guildMemberUpdate</a></li>
+            
+                <li data-name="client#message"><a href="Client.html#event:message">message</a></li>
+            
+                <li data-name="client#messageReactionAdd"><a href="Client.html#event:messageReactionAdd">messageReactionAdd</a></li>
+            
+                <li data-name="client#messageRemoved"><a href="Client.html#event:messageRemoved">messageRemoved</a></li>
+            
+                <li data-name="client#messageUpdated"><a href="Client.html#event:messageUpdated">messageUpdated</a></li>
+            
+                <li data-name="client#ping"><a href="Client.html#event:ping">ping</a></li>
+            
+                <li data-name="client#presenceUpdate"><a href="Client.html#event:presenceUpdate">presenceUpdate</a></li>
+            
+                <li data-name="client#raw"><a href="Client.html#event:raw">raw</a></li>
+            
+                <li data-name="client#ready"><a href="Client.html#event:ready">ready</a></li>
+            
+                <li data-name="client#startTyping"><a href="Client.html#event:startTyping">startTyping</a></li>
+            
+                <li data-name="client#voiceStateUpdate"><a href="Client.html#event:voiceStateUpdate">voiceStateUpdate</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Collection">
+            <span class="title">
+                <a href="Collection.html">Collection</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Collection#array"><a href="Collection.html#array">array</a></li>
+            
+                <li data-name="Collection#clone"><a href="Collection.html#clone">clone</a></li>
+            
+                <li data-name="Collection#concat"><a href="Collection.html#concat">concat</a></li>
+            
+                <li data-name="Collection#deleteAll"><a href="Collection.html#deleteAll">deleteAll</a></li>
+            
+                <li data-name="Collection#equals"><a href="Collection.html#equals">equals</a></li>
+            
+                <li data-name="Collection#every"><a href="Collection.html#every">every</a></li>
+            
+                <li data-name="Collection#exists"><a href="Collection.html#exists">exists</a></li>
+            
+                <li data-name="Collection#filter"><a href="Collection.html#filter">filter</a></li>
+            
+                <li data-name="Collection#filterArray"><a href="Collection.html#filterArray">filterArray</a></li>
+            
+                <li data-name="Collection#find"><a href="Collection.html#find">find</a></li>
+            
+                <li data-name="Collection#findAll"><a href="Collection.html#findAll">findAll</a></li>
+            
+                <li data-name="Collection#first"><a href="Collection.html#first">first</a></li>
+            
+                <li data-name="Collection#firstKey"><a href="Collection.html#firstKey">firstKey</a></li>
+            
+                <li data-name="Collection#keyArray"><a href="Collection.html#keyArray">keyArray</a></li>
+            
+                <li data-name="Collection#last"><a href="Collection.html#last">last</a></li>
+            
+                <li data-name="Collection#lastKey"><a href="Collection.html#lastKey">lastKey</a></li>
+            
+                <li data-name="Collection#map"><a href="Collection.html#map">map</a></li>
+            
+                <li data-name="Collection#random"><a href="Collection.html#random">random</a></li>
+            
+                <li data-name="Collection#randomKey"><a href="Collection.html#randomKey">randomKey</a></li>
+            
+                <li data-name="Collection#reduce"><a href="Collection.html#reduce">reduce</a></li>
+            
+                <li data-name="Collection#some"><a href="Collection.html#some">some</a></li>
+            
+                <li data-name="Collection#sort"><a href="Collection.html#sort">sort</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DMChannel">
+            <span class="title">
+                <a href="DMChannel.html">DMChannel</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="DMChannel#client"><a href="DMChannel.html#client">client</a></li>
+            
+                <li data-name="DMChannel#id"><a href="DMChannel.html#id">id</a></li>
+            
+                <li data-name="DMChannel#lastMessageID"><a href="DMChannel.html#lastMessageID">lastMessageID</a></li>
+            
+                <li data-name="DMChannel#recipients"><a href="DMChannel.html#recipients">recipients</a></li>
+            
+                <li data-name="DMChannel#type"><a href="DMChannel.html#type">type</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DMChannel#addRecipient"><a href="DMChannel.html#addRecipient">addRecipient</a></li>
+            
+                <li data-name="DMChannel#removeRecipient"><a href="DMChannel.html#removeRecipient">removeRecipient</a></li>
+            
+                <li data-name="DMChannel#send"><a href="DMChannel.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Embed">
+            <span class="title">
+                <a href="Embed.html">Embed</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Embed#author"><a href="Embed.html#author">author</a></li>
+            
+                <li data-name="Embed#color"><a href="Embed.html#color">color</a></li>
+            
+                <li data-name="Embed#description"><a href="Embed.html#description">description</a></li>
+            
+                <li data-name="Embed#fields"><a href="Embed.html#fields">fields</a></li>
+            
+                <li data-name="Embed#footer"><a href="Embed.html#footer">footer</a></li>
+            
+                <li data-name="Embed#image"><a href="Embed.html#image">image</a></li>
+            
+                <li data-name="Embed#thumbnail"><a href="Embed.html#thumbnail">thumbnail</a></li>
+            
+                <li data-name="Embed#timestamp"><a href="Embed.html#timestamp">timestamp</a></li>
+            
+                <li data-name="Embed#title"><a href="Embed.html#title">title</a></li>
+            
+                <li data-name="Embed#url"><a href="Embed.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Embed#addField"><a href="Embed.html#addField">addField</a></li>
+            
+                <li data-name="Embed#setAuthor"><a href="Embed.html#setAuthor">setAuthor</a></li>
+            
+                <li data-name="Embed#setColor"><a href="Embed.html#setColor">setColor</a></li>
+            
+                <li data-name="Embed#setDescription"><a href="Embed.html#setDescription">setDescription</a></li>
+            
+                <li data-name="Embed#setFooter"><a href="Embed.html#setFooter">setFooter</a></li>
+            
+                <li data-name="Embed#setImage"><a href="Embed.html#setImage">setImage</a></li>
+            
+                <li data-name="Embed#setThumbnail"><a href="Embed.html#setThumbnail">setThumbnail</a></li>
+            
+                <li data-name="Embed#setTimestamp"><a href="Embed.html#setTimestamp">setTimestamp</a></li>
+            
+                <li data-name="Embed#setTitle"><a href="Embed.html#setTitle">setTitle</a></li>
+            
+                <li data-name="Embed#setURL"><a href="Embed.html#setURL">setURL</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Emoji">
+            <span class="title">
+                <a href="Emoji.html">Emoji</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Emoji#animated"><a href="Emoji.html#animated">animated</a></li>
+            
+                <li data-name="Emoji#client"><a href="Emoji.html#client">client</a></li>
+            
+                <li data-name="Emoji#guild"><a href="Emoji.html#guild">guild</a></li>
+            
+                <li data-name="Emoji#id"><a href="Emoji.html#id">id</a></li>
+            
+                <li data-name="Emoji#managed"><a href="Emoji.html#managed">managed</a></li>
+            
+                <li data-name="Emoji#name"><a href="Emoji.html#name">name</a></li>
+            
+                <li data-name="Emoji#requireColons"><a href="Emoji.html#requireColons">requireColons</a></li>
+            
+                <li data-name="Emoji#roles"><a href="Emoji.html#roles">roles</a></li>
+            
+                <li data-name="Emoji#url"><a href="Emoji.html#url">url</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Emoji#delete"><a href="Emoji.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Guild">
+            <span class="title">
+                <a href="Guild.html">Guild</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Guild#afkChannel"><a href="Guild.html#afkChannel">afkChannel</a></li>
+            
+                <li data-name="Guild#afkTimeout"><a href="Guild.html#afkTimeout">afkTimeout</a></li>
+            
+                <li data-name="Guild#available"><a href="Guild.html#available">available</a></li>
+            
+                <li data-name="Guild#channels"><a href="Guild.html#channels">channels</a></li>
+            
+                <li data-name="Guild#client"><a href="Guild.html#client">client</a></li>
+            
+                <li data-name="Guild#createdAt"><a href="Guild.html#createdAt">createdAt</a></li>
+            
+                <li data-name="Guild#createdTimestamp"><a href="Guild.html#createdTimestamp">createdTimestamp</a></li>
+            
+                <li data-name="Guild#emojis"><a href="Guild.html#emojis">emojis</a></li>
+            
+                <li data-name="Guild#iconURL"><a href="Guild.html#iconURL">iconURL</a></li>
+            
+                <li data-name="Guild#id"><a href="Guild.html#id">id</a></li>
+            
+                <li data-name="Guild#large"><a href="Guild.html#large">large</a></li>
+            
+                <li data-name="Guild#members"><a href="Guild.html#members">Properties</a></li>
+            
+                <li data-name="Guild#memberSize"><a href="Guild.html#memberSize">memberSize</a></li>
+            
+                <li data-name="Guild#name"><a href="Guild.html#name">name</a></li>
+            
+                <li data-name="Guild#ownerID"><a href="Guild.html#ownerID">ownerID</a></li>
+            
+                <li data-name="Guild#presences"><a href="Guild.html#presences">presences</a></li>
+            
+                <li data-name="Guild#roles"><a href="Guild.html#roles">roles</a></li>
+            
+                <li data-name="Guild#systemChannel"><a href="Guild.html#systemChannel">systemChannel</a></li>
+            
+                <li data-name="Guild#verificationLevel"><a href="Guild.html#verificationLevel">verificationLevel</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Guild#addGuildMember"><a href="Guild.html#addGuildMember">addGuildMember</a></li>
+            
+                <li data-name="Guild#ban"><a href="Guild.html#ban">ban</a></li>
+            
+                <li data-name="Guild#createChannel"><a href="Guild.html#createChannel">createChannel</a></li>
+            
+                <li data-name="Guild#createEmoji"><a href="Guild.html#createEmoji">createEmoji</a></li>
+            
+                <li data-name="Guild#createIntegration"><a href="Guild.html#createIntegration">createIntegration</a></li>
+            
+                <li data-name="Guild#createRole"><a href="Guild.html#createRole">createRole</a></li>
+            
+                <li data-name="Guild#delete"><a href="Guild.html#delete">delete</a></li>
+            
+                <li data-name="Guild#deleteEmoji"><a href="Guild.html#deleteEmoji">deleteEmoji</a></li>
+            
+                <li data-name="Guild#deleteIntegration"><a href="Guild.html#deleteIntegration">deleteIntegration</a></li>
+            
+                <li data-name="Guild#edit"><a href="Guild.html#edit">edit</a></li>
+            
+                <li data-name="Guild#editEmbed"><a href="Guild.html#editEmbed">editEmbed</a></li>
+            
+                <li data-name="Guild#editIntegration"><a href="Guild.html#editIntegration">editIntegration</a></li>
+            
+                <li data-name="Guild#fetchAuditLogs"><a href="Guild.html#fetchAuditLogs">fetchAuditLogs</a></li>
+            
+                <li data-name="Guild#fetchBans"><a href="Guild.html#fetchBans">fetchBans</a></li>
+            
+                <li data-name="Guild#fetchEmbed"><a href="Guild.html#fetchEmbed">fetchEmbed</a></li>
+            
+                <li data-name="Guild#fetchEmoji"><a href="Guild.html#fetchEmoji">fetchEmoji</a></li>
+            
+                <li data-name="Guild#fetchEmojis"><a href="Guild.html#fetchEmojis">fetchEmojis</a></li>
+            
+                <li data-name="Guild#fetchIntegrations"><a href="Guild.html#fetchIntegrations">fetchIntegrations</a></li>
+            
+                <li data-name="Guild#fetchInvites"><a href="Guild.html#fetchInvites">fetchInvites</a></li>
+            
+                <li data-name="Guild#fetchMember"><a href="Guild.html#fetchMember">fetchMember</a></li>
+            
+                <li data-name="Guild#fetchMembers"><a href="Guild.html#fetchMembers">fetchMembers</a></li>
+            
+                <li data-name="Guild#fetchRoles"><a href="Guild.html#fetchRoles">fetchRoles</a></li>
+            
+                <li data-name="Guild#fetchVanityURL"><a href="Guild.html#fetchVanityURL">fetchVanityURL</a></li>
+            
+                <li data-name="Guild#fetchVoiceRegions"><a href="Guild.html#fetchVoiceRegions">fetchVoiceRegions</a></li>
+            
+                <li data-name="Guild#fetchWebhooks"><a href="Guild.html#fetchWebhooks">fetchWebhooks</a></li>
+            
+                <li data-name="Guild#kick"><a href="Guild.html#kick">kick</a></li>
+            
+                <li data-name="Guild#leave"><a href="Guild.html#leave">leave</a></li>
+            
+                <li data-name="Guild#pruneMembers"><a href="Guild.html#pruneMembers">pruneMembers</a></li>
+            
+                <li data-name="Guild#setAFKChannel"><a href="Guild.html#setAFKChannel">setAFKChannel</a></li>
+            
+                <li data-name="Guild#setAFKTimeout"><a href="Guild.html#setAFKTimeout">setAFKTimeout</a></li>
+            
+                <li data-name="Guild#setIcon"><a href="Guild.html#setIcon">setIcon</a></li>
+            
+                <li data-name="Guild#setName"><a href="Guild.html#setName">setName</a></li>
+            
+                <li data-name="Guild#setOwner"><a href="Guild.html#setOwner">setOwner</a></li>
+            
+                <li data-name="Guild#setRegion"><a href="Guild.html#setRegion">setRegion</a></li>
+            
+                <li data-name="Guild#setSplash"><a href="Guild.html#setSplash">setSplash</a></li>
+            
+                <li data-name="Guild#setSystemChannel"><a href="Guild.html#setSystemChannel">setSystemChannel</a></li>
+            
+                <li data-name="Guild#setVerificationLevel"><a href="Guild.html#setVerificationLevel">setVerificationLevel</a></li>
+            
+                <li data-name="Guild#syncIntegration"><a href="Guild.html#syncIntegration">syncIntegration</a></li>
+            
+                <li data-name="Guild#testPrune"><a href="Guild.html#testPrune">testPrune</a></li>
+            
+                <li data-name="Guild#unban"><a href="Guild.html#unban">unban</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="GuildChannel">
+            <span class="title">
+                <a href="GuildChannel.html">GuildChannel</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="GuildChannel#client"><a href="GuildChannel.html#client">client</a></li>
+            
+                <li data-name="GuildChannel#guild"><a href="GuildChannel.html#guild">guild</a></li>
+            
+                <li data-name="GuildChannel#id"><a href="GuildChannel.html#id">id</a></li>
+            
+                <li data-name="GuildChannel#name"><a href="GuildChannel.html#name">name</a></li>
+            
+                <li data-name="GuildChannel#permission_overwrites"><a href="GuildChannel.html#permission_overwrites">permission_overwrites</a></li>
+            
+                <li data-name="GuildChannel#position"><a href="GuildChannel.html#position">position</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="GuildChannel#delete"><a href="GuildChannel.html#delete">delete</a></li>
+            
+                <li data-name="GuildChannel#edit"><a href="GuildChannel.html#edit">edit</a></li>
+            
+                <li data-name="GuildChannel#editPermissions"><a href="GuildChannel.html#editPermissions">editPermissions</a></li>
+            
+                <li data-name="GuildChannel#setName"><a href="GuildChannel.html#setName">setName</a></li>
+            
+                <li data-name="GuildChannel#setParent"><a href="GuildChannel.html#setParent">setParent</a></li>
+            
+                <li data-name="GuildChannel#setPosition"><a href="GuildChannel.html#setPosition">setPosition</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Invite">
+            <span class="title">
+                <a href="Invite.html">Invite</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Invite#channel"><a href="Invite.html#channel">channel</a></li>
+            
+                <li data-name="Invite#client"><a href="Invite.html#client">client</a></li>
+            
+                <li data-name="Invite#code"><a href="Invite.html#code">code</a></li>
+            
+                <li data-name="Invite#createdAt"><a href="Invite.html#createdAt">createdAt</a></li>
+            
+                <li data-name="Invite#createdTimestamp"><a href="Invite.html#createdTimestamp">createdTimestamp</a></li>
+            
+                <li data-name="Invite#guild"><a href="Invite.html#guild">guild</a></li>
+            
+                <li data-name="Invite#inviter"><a href="Invite.html#inviter">inviter</a></li>
+            
+                <li data-name="Invite#maxUses"><a href="Invite.html#maxUses">maxUses</a></li>
+            
+                <li data-name="Invite#temporary"><a href="Invite.html#temporary">temporary</a></li>
+            
+                <li data-name="Invite#uses"><a href="Invite.html#uses">uses</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Invite#delete"><a href="Invite.html#delete">delete</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Member">
+            <span class="title">
+                <a href="Member.html">Member</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Member#client"><a href="Member.html#client">client</a></li>
+            
+                <li data-name="Member#deaf"><a href="Member.html#deaf">deaf</a></li>
+            
+                <li data-name="Member#guild"><a href="Member.html#guild">guild</a></li>
+            
+                <li data-name="Member#id"><a href="Member.html#id">id</a></li>
+            
+                <li data-name="Member#joinedAt"><a href="Member.html#joinedAt">joinedAt</a></li>
+            
+                <li data-name="Member#joinedTimestamp"><a href="Member.html#joinedTimestamp">joinedTimestamp</a></li>
+            
+                <li data-name="Member#mute"><a href="Member.html#mute">mute</a></li>
+            
+                <li data-name="Member#nickname"><a href="Member.html#nickname">nickname</a></li>
+            
+                <li data-name="Member#permissions"><a href="Member.html#permissions">permissions</a></li>
+            
+                <li data-name="Member#roles"><a href="Member.html#roles">roles</a></li>
+            
+                <li data-name="Member#user"><a href="Member.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Member#addRole"><a href="Member.html#addRole">addRole</a></li>
+            
+                <li data-name="Member#ban"><a href="Member.html#ban">ban</a></li>
+            
+                <li data-name="Member#hasPermission"><a href="Member.html#hasPermission">hasPermission</a></li>
+            
+                <li data-name="Member#hasPermissions"><a href="Member.html#hasPermissions">hasPermissions</a></li>
+            
+                <li data-name="Member#kick"><a href="Member.html#kick">kick</a></li>
+            
+                <li data-name="Member#moveCall"><a href="Member.html#moveCall">moveCall</a></li>
+            
+                <li data-name="Member#removeRole"><a href="Member.html#removeRole">removeRole</a></li>
+            
+                <li data-name="Member#send"><a href="Member.html#send">send</a></li>
+            
+                <li data-name="Member#setDeaf"><a href="Member.html#setDeaf">setDeaf</a></li>
+            
+                <li data-name="Member#setMute"><a href="Member.html#setMute">setMute</a></li>
+            
+                <li data-name="Member#setNickname"><a href="Member.html#setNickname">setNickname</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Message">
+            <span class="title">
+                <a href="Message.html">Message</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Message#author"><a href="Message.html#author">author</a></li>
+            
+                <li data-name="Message#channel"><a href="Message.html#channel">channel</a></li>
+            
+                <li data-name="Message#cleanContent"><a href="Message.html#cleanContent">cleanContent</a></li>
+            
+                <li data-name="Message#client"><a href="Message.html#client">client</a></li>
+            
+                <li data-name="Message#content"><a href="Message.html#content">content</a></li>
+            
+                <li data-name="Message#createdAt"><a href="Message.html#createdAt">createdAt</a></li>
+            
+                <li data-name="Message#createdTimestamp"><a href="Message.html#createdTimestamp">createdTimestamp</a></li>
+            
+                <li data-name="Message#guild"><a href="Message.html#guild">guild</a></li>
+            
+                <li data-name="Message#id"><a href="Message.html#id">id</a></li>
+            
+                <li data-name="Message#member"><a href="Message.html#member">member</a></li>
+            
+                <li data-name="Message#mentionedMembers"><a href="Message.html#mentionedMembers">mentionedMembers</a></li>
+            
+                <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
+            
+                <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Message#clearReactions"><a href="Message.html#clearReactions">clearReactions</a></li>
+            
+                <li data-name="Message#delete"><a href="Message.html#delete">delete</a></li>
+            
+                <li data-name="Message#edit"><a href="Message.html#edit">edit</a></li>
+            
+                <li data-name="Message#isMentioned"><a href="Message.html#isMentioned">isMentioned</a></li>
+            
+                <li data-name="Message#pin"><a href="Message.html#pin">pin</a></li>
+            
+                <li data-name="Message#react"><a href="Message.html#react">react</a></li>
+            
+                <li data-name="Message#removeReaction"><a href="Message.html#removeReaction">removeReaction</a></li>
+            
+                <li data-name="Message#reply"><a href="Message.html#reply">reply</a></li>
+            
+                <li data-name="Message#unpin"><a href="Message.html#unpin">unpin</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="MessageCollector">
+            <span class="title">
+                <a href="MessageCollector.html">MessageCollector</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="MessageCollector#channel"><a href="MessageCollector.html#channel">channel</a></li>
+            
+                <li data-name="MessageCollector#client"><a href="MessageCollector.html#client">client</a></li>
+            
+                <li data-name="MessageCollector#filter"><a href="MessageCollector.html#filter">filter</a></li>
+            
+                <li data-name="MessageCollector#opt"><a href="MessageCollector.html#opt">opt</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="MessageCollector#event:collect"><a href="MessageCollector.html#event:collect">collect</a></li>
+            
+                <li data-name="MessageCollector#event:End"><a href="MessageCollector.html#event:End">End</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="MessageReaction">
+            <span class="title">
+                <a href="MessageReaction.html">MessageReaction</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="MessageReaction#emoji"><a href="MessageReaction.html#emoji">emoji</a></li>
+            
+                <li data-name="MessageReaction#message"><a href="MessageReaction.html#message">message</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Permissions">
+            <span class="title">
+                <a href="Permissions.html">Permissions</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Permissions#permissions"><a href="Permissions.html#permissions">permissions</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Permissions#toArray"><a href="Permissions.html#toArray">toArray</a></li>
+            
+                <li data-name="Permissions#toBitField"><a href="Permissions.html#toBitField">toBitField</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Presence">
+            <span class="title">
+                <a href="Presence.html">Presence</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Presence#client"><a href="Presence.html#client">client</a></li>
+            
+                <li data-name="Presence#game"><a href="Presence.html#game">game</a></li>
+            
+                <li data-name="Presence#status"><a href="Presence.html#status">status</a></li>
+            
+                <li data-name="Presence#user"><a href="Presence.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="ReactionCollector">
+            <span class="title">
+                <a href="ReactionCollector.html">ReactionCollector</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="ReactionCollector#channel"><a href="ReactionCollector.html#channel">channel</a></li>
+            
+                <li data-name="ReactionCollector#client"><a href="ReactionCollector.html#client">client</a></li>
+            
+                <li data-name="ReactionCollector#filter"><a href="ReactionCollector.html#filter">filter</a></li>
+            
+                <li data-name="ReactionCollector#opt"><a href="ReactionCollector.html#opt">opt</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Role">
+            <span class="title">
+                <a href="Role.html">Role</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Role#client"><a href="Role.html#client">client</a></li>
+            
+                <li data-name="Role#color"><a href="Role.html#color">color</a></li>
+            
+                <li data-name="Role#guild"><a href="Role.html#guild">guild</a></li>
+            
+                <li data-name="Role#hoisted"><a href="Role.html#hoisted">hoisted</a></li>
+            
+                <li data-name="Role#id"><a href="Role.html#id">id</a></li>
+            
+                <li data-name="Role#managed"><a href="Role.html#managed">managed</a></li>
+            
+                <li data-name="Role#mentionable"><a href="Role.html#mentionable">mentionable</a></li>
+            
+                <li data-name="Role#name"><a href="Role.html#name">name</a></li>
+            
+                <li data-name="Role#permissions"><a href="Role.html#permissions">permissions</a></li>
+            
+                <li data-name="Role#position"><a href="Role.html#position">position</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Role#delete"><a href="Role.html#delete">delete</a></li>
+            
+                <li data-name="Role#setPosition"><a href="Role.html#setPosition">setPosition</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TextChannel">
+            <span class="title">
+                <a href="TextChannel.html">TextChannel</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="TextChannel#client"><a href="TextChannel.html#client">client</a></li>
+            
+                <li data-name="TextChannel#guild"><a href="TextChannel.html#guild">guild</a></li>
+            
+                <li data-name="TextChannel#id"><a href="TextChannel.html#id">id</a></li>
+            
+                <li data-name="TextChannel#lastMessageID"><a href="TextChannel.html#lastMessageID">lastMessageID</a></li>
+            
+                <li data-name="TextChannel#name"><a href="TextChannel.html#name">name</a></li>
+            
+                <li data-name="TextChannel#nsfw"><a href="TextChannel.html#nsfw">nsfw</a></li>
+            
+                <li data-name="TextChannel#permission_overwrites"><a href="TextChannel.html#permission_overwrites">permission_overwrites</a></li>
+            
+                <li data-name="TextChannel#position"><a href="TextChannel.html#position">position</a></li>
+            
+                <li data-name="TextChannel#topic"><a href="TextChannel.html#topic">topic</a></li>
+            
+                <li data-name="TextChannel#type"><a href="TextChannel.html#type">type</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TextChannel#bulkDelete"><a href="TextChannel.html#bulkDelete">bulkDelete</a></li>
+            
+                <li data-name="TextChannel#collectMessage"><a href="TextChannel.html#collectMessage">collectMessage</a></li>
+            
+                <li data-name="TextChannel#createInvite"><a href="TextChannel.html#createInvite">createInvite</a></li>
+            
+                <li data-name="TextChannel#delete"><a href="TextChannel.html#delete">delete</a></li>
+            
+                <li data-name="TextChannel#edit"><a href="TextChannel.html#edit">edit</a></li>
+            
+                <li data-name="TextChannel#editPermissions"><a href="TextChannel.html#editPermissions">editPermissions</a></li>
+            
+                <li data-name="TextChannel#fetchMessage"><a href="TextChannel.html#fetchMessage">fetchMessage</a></li>
+            
+                <li data-name="TextChannel#fetchMessages"><a href="TextChannel.html#fetchMessages">fetchMessages</a></li>
+            
+                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
+            
+                <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
+            
+                <li data-name="TextChannel#pinMessage"><a href="TextChannel.html#pinMessage">pinMessage</a></li>
+            
+                <li data-name="TextChannel#removePinned"><a href="TextChannel.html#removePinned">removePinned</a></li>
+            
+                <li data-name="TextChannel#send"><a href="TextChannel.html#send">send</a></li>
+            
+                <li data-name="TextChannel#setName"><a href="TextChannel.html#setName">setName</a></li>
+            
+                <li data-name="TextChannel#setNSFW"><a href="TextChannel.html#setNSFW">setNSFW</a></li>
+            
+                <li data-name="TextChannel#setParent"><a href="TextChannel.html#setParent">setParent</a></li>
+            
+                <li data-name="TextChannel#setPosition"><a href="TextChannel.html#setPosition">setPosition</a></li>
+            
+                <li data-name="TextChannel#setTopic"><a href="TextChannel.html#setTopic">setTopic</a></li>
+            
+                <li data-name="TextChannel#startTyping"><a href="TextChannel.html#startTyping">startTyping</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="User">
+            <span class="title">
+                <a href="User.html">User</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="User#avatar"><a href="User.html#avatar">avatar</a></li>
+            
+                <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
+            
+                <li data-name="User#bot"><a href="User.html#bot">bot</a></li>
+            
+                <li data-name="User#client"><a href="User.html#client">client</a></li>
+            
+                <li data-name="User#createdAt"><a href="User.html#createdAt">createdAt</a></li>
+            
+                <li data-name="User#createdTimestamp"><a href="User.html#createdTimestamp">createdTimestamp</a></li>
+            
+                <li data-name="User#discriminator"><a href="User.html#discriminator">discriminator</a></li>
+            
+                <li data-name="User#id"><a href="User.html#id">id</a></li>
+            
+                <li data-name="User#presence"><a href="User.html#presence">presence</a></li>
+            
+                <li data-name="User#tag"><a href="User.html#tag">tag</a></li>
+            
+                <li data-name="User#username"><a href="User.html#username">username</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
+            
+                <li data-name="User#send"><a href="User.html#send">send</a></li>
+            
+                <li data-name="User#toString"><a href="User.html#toString">toString</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="VoiceChannel">
+            <span class="title">
+                <a href="VoiceChannel.html">VoiceChannel</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="VoiceChannel#bitrate"><a href="VoiceChannel.html#bitrate">bitrate</a></li>
+            
+                <li data-name="VoiceChannel#client"><a href="VoiceChannel.html#client">client</a></li>
+            
+                <li data-name="VoiceChannel#guild"><a href="VoiceChannel.html#guild">guild</a></li>
+            
+                <li data-name="VoiceChannel#id"><a href="VoiceChannel.html#id">id</a></li>
+            
+                <li data-name="VoiceChannel#name"><a href="VoiceChannel.html#name">name</a></li>
+            
+                <li data-name="VoiceChannel#permission_overwrites"><a href="VoiceChannel.html#permission_overwrites">permission_overwrites</a></li>
+            
+                <li data-name="VoiceChannel#position"><a href="VoiceChannel.html#position">position</a></li>
+            
+                <li data-name="VoiceChannel#type"><a href="VoiceChannel.html#type">type</a></li>
+            
+                <li data-name="VoiceChannel#userLimit"><a href="VoiceChannel.html#userLimit">userLimit</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="VoiceChannel#delete"><a href="VoiceChannel.html#delete">delete</a></li>
+            
+                <li data-name="VoiceChannel#edit"><a href="VoiceChannel.html#edit">edit</a></li>
+            
+                <li data-name="VoiceChannel#editPermissions"><a href="VoiceChannel.html#editPermissions">editPermissions</a></li>
+            
+                <li data-name="VoiceChannel#setBitrate"><a href="VoiceChannel.html#setBitrate">setBitrate</a></li>
+            
+                <li data-name="VoiceChannel#setName"><a href="VoiceChannel.html#setName">setName</a></li>
+            
+                <li data-name="VoiceChannel#setParent"><a href="VoiceChannel.html#setParent">setParent</a></li>
+            
+                <li data-name="VoiceChannel#setPosition"><a href="VoiceChannel.html#setPosition">setPosition</a></li>
+            
+                <li data-name="VoiceChannel#setUserLimit"><a href="VoiceChannel.html#setUserLimit">setUserLimit</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Webhook">
+            <span class="title">
+                <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="Webhook#avatar"><a href="Webhook.html#avatar">avatar</a></li>
+            
+                <li data-name="Webhook#channel"><a href="Webhook.html#channel">channel</a></li>
+            
+                <li data-name="Webhook#client"><a href="Webhook.html#client">client</a></li>
+            
+                <li data-name="Webhook#guild"><a href="Webhook.html#guild">guild</a></li>
+            
+                <li data-name="Webhook#id"><a href="Webhook.html#id">id</a></li>
+            
+                <li data-name="Webhook#name"><a href="Webhook.html#name">name</a></li>
+            
+                <li data-name="Webhook#token"><a href="Webhook.html#token">token</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="Classes_AuditLog.js.html">Source: Classes/AuditLog.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre id="source-code" class="prettyprint source "><code>const Webhook = require('./Webhook');
+const User = require('./User');
+const AuditLogEntry = require('./AuditLogEntry');
+const Collection = require('./Collection');
+
+/**
+ * This class repesents a guild's audit log
+ */
+
+class AuditLog {
+  constructor(raw, client) {
+
+    /**
+     * The webhooks of the audit log
+     * @type {Collection}
+     */
+    
+    this.webhooks = new Collection();
+
+    for (let i = 0; i &lt; raw.webhooks.length; i++) {
+      this.webhooks.set(raw.webhooks[i].id, new Webhook(raw.webhooks[i], client));
+    }
+
+    /**
+     * The users of the audit log
+     * @type {Collection}
+     */
+
+    this.users = new Collection();
+
+    for (let i = 0; i &lt; raw.users.length; i++) {
+      this.users.set(raw.users[i].id, new User(raw.users[i], client));
+    }
+
+
+    /**
+     * The entries of the audit log
+     * @type {Collection}
+     */
+
+    this.entries = new Collection();
+
+    for (let i = 0; i &lt; raw.audit_log_entries.length; i++) {
+      this.entries.set(raw.audit_log_entries[i].id, new AuditLogEntry(raw.audit_log_entries[i], client));
+    }  
+
+  }
+}
+
+module.exports = AuditLog;</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/jaguar.js"></script>
+</body>
+</html>

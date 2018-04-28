@@ -102,16 +102,13 @@ class GuildChannel {
 
   /**
    * @description Sets the parent of the channel
-   * @param {String} setParent The parent channel or parent channel id
+   * @param {GuildChannelResolvable} newparent The parent channel
    * @returns {Promise<GuildChannel>} Returns a promise and a Guild Channel
    */
 
   setParent(newparent) {
-    let parent;
-    if (typeof newparent === 'string') parent = newparent;
-    if (typeof newparent === 'object') parent = newparent.id;
     return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
+      request.req('PATCH', `/channels/${newparent.id || newparent}`, {
         parent_id: parent
       }, this.client.token).then(c => {
         const GuildChannel = require('./GuildChannel');
@@ -245,3 +242,9 @@ class GuildChannel {
 
 
 module.exports = GuildChannel;
+
+/**
+ * @typedef {Object} GuildChannelResolvable
+ * @property {String} Snowflake This could be the ID of the channel
+ * @property {GuildChannel} User This could be an actual guildchannel class
+ */

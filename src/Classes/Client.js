@@ -10,10 +10,10 @@ const TextChannel = require('../Classes/TextChannel');
 const VoiceChannel = require('../Classes/VoiceChannel');
 const DMChannel = require('../Classes/DMChannel');
 const User = require('../Classes/User');
-const https = require('https');
 const Presence = require('./Presence');
 const Member = require('./Member');
 const CategoryChannel = require('./CategoryChannel');
+const MessageReaction = require('./MessageReaction');
 
 /**
  * This Class is the base client for this API
@@ -22,7 +22,7 @@ const CategoryChannel = require('./CategoryChannel');
 class Client extends EventEmitter {
   constructor(token) {
     super();
-    
+
     /**
      * @type {String}
      */
@@ -32,8 +32,6 @@ class Client extends EventEmitter {
     if (this.length === 0) throw new Error('The first Parameter must be a token!');
 
     if (typeof this.token !== 'string') throw new Error('Token must be a string!');
-
-    this._events = {};
 
     this.amOfGuilds = 0;
 
@@ -48,19 +46,43 @@ class Client extends EventEmitter {
 
     const wss = new WebSocket('wss://gateway.discord.gg/?v=6&encoding=json');
 
+    setInterval(() => {});
+
     wss.on('message', m => {
       const message = JSON.parse(m);
-  
       if (message.op == 10) {
         this.heartbeat_int = message.d.heartbeat_interval;
-  
+        this.sessionID = message.d.session_id;
+        this.receivedAck;
+        this.awaitingconnection = false;
+        this.lastSeq = 0;
+        const _this = this;
         setInterval(function beginHeartbeat() {
           wss.send(JSON.stringify({
             op: 1,
             d: null
           }));
-        }, this.heartbeat_int);
-  
+
+          if (_this.receivedAck) {
+            _this.receivedAck = false;
+
+            if (_this.awaitingconnection) {
+              wss.send(JSON.stringify({
+                op: 6,
+                d: {
+                  token: _this.token,
+                  session_id: _this.sessionID,
+                  seq: _this.lastSeq
+                }
+              }));
+
+              _this.awaitingconnection = false;
+            }
+          } else {
+            _this.awaitingconnection = true;
+          }
+        }, _this.heartbeat_int);
+
         wss.send(JSON.stringify({
           op: 2,
           d: {
@@ -77,6 +99,11 @@ class Client extends EventEmitter {
           }
         }));
       }
+      this.lastSeq = m.s;
+
+      if (message.op == 11) {
+        this.receivedACK = true;
+      }
       if (message.op == 1) {
         wss.send(JSON.stringify({
           op: 1,
@@ -86,9 +113,16 @@ class Client extends EventEmitter {
       if (message.op == 0) {
         const t = message.t;
         this.emit('raw', message);
-  
+
         if (t == 'READY') {
           this.amOfGuilds = message.d.guilds.length;
+
+          /**
+            * Used for RESUMEing.
+            * @type {String}
+            */
+
+          this.sessionID = message.d.session_id;
 
           /**
            * A collection of all the users the client shares guilds with
@@ -106,7 +140,7 @@ class Client extends EventEmitter {
 
           /**
            * A collection of all the channels the client shares guilds with
-           * @type {Collection} 
+           * @type {Collection}
            */
 
           this.channels = new Collection();
@@ -124,7 +158,7 @@ class Client extends EventEmitter {
            */
 
           this.presences = new Collection();
-          
+
           this.guild_methods = require('../Methods/Guilds');
           this.permission_methods = require('../Methods/Permissions');
           this.role_methods = require('../Methods/Roles');
@@ -132,7 +166,7 @@ class Client extends EventEmitter {
           this.cat_methods = require('../Methods/Category');
           this.invite_methods = require('../Methods/Invites');
           this.ban_methods = require('../Methods/Bans');
-  
+
           /**
            * The date when the client logged in
            * @type {Date}
@@ -141,12 +175,12 @@ class Client extends EventEmitter {
           this.readyTime = new Date();
 
           /**
-           * The pings of the client 
+           * The pings of the client
            * @type {Array}
            */
 
           this.pings = [];
-          
+
           /**
            * The latency of the client, an average of pings
            * @type {Number}
@@ -167,38 +201,36 @@ class Client extends EventEmitter {
            */
 
           this.emojis = new Collection();
-  
+
           this.ping = function ping() {
             const t1 = new Date();
             return new Promise((res, rej) => {
-              https.get('https://discordapp.com/api/v6/ping', r => { // not a real endpoint, but works for 404 error response.
-                r.on('data' , () => {
-                  const t2 = new Date();
-                  this.pings.splice(0, 0, t2 - t1);
-                  if (this.pings.length == 11) this.pings.pop();
-                  this.latency = Math.round((this.pings.reduce((c, p) => c+p, 0)) / this.pings.length);                
-                  this.emit('ping', res);
-                });
+              snekfetch.get('https://discordapp.com/api/v6/ping').catch(c => {
+                const t2 = new Date();
+                this.pings.splice(0, 0, t2 - t1);
+                if (this.pings.length == 11) this.pings.pop();
+                this.latency = Math.round((this.pings.reduce((c, p) => c + p, 0)));
+                this.emit('ping');
               });
             });
           };
           this.ping();
-  
+
           setInterval(() => {
             this.uptime = new Date() - this.readyTime;
           }, 1);
-  
+
           setInterval(() => {
             this.ping();
           }, 60000);
         }
-  
+
         if (t == 'GUILD_CREATE') {
           let chn;
           const guildData = this.guild_methods().fromRaw(message.d);
           const guild = new Guild(guildData, this);
           this.guilds.set(guild.id, guild);
-  
+
           for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
             const item = guild.channels.get(Array.from(guild.channels.keys())[i]);
             if (item.type == 0) {
@@ -220,7 +252,7 @@ class Client extends EventEmitter {
             const user = new User(c.user, this);
             this.users.set(user.id, user);
           });
-  
+
           if (Array.from(this.guilds.keys()).length == this.amOfGuilds) {
             this.emit('ready');
           }
@@ -228,7 +260,7 @@ class Client extends EventEmitter {
             this.emit('guildCreate', guild);
           }
         }
-  
+
         if (t == 'CHANNEL_CREATE') {
           let chn;
           if (message.d.type === 1) chn = new DMChannel(message.d, this);
@@ -239,7 +271,7 @@ class Client extends EventEmitter {
           this.channels.set(chn.id, chn);
           this.emit('channelAdded', chn);
         }
-  
+
         if (t == 'CHANNEL_DELETE') {
           let chn;
           if (message.d.type === 1) chn = new DMChannel(message.d, this);
@@ -249,15 +281,15 @@ class Client extends EventEmitter {
           this.channels.delete(chn.id);
           this.emit('channelRemoved', chn);
         }
-  
+
         if (t == 'MESSAGE_CREATE') {
           const msg = new Message(message.d, this);
           this.messages.set(msg.id, msg);
-          this.emit('message', msg);      
+          this.emit('message', msg);
         }
-  
+
         if (t == 'MESSAGE_REACTION_ADD') {
-          const reaction = message.d.emoji;
+          const reaction = new MessageReaction(message.d, this);
           const user = this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
           this.emit('messageReactionAdd', reaction, user);
         }
@@ -276,7 +308,7 @@ class Client extends EventEmitter {
           const newmsg = new Message(message.d, this);
           const oldmsg = this.messages.get(message.d.id) || null;
           this.messages.set(newmsg.id, newmsg);
-          this.emit('messageUpdated', oldmsg, newmsg);          
+          this.emit('messageUpdated', oldmsg, newmsg);
         }
 
         if (t == 'TYPING_START') {
@@ -312,16 +344,16 @@ class Client extends EventEmitter {
 
   /**
    * @description If a user isn't cached, this will fetch the user object
-   * @param {String} id The ID of the user to fetch;
+   * @param {UserResolvable} user The user to fetch
    */
 
-  getUser(id) {
+  getUser(user) {
     return new Promise((res) => {
-      request.req('GET', `/users/${id}`, {}, this.token).then(m => {
+      request.req('GET', `/users/${user.id ||	user}`, {}, this.token).then(m => {
         setTimeout(res, 100, res(new User(m, this)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
-      });        
+      });
     });
   }
 
@@ -329,7 +361,7 @@ class Client extends EventEmitter {
    * @description This method will create a guild and the client will own it
    * @param {String} name The name of the guild
    * @param {Object} [obj = {}] The options for the guild {@link GuildOptions}
-   * @returns {Promise<Guild>} The guild created 
+   * @returns {Promise<Guild>} The guild created
    */
 
   createGuild(name, obj = {}) {
@@ -375,7 +407,7 @@ class Client extends EventEmitter {
       });
     });
   }
-  
+
   /**
    * @description Fetches all the client's dms
    * @returns {Promise<Collection>} A collection of all of the dms mapped by their ids

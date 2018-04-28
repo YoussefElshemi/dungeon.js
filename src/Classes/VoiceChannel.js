@@ -30,7 +30,7 @@ class VoiceChannel extends GuildChannel {
      * @type {Number}
      */
 
-    this.userLimit = raw.userLimit;
+    this.userLimit = raw.user_limit;
 
   }
 

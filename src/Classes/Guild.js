@@ -8,6 +8,7 @@ const Role = require('./Role');
 const Member = require('./Member');
 const User = require('./User');
 const Webhook = require('./Webhook');
+const AuditLog = require('./AuditLog');
 
 /**
  * This class represents a guild object
@@ -223,18 +224,18 @@ class Guild {
 
   /**
    * @description This method bans a member by id
-   * @param {String} id The id of the user to ban
+   * @param {UserResolvable} user The user to ban
    * @param {Object} [opt = {}] The options: days and reason
    * @returns {Promise<User>} The user object of the member that was banned
    */
 
-  ban(id, opt = {}) {
+  ban(user, opt = {}) {
     return new Promise((res, rej) => {
-      request.req('PUT', `/guilds/${this.id}/bans/${id}`, {
-        'delete-message-days': (opt && opt.days) ||	0,
-        reason: (opt && opt.reason) ||	''
+      request.req('PUT', `/guilds/${this.id}/bans/${user.id || user}`, {
+        'delete-message-days': (opt && opt.days) ||	null,
+        reason: (opt && opt.reason) ||	null
       }, this.client.token).then(c => {
-        request.req('GET', `/users/${id}`, {}, this.client.token).then(c => {
+        request.req('GET', `/users/${user.id || user}`, {}, this.client.token).then(c => {
           setTimeout(res, 100, res(new User(c, this.client)));
         });
       });
@@ -243,13 +244,14 @@ class Guild {
 
   /**
    * @description This method unbans a member by id
+   * @param {UserResolvable} user The user to ban
    * @returns {Promise<User>} The user object of the member that was unbanned
    */
 
-  unban(id) {
+  unban(user) {
     return new Promise((res, rej) => {
-      request.req('DELETE', `/guilds/${this.id}/bans/${id}`, {}, this.client.token).then(c => {
-        request.req('GET', `/users/${id}`, {}, this.client.token).then(c => {
+      request.req('DELETE', `/guilds/${this.id}/bans/${user.id ||	user}`, {}, this.client.token).then(c => {
+        request.req('GET', `/users/${user.id ||	user}`, {}, this.client.token).then(c => {
           setTimeout(res, 100, res(new User(c, this.client)));
         });
       });
@@ -258,18 +260,18 @@ class Guild {
 
   /**
    * @description This method will kick a member from a guild
-   * @param {String} id The id of the member to kick
+   * @param {UserResolvable} user The user to kick
    * @param {String} [reason = ''] The options to pass: reason, a string
    * @returns {Promise<Member>} Returns a promise and a GuildMember object
    */
 
-  kick(id, reason) {
+  kick(user, reason) {
     return new Promise((res) => {
-      request.req('DELETE', `/guilds/${this.id}/members/${id}`, {
+      request.req('DELETE', `/guilds/${this.id}/members/${user.id || user}`, {
         reason: reason || ''
       }, this.client.token)
         .then(m => {
-          request.req('GET', `/users/${id}`, {}, this.client.token).then(c => {
+          request.req('GET', `/users/${user.id ||	user}`, {}, this.client.token).then(c => {
             setTimeout(res, 100, res(new User(c, this.client)));
           });        
         });
@@ -315,13 +317,13 @@ class Guild {
 
   /**
    * @description Fetches the member by id and caches them
-   * @param {String} id The ID of the user to fetch
+   * @param {UserResolvable} user The user to fetch the member of
    * @returns {Promise<Member>} A collection of all of the  members
    */
 
-  fetchMember(id) {
+  fetchMember(user) {
     return new Promise((res, rej) => {
-      request.req('GET', `/guilds/${this.id}/members/${id}`, {}, this.client.token).then(member => {
+      request.req('GET', `/guilds/${this.id}/members/${id.id ||	id}`, {}, this.client.token).then(member => {
         setTimeout(res, 100, res(new Member(member, this, this.client)));
         this.members.set(member.user.id, new Member(member, this, this.client));        
       }).catch(rej);
@@ -412,7 +414,7 @@ class Guild {
         before: opt.before || null,
         limit: opt.limit || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(c));
+        setTimeout(res, 100, res(new AuditLog(c, this.client)));
       }).catch(rej);
     });
   }

@@ -93,6 +93,15 @@ class Emoji {
     });
   }
 
+  toString() {
+    return this.animated ? `<:a:${this.name}:${this.id}>`: `<:${this.name}:${this.id}>`;
+  }
 }
 
 module.exports = Emoji;
+
+/**
+ * @typedef {Object} EmojiResolvable
+ * @property {String} Snowflake This could be the ID of the emoji
+ * @property {Emoji} Emoji This could be an actual emoji class
+ */

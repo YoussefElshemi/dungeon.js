@@ -170,10 +170,16 @@ class User {
    * @returns {String} The mention as a string: <@id>
    */
 
-  mention() {
+  toString() {
     return `<@${this.id}>`;
   }
 
 }
 
 module.exports = User;
+
+/**
+ * @typedef {Object} UserResolvable
+ * @property {String} Snowflake This could be the ID of the user
+ * @property {User} User This could be an actual user class
+ */

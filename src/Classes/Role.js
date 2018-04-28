@@ -28,7 +28,7 @@ class Role {
      * @type {Array}
      */
 
-    this.permissions = new Permissions().toArray(raw.permissions);
+    this.permissions = typeof raw.permissions === 'number' ? new Permissions().toArray(raw.permissions) : raw.permissions;
 
     /**
      * If the role is managed or not
@@ -116,6 +116,16 @@ class Role {
     });
   }
 
+  toString() {
+    return `<@&${this.id}>`;
+  }
+
 }
 
 module.exports = Role;
+
+/**
+ * @typedef {Object} RoleResolvable
+ * @property {String} Snowflake This could be the ID of the role
+ * @property {Role} Role This could be an actual role class
+ */

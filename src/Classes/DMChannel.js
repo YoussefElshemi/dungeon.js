@@ -109,18 +109,14 @@ class DMChannel {
 
   /**
    * @description This method adds a user to a group DM
-   * @param {User} user The user to add to a DM, can be a user object or id
+   * @param {UserResolvable} user The user to add to a DM
    * @param {String} accessToken Access token of a user that has granted your app the gdm.join scope
    * @param {String} nick The nickname of the user being added
    * @returns {Promise<DMChannel>} Returns a promise and a DM Channel 
    */
 
   addRecipient(user, accessToken, nick) {
-    let userid;
-    if (typeof user === 'string') userid = user;
-    if (typeof user === 'object') userid = user.id;
-
-    request.req('PUT', `/channels/${this.id}/recipients/${userid}`, {
+    request.req('PUT', `/channels/${this.id}/recipients/${user.id || user}`, {
       access_token: accessToken || null,
       nick: nick || null
     }, this.client.token).then(c => {
@@ -132,20 +128,20 @@ class DMChannel {
 
   /**
    * @description This method removes a user to a group DM
-   * @param {User} user The user to remove from the DM, can be a user object or id
+   * @param {UserResolvable} user The user to remove from the DM, can be a user object or id
    * @returns {Promise<DMChannel>} Returns a promise and a DM Channel 
    */
 
   removeRecipient(user) {
-    let userid;
-    if (typeof user === 'string') userid = user;
-    if (typeof user === 'object') userid = user.id;
-
-    request.req('DELETE', `/channels/${this.id}/recipients/${userid}`, {}, this.client.token).then(c => {
+    request.req('DELETE', `/channels/${this.id}/recipients/${user.id ||	user}`, {}, this.client.token).then(c => {
       setTimeout(res, 100, res(new this.constructor(c, this.client)));
     }).catch(error => {
       if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
     });
+  }
+
+  toString() {
+    return `<#${this.id}>`;
   }
 }
 

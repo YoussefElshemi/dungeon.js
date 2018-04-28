@@ -111,16 +111,13 @@ class Member {
 
   /**
    * @description This method adds a role to the member
-   * @param {RoleObject|RoleID} role The role to add to the member 
+   * @param {RoleResolvable} role The role to add to the member 
    * @returns {Promise<Member>} Returns a promise and a GuildMember object
    */
 
   addRole(role) {
-    let roleid;
-    if (typeof role === 'string') roleid = role;
-    if (typeof role === 'object') roleid = role.id;
     return new Promise((res) => {
-      request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+      request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${role.id || role}`, {}, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
         });
@@ -130,16 +127,13 @@ class Member {
 
   /**
    * @description This method removes a role to the member
-   * @param {RoleObject|RoleID} role The role to remove from the member 
+   * @param {RoleResolvable} role The role to remove from the member 
    * @returns {Promise<Member>} Returns a promise and a GuildMember object
    */
 
   removeRole(role) {
-    let roleid;
-    if (typeof role === 'string') roleid = role;
-    if (typeof role === 'object') roleid = role.id;
     return new Promise((res) => {
-      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${roleid}`, {}, this.client.token)
+      request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${role.id || role}`, {}, this.client.token)
         .then(m => {
           setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
         });
@@ -353,6 +347,10 @@ class Member {
         });     
       });
     });
+  }
+
+  toString() {
+    return `<@${this.id}>`;
   }
 }
 
