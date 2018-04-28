@@ -350,7 +350,7 @@ class Member {
   }
 
   toString() {
-    return `<#${this.id}>`;
+    return `<@${this.id}>`;
   }
 }
 

@@ -28,7 +28,7 @@ class Role {
      * @type {Array}
      */
 
-    this.permissions = new Permissions().toArray(raw.permissions);
+    this.permissions = typeof raw.permissions === 'number' ? new Permissions().toArray(raw.permissions) : raw.permissions;
 
     /**
      * If the role is managed or not
