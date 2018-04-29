@@ -69,12 +69,30 @@ class GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         name: newname
       }, this.client.token).then(c => {
-        const GuildChannel = require('./GuildChannel');
+        const CategoryChannel = require('./CategoryChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
-        setTimeout(res, 100, res(new GuildChannel(m, this.client)));
+        if (this.type === 'text') {
+          const channel = new TextChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else if (this.type === 'voice') {
+          const channel = new VoiceChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));        
+        } else if (this.type === 'category') {
+          const channel = new CategoryChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else {
+          const channel = new this.constructor(c, this.guild, this.client);          
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        }
       });
     });
   }
@@ -88,14 +106,32 @@ class GuildChannel {
   setPosition(position) {
     return new Promise((res) => {
       request.req('PATCH', `/channels/${this.id}`, {
-        position: Number(position)
+        position: position
       }, this.client.token).then(c => {
-        const GuildChannel = require('./GuildChannel');
+        const CategoryChannel = require('./CategoryChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
-        setTimeout(res, 100, res(new GuildChannel(m, this.client)));
+        if (this.type === 'text') {
+          const channel = new TextChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else if (this.type === 'voice') {
+          const channel = new VoiceChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));        
+        } else if (this.type === 'category') {
+          const channel = new CategoryChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else {
+          const channel = new this.constructor(c, this.guild, this.client);          
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        }
       });
     });
   }
@@ -107,16 +143,34 @@ class GuildChannel {
    */
 
   setParent(newparent) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${newparent.id || newparent}`, {
-        parent_id: parent
+    return new Promise((res, rej) => {
+      request.req('PATCH', `/channels/${this.id}`, {
+        parent_id: newparent
       }, this.client.token).then(c => {
-        const GuildChannel = require('./GuildChannel');
+        const CategoryChannel = require('./CategoryChannel');
         const TextChannel = require('./TextChannel');
         const VoiceChannel = require('./VoiceChannel');
-        if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
-        if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
-        setTimeout(res, 100, res(new GuildChannel(m, this.client)));
+        if (this.type === 'text') {
+          const channel = new TextChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else if (this.type === 'voice') {
+          const channel = new VoiceChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));        
+        } else if (this.type === 'category') {
+          const channel = new CategoryChannel(c, this.guild, this.client);
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        } else {
+          const channel = new this.constructor(c, this.guild, this.client);          
+          this.client.channels.set(channel.id, channel);
+          this.guild.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
+        }
       });
     });
   }
@@ -128,15 +182,26 @@ class GuildChannel {
 
   delete() {
     return new Promise((res) => {
-      request.req('DELETE', `/channels/${this.id}`, {}, this.client.token)
-        .then(c => {
-          const GuildChannel = require('./GuildChannel');
-          const TextChannel = require('./TextChannel');
-          const VoiceChannel = require('./VoiceChannel');
-          if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
-          if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
-          setTimeout(res, 100, res(new GuildChannel(m, this.client)));
-        });
+      request.req('DELETE', `/channels/${this.id}`, {}, this.client.token).then(c => {
+        this.guild.channels.delete(this.id);
+        this.client.channels.delete(this.id);
+        const CategoryChannel = require('./CategoryChannel');
+        const TextChannel = require('./TextChannel');
+        const VoiceChannel = require('./VoiceChannel');
+        if (this.type === 'text') {
+          const channel = new TextChannel(c, this.guild, this.client);
+          setTimeout(res, 100, res(channel));
+        } else if (this.type === 'voice') {
+          const channel = new VoiceChannel(c, this.guild, this.client);
+          setTimeout(res, 100, res(channel));        
+        } else if (this.type === 'category') {
+          const channel = new CategoryChannel(c, this.guild, this.client);
+          setTimeout(res, 100, res(channel));
+        } else {
+          const channel = new this.constructor(c, this.guild, this.client);          
+          setTimeout(res, 100, res(channel));
+        }
+      });
     });
   }
 
@@ -159,12 +224,30 @@ class GuildChannel {
           parent_id: ((this.type === 'text' || this.type === 'voice') && options && options.parent) || null
         }, this.client.token)
         .then(c => {
-          const GuildChannel = require('./GuildChannel');
+          const CategoryChannel = require('./CategoryChannel');
           const TextChannel = require('./TextChannel');
           const VoiceChannel = require('./VoiceChannel');
-          if (this.type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this.client)));
-          if (this.type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this.client)));
-          setTimeout(res, 100, res(new GuildChannel(m, this.client)));
+          if (this.type === 'text') {
+            const channel = new TextChannel(c, this.guild, this.client);
+            this.client.channels.set(channel.id, channel);
+            this.guild.channels.set(channel.id, channel);
+            setTimeout(res, 100, res(channel));
+          } else if (this.type === 'voice') {
+            const channel = new VoiceChannel(c, this.guild, this.client);
+            this.client.channels.set(channel.id, channel);
+            this.guild.channels.set(channel.id, channel);
+            setTimeout(res, 100, res(channel));        
+          } else if (this.type === 'category') {
+            const channel = new CategoryChannel(c, this.guild, this.client);
+            this.client.channels.set(channel.id, channel);
+            this.guild.channels.set(channel.id, channel);
+            setTimeout(res, 100, res(channel));
+          } else {
+            const channel = new this.constructor(c, this.guild, this.client);          
+            this.client.channels.set(channel.id, channel);
+            this.guild.channels.set(channel.id, channel);
+            setTimeout(res, 100, res(channel));
+          }
         });
     });
   }

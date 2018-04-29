@@ -3,6 +3,8 @@ const request = require('../Connection');
 const Snowflake = require('../util/Snowflake');
 const TextChannel = require('./TextChannel');
 const VoiceChannel = require('./VoiceChannel');
+const GuildChannel = require('./GuildChannel');
+const CategoryChannel = require('./CategoryChannel');
 const Collection = require('./Collection');
 const Role = require('./Role');
 const Member = require('./Member');
@@ -174,8 +176,27 @@ class Guild {
         nsfw: (type === 'text' && opt && opt.nsfw) || null,
         topic: (type === 'text' && opt && opt.topic) || null
       }, this.client.token).then(c => {
-        if (type === 'text') return setTimeout(res, 100, res(new TextChannel(c, this, this.client)));
-        if (type === 'voice') return setTimeout(res, 100, res(new VoiceChannel(c, this, this.client)));
+        if (type === 'text') {
+          const channel = new TextChannel(c, this, this.client);
+          this.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));         
+        } else if (type === 'voice') {
+          const channel = new VoiceChannel(c, this, this.client);
+          this.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));           
+        } else if (type === 'category') {
+          const channel = new CategoryChannel(c, this, this.client);
+          this.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));   
+        } else {
+          const channel = new GuildChannel(c, this, this.client);
+          this.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));   
+        }
       }).catch(rej);
     });
   }
@@ -201,7 +222,9 @@ class Guild {
         hoist: opt.hoist || false,
         mentionable: opt.mentionable || false
       }, this.client.token).then(role => {
-        setTimeout(res, 100, res(new Role(role, this, this.client)));
+        const newRole = new Role(role, this, this.client);
+        this.roles.set(newRole.id, newRole);
+        setTimeout(res, 100, res(newRole));
       }).catch(rej);
     });
   }
@@ -234,8 +257,9 @@ class Guild {
       request.req('PUT', `/guilds/${this.id}/bans/${user.id || user}`, {
         'delete-message-days': (opt && opt.days) ||	null,
         reason: (opt && opt.reason) ||	null
-      }, this.client.token).then(c => {
+      }, this.client.token).then(d => {
         request.req('GET', `/users/${user.id || user}`, {}, this.client.token).then(c => {
+          this.members.delete(user.id || user);
           setTimeout(res, 100, res(new User(c, this.client)));
         });
       });
@@ -272,6 +296,7 @@ class Guild {
       }, this.client.token)
         .then(m => {
           request.req('GET', `/users/${user.id ||	user}`, {}, this.client.token).then(c => {
+            this.members.delete(user.id || user);
             setTimeout(res, 100, res(new User(c, this.client)));
           });        
         });
@@ -360,8 +385,8 @@ class Guild {
         const returned = new Collection();
         for (let i = 0; i < role_methods.length; i++) {
           returned.set(role_methods[i].id, role_methods[i]);
-          this.roles.set(role_methods[i].id, role_methods[i]);
         }
+        this.roles = returned;
         setTimeout(res, 100, res(returned));
       }).catch(rej);
     });
@@ -498,7 +523,12 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         name: newname
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        request.req('GET', `/guilds/${this.id}`, {}, this.client.token).then(d => {
+          const guild = this;
+          guild.name = newname;
+          this.client.guilds.set(guild.id, guild);
+          setTimeout(res, 100, res(guild));
+        });
       });
     });
   }
@@ -530,8 +560,11 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         verification_level: newlevel
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
-      });
+        const guild = this;
+        guild.verificationLevel = newlevel;
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
+      });     
     });
   }
 
@@ -546,7 +579,10 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         afk_channel_id: id
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        const guild = this;
+        guild.afkChannel = this.channels.get(id);
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
       });
     });
   }
@@ -562,7 +598,10 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         afk_timeout: time
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        const guild = this;
+        guild.afkTimeout = time;
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
       });
     });
   }
@@ -580,7 +619,12 @@ class Guild {
         request.req('PATCH', `/guilds/${this.id}`, {
           icon: data
         }, this.client.token).then(c => {
-          setTimeout(res, 100, res(this));
+          request.req('GET', `/guilds/${this.id}`, {}, this.client.token).then(d => {
+            const guild = this;
+            guild.iconURL = `https://cdn.discordapp.com/icons/${this.id}/${d.icon}.png`;
+            this.client.guilds.set(guild.id, guild);
+            setTimeout(res, 100, res(guild));
+          });
         });
       }); 
     });
@@ -597,7 +641,10 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         owner_id: id
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        const guild = this;
+        guild.ownerID = id;
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
       });
     });
   }
@@ -632,7 +679,10 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         system_channel_id: id
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        const guild = this;
+        guild.systemChannel = this.channels.get(id);
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
       });
     });
   }
@@ -664,7 +714,8 @@ class Guild {
         splash:	(obj && obj.splash) || null,
         system_channel_id: (obj && obj.systemChannelID) || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        console.log(c);
+        setTimeout(res, 100, res(guild));
       });
     });
   }
@@ -677,6 +728,7 @@ class Guild {
   delete() {
     return new Promise((res, rej) => {
       request.req('DELETE', `/guilds/${this.id}`, {}, this.client.token).then(c => {
+        this.client.guilds.delete(this.id);
         setTimeout(res, 100, res(this));
       });
     });
@@ -690,6 +742,7 @@ class Guild {
   leave() {
     return new Promise((res, rej) => {
       request.req('DELETE', `users/@me/guilds/${this.id}`, {}, this.client.token).then(c => {
+        this.client.guilds.delete(this.id);
         setTimeout(res, 100, res(this));
       });
     });
@@ -716,7 +769,10 @@ class Guild {
         mute: (opt && opt.mute) || null,
         deaf: (opt && opt.deaf) || null
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(new Member(c, this, this.client)));
+        const member = new Member(c, this, this.client);
+        this.members.set(member.id, member);
+        this.client.users.set(member.id, member.user);
+        setTimeout(res, 100, res(member));
       });
     });
   }

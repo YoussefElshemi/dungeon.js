@@ -1,5 +1,5 @@
 const Collection = require('./Collection');
-const User = require('./User');
+const request = require('../Connection');
 
 /**
  * This class represents a DM Channel object
@@ -32,6 +32,7 @@ class DMChannel {
     const recipients = new Collection();
 
     for (let i = 0; i < raw.recipients.length; i++) {
+      const User = require('./User');
       recipients.set(raw.recipients[i].id,  new User(raw.recipients[i], this.client));
     }
 

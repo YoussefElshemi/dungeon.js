@@ -154,9 +154,9 @@
             
                 <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
             
-                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+                <li data-name="Client#fetchUser"><a href="Client.html#fetchUser">fetchUser</a></li>
             
-                <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
             
                 <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
             
@@ -1068,7 +1068,7 @@
             
                 <li data-name="TextChannel#fetchMessages"><a href="TextChannel.html#fetchMessages">fetchMessages</a></li>
             
-                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
+                <li data-name="TextChannel#fetchPins"><a href="TextChannel.html#fetchPins">fetchPins</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
             
@@ -1139,6 +1139,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
+            
+                <li data-name="User#createDM"><a href="User.html#createDM">createDM</a></li>
             
                 <li data-name="User#send"><a href="User.html#send">send</a></li>
             
@@ -1290,7 +1292,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line17">line 17</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line19">line 19</a>
         </div>
         
     </div>
@@ -2234,7 +2236,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line706">line 706</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line759">line 759</a>
         </div>
         
     </div>
@@ -2458,7 +2460,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line232">line 232</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line255">line 255</a>
         </div>
         
     </div>
@@ -2650,7 +2652,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line165">line 165</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line167">line 167</a>
         </div>
         
     </div>
@@ -2885,7 +2887,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line460">line 460</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line485">line 485</a>
         </div>
         
     </div>
@@ -3024,7 +3026,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line770">line 770</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line826">line 826</a>
         </div>
         
     </div>
@@ -3163,7 +3165,7 @@ guild.createChannel('general', 'text').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line195">line 195</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line216">line 216</a>
         </div>
         
     </div>
@@ -3366,7 +3368,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line677">line 677</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line728">line 728</a>
         </div>
         
     </div>
@@ -3466,7 +3468,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line481">line 481</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line506">line 506</a>
         </div>
         
     </div>
@@ -3611,7 +3613,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line805">line 805</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line861">line 861</a>
         </div>
         
     </div>
@@ -3756,7 +3758,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line646">line 646</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line696">line 696</a>
         </div>
         
     </div>
@@ -3916,7 +3918,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line845">line 845</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line901">line 901</a>
         </div>
         
     </div>
@@ -4076,7 +4078,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line787">line 787</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line843">line 843</a>
         </div>
         
     </div>
@@ -4215,7 +4217,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line409">line 409</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line434">line 434</a>
         </div>
         
     </div>
@@ -4360,7 +4362,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line338">line 338</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line363">line 363</a>
         </div>
         
     </div>
@@ -4460,7 +4462,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line831">line 831</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line887">line 887</a>
         </div>
         
     </div>
@@ -4560,7 +4562,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line445">line 445</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line470">line 470</a>
         </div>
         
     </div>
@@ -4660,7 +4662,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line427">line 427</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line452">line 452</a>
         </div>
         
     </div>
@@ -4760,7 +4762,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line752">line 752</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line808">line 808</a>
         </div>
         
     </div>
@@ -4860,7 +4862,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line286">line 286</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line311">line 311</a>
         </div>
         
     </div>
@@ -4960,7 +4962,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line324">line 324</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line349">line 349</a>
         </div>
         
     </div>
@@ -5105,7 +5107,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line305">line 305</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line330">line 330</a>
         </div>
         
     </div>
@@ -5265,7 +5267,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line356">line 356</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line381">line 381</a>
         </div>
         
     </div>
@@ -5365,7 +5367,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line861">line 861</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line917">line 917</a>
         </div>
         
     </div>
@@ -5465,7 +5467,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line730">line 730</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line786">line 786</a>
         </div>
         
     </div>
@@ -5625,7 +5627,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line375">line 375</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line400">line 400</a>
         </div>
         
     </div>
@@ -5725,7 +5727,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line268">line 268</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line292">line 292</a>
         </div>
         
     </div>
@@ -5917,7 +5919,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line690">line 690</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line742">line 742</a>
         </div>
         
     </div>
@@ -6017,7 +6019,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line215">line 215</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line238">line 238</a>
         </div>
         
     </div>
@@ -6162,7 +6164,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line544">line 544</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line577">line 577</a>
         </div>
         
     </div>
@@ -6307,7 +6309,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line560">line 560</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line596">line 596</a>
         </div>
         
     </div>
@@ -6452,7 +6454,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line576">line 576</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line615">line 615</a>
         </div>
         
     </div>
@@ -6597,7 +6599,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line496">line 496</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line521">line 521</a>
         </div>
         
     </div>
@@ -6742,7 +6744,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line595">line 595</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line639">line 639</a>
         </div>
         
     </div>
@@ -6887,7 +6889,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line512">line 512</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line542">line 542</a>
         </div>
         
     </div>
@@ -7032,7 +7034,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line611">line 611</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line658">line 658</a>
         </div>
         
     </div>
@@ -7177,7 +7179,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line630">line 630</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line677">line 677</a>
         </div>
         
     </div>
@@ -7322,7 +7324,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line528">line 528</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line558">line 558</a>
         </div>
         
     </div>
@@ -7467,7 +7469,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line818">line 818</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line874">line 874</a>
         </div>
         
     </div>
@@ -7567,7 +7569,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line393">line 393</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line418">line 418</a>
         </div>
         
     </div>
@@ -7667,7 +7669,7 @@ guild.createRole('role').then(c => {
     
         
         <div class="tag-source">
-            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line251">line 251</a>
+            <a href="Classes_Guild.js.html">Classes/Guild.js</a>, <a href="Classes_Guild.js.html#line275">line 275</a>
         </div>
         
     </div>
@@ -7820,7 +7822,7 @@ guild.createRole('role').then(c => {
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 29 2018 20:54:02 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

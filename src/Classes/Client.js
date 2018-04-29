@@ -345,12 +345,15 @@ class Client extends EventEmitter {
   /**
    * @description If a user isn't cached, this will fetch the user object
    * @param {UserResolvable} user The user to fetch
+   * @returns {Promise<User>} The user that was fetched
    */
 
-  getUser(user) {
+  fetchUser(user) {
     return new Promise((res) => {
       request.req('GET', `/users/${user.id ||	user}`, {}, this.token).then(m => {
-        setTimeout(res, 100, res(new User(m, this)));
+        const fetchedUser = new User(m, this);
+        this.users.set(fetchedUser.id, user);
+        setTimeout(res, 100, res(fetchedUser));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -367,7 +370,9 @@ class Client extends EventEmitter {
   createGuild(name, obj = {}) {
     return new Promise((res, rej) => {
       request.req('POST', '/guilds', obj, this.token).then(c => {
-        setTimeout(res, 100, res(new Guild(this.guild_methods().fromRaw(c), this)));
+        const g = new Guild(this.guild_methods().fromRaw(c), this);      
+        this.guilds.set(g.id, g);
+        setTimeout(res, 100, res(g));
       });
     });
   }
@@ -383,7 +388,10 @@ class Client extends EventEmitter {
       request.req('PATCH', '/users/@me', {
         username: newusername
       }, this.token).then(c => {
-        setTimeout(res, 100, res(new User(c, this)));
+        const user = new User(c, this);
+        this.user = user;
+        this.users.set(user.id, user);
+        setTimeout(res, 100, res(user));
       });
     });
   }
@@ -402,7 +410,10 @@ class Client extends EventEmitter {
         request.req('PATCH', '/users/@me', {
           avatar: newavatar
         }, this.token).then(c => {
-          setTimeout(res, 100, res(new User(c, this)));
+          const user = new User(c, this);
+          this.user = user;
+          this.users.set(user.id, user);
+          setTimeout(res, 100, res(user));
         });
       });
     });
@@ -420,6 +431,7 @@ class Client extends EventEmitter {
         const returned = new Collection();
         for (let i = 0; i < dms.length; i++) {
           returned.set(dms[i].id, dms[i]);
+          this.channels.set(dms[i].id, dms[i]);
         }
         setTimeout(res, 100, res(returned));
       });

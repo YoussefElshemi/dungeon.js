@@ -154,9 +154,9 @@
             
                 <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
             
-                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+                <li data-name="Client#fetchUser"><a href="Client.html#fetchUser">fetchUser</a></li>
             
-                <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
             
                 <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
             
@@ -1068,7 +1068,7 @@
             
                 <li data-name="TextChannel#fetchMessages"><a href="TextChannel.html#fetchMessages">fetchMessages</a></li>
             
-                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
+                <li data-name="TextChannel#fetchPins"><a href="TextChannel.html#fetchPins">fetchPins</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
             
@@ -1139,6 +1139,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
+            
+                <li data-name="User#createDM"><a href="User.html#createDM">createDM</a></li>
             
                 <li data-name="User#send"><a href="User.html#send">send</a></li>
             
@@ -1915,7 +1917,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line367">line 367</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line370">line 370</a>
         </div>
         
     </div>
@@ -2178,7 +2180,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line416">line 416</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line427">line 427</a>
         </div>
         
     </div>
@@ -2271,114 +2273,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="fetchUserConnections">
+        <h4 class="name" id="fetchUser">
             
-            fetchUserConnections<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+            fetchUser<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="User.html">User</a>>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line434">line 434</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Fetches the client user's connections
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Array
-                        
-                    
-            </td>
-            <td class="description last">An array of all of the connections</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="getUser">
-            
-            getUser<span class="signature">(user)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line350">line 350</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line351">line 351</a>
         </div>
         
     </div>
@@ -2479,6 +2381,135 @@
     
     
     
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="User.html">User</a>>
+                        
+                    
+            </td>
+            <td class="description last">The user that was fetched</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="fetchUserConnections">
+            
+            fetchUserConnections<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line446">line 446</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Fetches the client user's connections
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Array
+                        
+                    
+            </td>
+            <td class="description last">An array of all of the connections</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
     
     
 </dd>
@@ -2494,7 +2525,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line397">line 397</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line405">line 405</a>
         </div>
         
     </div>
@@ -2639,7 +2670,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line381">line 381</a>
+            <a href="Classes_Client.js.html">Classes/Client.js</a>, <a href="Classes_Client.js.html#line386">line 386</a>
         </div>
         
     </div>
@@ -4329,7 +4360,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 29 2018 20:54:02 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

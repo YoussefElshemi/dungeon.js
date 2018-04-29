@@ -88,6 +88,7 @@ class Role {
   delete() {
     return new Promise((res, rej) => {
       request.req('DELETE', `/guilds/${this.guild.id}/roles/${this.id}`, {}, this.client.token).then(c => {
+        this.guild.roles.delete(this.id);
         setTimeout(res, 100, res(this));
       });
     });

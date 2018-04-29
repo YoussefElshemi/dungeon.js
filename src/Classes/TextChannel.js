@@ -171,8 +171,10 @@ class TextChannel extends GuildChannel {
         nsfw: boolean
       }, this.client.token)
         .then(m => {
-          const TextChannel = require('./TextChannel');
-          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+          const channel = new this.constructor(m, this.guild, this.client);
+          this.guild.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));
         }).catch(error => {
           if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
@@ -193,7 +195,10 @@ class TextChannel extends GuildChannel {
       }, this.client.token)
         .then(m => {
           const TextChannel = require('./TextChannel');
-          setTimeout(res, 100, res(new TextChannel(m, this.guild, this.client)));
+          const channel = new this.constructor(m, this.guild, this.client);
+          this.guild.channels.set(channel.id, channel);
+          this.client.channels.set(channel.id, channel);
+          setTimeout(res, 100, res(channel));        
         }).catch(error => {
           if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
         });
@@ -263,7 +268,7 @@ class TextChannel extends GuildChannel {
    * @returns {Array} Returns an array of messages
     */
 
-  getPinned() {
+  fetchPins() {
     return new Promise((res) => {
       request.req('GET', `/channels/${this.id}/pins`, {}, this.client.token).then(m => {
         const Message = require('./Message');

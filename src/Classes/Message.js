@@ -175,6 +175,7 @@ class Message {
   delete(reason = '') {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}`, {reason: reason} , this.client.token).then(m => {
+        this.client.messages.delete(this.id);
         setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
