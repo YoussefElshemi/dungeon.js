@@ -28,7 +28,7 @@ class Role {
      * @type {Array}
      */
 
-    this.permissions = typeof raw.permissions === 'number' ? new Permissions().toArray(raw.permissions) : raw.permissions;
+    this.permissions = typeof raw.permissions === 'number' ? new Permissions().toArray(raw.permissions) : raw.permissions.filter(c => c != undefined);
 
     /**
      * If the role is managed or not
@@ -88,6 +88,7 @@ class Role {
   delete() {
     return new Promise((res, rej) => {
       request.req('DELETE', `/guilds/${this.guild.id}/roles/${this.id}`, {}, this.client.token).then(c => {
+        this.guild.roles.delete(this.id);
         setTimeout(res, 100, res(this));
       });
     });

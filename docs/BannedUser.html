@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Classes/VoiceChannel.js</title>
+    <title>Class: BannedUser</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1319,94 +1319,257 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Classes_VoiceChannel.js.html">Source: Classes/VoiceChannel.js</h1>
+        <h1 class="page-title" data-filename="BannedUser.html">Class: BannedUser</h1>
         
 
 
+
+<section>
     
-    <section>
-        <article>
-            <pre id="source-code" class="prettyprint source "><code>const GuildChannel = require('./GuildChannel');
-const request = require('../Connection');
-const Collection = require('./Collection');
-
-/**
- * This class represents a Voice Channel
- * @extends {GuildChannel} 
- */
-
-class VoiceChannel extends GuildChannel {
-  constructor(raw, guild, client) {
-    super(raw, guild, client);
-
-    /**
-     * The type of channel
-     * @type {String}
-     */
-
-    this.type = 'voice';
+<header>
+    <h2>
+    BannedUser
+    </h2>
     
-    /**
-     * The bitrate of the call
-     * @type {Number}
-     */
+        <div class="class-description">This class represents a banned user</div>
+    
+</header>  
 
-    this.bitrate = raw.bitrate;
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="BannedUser">
+            
+            new BannedUser<span class="signature">()</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_BannedUser.js.html">Classes/BannedUser.js</a>, <a href="Classes_BannedUser.js.html#line7">line 7</a>
+        </div>
+        
+    </div>
 
-    /**
-     * The limit of the users in the call
-     * @type {Number}
-     */
+    
+</dt>
+<dd>
+    
+    
 
-    this.userLimit = raw.user_limit;
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
-  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
-  /**
-   * @description Sets the bitrate of the channel
-   * @param {Number} bitrate The bitrate of the channel
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
-   */
+    
+    
 
-  setBitrate(bitrate) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        bitrate: bitrate
-      }, this.client.token).then(m => {
-        const channel = new this.constructor(m, this.guild, this.client);
-        this.guild.channels.set(channel.id, channel);
-        this.client.channels.set(channel.id, channel);
-        setTimeout(res, 100, res(channel));
-      });
-    });
-  }
+    
 
-  /**
-   * @description Sets the user limit of the channel
-   * @param {Number} limit The user limit of the channel
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
-   */
+    
+    
+    
+    
+    
+    
+    
+</dd>
 
-  setUserLimit(limit) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        user_limit: Number(limit)
-      }, this.client.token).then(m => {
-        const channel = new this.constructor(m, this.guild, this.client);
-        this.guild.channels.set(channel.id, channel);
-        this.client.channels.set(channel.id, channel);
-      });
-    });
-  }
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Properties</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="client">client<span class="type-signature type client"><a href="Client.html">Client</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The client that is logged in
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
-}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
-module.exports = VoiceChannel;
+    
+    
+</dd>
 
-// THIS CLASS IS WORK IN PROGRESS</code></pre>
-        </article>
-    </section>
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="reason">reason<span class="type-signature type string">String</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The reason the member was banned
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="user">user<span class="type-signature type user"><a href="User.html">User</a></span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The user that was banned
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+    
+    
+
+    
+</article>
+
+</section>  
 
 
 
@@ -1415,7 +1578,7 @@ module.exports = VoiceChannel;
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 13:23:11 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 13:23:11 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

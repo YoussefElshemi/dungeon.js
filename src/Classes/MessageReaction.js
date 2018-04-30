@@ -1,3 +1,5 @@
+const Emoji = require('./Emoji');
+
 /**
  * This class represents a message reaction
  */
@@ -14,10 +16,10 @@ class MessageReaction {
 
     /**
      * The emoji that was reacted
-     * @type {Object}
+     * @type {Emoji}
      */
 
-    this.emoji = raw.emoji;
+    this.emoji = new Emoji(raw.emoji, this.message.guild, this.client);
   }
 }
 

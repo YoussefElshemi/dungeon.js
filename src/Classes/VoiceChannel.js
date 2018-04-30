@@ -45,8 +45,10 @@ class VoiceChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         bitrate: bitrate
       }, this.client.token).then(m => {
-        const VoiceChannel = require('./VoiceChannel');
-        setTimeout(res, 100, res(new VoiceChannel(m, this.guild, this.client)));
+        const channel = new this.constructor(m, this.guild, this.client);
+        this.guild.channels.set(channel.id, channel);
+        this.client.channels.set(channel.id, channel);
+        setTimeout(res, 100, res(channel));
       });
     });
   }
@@ -62,8 +64,9 @@ class VoiceChannel extends GuildChannel {
       request.req('PATCH', `/channels/${this.id}`, {
         user_limit: Number(limit)
       }, this.client.token).then(m => {
-        const VoiceChannel = require('./VoiceChannel');
-        setTimeout(res, 100, res(new VoiceChannel(m, this.guild, this.client)));
+        const channel = new this.constructor(m, this.guild, this.client);
+        this.guild.channels.set(channel.id, channel);
+        this.client.channels.set(channel.id, channel);
       });
     });
   }

@@ -125,25 +125,66 @@ class Message {
 
     this.cleanContent = cleanMessage(this);
 
+    /**
+     * The embeds in the message
+     * @type {Array}
+     */
+
     this.embeds = raw.embeds;
+
+    /**
+     * Whether the message is pinned or not
+     * @type {Boolean}
+     */
 
     this.pinned = raw.pinned;
 
+    /**
+     * Whether the message has a nonce or not
+     * @type {Boolean}
+     */
+
     this.nonce = raw.nonce;
+
+    /**
+     * If the message was editted, what time was it editted
+     * @type {Number}
+     */
 
     this.editedTimestamp = raw.edited_timestamp;
 
+    /**
+     * The attachments in the message
+     * @type {Array}
+     */
+
     this.attachments = raw.attachments;
+
+    /**
+     * Whether the message mentions everyone
+     * @type {Boolean}
+     */
 
     this.mentionsEveryone = raw.mention_everyone;
 
+    /**
+     * The type of message
+     * @type {String}
+     */
+
     this.type = ['DEFAULT', 'RECIPIENT_ADD', 'RECIPIENT_REMOVE', 'CALL', 'CHANNEL_NAME_CHANGE','CHANNEL_ICON_CHANGE','CHANNEL_PINNED_MESSAGE', 'GUILD_MEMBER_JOIN'][raw.type];
 
+    /**
+     * The reactions on the message
+     * @type {Object}
+     */
+    
     this.reactions = new Collection();
 
     if (raw.reactions) {
       for (let i = 0; i < raw.reactions.length; i++) {
-        this.reactions.set(raw.reactions[i].emoji.id, {count: raw.reactions[i].count, emoji: new Emoji(raw.reactions[i].emoji, this.guild, this.client)});
+        const Emoji = require('./Emoji');
+        this.reactions.set(raw.reactions[i].emoji.id ||	raw.reactions[i].emoji.name, { count: raw.reactions[i].count, me: raw.reactions[i].me, emoji: new Emoji(raw.reactions[i].emoji, this.guild, this.client) });
       }
     }
   }
@@ -175,6 +216,7 @@ class Message {
   delete(reason = '') {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}`, {reason: reason} , this.client.token).then(m => {
+        this.client.messages.delete(this.id);
         setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
@@ -247,7 +289,7 @@ class Message {
     }
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
-        setTimeout(res, 100, res(new this.constructor(m, this.client)));
+        setTimeout(res, 100, res(this));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });
@@ -312,9 +354,47 @@ class Message {
     else return false;
   }
 
+  /**
+   * @description This method will wait for a reaction on the message
+   * @param {Function} filter The filter to use 
+   * @param {Object} [opt = {}] The options
+   * @returns {ReactionCollector} The reaction collector class, with two events, ReactionCollector.on('collect', message) and ReactionCollector.on('end')
+   */
+
   collectReaction(filter, opt = {}) {
-    const MessageCollector = require('./ReactionCollector');
-    return new MessageCollector(this.channel, opt, filter);
+    const ReactionCollector = require('./ReactionCollector');
+    return new ReactionCollector(this.channel, opt, filter);
+  }
+
+  /**
+   * @description This method will fetch all of the users who reacted with a certain emoji
+   * @param {EmojiResolvable} emoji The emoji to look for
+   * @param {Object} [opt = {}] The otpions: before, after and limit 
+   * @returns {Promise<Collection>} A collection of all the users who reacted with the certain emoji
+   */
+
+  fetchReactions(emoji, opt = {}) {
+    let reaction;
+    if (encodeURI(emoji) !== emoji) {
+      reaction = encodeURI(emoji);
+    } else if (typeof parseInt(emoji) === 'number') {
+      reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    } else {
+      reaction = `${this.client.emojis.get(emoji.id).name}:${emoji.id}`;
+    }
+    return new Promise((res, rej) => {
+      request.req('GET', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}`, {
+        before: opt.before,
+        after: opt.after,
+        limit: opt.limit
+      }, this.client.token).then(c => {
+        const returned = new Collection();
+        for (let i = 0; i < c.length; i ++) {
+          returned.set(c[i].id, new User(c[i], this.client));
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
   }
 }
 

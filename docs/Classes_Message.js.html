@@ -104,6 +104,36 @@
             </ul>
         </li>
     
+        <li class="item" data-name="BannedUser">
+            <span class="title">
+                <a href="BannedUser.html">BannedUser</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="BannedUser#client"><a href="BannedUser.html#client">client</a></li>
+            
+                <li data-name="BannedUser#reason"><a href="BannedUser.html#reason">reason</a></li>
+            
+                <li data-name="BannedUser#user"><a href="BannedUser.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Client">
             <span class="title">
                 <a href="Client.html">Client</a>
@@ -154,9 +184,9 @@
             
                 <li data-name="Client#fetchDMs"><a href="Client.html#fetchDMs">fetchDMs</a></li>
             
-                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
+                <li data-name="Client#fetchUser"><a href="Client.html#fetchUser">fetchUser</a></li>
             
-                <li data-name="Client#getUser"><a href="Client.html#getUser">getUser</a></li>
+                <li data-name="Client#fetchUserConnections"><a href="Client.html#fetchUserConnections">fetchUserConnections</a></li>
             
                 <li data-name="Client#setAvatar"><a href="Client.html#setAvatar">setAvatar</a></li>
             
@@ -459,6 +489,8 @@
             
                 <li data-name="Guild#presences"><a href="Guild.html#presences">presences</a></li>
             
+                <li data-name="Guild#region"><a href="Guild.html#region">region</a></li>
+            
                 <li data-name="Guild#roles"><a href="Guild.html#roles">roles</a></li>
             
                 <li data-name="Guild#systemChannel"><a href="Guild.html#systemChannel">systemChannel</a></li>
@@ -739,6 +771,8 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Message#attachments"><a href="Message.html#attachments">attachments</a></li>
+            
                 <li data-name="Message#author"><a href="Message.html#author">author</a></li>
             
                 <li data-name="Message#channel"><a href="Message.html#channel">channel</a></li>
@@ -753,6 +787,10 @@
             
                 <li data-name="Message#createdTimestamp"><a href="Message.html#createdTimestamp">createdTimestamp</a></li>
             
+                <li data-name="Message#editedTimestamp"><a href="Message.html#editedTimestamp">editedTimestamp</a></li>
+            
+                <li data-name="Message#embeds"><a href="Message.html#embeds">embeds</a></li>
+            
                 <li data-name="Message#guild"><a href="Message.html#guild">guild</a></li>
             
                 <li data-name="Message#id"><a href="Message.html#id">id</a></li>
@@ -764,6 +802,16 @@
                 <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
             
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
+            
+                <li data-name="Message#mentionsEveryone"><a href="Message.html#mentionsEveryone">mentionsEveryone</a></li>
+            
+                <li data-name="Message#nonce"><a href="Message.html#nonce">nonce</a></li>
+            
+                <li data-name="Message#pinned"><a href="Message.html#pinned">pinned</a></li>
+            
+                <li data-name="Message#reactions"><a href="Message.html#reactions">reactions</a></li>
+            
+                <li data-name="Message#type"><a href="Message.html#type">type</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -778,9 +826,13 @@
             
                 <li data-name="Message#clearReactions"><a href="Message.html#clearReactions">clearReactions</a></li>
             
+                <li data-name="Message#collectReaction"><a href="Message.html#collectReaction">collectReaction</a></li>
+            
                 <li data-name="Message#delete"><a href="Message.html#delete">delete</a></li>
             
                 <li data-name="Message#edit"><a href="Message.html#edit">edit</a></li>
+            
+                <li data-name="Message#fetchReactions"><a href="Message.html#fetchReactions">fetchReactions</a></li>
             
                 <li data-name="Message#isMentioned"><a href="Message.html#isMentioned">isMentioned</a></li>
             
@@ -833,7 +885,7 @@
             
                 <li data-name="MessageCollector#event:collect"><a href="MessageCollector.html#event:collect">collect</a></li>
             
-                <li data-name="MessageCollector#event:End"><a href="MessageCollector.html#event:End">End</a></li>
+                <li data-name="MessageCollector#event:end"><a href="MessageCollector.html#event:end">end</a></li>
             
             </ul>
         </li>
@@ -959,6 +1011,12 @@
             </ul>
             <ul class="events itemMembers">
             
+            <span class="subtitle">Events</span>
+            
+                <li data-name="ReactionCollector#event:collect"><a href="ReactionCollector.html#event:collect">collect</a></li>
+            
+                <li data-name="ReactionCollector#event:end"><a href="ReactionCollector.html#event:end">end</a></li>
+            
             </ul>
         </li>
     
@@ -1068,7 +1126,7 @@
             
                 <li data-name="TextChannel#fetchMessages"><a href="TextChannel.html#fetchMessages">fetchMessages</a></li>
             
-                <li data-name="TextChannel#getPinned"><a href="TextChannel.html#getPinned">getPinned</a></li>
+                <li data-name="TextChannel#fetchPins"><a href="TextChannel.html#fetchPins">fetchPins</a></li>
             
                 <li data-name="TextChannel#lastMessage"><a href="TextChannel.html#lastMessage">lastMessage</a></li>
             
@@ -1139,6 +1197,8 @@
             <span class="subtitle">Methods</span>
             
                 <li data-name="User#avatarURL"><a href="User.html#avatarURL">avatarURL</a></li>
+            
+                <li data-name="User#createDM"><a href="User.html#createDM">createDM</a></li>
             
                 <li data-name="User#send"><a href="User.html#send">send</a></li>
             
@@ -1393,25 +1453,66 @@ class Message {
 
     this.cleanContent = cleanMessage(this);
 
+    /**
+     * The embeds in the message
+     * @type {Array}
+     */
+
     this.embeds = raw.embeds;
+
+    /**
+     * Whether the message is pinned or not
+     * @type {Boolean}
+     */
 
     this.pinned = raw.pinned;
 
+    /**
+     * Whether the message has a nonce or not
+     * @type {Boolean}
+     */
+
     this.nonce = raw.nonce;
+
+    /**
+     * If the message was editted, what time was it editted
+     * @type {Number}
+     */
 
     this.editedTimestamp = raw.edited_timestamp;
 
+    /**
+     * The attachments in the message
+     * @type {Array}
+     */
+
     this.attachments = raw.attachments;
+
+    /**
+     * Whether the message mentions everyone
+     * @type {Boolean}
+     */
 
     this.mentionsEveryone = raw.mention_everyone;
 
+    /**
+     * The type of message
+     * @type {String}
+     */
+
     this.type = ['DEFAULT', 'RECIPIENT_ADD', 'RECIPIENT_REMOVE', 'CALL', 'CHANNEL_NAME_CHANGE','CHANNEL_ICON_CHANGE','CHANNEL_PINNED_MESSAGE', 'GUILD_MEMBER_JOIN'][raw.type];
 
+    /**
+     * The reactions on the message
+     * @type {Object}
+     */
+    
     this.reactions = new Collection();
 
     if (raw.reactions) {
       for (let i = 0; i &lt; raw.reactions.length; i++) {
-        this.reactions.set(raw.reactions[i].emoji.id, {count: raw.reactions[i].count, emoji: new Emoji(raw.reactions[i].emoji, this.guild, this.client)});
+        const Emoji = require('./Emoji');
+        this.reactions.set(raw.reactions[i].emoji.id ||	raw.reactions[i].emoji.name, { count: raw.reactions[i].count, me: raw.reactions[i].me, emoji: new Emoji(raw.reactions[i].emoji, this.guild, this.client) });
       }
     }
   }
@@ -1443,6 +1544,7 @@ class Message {
   delete(reason = '') {
     return new Promise((res) => {
       request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}`, {reason: reason} , this.client.token).then(m => {
+        this.client.messages.delete(this.id);
         setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
@@ -1539,14 +1641,14 @@ class Message {
     }
     return new Promise((res) => {
       if (user.id === this.client.user.id) {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/${user.id}`, {}, this.client.token).then(m => {
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
           setTimeout(res, 100, res(m));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
       } else {
-        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${encodeURI(reaction)}/@me`, {}, this.client.token).then(m => {
-          setTimeout(res, 100, res(m));
+        request.req('DELETE', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/${user.id}`, {}, this.client.token).then(m => {
+          setTimeout(res, 100, res(this));
         }).catch(error => {
           if (error.status === 403) throw new Error('Missing Permissions');
         });
@@ -1580,9 +1682,47 @@ class Message {
     else return false;
   }
 
+  /**
+   * @description This method will wait for a reaction on the message
+   * @param {Function} filter The filter to use 
+   * @param {Object} [opt = {}] The options
+   * @returns {ReactionCollector} The reaction collector class, with two events, ReactionCollector.on('collect', message) and ReactionCollector.on('end')
+   */
+
   collectReaction(filter, opt = {}) {
-    const MessageCollector = require('./ReactionCollector');
-    return new MessageCollector(this.channel, opt, filter);
+    const ReactionCollector = require('./ReactionCollector');
+    return new ReactionCollector(this.channel, opt, filter);
+  }
+
+  /**
+   * @description This method will fetch all of the users who reacted with a certain emoji
+   * @param {EmojiResolvable} emoji The emoji to look for
+   * @param {Object} [opt = {}] The otpions: before, after and limit 
+   * @returns {Promise&lt;Collection>} A collection of all the users who reacted with the certain emoji
+   */
+
+  fetchReactions(emoji, opt = {}) {
+    let reaction;
+    if (encodeURI(emoji) !== emoji) {
+      reaction = encodeURI(emoji);
+    } else if (typeof parseInt(emoji) === 'number') {
+      reaction = `${this.client.emojis.get(emoji).name}:${this.client.emojis.get(emoji).id}`;
+    } else {
+      reaction = `${this.client.emojis.get(emoji.id).name}:${emoji.id}`;
+    }
+    return new Promise((res, rej) => {
+      request.req('GET', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}`, {
+        before: opt.before,
+        after: opt.after,
+        limit: opt.limit
+      }, this.client.token).then(c => {
+        const returned = new Collection();
+        for (let i = 0; i &lt; c.length; i ++) {
+          returned.set(c[i].id, new User(c[i], this.client));
+        }
+        setTimeout(res, 100, res(returned));
+      });
+    });
   }
 }
 
@@ -1636,7 +1776,7 @@ function cleanMessage(message) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Apr 27 2018 20:56:21 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 13:23:11 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

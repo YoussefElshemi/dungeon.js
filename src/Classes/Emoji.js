@@ -17,8 +17,10 @@ class Emoji {
 
     this.roles = new Collection();
 
-    for (let i = 0; i < raw.roles.length; i++) {
-      this.roles.set(raw.roles[i].id, new Role(raw.roles[i], guild, client));
+    if (raw.roles) {
+      for (let i = 0; i < raw.roles.length; i++) {
+        this.roles.set(raw.roles[i].id, new Role(raw.roles[i], guild, client));
+      }
     }
 
     /**
@@ -87,6 +89,7 @@ class Emoji {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.guild.id}/emojis/${this.id}`, {}, this.client.token).then(d => {
         request.req('DELETE', `/guilds/${this.guild.id}/emojis/${this.id}`, {}, this.client.token).then(c => {
+          this.guild.emojis.delete(this.id);
           setTimeout(res, 100, new this.constructor(d, this.guild, this.client));
         });
       });

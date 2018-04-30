@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Classes/VoiceChannel.js</title>
+    <title>Source: Classes/BannedUser.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1319,91 +1319,46 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Classes_VoiceChannel.js.html">Source: Classes/VoiceChannel.js</h1>
+        <h1 class="page-title" data-filename="Classes_BannedUser.js.html">Source: Classes/BannedUser.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source "><code>const GuildChannel = require('./GuildChannel');
-const request = require('../Connection');
-const Collection = require('./Collection');
+            <pre id="source-code" class="prettyprint source "><code>const User = require('./User');
 
 /**
- * This class represents a Voice Channel
- * @extends {GuildChannel} 
+ * This class represents a banned user
  */
 
-class VoiceChannel extends GuildChannel {
-  constructor(raw, guild, client) {
-    super(raw, guild, client);
+class BannedUser {
+  constructor(raw, client) {
 
     /**
-     * The type of channel
+     * The client that is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The reason the member was banned
      * @type {String}
      */
 
-    this.type = 'voice';
-    
-    /**
-     * The bitrate of the call
-     * @type {Number}
-     */
-
-    this.bitrate = raw.bitrate;
+    this.reason = raw.reason;
 
     /**
-     * The limit of the users in the call
-     * @type {Number}
+     * The user that was banned
+     * @type {User}
      */
 
-    this.userLimit = raw.user_limit;
-
+    this.user = new User(raw.user, this.client);
   }
-
-  /**
-   * @description Sets the bitrate of the channel
-   * @param {Number} bitrate The bitrate of the channel
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
-   */
-
-  setBitrate(bitrate) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        bitrate: bitrate
-      }, this.client.token).then(m => {
-        const channel = new this.constructor(m, this.guild, this.client);
-        this.guild.channels.set(channel.id, channel);
-        this.client.channels.set(channel.id, channel);
-        setTimeout(res, 100, res(channel));
-      });
-    });
-  }
-
-  /**
-   * @description Sets the user limit of the channel
-   * @param {Number} limit The user limit of the channel
-   * @returns {Promise&lt;GuildChannel>} Returns a promise and a Guild Channel
-   */
-
-  setUserLimit(limit) {
-    return new Promise((res) => {
-      request.req('PATCH', `/channels/${this.id}`, {
-        user_limit: Number(limit)
-      }, this.client.token).then(m => {
-        const channel = new this.constructor(m, this.guild, this.client);
-        this.guild.channels.set(channel.id, channel);
-        this.client.channels.set(channel.id, channel);
-      });
-    });
-  }
-
 }
 
-module.exports = VoiceChannel;
-
-// THIS CLASS IS WORK IN PROGRESS</code></pre>
+module.exports = BannedUser;</code></pre>
         </article>
     </section>
 

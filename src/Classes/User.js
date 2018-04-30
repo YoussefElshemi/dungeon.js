@@ -1,6 +1,7 @@
 
 const request = require('../Connection');
 const Snowflake = require('../util/Snowflake');
+const DMChannel = require('./DMChannel');
 
 /**
  * This class represents a User Object
@@ -172,6 +173,23 @@ class User {
 
   toString() {
     return `<@${this.id}>`;
+  }
+
+  /**
+   * @description This method will create a dm with a user
+   * @returns {Promise<DMChannel>} The channel created
+   */
+
+  createDM() {
+    return new Promise((res, rej) => {
+      request.req('POST', '/users/@me/channels', {
+        recipient_id: this.id
+      }, this.client.token).then(c => {
+        const channel = new DMChannel(c, this.client);
+        this.client.channels.set(channel.id, channel);
+        setTimeout(res, 100, channel);
+      });
+    });
   }
 
 }

@@ -119,7 +119,11 @@ class Member {
     return new Promise((res) => {
       request.req('PUT', `/guilds/${this.guild.id}/members/${this.id}/roles/${role.id || role}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
+          request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+            const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+            this.guilds.get(this.guild.id).members.set(this.id, member);
+            setTimeout(res, 100, res(member));
+          });        
         });
     });
   }
@@ -135,7 +139,11 @@ class Member {
     return new Promise((res) => {
       request.req('DELETE', `/guilds/${this.guild.id}/members/${this.id}/roles/${role.id || role}`, {}, this.client.token)
         .then(m => {
-          setTimeout(res, 100, res(this.client.role_methods().fromRaw(m)));
+          request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+            const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+            this.guilds.get(this.guild.id).members.set(this.id, member);
+            setTimeout(res, 100, res(member));
+          });        
         });
     });
   }
@@ -155,6 +163,7 @@ class Member {
       }, this.client.token)
         .then(m => {
           request.req('GET', `/users/${this.id}`, {}, this.client.token).then(c => {
+            this.guild.members.delete(this.id);
             setTimeout(res, 100, res(new User(c, this.client)));
           });        
         });
@@ -173,6 +182,7 @@ class Member {
         reason: reason || ''
       }, this.client.token)
         .then(m => {
+          this.guild.members.delete(this.id);
           setTimeout(res, 100, res(new this.constructor(m, this.guild, this.client)));
         });
     });
@@ -285,13 +295,27 @@ class Member {
 
   setNickname(newnick) {
     return new Promise((res, rej) => {
-      request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
-        nick: newnick
-      }, this.client.token).then(c => {
-        request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
-          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
+      if (this.id === this.client.user.id) {
+        request.req('PATCH', `/guilds/${this.guild.id}/members/@me/nick`, {
+          nick: newnick
+        }, this.client.token).then(c => {
+          request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+            const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+            this.client.guilds.get(this.guild.id).members.set(this.id, member);
+            setTimeout(res, 100, res(member));
+          });
+        });  
+      } else {
+        request.req('PATCH', `/guilds/${this.guild.id}/members/${this.id}`, {
+          nick: newnick
+        }, this.client.token).then(c => {
+          request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
+            const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+            this.guilds.get(this.guild.id).members.set(this.id, member);
+            setTimeout(res, 100, res(member));
+          });
         });
-      });
+      }
     });
   }
 
@@ -307,8 +331,9 @@ class Member {
         mute: boolean
       }, this.client.token).then(c => {
         request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
-          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
-        });      
+          const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+          this.client.guilds.get(this.guild.id).members.set(this.id, member);
+          setTimeout(res, 100, res(member));        });      
       });
     });
   }
@@ -325,8 +350,9 @@ class Member {
         deaf: boolean
       }, this.client.token).then(c => {
         request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
-          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
-        });      
+          const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+          this.client.guilds.get(this.guild.id).members.set(this.id, member);
+          setTimeout(res, 100, res(member));        });      
       });
     });
   }
@@ -343,8 +369,9 @@ class Member {
         channel_id: id
       }, this.client.token).then(c => {
         request.req('GET', `/guilds/${this.guild.id}/members/${this.id}`, {}, this.client.token).then(b => {
-          setTimeout(res, 100, res(new this.constructor(b, this.client.guilds.get(this.guild.id), this.client)));
-        });     
+          const member = new this.constructor(b, this.client.guilds.get(this.guild.id), this.client);
+          this.client.guilds.get(this.guild.id).members.set(this.id, member);
+          setTimeout(res, 100, res(member));        });     
       });
     });
   }
