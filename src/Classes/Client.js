@@ -159,14 +159,6 @@ class Client extends EventEmitter {
 
           this.presences = new Collection();
 
-          this.guild_methods = require('../Methods/Guilds');
-          this.permission_methods = require('../Methods/Permissions');
-          this.role_methods = require('../Methods/Roles');
-          this.emoji_methods = require('../Methods/Emojis');
-          this.cat_methods = require('../Methods/Category');
-          this.invite_methods = require('../Methods/Invites');
-          this.ban_methods = require('../Methods/Bans');
-
           /**
            * The date when the client logged in
            * @type {Date}
@@ -227,8 +219,7 @@ class Client extends EventEmitter {
 
         if (t == 'GUILD_CREATE') {
           let chn;
-          const guildData = this.guild_methods().fromRaw(message.d);
-          const guild = new Guild(guildData, this);
+          const guild = new Guild(message.d, this);
           this.guilds.set(guild.id, guild);
 
           for (let i = 0; i < Array.from(guild.channels.keys()).length; i++) {
@@ -331,6 +322,10 @@ class Client extends EventEmitter {
       }
     });
 
+    wss.on('close', error => {
+      if (error === 4004) throw new Error('Your token is invalid');
+    });
+
   }
 
 
@@ -370,7 +365,7 @@ class Client extends EventEmitter {
   createGuild(name, obj = {}) {
     return new Promise((res, rej) => {
       request.req('POST', '/guilds', obj, this.token).then(c => {
-        const g = new Guild(this.guild_methods().fromRaw(c), this);      
+        const g = new Guild(c, this);      
         this.guilds.set(g.id, g);
         setTimeout(res, 100, res(g));
       });

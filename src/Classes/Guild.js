@@ -11,6 +11,10 @@ const Member = require('./Member');
 const User = require('./User');
 const Webhook = require('./Webhook');
 const AuditLog = require('./AuditLog');
+const Invite = require('./Invite');
+const BannedUser = require('./BannedUser');
+const Emoji = require('./Emoji');
+const Presence = require('./Presence');
 
 /**
  * This class represents a guild object
@@ -37,7 +41,12 @@ class Guild {
      * A collection of all the channels in the guild
      * @type {Collection}
      */
-    this.channels = raw.channels;
+
+    this.channels = new Collection();
+
+    for (let i = 0; i < raw.channels.length; i++) {
+      this.channels.set(raw.channels[i].id, raw.channels[i]);
+    }
 
     /**
      * The guild's name
@@ -51,28 +60,47 @@ class Guild {
      * @type {Collection}
      */
 
-    this.roles = raw.roles;
+    this.roles = new Collection();
+
+    for (let i = 0; i < raw.roles.length; i++) {
+      this.roles.set(raw.roles[i].id, new Role(raw.roles[i], this, this.client));
+    }
 
     /**
      * A collection of all the emojis in the guild
      * @type {Collection}
      */
 
-    this.emojis = raw.emojis;
+    this.emojis = new Collection();
+
+    for (let i = 0; i < raw.emojis.length; i++) {
+      this.emojis.set(raw.emojis[i].id, new Emoji(raw.emojis[i], this, this.client));
+      this.client.emojis.set(raw.emojis[i].id, new Emoji(raw.emojis[i], this, this.client));
+
+    }
 
     /**
      * A collection of all the members in the guild
      * @type {Collection}
      */
 
-    this.members = raw.members;
+    this.members = new Collection();
+
+    for (let i = 0; i < raw.members.length; i++) {
+      this.members.set(raw.members[i].user.id, new Member(raw.members[i], this, this.client));
+    }
 
     /**
      * A collection of all the user's presences in the guild
      * @type {Collection}
      */
 
-    this.presences = raw.presences;
+    this.presences = new Collection();
+
+    for (let i = 0; i < raw.presences.length; i++) {
+      this.presences.set(raw.presences[i].user.id, new Presence(raw.presences[i], this.client));
+      this.client.presences.set(raw.presences[i].user.id, new Presence(raw.presences[i], this.client));
+    }
 
     /**
      * A URL to the guild's icon
@@ -148,6 +176,13 @@ class Guild {
      */
 
     this.createdAt = new Date(this.createdTimestamp);
+
+    /**
+     * The region the guild is located in
+     * @type {String}
+     */
+
+    this.region = raw.region;
   }
 
 
@@ -311,7 +346,7 @@ class Guild {
   fetchInvites() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/invites`, {}, this.client.token).then(invites => {
-        const invite_methods = invites.map(i => this.client.invite_methods().fromRaw(i));
+        const invite_methods = invites.map(i => new Invite(i, this.client));
         const returned = new Collection();
         for (let i = 0; i < invite_methods.length; i++) {
           returned.set(invite_methods[i].code, invite_methods[i]);
@@ -363,7 +398,7 @@ class Guild {
   fetchBans() {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/bans`, {}, this.client.token).then(bans => {
-        const ban_methods = bans.map(i => new Member(i, this.guild, this.client));
+        const ban_methods = bans.map(i => new BannedUser(i, this.client));
         const returned = new Collection();
         for (let i = 0; i < ban_methods.length; i++) {
           returned.set(ban_methods[i].id, ban_methods[i]);
@@ -544,7 +579,10 @@ class Guild {
       request.req('PATCH', `/guilds/${this.id}`, {
         region: newregion
       }, this.client.token).then(c => {
-        setTimeout(res, 100, res(this));
+        const guild = this;
+        guild.region = newregion;
+        this.client.guilds.set(guild.id, guild);
+        setTimeout(res, 100, res(guild));
       });
     });
   }

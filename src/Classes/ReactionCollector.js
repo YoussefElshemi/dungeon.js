@@ -67,3 +67,15 @@ class ReactionCollector extends EventEmitter {
 }
 
 module.exports = ReactionCollector;
+
+/**
+ * This event is emitted whenever the requirements for the collector are met
+ * @event ReactionCollector#collect
+ * @param {MessageReaction} Reaction The emoji that was reacted
+ * @param {User} User The user who reacted
+ */
+
+/**
+ * This event is emitted whenever the requirements for the collector aren't met
+ * @event ReactionCollector#end
+ */

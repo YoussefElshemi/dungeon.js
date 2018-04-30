@@ -104,6 +104,36 @@
             </ul>
         </li>
     
+        <li class="item" data-name="BannedUser">
+            <span class="title">
+                <a href="BannedUser.html">BannedUser</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Properties</span>
+            
+                <li data-name="BannedUser#client"><a href="BannedUser.html#client">client</a></li>
+            
+                <li data-name="BannedUser#reason"><a href="BannedUser.html#reason">reason</a></li>
+            
+                <li data-name="BannedUser#user"><a href="BannedUser.html#user">user</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Client">
             <span class="title">
                 <a href="Client.html">Client</a>
@@ -458,6 +488,8 @@
                 <li data-name="Guild#ownerID"><a href="Guild.html#ownerID">ownerID</a></li>
             
                 <li data-name="Guild#presences"><a href="Guild.html#presences">presences</a></li>
+            
+                <li data-name="Guild#region"><a href="Guild.html#region">region</a></li>
             
                 <li data-name="Guild#roles"><a href="Guild.html#roles">roles</a></li>
             
@@ -833,7 +865,7 @@
             
                 <li data-name="MessageCollector#event:collect"><a href="MessageCollector.html#event:collect">collect</a></li>
             
-                <li data-name="MessageCollector#event:End"><a href="MessageCollector.html#event:End">End</a></li>
+                <li data-name="MessageCollector#event:end"><a href="MessageCollector.html#event:end">end</a></li>
             
             </ul>
         </li>
@@ -958,6 +990,12 @@
             
             </ul>
             <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="ReactionCollector#event:collect"><a href="ReactionCollector.html#event:collect">collect</a></li>
+            
+                <li data-name="ReactionCollector#event:end"><a href="ReactionCollector.html#event:end">end</a></li>
             
             </ul>
         </li>
@@ -1554,6 +1592,220 @@
     
 
     
+        <h3 class="subsection-title">Events</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:collect">
+            
+            collect
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_ReactionCollector.js.html">Classes/ReactionCollector.js</a>, <a href="Classes_ReactionCollector.js.html#line71">line 71</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever the requirements for the collector are met
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>Reaction</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="MessageReaction.html">MessageReaction</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The emoji that was reacted</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>User</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="User.html">User</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The user who reacted</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:end">
+            
+            end
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_ReactionCollector.js.html">Classes/ReactionCollector.js</a>, <a href="Classes_ReactionCollector.js.html#line78">line 78</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This event is emitted whenever the requirements for the collector aren't met
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
 </article>
 
 </section>  
@@ -1565,7 +1817,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 29 2018 20:54:02 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 12:44:00 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

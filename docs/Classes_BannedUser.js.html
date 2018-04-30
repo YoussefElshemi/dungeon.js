@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Source: Events/PresenceUpdate.js</title>
+    <title>Source: Classes/BannedUser.js</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -1299,22 +1299,46 @@
     </ul>
 </div>
     <div class="main">
-        <h1 class="page-title" data-filename="Events_PresenceUpdate.js.html">Source: Events/PresenceUpdate.js</h1>
+        <h1 class="page-title" data-filename="Classes_BannedUser.js.html">Source: Classes/BannedUser.js</h1>
         
 
 
     
     <section>
         <article>
-            <pre id="source-code" class="prettyprint source "><code>class PresenceUpdate {
-  /**
-   * This event is emitted whenever a user updates their presence
-   * @event Client#presenceUpdate
-   * @param {Presence} Presence The user's presence
-   */
+            <pre id="source-code" class="prettyprint source "><code>const User = require('./User');
+
+/**
+ * This class represents a banned user
+ */
+
+class BannedUser {
+  constructor(raw, client) {
+
+    /**
+     * The client that is logged in
+     * @type {Client}
+     */
+
+    this.client = client;
+
+    /**
+     * The reason the member was banned
+     * @type {String}
+     */
+
+    this.reason = raw.reason;
+
+    /**
+     * The user that was banned
+     * @type {User}
+     */
+
+    this.user = new User(raw.user, this.client);
+  }
 }
-  
-module.exports = PresenceUpdate;</code></pre>
+
+module.exports = BannedUser;</code></pre>
         </article>
     </section>
 
