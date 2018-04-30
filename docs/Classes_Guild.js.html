@@ -771,6 +771,8 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Message#attachments"><a href="Message.html#attachments">attachments</a></li>
+            
                 <li data-name="Message#author"><a href="Message.html#author">author</a></li>
             
                 <li data-name="Message#channel"><a href="Message.html#channel">channel</a></li>
@@ -785,6 +787,10 @@
             
                 <li data-name="Message#createdTimestamp"><a href="Message.html#createdTimestamp">createdTimestamp</a></li>
             
+                <li data-name="Message#editedTimestamp"><a href="Message.html#editedTimestamp">editedTimestamp</a></li>
+            
+                <li data-name="Message#embeds"><a href="Message.html#embeds">embeds</a></li>
+            
                 <li data-name="Message#guild"><a href="Message.html#guild">guild</a></li>
             
                 <li data-name="Message#id"><a href="Message.html#id">id</a></li>
@@ -796,6 +802,16 @@
                 <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
             
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
+            
+                <li data-name="Message#mentionsEveryone"><a href="Message.html#mentionsEveryone">mentionsEveryone</a></li>
+            
+                <li data-name="Message#nonce"><a href="Message.html#nonce">nonce</a></li>
+            
+                <li data-name="Message#pinned"><a href="Message.html#pinned">pinned</a></li>
+            
+                <li data-name="Message#reactions"><a href="Message.html#reactions">reactions</a></li>
+            
+                <li data-name="Message#type"><a href="Message.html#type">type</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -810,9 +826,13 @@
             
                 <li data-name="Message#clearReactions"><a href="Message.html#clearReactions">clearReactions</a></li>
             
+                <li data-name="Message#collectReaction"><a href="Message.html#collectReaction">collectReaction</a></li>
+            
                 <li data-name="Message#delete"><a href="Message.html#delete">delete</a></li>
             
                 <li data-name="Message#edit"><a href="Message.html#edit">edit</a></li>
+            
+                <li data-name="Message#fetchReactions"><a href="Message.html#fetchReactions">fetchReactions</a></li>
             
                 <li data-name="Message#isMentioned"><a href="Message.html#isMentioned">isMentioned</a></li>
             
@@ -1771,7 +1791,7 @@ class Guild {
   /**
    * @description Fetchs the guilds audit log
    * @param {Object} opt The options for getting the audit logs {@link AuditOptions}
-   * @returns {Array} The audit log entries
+   * @returns {Promise&lt;AuditLog>} The audit log entries
    */
 
   fetchAuditLogs(opt = {}) {
@@ -1789,7 +1809,7 @@ class Guild {
 
   /**
    * @description Fetchs the guilds emojis and caches them
-   * @returns {Collection} A collection of the emojis
+   * @returns {Promise&lt;Collection>} A collection of the emojis
    */
 
   fetchEmojis() {
@@ -1807,14 +1827,14 @@ class Guild {
 
   /**
    * @description Fetches a single emoji by id and caches it
-   * @returns {Object} The emoji
+   * @returns {Promise&lt;Emoji>} The emoji
    */
 
   fetchEmoji(id) {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
-        this.emojis.set(c.id, c);
-        setTimeout(res, 100, res(c));
+        this.emojis.set(c.id, new Emoji(c, this, this.client));
+        setTimeout(res, 100, res(new Emoji(c, this, this.client)));
       });
     });
   }
@@ -1823,7 +1843,8 @@ class Guild {
    * @description This method will create an emoji
    * @param {String} name The name of the emoji
    * @param {String} image The url of the image of the emoji to create
-   */
+   * @returns {Emoji} The emoji that was created
+   */ 
 
   createEmoji(name, image) {
     return new Promise((res, rej) => {
@@ -1833,8 +1854,8 @@ class Guild {
           name: name,
           image: data
         }, this.client.token).then(d => {
-          this.emojis.set(d.id, d);
-          setTimeout(res, 100, res(d));
+          this.emojis.set(d.id, new Emoji(d, this, this.client));
+          setTimeout(res, 100, res(new Emoji(d, this, this.client)));
         });
       });
     });
@@ -1843,14 +1864,16 @@ class Guild {
   /**
    * @description This method will delete an emoji id
    * @param {String} id The id of the emoji
-   * @returns {Object} The deleted emoji
+   * @returns {Promise&lt;Emoji>} The deleted emoji
    */
 
   deleteEmoji(id) {
     return new Promise((res, rej) => {
-      request.req('DELETE', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
-        this.emojis.delete(d.id);
-        setTimeout(res, 100, res(this));
+      this.fetchEmojis(id).then(d => {
+        request.req('DELETE', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
+          this.emojis.delete(d.id);
+          setTimeout(res, 100, res(new Emoji(d, this, this.client)));
+        });
       });
     });
   }
@@ -2060,7 +2083,6 @@ class Guild {
         splash:	(obj &amp;&amp; obj.splash) || null,
         system_channel_id: (obj &amp;&amp; obj.systemChannelID) || null
       }, this.client.token).then(c => {
-        console.log(c);
         setTimeout(res, 100, res(guild));
       });
     });
@@ -2306,7 +2328,7 @@ module.exports = Guild;
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 12:44:00 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 13:23:11 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>

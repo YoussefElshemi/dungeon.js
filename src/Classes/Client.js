@@ -281,7 +281,7 @@ class Client extends EventEmitter {
 
         if (t == 'MESSAGE_REACTION_ADD') {
           const reaction = new MessageReaction(message.d, this);
-          const user = this.channels.get(message.d.channel_id).guild.members.get(message.d.user_id).user;
+          const user = this.users.get(message.d.user_id);
           this.emit('messageReactionAdd', reaction, user);
         }
         if (t == 'PRESENCE_UPDATE') {

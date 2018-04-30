@@ -463,7 +463,7 @@ class Guild {
   /**
    * @description Fetchs the guilds audit log
    * @param {Object} opt The options for getting the audit logs {@link AuditOptions}
-   * @returns {Array} The audit log entries
+   * @returns {Promise<AuditLog>} The audit log entries
    */
 
   fetchAuditLogs(opt = {}) {
@@ -481,7 +481,7 @@ class Guild {
 
   /**
    * @description Fetchs the guilds emojis and caches them
-   * @returns {Collection} A collection of the emojis
+   * @returns {Promise<Collection>} A collection of the emojis
    */
 
   fetchEmojis() {
@@ -499,14 +499,14 @@ class Guild {
 
   /**
    * @description Fetches a single emoji by id and caches it
-   * @returns {Object} The emoji
+   * @returns {Promise<Emoji>} The emoji
    */
 
   fetchEmoji(id) {
     return new Promise((res, rej) => {
       request.req('GET', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
-        this.emojis.set(c.id, c);
-        setTimeout(res, 100, res(c));
+        this.emojis.set(c.id, new Emoji(c, this, this.client));
+        setTimeout(res, 100, res(new Emoji(c, this, this.client)));
       });
     });
   }
@@ -515,7 +515,8 @@ class Guild {
    * @description This method will create an emoji
    * @param {String} name The name of the emoji
    * @param {String} image The url of the image of the emoji to create
-   */
+   * @returns {Emoji} The emoji that was created
+   */ 
 
   createEmoji(name, image) {
     return new Promise((res, rej) => {
@@ -525,8 +526,8 @@ class Guild {
           name: name,
           image: data
         }, this.client.token).then(d => {
-          this.emojis.set(d.id, d);
-          setTimeout(res, 100, res(d));
+          this.emojis.set(d.id, new Emoji(d, this, this.client));
+          setTimeout(res, 100, res(new Emoji(d, this, this.client)));
         });
       });
     });
@@ -535,14 +536,16 @@ class Guild {
   /**
    * @description This method will delete an emoji id
    * @param {String} id The id of the emoji
-   * @returns {Object} The deleted emoji
+   * @returns {Promise<Emoji>} The deleted emoji
    */
 
   deleteEmoji(id) {
     return new Promise((res, rej) => {
-      request.req('DELETE', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
-        this.emojis.delete(d.id);
-        setTimeout(res, 100, res(this));
+      this.fetchEmojis(id).then(d => {
+        request.req('DELETE', `/guilds/${this.id}/emojis/${id}`, {}, this.client.token).then(c => {
+          this.emojis.delete(d.id);
+          setTimeout(res, 100, res(new Emoji(d, this, this.client)));
+        });
       });
     });
   }
@@ -752,7 +755,6 @@ class Guild {
         splash:	(obj && obj.splash) || null,
         system_channel_id: (obj && obj.systemChannelID) || null
       }, this.client.token).then(c => {
-        console.log(c);
         setTimeout(res, 100, res(guild));
       });
     });

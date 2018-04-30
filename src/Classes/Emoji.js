@@ -17,8 +17,10 @@ class Emoji {
 
     this.roles = new Collection();
 
-    for (let i = 0; i < raw.roles.length; i++) {
-      this.roles.set(raw.roles[i].id, new Role(raw.roles[i], guild, client));
+    if (raw.roles) {
+      for (let i = 0; i < raw.roles.length; i++) {
+        this.roles.set(raw.roles[i].id, new Role(raw.roles[i], guild, client));
+      }
     }
 
     /**

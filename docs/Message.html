@@ -771,6 +771,8 @@
             
             <span class="subtitle">Properties</span>
             
+                <li data-name="Message#attachments"><a href="Message.html#attachments">attachments</a></li>
+            
                 <li data-name="Message#author"><a href="Message.html#author">author</a></li>
             
                 <li data-name="Message#channel"><a href="Message.html#channel">channel</a></li>
@@ -785,6 +787,10 @@
             
                 <li data-name="Message#createdTimestamp"><a href="Message.html#createdTimestamp">createdTimestamp</a></li>
             
+                <li data-name="Message#editedTimestamp"><a href="Message.html#editedTimestamp">editedTimestamp</a></li>
+            
+                <li data-name="Message#embeds"><a href="Message.html#embeds">embeds</a></li>
+            
                 <li data-name="Message#guild"><a href="Message.html#guild">guild</a></li>
             
                 <li data-name="Message#id"><a href="Message.html#id">id</a></li>
@@ -796,6 +802,16 @@
                 <li data-name="Message#mentionedRoles"><a href="Message.html#mentionedRoles">mentionedRoles</a></li>
             
                 <li data-name="Message#mentionedUsers"><a href="Message.html#mentionedUsers">mentionedUsers</a></li>
+            
+                <li data-name="Message#mentionsEveryone"><a href="Message.html#mentionsEveryone">mentionsEveryone</a></li>
+            
+                <li data-name="Message#nonce"><a href="Message.html#nonce">nonce</a></li>
+            
+                <li data-name="Message#pinned"><a href="Message.html#pinned">pinned</a></li>
+            
+                <li data-name="Message#reactions"><a href="Message.html#reactions">reactions</a></li>
+            
+                <li data-name="Message#type"><a href="Message.html#type">type</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -810,9 +826,13 @@
             
                 <li data-name="Message#clearReactions"><a href="Message.html#clearReactions">clearReactions</a></li>
             
+                <li data-name="Message#collectReaction"><a href="Message.html#collectReaction">collectReaction</a></li>
+            
                 <li data-name="Message#delete"><a href="Message.html#delete">delete</a></li>
             
                 <li data-name="Message#edit"><a href="Message.html#edit">edit</a></li>
+            
+                <li data-name="Message#fetchReactions"><a href="Message.html#fetchReactions">fetchReactions</a></li>
             
                 <li data-name="Message#isMentioned"><a href="Message.html#isMentioned">isMentioned</a></li>
             
@@ -1406,6 +1426,51 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="attachments">attachments<span class="type-signature type array">Array</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The attachments in the message
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="author">author<span class="type-signature type user"><a href="User.html">User</a></span> </h4>
     </div>
     
@@ -1721,6 +1786,96 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="editedTimestamp">editedTimestamp<span class="type-signature type number">Number</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        If the message was editted, what time was it editted
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="embeds">embeds<span class="type-signature type array">Array</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The embeds in the message
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="guild">guild<span class="type-signature type guild"><a href="Guild.html">Guild</a></span> </h4>
     </div>
     
@@ -1987,6 +2142,231 @@
     
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="mentionsEveryone">mentionsEveryone<span class="type-signature type boolean">Boolean</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Whether the message mentions everyone
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="nonce">nonce<span class="type-signature type boolean">Boolean</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Whether the message has a nonce or not
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="pinned">pinned<span class="type-signature type boolean">Boolean</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Whether the message is pinned or not
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="reactions">reactions<span class="type-signature type object">Object</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The reactions on the message
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="type">type<span class="type-signature type string">String</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The type of message
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
         </dl>
     
     
@@ -2004,7 +2384,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line294">line 294</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line335">line 335</a>
         </div>
         
     </div>
@@ -2068,6 +2448,198 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="collectReaction">
+            
+            collectReaction<span class="signature">(filter, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="ReactionCollector.html">ReactionCollector</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line364">line 364</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will wait for a reaction on the message
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>filter</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The filter to use</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The options</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="ReactionCollector.html">ReactionCollector</a>
+                        
+                    
+            </td>
+            <td class="description last">The reaction collector class, with two events, ReactionCollector.on('collect', message) and ReactionCollector.on('end')</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="delete">
             
             delete<span class="signature">(<span class="optional">reason</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Message.html">Message</a>>}</span>
@@ -2075,7 +2647,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line175">line 175</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line216">line 216</a>
         </div>
         
     </div>
@@ -2235,7 +2807,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line192">line 192</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line233">line 233</a>
         </div>
         
     </div>
@@ -2373,6 +2945,198 @@
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="fetchReactions">
+            
+            fetchReactions<span class="signature">(emoji, <span class="optional">opt</span>)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Promise.&lt;<a href="Collection.html">Collection</a>>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line376">line 376</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        This method will fetch all of the users who reacted with a certain emoji
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>emoji</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#EmojiResolvable">EmojiResolvable</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                The emoji to look for</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>opt</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                The otpions: before, after and limit</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Promise.&lt;<a href="Collection.html">Collection</a>>
+                        
+                    
+            </td>
+            <td class="description last">A collection of all the users who reacted with the certain emoji</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="isMentioned">
             
             isMentioned<span class="signature">(user)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
@@ -2380,7 +3144,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line311">line 311</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line352">line 352</a>
         </div>
         
     </div>
@@ -2525,7 +3289,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line208">line 208</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line249">line 249</a>
         </div>
         
     </div>
@@ -2625,7 +3389,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line240">line 240</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line281">line 281</a>
         </div>
         
     </div>
@@ -2741,7 +3505,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line264">line 264</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line305">line 305</a>
         </div>
         
     </div>
@@ -2880,7 +3644,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line157">line 157</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line198">line 198</a>
         </div>
         
     </div>
@@ -3025,7 +3789,7 @@
     
         
         <div class="tag-source">
-            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line224">line 224</a>
+            <a href="Classes_Message.js.html">Classes/Message.js</a>, <a href="Classes_Message.js.html#line265">line 265</a>
         </div>
         
     </div>
@@ -3133,7 +3897,7 @@
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 12:44:00 GMT+0100 (GMT Summer Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 30 2018 13:23:11 GMT+0100 (GMT Summer Time)
         </footer>
     </div>
 </div>
