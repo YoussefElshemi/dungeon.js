@@ -289,7 +289,7 @@ class Message {
     }
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.channel.id}/messages/${this.id}/reactions/${reaction}/@me`, {}, this.client.token).then(m => {
-        setTimeout(res, 100, res(new this.constructor(m, this.client)));
+        setTimeout(res, 100, res(this));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
       });

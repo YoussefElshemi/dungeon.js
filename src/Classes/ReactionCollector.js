@@ -56,7 +56,7 @@ class ReactionCollector extends EventEmitter {
 
   waitForMessage(date) {
     this.client.once('messageReactionAdd', (reaction, user) => {
-      if (reaction.message.channel.id === this.channel.id && date + this.opt.time >= new Date().getTime() && this.filter(message)) {
+      if (reaction.message.channel.id === this.channel.id && date + this.opt.time >= new Date().getTime() && this.filter(reaction, user)) {
         this.emit('collect', reaction, user);
       } else {
         this.waitForMessage(date);
