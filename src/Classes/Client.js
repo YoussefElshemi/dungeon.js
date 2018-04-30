@@ -201,7 +201,7 @@ class Client extends EventEmitter {
                 const t2 = new Date();
                 this.pings.splice(0, 0, t2 - t1);
                 if (this.pings.length == 11) this.pings.pop();
-                this.latency = Math.round((this.pings.reduce((c, p) => c + p, 0)));
+                this.latency = Math.round((this.pings.reduce((c, p) => c + p, 0)) / this.pings.length);
                 this.emit('ping');
               });
             });
