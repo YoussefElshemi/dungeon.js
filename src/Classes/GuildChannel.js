@@ -4,6 +4,7 @@ const Guild = require('./Guild');
 const Webhook = require('./Webhook');
 const snekfetch = require('snekfetch');
 const Collection = require('./Collection');
+const PermissionOverwrites = require('./PermissionOverwrites');
 
 /**
  * This class represents any Guild Channel
@@ -41,17 +42,22 @@ class GuildChannel {
     this.position = raw.position;
 
     /**
-     * The permission overwrites of the channel
-     * @type {Array}
-     */
-
-    this.permission_overwrites = raw.permission_overwrites;
-
-    /**
      * The guild the channel is in
      * @type {Guild}
      */
     this.guild = guild;
+
+    /**
+     * The permission overwrites of the channel
+     * @type {Collection}
+     */
+
+    this.permissionOverwrites = new Collection();
+
+
+    for (let i = 0; i < raw.permission_overwrites.length; i ++) {
+      this.permissionOverwrites.set(raw.permission_overwrites[i].id, new PermissionOverwrites(raw.permission_overwrites[i], this, this.client));
+    }
   }
 
   /**
@@ -256,23 +262,35 @@ class GuildChannel {
    * @description Edit permissions of the channels
    * @param {role} RoleOrMember The role or the member to overwrite the permissions
    * @param {Object} opt Available options: Allow (Bitfield of Permissions) and Deny (Bitfield of Permissions)
+   * @example 
+   * // Here we will stop a member from sending a message in a certain channel
+   * guildchannel.editPermissions(message.member, {allow: [], deny: ['SEND_MESSAGES']}).then(c => {
+   *    console.log(`Updated permissions for ${message.author.username}, and stopped them from sending messages`);
+   * });
    */
 
   editPermissions(RoleOrMember, opt = {}) {
     return new Promise((res) => {
       request.req('PUT', `/channels/${this.id}/permissions/${RoleOrMember.id}`, {
-        allow: new Permissions().toBitField(opt.allow) || 0,
-        deny: new Permissions().toBitField(opt.deny) || 0,
+        allow: new Permissions(opt.allow).toBitField() || 0,
+        deny: new Permissions(opt.deny).toBitField() || 0,
         type: RoleOrMember.constructor.name.toLowerCase()
       }, this.client.token).then(success => {
         request.req('GET', `/channels/${this.id}`, {}, this.client.token).then(channel => {
-          setTImeout(res, 100, res(new this.constructor(channel, this.client)));
+          setTimeout(res, 100, res(new this.constructor(channel, this.guild, this.client)));
         });
       }).catch(error => {
         if (error.status === 403) throw new this.client.MissingPermissions('I don\'t have permissions to perform this action!');
       });
     });
   }
+
+  /**
+   * @description This method creates a webhook
+   * @param {String} name The name of webhook
+   * @param {String} icon The url of the icon for the webhook
+   * @returns {Promise<Webhook>} The created webhook
+   */
 
   createWebhook(name, icon) {
     return new Promise((res, rej) => {
@@ -289,6 +307,11 @@ class GuildChannel {
     });
   } 
 
+  /**
+   * @description This method will fetch a guilds webhooks
+   * @returns {Promise<Collection>} A collection of fetched webhooks
+   */
+
   fetchWebhooks() {
     return new Promise((res, rej) => {
       request.req('GET', `/channels/${this.id}/webhooks`, {}, this.client.token).then(webhooks => {
@@ -301,6 +324,12 @@ class GuildChannel {
       });
     });
   }
+
+  /**
+   * @description This method fetches a webhook
+   * @param {String} id The id of the webhook to fetch
+   * @returns {Promise<Webhook>} The fetched webhook
+   */
 
   fetchWebhook(id) {
     return new Promise((res, rej) => {
