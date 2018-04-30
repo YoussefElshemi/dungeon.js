@@ -15,7 +15,13 @@ module.exports = {
           }
           res(c.body);
         }).catch(err => {
-          if (err && err.body && err.message && err.message === 'You are being rate limited.') Promise.reject(err.body.message);
+          setTimeout(() => {
+            this.rateLimitedReq(METHOD, ENDPOINT, DATA, TOKEN).then(c => {
+              res(c.body);
+            }).catch(O_o => {});
+            ratelimited = false;
+          }, ratelimitoff - new Date().getTime());          
+          if (err && err.status && err.status == 429) Promise.reject(err.body.message);
         });
       } else {
         setTimeout(() => {
@@ -36,7 +42,13 @@ module.exports = {
         }
         res(c.body);
       }).catch(err => {
-        if (err && err.body && err.message && err.message === 'You are being rate limited.') Promise.reject(err.body.message);
+        setTimeout(() => {
+          this.rateLimitedReq(METHOD, ENDPOINT, DATA, TOKEN).then(c => {
+            res(c.body);
+          }).catch(O_o => {});
+          ratelimited = false;
+        }, ratelimitoff - new Date().getTime());
+        if (err && err.status && err.status == 429) Promise.reject(err.body.message);
       });
     });
   },
