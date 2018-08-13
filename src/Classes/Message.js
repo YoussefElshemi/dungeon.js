@@ -37,7 +37,7 @@ class Message {
 
     this.guild = this.channel && this.channel.guild ? this.channel.guild : null;
 
-    /** 
+    /**
      * The user object of the person who sent the message
      * @type {User}
      */
@@ -109,7 +109,7 @@ class Message {
      */
 
     this.mentionedRoles;
-    
+
 
     /**
      * The content of the message
@@ -178,8 +178,42 @@ class Message {
      * The reactions on the message
      * @type {Object}
      */
-    
+
     this.reactions = new Collection();
+
+    /**
+     * The URL's matched in the message content
+     * @type {Array}
+     */
+
+    this.urls = this.content.match(/(http(s)?:\/\/)?(([a-zA-Z]+[a-zA-Z0-9]*)\.)*([a-zA-Z]+[a-zA-Z0-9]*)(\/([^\s]+)?)*/g) || [];
+
+    /**
+     * The first argument in the message
+     * @type {String}
+     */
+
+
+    var arg = this.content.match(/[^\s"']+|"([^"]*)"|'([^']*)'/g);
+
+    arg = arg.map(x => {
+      if (x[0] == "\"" && x[x.length - 1] == "\"") {
+        x = x.split("").splice(1).join("");
+
+        x = x.split("").splice(0, x.length - 1).join("");
+      }
+
+      return x;
+    })
+
+    this.command = arg[0];
+
+    /**
+     * The following arguments after the first
+     * @type {Array}
+    */
+
+    this.arguments = arg.splice(1);
 
     if (raw.reactions) {
       for (let i = 0; i < raw.reactions.length; i++) {
@@ -203,7 +237,7 @@ class Message {
         setTimeout(res, 100, res(new this.constructor(m, this.client)));
       }).catch(error => {
         if (error.status === 403) throw new Error('Missing Permissions');
-      });        
+      });
     });
   }
 
@@ -356,7 +390,7 @@ class Message {
 
   /**
    * @description This method will wait for a reaction on the message
-   * @param {Function} filter The filter to use 
+   * @param {Function} filter The filter to use
    * @param {Object} [opt = {}] The options
    * @returns {ReactionCollector} The reaction collector class, with two events, ReactionCollector.on('collect', message) and ReactionCollector.on('end')
    */
@@ -369,7 +403,7 @@ class Message {
   /**
    * @description This method will fetch all of the users who reacted with a certain emoji
    * @param {EmojiResolvable} emoji The emoji to look for
-   * @param {Object} [opt = {}] The otpions: before, after and limit 
+   * @param {Object} [opt = {}] The otpions: before, after and limit
    * @returns {Promise<Collection>} A collection of all the users who reacted with the certain emoji
    */
 

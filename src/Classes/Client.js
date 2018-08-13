@@ -365,7 +365,7 @@ class Client extends EventEmitter {
   createGuild(name, obj = {}) {
     return new Promise((res, rej) => {
       request.req('POST', '/guilds', obj, this.token).then(c => {
-        const g = new Guild(c, this);      
+        const g = new Guild(c, this);
         this.guilds.set(g.id, g);
         setTimeout(res, 100, res(g));
       });
